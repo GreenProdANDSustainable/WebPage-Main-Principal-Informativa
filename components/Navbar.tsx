@@ -10,7 +10,6 @@ const navLinks = [
   { name: 'Inicio', href: '/' },
   { name: 'Sobre Nosotros', href: '/nosotros' },
   { name: 'Catálogo', href: '/catalogo' },
-  { name: 'Herramientas IA', href: '/herramientas-ia' },
   { name: 'Contacto', href: '/contacto' },
 ];
 
@@ -34,9 +33,8 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-green-600 ${
-                pathname === link.href ? 'text-green-600' : 'text-slate-600'
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-green-600 ${pathname === link.href ? 'text-green-600' : 'text-slate-600'
+                }`}
             >
               {link.name}
             </Link>
@@ -74,9 +72,8 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`text-base font-medium ${
-                    pathname === link.href ? 'text-green-600' : 'text-slate-600'
-                  }`}
+                  className={`text-base font-medium ${pathname === link.href ? 'text-green-600' : 'text-slate-600'
+                    }`}
                 >
                   {link.name}
                 </Link>
