@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --color-gp-blue: #207288;
+  --color-gp-green: #6CBE4F;
+  --color-gp-white: #FFFFFF;
+  --color-gp-neutral: #F4F4F4;
+}

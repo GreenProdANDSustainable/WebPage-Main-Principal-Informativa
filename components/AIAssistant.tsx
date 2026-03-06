@@ -1,3 +1,4 @@
+// AUN EN DESARROLLO E IMPLEMENTACION, NO IMPLEMENTADO, IMPLEMENTAR
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -35,7 +36,7 @@ export default function AIAssistant() {
 
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
-      
+
       const chat = ai.chats.create({
         model: 'gemini-3-flash-preview',
         config: {
@@ -53,7 +54,7 @@ export default function AIAssistant() {
 
       // We'll just send the current message for simplicity, but ideally we'd use the chat instance properly.
       // To keep it simple and avoid history formatting issues, let's just use generateContent with the full context.
-      
+
       const promptContext = messages.map(m => `${m.role === 'user' ? 'Cliente' : 'Asistente'}: ${m.text}`).join('\n') + `\nCliente: ${userMessage}\nAsistente:`;
 
       const response = await ai.models.generateContent({
@@ -86,11 +87,10 @@ export default function AIAssistant() {
       <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[80%] rounded-2xl p-4 ${
-              msg.role === 'user' 
-                ? 'bg-green-600 text-white rounded-tr-none' 
+            <div className={`max-w-[80%] rounded-2xl p-4 ${msg.role === 'user'
+                ? 'bg-green-600 text-white rounded-tr-none'
                 : 'bg-white border border-slate-200 text-slate-700 rounded-tl-none shadow-sm'
-            }`}>
+              }`}>
               <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
             </div>
           </div>
