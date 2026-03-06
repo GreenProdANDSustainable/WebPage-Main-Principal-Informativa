@@ -7,7 +7,7 @@ export default function Nosotros() {
       {/* Header */}
       <section className="relative py-24 bg-slate-50 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-green-500 rounded-full blur-3xl"></div>
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-gp-green rounded-full blur-3xl"></div>
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-serif text-4xl md:text-6xl font-bold text-slate-900 mb-6">
@@ -39,19 +39,19 @@ export default function Nosotros() {
                   Fundada con la convicción de que la industria y la naturaleza pueden coexistir en armonía, Green Prod & Sustainable nació para ofrecer alternativas ecológicas reales. Desde nuestros primeros bioinsumos hasta nuestra actual línea de conservas premium y proyectos ambientales, hemos mantenido nuestro compromiso con la excelencia y la sostenibilidad.
                 </p>
               </div>
-              
+
               <div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900 mb-4">Misión y Visión</h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <CheckCircle2 className="h-6 w-6 text-green-500 shrink-0 mt-1" />
+                    <CheckCircle2 className="h-6 w-6 text-gp-green shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-slate-900">Misión</h3>
                       <p className="text-slate-600">Proveer soluciones sostenibles de alta calidad que mejoren la productividad de nuestros clientes mientras protegemos el medio ambiente.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <CheckCircle2 className="h-6 w-6 text-green-500 shrink-0 mt-1" />
+                    <CheckCircle2 className="h-6 w-6 text-gp-green shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-slate-900">Visión</h3>
                       <p className="text-slate-600">Ser reconocidos globalmente como el referente principal en innovación ecológica, bioinsumos y gestión ambiental corporativa.</p>
@@ -81,7 +81,7 @@ export default function Nosotros() {
               { title: 'Integridad', desc: 'Transparencia y ética en todas nuestras relaciones comerciales.' },
             ].map((valor, i) => (
               <div key={i} className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
-                <h3 className="text-xl font-bold text-green-400 mb-3">{valor.title}</h3>
+                <h3 className="text-xl font-bold text-gp-green mb-3">{valor.title}</h3>
                 <p className="text-slate-300">{valor.desc}</p>
               </div>
             ))}

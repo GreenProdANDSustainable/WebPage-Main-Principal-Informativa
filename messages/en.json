@@ -1,0 +1,23 @@
+{
+    "Navbar": {
+        "about": "About Us",
+        "catalog": "Catalog",
+        "sustainability": "Sustainability",
+        "contact": "Contact Us",
+        "products": "Products (P)",
+        "services": "Services (S)",
+        "balik": "Balik",
+        "balik_desc": "Canned fish, vacuum packaged and fresh fish.",
+        "coprobio": "Coprobio",
+        "coprobio_desc": "Bio-inputs production.",
+        "planta": "Treatment Plant",
+        "planta_desc": "Fish hydrolysate, potassium soap, agricultural oil.",
+        "carniprod": "Carniprod",
+        "carniprod_desc": "Meat products production.",
+        "proveeduria": "Sustainable Procurement",
+        "proveeduria_desc": "Sustainable service lines.",
+        "proyectos": "Sustainable Projects",
+        "proyectos_desc": "Training and sustainable entrepreneurship.",
+        "products_services_title": "Products & Services"
+    }
+}

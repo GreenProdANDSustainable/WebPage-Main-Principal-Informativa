@@ -1,0 +1,23 @@
+{
+  "Navbar": {
+    "about": "Sobre Nosotros",
+    "catalog": "Catálogo",
+    "sustainability": "Sostenibilidad",
+    "contact": "Contáctanos",
+    "products": "Productos (P)",
+    "services": "Servicios (S)",
+    "balik": "Balik",
+    "balik_desc": "Conservas de pescado, empacados al vacío y pescado fresco.",
+    "coprobio": "Coprobio",
+    "coprobio_desc": "Producción de bioinsumos.",
+    "planta": "Planta Tratamiento",
+    "planta_desc": "Hidrolizado de pescado, jabón potásico, aceite agrícola.",
+    "carniprod": "Carniprod",
+    "carniprod_desc": "Producción de productos cárnicos.",
+    "proveeduria": "Proveeduría Sostenible",
+    "proveeduria_desc": "Líneas de servicio sostenibles.",
+    "proyectos": "Proyectos Sostenibles",
+    "proyectos_desc": "Formación, capacitación y emprendimientos sostenibles.",
+    "products_services_title": "Productos y Servicios"
+  }
+}

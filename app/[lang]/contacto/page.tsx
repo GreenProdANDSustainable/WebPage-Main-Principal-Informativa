@@ -20,8 +20,8 @@ export default function Contacto() {
               <h2 className="font-serif text-3xl font-bold text-slate-900 mb-8">Información de Contacto</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                    <MapPin className="h-6 w-6 text-green-600" />
+                  <div className="h-12 w-12 rounded-full bg-gp-neutral flex items-center justify-center shrink-0">
+                    <MapPin className="h-6 w-6 text-gp-green" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">Oficina Principal</h3>
@@ -29,8 +29,8 @@ export default function Contacto() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                    <Phone className="h-6 w-6 text-blue-600" />
+                  <div className="h-12 w-12 rounded-full bg-gp-neutral flex items-center justify-center shrink-0">
+                    <Phone className="h-6 w-6 text-gp-blue" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">Teléfono</h3>
@@ -38,8 +38,8 @@ export default function Contacto() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                    <Mail className="h-6 w-6 text-emerald-600" />
+                  <div className="h-12 w-12 rounded-full bg-gp-neutral flex items-center justify-center shrink-0">
+                    <Mail className="h-6 w-6 text-gp-green" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">Correo Electrónico</h3>
@@ -67,7 +67,7 @@ export default function Contacto() {
                   <input
                     type="text"
                     id="nombre"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gp-green focus:border-gp-green outline-none transition-all"
                     placeholder="Ej. Juan Pérez"
                   />
                 </div>
@@ -76,7 +76,7 @@ export default function Contacto() {
                   <input
                     type="text"
                     id="empresa"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gp-green focus:border-gp-green outline-none transition-all"
                     placeholder="Ej. AgroIndustrias S.A."
                   />
                 </div>
@@ -86,7 +86,7 @@ export default function Contacto() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gp-green focus:border-gp-green outline-none transition-all"
                   placeholder="juan@empresa.com"
                 />
               </div>
@@ -94,7 +94,7 @@ export default function Contacto() {
                 <label htmlFor="asunto" className="text-sm font-medium text-slate-700">Asunto</label>
                 <select
                   id="asunto"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gp-green focus:border-gp-green outline-none transition-all bg-white"
                 >
                   <option>Consulta sobre Bioinsumos</option>
                   <option>Consulta sobre Conservas</option>
@@ -107,13 +107,13 @@ export default function Contacto() {
                 <textarea
                   id="mensaje"
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gp-green focus:border-gp-green outline-none transition-all resize-none"
                   placeholder="¿En qué podemos ayudarte?"
                 ></textarea>
               </div>
               <button
                 type="button"
-                className="w-full rounded-xl bg-green-600 px-8 py-4 text-base font-bold text-white transition-all hover:bg-green-700 shadow-lg shadow-green-600/30"
+                className="w-full rounded-xl bg-gp-green px-8 py-4 text-base font-bold text-white transition-all hover:bg-gp-blue shadow-lg shadow-gp-green/30"
               >
                 Enviar Mensaje
               </button>
