@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu as MenuIcon, X, ChevronDown, Search, Globe, Phone, Mail } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Sobre Nosotros', href: '/nosotros' },
+  { name: 'Acerca de Nosotros', href: '/nosotros' },
   { name: 'Catálogo', href: '/catalogo' },
   { name: 'Sostenibilidad', href: '/sostenibilidad' },
 ];
@@ -18,8 +18,8 @@ const productsMenu = [
     category: 'Productos (P)',
     items: [
       { name: 'Balik', desc: 'Conservas de pescado, empacados al vacío y pescado fresco.', href: '/productos-y-servicios/balik' },
-      { name: 'Coprobio', desc: 'Producción de bioinsumos.', href: '/productos-y-servicios/coprobio' },
-      { name: 'Planta Tratamiento', desc: 'Hidrolizado de pescado, jabón potásico, aceite agrícola.', href: '/productos-y-servicios/planta-tratamiento' },
+      { name: 'Ceprobio', desc: 'Producción de bioinsumos.', href: '/productos-y-servicios/ceprobio' },
+      { name: 'Planta de Tratamiento', desc: 'Hidrolizado de pescado, jabón potásico, aceite agrícola.', href: '/productos-y-servicios/planta-tratamiento' },
       { name: 'Carniprod', desc: 'Producción de productos cárnicos.', href: '/productos-y-servicios/carniprod' },
     ]
   },
@@ -31,6 +31,17 @@ const productsMenu = [
     ]
   }
 ];
+
+const aboutMenu = {
+  main: [
+    { name: '¿Quiénes Somos?', desc: 'Nuestra misión, visión y valores fundamentales.', href: '/nosotros/quienes-somos' },
+    { name: 'Nuestra Trayectoria', desc: 'Historia y evolución de Green Prod & Sustainable S.A.C.', href: '/nosotros/nuestra-trayectoria' }
+  ],
+  sidebar: [
+    { name: 'Trabaja con Nosotros', href: '/empleos', icon: Phone },
+    { name: 'Contactos', href: '/contacto', icon: Mail }
+  ]
+};
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -54,8 +65,10 @@ export default function Navbar() {
   }, []);
 
   const isHome = rawPath === '/';
-  const isSolid = isScrolled || !isHome || isOpen;
-  const transparentMode = isHome && !isSolid;
+  const transparentPages = ['/'];
+  const isTransparentPage = transparentPages.includes(rawPath);
+  const isSolid = isScrolled || !isTransparentPage || isOpen;
+  const transparentMode = isTransparentPage && !isSolid;
 
   const textColorClass = transparentMode ? 'text-white' : 'text-slate-900';
   const hoverColorClass = transparentMode ? 'hover:text-gp-green' : 'hover:text-gp-blue';
@@ -79,14 +92,14 @@ export default function Navbar() {
     <>
       {/* Background Blur Overlay for Mega Menu */}
       <AnimatePresence>
-        {activeDropdown === 'productos' && (
+        {(activeDropdown === 'productos' || activeDropdown === 'nosotros') && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            //className="fixed inset-0 z-40 bg-gp-green/30 backdrop-blur-md pointer-events-none"
-            className="fixed inset-0 z-40 bg-gp-blue/30 backdrop-blur-md pointer-events-none"
+            className="fixed inset-0 z-40 bg-gp-green/30 backdrop-blur-md pointer-events-none"
+          //className="fixed inset-0 z-40 bg-gp-blue/30 backdrop-blur-md pointer-events-none"
           />
         )}
       </AnimatePresence>
@@ -116,7 +129,7 @@ export default function Navbar() {
             <div className={`relative transition-all duration-700 ${isSolid ? 'h-12 w-32 md:h-14 md:w-36' : 'h-16 w-40 md:h-20 md:w-48'}`}>
               <Image
                 src={transparentMode ? "/greenprod blanco png.png" : "/greenprod png.png"}
-                alt="Green Prod & Sustainable Logo"
+                alt="Green Prod & Sustainable S.A.C Logo"
                 fill
                 className="object-contain"
                 priority
@@ -126,12 +139,17 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center h-full gap-1 lg:gap-2 relative">
-            <Link
-              href={`/${currentLang}/nosotros`}
-              className={`px-4 lg:px-6 h-full flex items-center text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+            {/* About Us Mega Menu Trigger */}
+            <div
+              className="h-full flex items-center"
+              onMouseEnter={() => handleMouseEnter('nosotros')}
             >
-              Sobre Nosotros
-            </Link>
+              <button
+                className={`px-4 lg:px-6 h-full flex items-center gap-1 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+              >
+                Acerca de Nosotros <ChevronDown className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'nosotros' ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
 
             {/* Mega Menu Trigger */}
             <div
@@ -219,8 +237,64 @@ export default function Navbar() {
               <div className="bg-slate-50 border-t border-slate-100 px-8 py-4">
                 <div className="mx-auto max-w-7xl flex justify-between items-center text-sm">
                   <span className="text-slate-600 font-medium">Soluciones integrales para la industria.</span>
-                  <Link href={`/${currentLang}/catalogo`} className="text-gp-blue font-bold hover:text-gp-green flex items-center gap-1 transition-colors" onClick={() => setActiveDropdown(null)}>
-                    Ver catálogo completo <ChevronDown className="h-4 w-4 -rotate-90" />
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeDropdown === 'nosotros' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="hidden md:block absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100/50"
+              onMouseEnter={() => handleMouseEnter('nosotros')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="mx-auto max-w-7xl px-8 py-10">
+                <div className="flex gap-12">
+                  <div className="flex-1 border-r border-slate-100 pr-12">
+                    <h3 className="text-xl font-serif font-bold text-gp-blue mb-6 pb-2 border-b border-slate-100">Green Prod & Sustainable S.A.C</h3>
+                    <div className="grid grid-cols-2 gap-8">
+                      {aboutMenu.main.map((item, idx) => (
+                        <Link
+                          key={idx}
+                          href={`/${currentLang}${item.href}`}
+                          className="group block"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <h4 className="text-base font-bold text-slate-800 group-hover:text-gp-green transition-colors mb-2">{item.name}</h4>
+                          <p className="text-sm text-slate-500 leading-snug">{item.desc}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="w-64 shrink-0 pl-12 flex flex-col justify-center space-y-4">
+                    {aboutMenu.sidebar.map((item, idx) => {
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={idx}
+                          href={`/${currentLang}${item.href}`}
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 text-slate-600 hover:text-gp-blue transition-colors"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <div className="p-2 bg-slate-100 rounded-md text-slate-500">
+                            <Icon className="h-4 w-4" />
+                          </div>
+                          <span className="text-sm font-semibold">{item.name}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+              <div className="bg-slate-50 border-t border-slate-100 px-8 py-4">
+                <div className="mx-auto max-w-7xl flex justify-between items-center text-sm">
+                  <span className="text-slate-600 font-medium">Conoce más sobre nuestra visión y compromiso ambiental.</span>
+                  <Link href={`/${currentLang}/nosotros`} className="text-gp-blue font-bold hover:text-gp-green flex items-center gap-1 transition-colors" onClick={() => setActiveDropdown(null)}>
+                    Ver página Nosotros <ChevronDown className="h-4 w-4 -rotate-90" />
                   </Link>
                 </div>
               </div>
@@ -249,15 +323,56 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex-1 py-4">
-                  <Link
-                    href={`/${currentLang}/nosotros`}
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-6 py-4 text-lg font-bold uppercase tracking-wide border-b border-slate-50 ${rawPath === '/nosotros' ? 'text-gp-green' : 'text-slate-800'}`}
-                  >
-                    Sobre Nosotros
-                  </Link>
+                  {/* Mobile Accordion for About Us */}
+                  <div className="border-b border-slate-50">
+                    <button
+                      className={`w-full px-6 py-4 flex justify-between items-center text-lg font-bold uppercase tracking-wide text-slate-800`}
+                      onClick={() => setActiveDropdown(activeDropdown === 'mobile-nosotros' ? null : 'mobile-nosotros')}
+                    >
+                      Acerca de Nosotros
+                      <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-nosotros' ? 'rotate-180 text-gp-green' : 'text-slate-400'}`} />
+                    </button>
 
-                  {/* Mobile Accordion for Products */}
+                    <AnimatePresence>
+                      {activeDropdown === 'mobile-nosotros' && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden bg-slate-50"
+                        >
+                          <div className="px-6 py-2 pb-6 space-y-6">
+                            <div>
+                              <h3 className="text-sm font-bold text-gp-blue uppercase tracking-wider mb-3">CONOCE MÁS</h3>
+                              <div className="space-y-4 pl-2 border-l-2 border-slate-200">
+                                {aboutMenu.main.map((item, idx) => (
+                                  <Link
+                                    key={idx}
+                                    href={`/${currentLang}${item.href}`}
+                                    className="block pl-3"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    <div className="font-bold text-slate-700">{item.name}</div>
+                                    <div className="text-xs text-slate-500 mt-1">{item.desc}</div>
+                                  </Link>
+                                ))}
+                                {aboutMenu.sidebar.map((item, idx) => (
+                                  <Link
+                                    key={`sb-${idx}`}
+                                    href={`/${currentLang}${item.href}`}
+                                    className="block pl-3"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    <div className="font-bold text-slate-700">{item.name}</div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                   <div className="border-b border-slate-50">
                     <button
                       className={`w-full px-6 py-4 flex justify-between items-center text-lg font-bold uppercase tracking-wide text-slate-800`}

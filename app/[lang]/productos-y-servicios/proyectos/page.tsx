@@ -1,31 +1,31 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import ProductAccordion from '@/components/ProductAccordion';
+import ProductAccordion from '@/components/features/products/ProductAccordion';
 
 const proyectosDesc = [
     {
         id: 'p1',
-        name: 'Remediación de Suelos Agrícolas',
-        shortDesc: 'Recuperación de suelos degradados por uso intensivo de agroquímicos.',
-        fullDesc: 'Programa integral de remediación que utiliza microorganismos específicos y enmiendas orgánicas para restaurar la fertilidad natural y la biodiversidad del suelo en zonas agrícolas afectadas.',
+        name: 'Lorem ipsum dolor sit amet',
+        shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         imageSeed: 'soil',
-        features: ['Análisis de suelo inicial y final', 'Aplicación de consorcios microbianos', 'Monitoreo continuo', 'Aumento de materia orgánica'],
+        features: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur adipiscing', 'Sed do eiusmod'],
     },
     {
         id: 'p2',
-        name: 'Gestión de Residuos Orgánicos Industriales',
-        shortDesc: 'Transformación de mermas en compost de alta calidad.',
-        fullDesc: 'Diseño e implementación de sistemas de compostaje industrial para empresas agroindustriales, convirtiendo sus residuos orgánicos en abono rico en nutrientes para reincorporar al ciclo productivo.',
+        name: 'Lorem ipsum dolor sit amet',
+        shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         imageSeed: 'compost',
-        features: ['Economía circular', 'Reducción de huella de carbono', 'Capacitación al personal', 'Cumplimiento normativo ambiental'],
+        features: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur adipiscing', 'Sed do eiusmod'],
     },
     {
         id: 'p3',
-        name: 'Formación y Capacitación',
-        shortDesc: 'Educación ambiental y desarrollo de capacidades.',
-        fullDesc: 'Servicios de capacitación y formación orientados al uso de recursos sostenibles y el desarrollo de nuevos emprendimientos eco-amigables dentro del tejido empresarial B2B.',
+        name: 'Lorem ipsum dolor sit amet',
+        shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         imageSeed: 'training',
-        features: ['Talleres especializados', 'Consultoría in-situ', 'Evaluación de impacto', 'Asesoría a emprendimientos'],
+        features: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur adipiscing', 'Sed do eiusmod'],
     }
 ];
 

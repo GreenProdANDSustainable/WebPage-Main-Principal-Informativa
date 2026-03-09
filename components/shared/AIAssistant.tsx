@@ -12,7 +12,7 @@ interface Message {
 
 export default function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: '¡Hola! Soy el asistente virtual de Green Prod & Sustainable. ¿En qué puedo ayudarte hoy? (Ej. "Recomiéndame un bioinsumo para tomates" o "Explícame los beneficios del compostaje")' }
+    { role: 'model', text: '¡Hola! Soy el asistente virtual de Green Prod & Sustainable S.A.C. ¿En qué puedo ayudarte hoy? (Ej. "Recomiéndame un bioinsumo para tomates" o "Explícame los beneficios del compostaje")' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -40,7 +40,7 @@ export default function AIAssistant() {
       const chat = ai.chats.create({
         model: 'gemini-3-flash-preview',
         config: {
-          systemInstruction: 'Eres un asistente experto en agricultura sostenible, bioinsumos, conservas premium y proyectos ambientales. Trabajas para la empresa "Green Prod & Sustainable". Responde de manera profesional, concisa y persuasiva. Recomienda productos del catálogo cuando sea relevante.',
+          systemInstruction: 'Eres un asistente experto en agricultura sostenible, bioinsumos, conservas premium y proyectos ambientales. Trabajas para la empresa "Green Prod & Sustainable S.A.C". Responde de manera profesional, concisa y persuasiva. Recomienda productos del catálogo cuando sea relevante.',
         },
       });
 
@@ -61,7 +61,7 @@ export default function AIAssistant() {
         model: 'gemini-3-flash-preview',
         contents: promptContext,
         config: {
-          systemInstruction: 'Eres un asistente experto en agricultura sostenible, bioinsumos, conservas premium y proyectos ambientales. Trabajas para la empresa "Green Prod & Sustainable". Responde de manera profesional, concisa y persuasiva. Recomienda productos del catálogo cuando sea relevante.',
+          systemInstruction: 'Eres un asistente experto en agricultura sostenible, bioinsumos, conservas premium y proyectos ambientales. Trabajas para la empresa "Green Prod & Sustainable S.A.C". Responde de manera profesional, concisa y persuasiva. Recomienda productos del catálogo cuando sea relevante.',
         }
       });
 
@@ -88,8 +88,8 @@ export default function AIAssistant() {
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[80%] rounded-2xl p-4 ${msg.role === 'user'
-                ? 'bg-green-600 text-white rounded-tr-none'
-                : 'bg-white border border-slate-200 text-slate-700 rounded-tl-none shadow-sm'
+              ? 'bg-green-600 text-white rounded-tr-none'
+              : 'bg-white border border-slate-200 text-slate-700 rounded-tl-none shadow-sm'
               }`}>
               <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
             </div>

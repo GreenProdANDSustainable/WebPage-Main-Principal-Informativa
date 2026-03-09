@@ -1,26 +1,17 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import '../globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {
-  title: "Green Prod & Sustainable | Innovación y Sostenibilidad",
+  title: "Green Prod & Sustainable S.A.C | Innovación y Sostenibilidad",
   description: "Soluciones sostenibles para la industria agropecuaria, pesquera y ambiental.",
 };
 
@@ -40,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-slate-50 text-slate-900 selection:bg-gp-green/20 selection:text-gp-green min-h-screen flex flex-col`}
+        className={`${jakarta.variable} antialiased bg-slate-50 text-slate-900 selection:bg-gp-green selection:text-white min-h-screen flex flex-col font-[family-name:var(--font-jakarta)]`}
       >
         <Navbar />
         <main className="flex-1 pt-20">

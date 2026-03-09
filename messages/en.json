@@ -8,8 +8,8 @@
         "services": "Services (S)",
         "balik": "Balik",
         "balik_desc": "Canned fish, vacuum packaged and fresh fish.",
-        "coprobio": "Coprobio",
-        "coprobio_desc": "Bio-inputs production.",
+        "Ceprobio": "Ceprobio",
+        "Ceprobio_desc": "Bio-inputs production.",
         "planta": "Treatment Plant",
         "planta_desc": "Fish hydrolysate, potassium soap, agricultural oil.",
         "carniprod": "Carniprod",
@@ -19,5 +19,188 @@
         "proyectos": "Sustainable Projects",
         "proyectos_desc": "Training and sustainable entrepreneurship.",
         "products_services_title": "Products & Services"
+    },
+    "ProductsServices": {
+        "hero": {
+            "title": "Sustainable Solutions for Your Business",
+            "subtitle": "Certified products and services that drive your business competitiveness while protecting the environment",
+            "imageAlt": "Sustainable business solutions and certified products for environmental protection"
+        },
+        "categories": {
+            "balikImageAlt": "Premium canned fish and fresh seafood products with complete traceability",
+            "ceprobioImageAlt": "Organic agricultural bio-inputs and sustainable fertilizers",
+            "plantaImageAlt": "Fish hydrolysate and agricultural oils from circular economy processes",
+            "carniprodImageAlt": "Certified processed meat products for industrial sector",
+            "proveeduriaImageAlt": "Sustainable supply chain and responsible procurement services",
+            "proyectosImageAlt": "Sustainable business consulting and training programs"
+        }
+    },
+    "Home": {
+        "hero": {
+            "title": "Innovation for a",
+            "titleHighlight": "Sustainable Future",
+            "subtitle": "Green Prod & Sustainable S.A.C leads the production of bio-inputs, premium preserves, and environmental projects that transform the industry.",
+            "primaryCta": "View Catalog",
+            "secondaryCta": "Learn More",
+            "imageAlt": "Green Prod & Sustainable S.A.C - Innovation for a sustainable future in bio-inputs and environmental projects"
+        },
+        "values": {
+            "title": "Our Values",
+            "subtitle": "The principles that guide every decision and action at Green Prod & Sustainable S.A.C",
+            "items": {
+                "quality": {
+                    "title": "Superior Quality",
+                    "description": "Commitment to excellence in every product and service we offer to our business partners"
+                },
+                "sustainability": {
+                    "title": "Sustainability",
+                    "description": "Responsible practices that protect the environment and generate long-term value"
+                },
+                "innovation": {
+                    "title": "Innovation",
+                    "description": "Continuous development of solutions that transform the sustainable products industry"
+                },
+                "integrity": {
+                    "title": "Integrity",
+                    "description": "Transparency and ethics in all our business relationships and operations"
+                },
+                "collaboration": {
+                    "title": "Collaboration",
+                    "description": "Teamwork with clients and suppliers to create shared value"
+                },
+                "excellence": {
+                    "title": "Operational Excellence",
+                    "description": "Optimized processes that ensure efficiency and consistent results"
+                }
+            }
+        },
+        "certifications": {
+            "title": "Certifications and Standards",
+            "subtitle": "Recognition that validates our commitment to quality and sustainability",
+            "items": {
+                "iso9001": {
+                    "name": "ISO 9001:2015",
+                    "description": "Internationally certified quality management system"
+                },
+                "iso14001": {
+                    "name": "ISO 14001:2015",
+                    "description": "Environmental management and commitment to sustainability"
+                },
+                "haccp": {
+                    "name": "HACCP",
+                    "description": "Hazard analysis and critical control points in food production"
+                },
+                "organic": {
+                    "name": "Organic Certification",
+                    "description": "Products certified under organic agriculture standards"
+                }
+            }
+        },
+        "stats": {
+            "title": "Our Impact in Numbers",
+            "items": {
+                "clients": {
+                    "label": "Active B2B Clients"
+                },
+                "products": {
+                    "label": "Sustainable Products"
+                },
+                "co2": {
+                    "label": "Tons CO₂ Reduced"
+                },
+                "experience": {
+                    "label": "Years of Experience"
+                }
+            }
+        },
+        "businessLines": {
+            "title": "Our Business Lines",
+            "subtitle": "Comprehensive solutions in sustainable products and services for businesses",
+            "viewMore": "Learn more",
+            "items": {
+                "balik": {
+                    "title": "Balik",
+                    "description": "Premium canned and fresh fish with complete traceability for B2B distribution."
+                },
+                "Ceprobio": {
+                    "title": "Ceprobio",
+                    "description": "Organic agricultural bio-inputs that enhance productivity and sustainability."
+                },
+                "planta": {
+                    "title": "Treatment Plant",
+                    "description": "Fish hydrolysate and agricultural oils through certified circular economy processes."
+                },
+                "carniprod": {
+                    "title": "Carniprod",
+                    "description": "Processed meat products with certified standards for the industrial sector."
+                },
+                "proveeduria": {
+                    "title": "Sustainable Procurement",
+                    "description": "Responsible supply chain with certified suppliers meeting ESG criteria."
+                },
+                "proyectos": {
+                    "title": "Sustainable Projects",
+                    "description": "Consulting and training for transformation towards sustainable business models."
+                }
+            }
+        },
+        "missionVision": {
+            "mission": {
+                "title": "Our Mission",
+                "text": "To provide high-quality sustainable products and services that generate shared value for our clients, collaborators, and the environment, leading the transformation towards a circular economy in the industry."
+            },
+            "vision": {
+                "title": "Our Vision",
+                "text": "To be the leading company in Latin America for B2B sustainable solutions, recognized for our innovation, environmental commitment, and operational excellence, inspiring the industry towards more responsible practices."
+            }
+        },
+        "sustainability": {
+            "title": "Commitment to Sustainability",
+            "subtitle": "Concrete initiatives that demonstrate our leadership in environmental responsibility",
+            "learnMore": "Learn more",
+            "backgroundImageAlt": "Sustainable environmental practices and circular economy initiatives in action",
+            "items": {
+                "circular": {
+                    "title": "Circular Economy",
+                    "description": "Utilization of 95% of by-products through sustainable valorization and transformation processes"
+                },
+                "renewable": {
+                    "title": "Renewable Energy",
+                    "description": "60% of our operations run on solar energy and certified renewable sources"
+                },
+                "water": {
+                    "title": "Water Management",
+                    "description": "Treatment and recirculation system that reduces water consumption by 40%"
+                },
+                "biodiversity": {
+                    "title": "Biodiversity Protection",
+                    "description": "Marine and terrestrial conservation programs in collaboration with local communities"
+                }
+            }
+        },
+        "testimonials": {
+            "title": "What Our Clients Say",
+            "subtitle": "Testimonials from companies that trust our sustainable solutions",
+            "items": {
+                "testimonial1": {
+                    "name": "Carlos Mendoza",
+                    "company": "AgroIndustrias del Pacífico",
+                    "position": "Procurement Director",
+                    "text": "Green Prod & Sustainable S.A.C has been a fundamental strategic partner. Their bio-inputs have improved our productivity by 30% while reducing environmental impact. The quality and service are exceptional."
+                },
+                "testimonial2": {
+                    "name": "María Fernández",
+                    "company": "Distribuidora Nacional de Alimentos",
+                    "position": "Sustainability Manager",
+                    "text": "The traceability and certifications of their products allow us to meet the highest ESG standards. Their commitment to the circular economy is a key differentiator in our supply chain."
+                },
+                "testimonial3": {
+                    "name": "Roberto Silva",
+                    "company": "Exportadora Mar y Tierra",
+                    "position": "CEO",
+                    "text": "We have been working with Green Prod for 5 years and the consistency in quality is impressive. Their sustainable procurement solutions have opened new demanding international markets for us."
+                }
+            }
+        }
     }
 }

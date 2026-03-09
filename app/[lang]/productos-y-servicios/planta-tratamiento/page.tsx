@@ -1,23 +1,23 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import ProductAccordion from '@/components/ProductAccordion';
+import ProductAccordion from '@/components/features/products/ProductAccordion';
 
 const productosDesc = [
     {
         id: 'pt1',
-        name: 'Hidrolizado de Pescado',
-        shortDesc: 'Abono líquido rico en nitrógeno orgánico y aminoácidos.',
-        fullDesc: 'Formulado a base de proteína de pescado mediante hidrólisis natural. Acelera el metabolismo vegetal, mejora el cuaje de frutos y activa la microflora del suelo.',
+        name: 'Lorem ipsum dolor sit amet',
+        shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         imageSeed: 'liquid',
-        features: ['Rápida asimilación', 'Estimulante natural', 'Alto en aminoácidos libres', 'Aplicación foliar o fertirriego'],
+        features: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur adipiscing', 'Sed do eiusmod'],
     },
     {
         id: 'pt2',
-        name: 'Jabón Potásico',
-        shortDesc: 'Insecticida agrícola de contacto biodegradable.',
-        fullDesc: 'Producto orgánico ideal para el control de plagas blandas (pulgones, mosca blanca, ácaros) y como mojante para otros tratamientos fitosanitarios. No deja residuos en la cosecha.',
+        name: 'Lorem ipsum dolor sit amet',
+        shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         imageSeed: 'bubbles',
-        features: ['100% Biodegradable', 'Sin plazo de seguridad', 'Efecto limpiador', 'Respetuoso con fauna auxiliar'],
+        features: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur adipiscing', 'Sed do eiusmod'],
     },
 ];
 
