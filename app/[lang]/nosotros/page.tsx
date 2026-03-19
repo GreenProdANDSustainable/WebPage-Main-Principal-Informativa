@@ -89,8 +89,7 @@ export default async function Nosotros({ params }: { params: Promise<{ lang: str
                 <Leaf className="h-7 w-7 text-gp-green" />
               </div>
               <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">{d.agriculture}</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">}</h3>
-Name="space-y-2 text-slate-600 text-sm">
+              <ul className="space-y-2 text-slate-600 text-sm">
                 {d.agricultureItems.map((item: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2"><span className="text-gp-green font-bold mt-0.5">→</span> {item}</li>
                 ))}
