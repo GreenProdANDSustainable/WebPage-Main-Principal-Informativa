@@ -5,3 +5,17 @@ coverage/
 *.log
 .env*
 !.env.example
+.env.local
+.env.development
+.env.production
+*.tsbuildinfo
+.cache/
+.temp/
+.tmp/
+.vercel/
+.turbo/
+.swc/
+*.swp
+*.swo
+*~
+Thumbs.db
