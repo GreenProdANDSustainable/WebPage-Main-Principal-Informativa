@@ -12,7 +12,7 @@ export default function CertificationsSection({ dict, certifications }: Certific
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <div className="text-[11px] md:text-[12px] leading-[12px] tracking-[2px] font-bold uppercase mb-4 text-[#e8e4db]">
-                        CALIDAD GARANTIZADA
+                        {dict.Home.certifications.label}
                     </div>
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#beede0] mb-4">
                         {dict.Home.certifications.title}

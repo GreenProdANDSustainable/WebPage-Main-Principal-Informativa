@@ -1,4 +1,95 @@
 {
+    "Metadata": {
+        "title": "Green Prod & Sustainable S.A.C | Innovation and Sustainability",
+        "description": "Sustainable solutions for the agricultural, fishing, and environmental industry."
+    },
+    "Partners": {
+        "title": "Strategic Partnerships — Coming Soon"
+    },
+    "News": {
+        "title": "Latest News",
+        "subtitle": "Success Cases — Coming Soon"
+    },
+    "Video": {
+        "title": "Our Essence",
+        "subtitle": "Discover who we are in one minute.",
+        "placeholder": "Corporate Video — Coming Soon"
+    },
+    "Pages": {
+        "construction": {
+            "title": "Page Under Construction",
+            "description": "We are working hard to bring you our new interactive catalog. It will be available soon!",
+            "backButton": "Back to Home"
+        },
+        "contact": {
+            "title": "Contact Us",
+            "subtitle": "We are ready to help you implement sustainable solutions in your company. Write to us and an advisor will contact you.",
+            "contactInfo": "Contact Information",
+            "mainOffice": "Main Office",
+            "address": "Av. Sostenibilidad 123, Distrito Verde<br />Lima, Peru",
+            "phone": "Phone",
+            "phoneDetail": "+51 987 654 321<br />Monday to Friday, 9am - 6pm",
+            "email": "Email",
+            "emailDetail": "contacto@greenprod.pe<br />ventas@greenprod.pe",
+            "mapPlaceholder": "[Interactive Map]",
+            "formTitle": "Send Us a Message",
+            "name": "Full Name",
+            "namePlaceholder": "Ex. John Doe",
+            "company": "Company",
+            "companyPlaceholder": "Ex. AgroIndustrias S.A.",
+            "emailLabel": "Email",
+            "emailPlaceholder": "john@company.com",
+            "subject": "Subject",
+            "subjectOptions": ["Bio-inputs Inquiry", "Preserves Inquiry", "Environmental Projects", "Other"],
+            "message": "Message",
+            "messagePlaceholder": "How can we help you?",
+            "submitButton": "Send Message"
+        },
+        "sustainability": {
+            "title": "Sustainability",
+            "description": "Page under construction. Here will go the details about our initiatives and sustainability reports."
+        },
+        "about": {
+            "label": "Greenprod Sustainable",
+            "title": "Who We Are",
+            "our_history": "Our History",
+            "tagline": "Your green path to productivity",
+            "history": {
+                "title": "Our History",
+                "text": "Greenprod Sustainable was born with the conviction that productivity and caring for the environment can go hand in hand. We are a company focused on driving agricultural and marine productivity through innovative practices, producing organic fertilizers and generating value in seafood products to improve the quality of life of local communities."
+            },
+            "missionVision": {
+                "title": "Mission and Vision",
+                "mission": "Mission",
+                "missionText": "To drive agricultural and marine productivity through innovative and environmentally friendly practices, producing organic fertilizers and seafood products that improve the quality of life of local communities.",
+                "vision": "Vision",
+                "visionText": "To be a leading company in the production of agricultural bio-inputs and sustainable seafood products, recognized for our innovation, environmental commitment, and contribution to responsible agriculture and fishing that promote healthy ecosystems."
+            },
+            "interventionAxes": {
+                "label": "What We Do",
+                "title": "Our Intervention Axes",
+                "subtitle": "Three lines of action that generate real impact on agriculture, fishing, and sustainable business development."
+            },
+            "values": {
+                "title": "Our Values",
+                "subtitle": "The principles that guide each of our decisions and projects.",
+                "sustainability": "Sustainability",
+                "sustainabilityDesc": "Unbreakable commitment to the environment and local communities.",
+                "innovation": "Innovation",
+                "innovationDesc": "Constant search for bio-inputs and productive methods that exceed conventional standards.",
+                "quality": "Quality",
+                "qualityDesc": "Safety, efficacy, and accessibility in every product and service we deliver.",
+                "responsibility": "Responsibility",
+                "responsibilityDesc": "Transparency, ethics, and fair payment in all our business relationships and with fishermen."
+            },
+            "agriculture": "Sustainable Agriculture",
+            "agricultureItems": ["Organic fertilizers and biocontrol agents (gp-biol, gp-trich)", "Soil and crop studies", "Technical advice on biostimulants"],
+            "fishing": "Responsible Fishing",
+            "fishingItems": ["Refrigerated fresh fish with traceability", "\"My fish\" line: ready-to-consume products", "Training for fishermen guilds"],
+            "consulting": "Integral Consulting",
+            "consultingItems": ["Strengthening productive capacities", "Business plan development", "Application to competitive funds"]
+        }
+    },
     "Navbar": {
         "about": "About Us",
         "catalog": "Catalog",
@@ -6,8 +97,18 @@
         "contact": "Contact Us",
         "products": "Products (P)",
         "services": "Services (S)",
+        "products_services_title": "Products & Services",
+        "work_with_us": "Work with Us",
+        "contacts": "Contacts",
+        "who_we_are": "Who We Are",
+        "who_we_are_desc": "Our mission, vision and fundamental values.",
+        "our_history": "Our History",
+        "our_history_desc": "History and evolution of Green Prod & Sustainable S.A.C.",
+        "industry_solutions": "Comprehensive solutions for the industry.",
+        "learn_more_vision": "Learn more about our vision and environmental commitment.",
+        "view_about_page": "View About Us page",
         "balik": "Balik",
-        "balik_desc": "Canned fish, vacuum packaged and fresh fish.",
+        "balik_desc": "Canned fish, vacuum packed and fresh fish.",
         "Ceprobio": "Ceprobio",
         "Ceprobio_desc": "Bio-inputs production.",
         "planta": "Treatment Plant",
@@ -17,8 +118,25 @@
         "proveeduria": "Sustainable Procurement",
         "proveeduria_desc": "Sustainable service lines.",
         "proyectos": "Sustainable Projects",
-        "proyectos_desc": "Training and sustainable entrepreneurship.",
-        "products_services_title": "Products & Services"
+        "proyectos_desc": "Training and sustainable entrepreneurship."
+    },
+    "Footer": {
+        "description": "Production of bio-inputs, preserves, and environmental projects. Committed to a greener and more sustainable future for generations to come.",
+        "quick_links_title": "Quick Links",
+        "about_us": "About Us",
+        "product_catalog": "Product Catalog",
+        "contact_label": "Contact",
+        "categories_title": "Categories",
+        "bioinsumos": "Bio-inputs",
+        "conservas": "Preserves",
+        "environmental_projects": "Environmental Projects",
+        "contact_title": "Contact",
+        "address": "Av. Sostenibilidad 123, Distrito Verde, Lima, Peru",
+        "phone": "+51 987 654 321",
+        "email": "contacto@greenprod.pe",
+        "copyright": "All rights reserved.",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service"
     },
     "ProductsServices": {
         "hero": {
@@ -37,15 +155,16 @@
     },
     "Home": {
         "hero": {
-            "title": "Innovation for a",
-            "titleHighlight": "Sustainable Future",
-            "subtitle": "Green Prod & Sustainable S.A.C leads the production of bio-inputs, premium preserves, and environmental projects that transform the industry.",
-            "primaryCta": "View Catalog",
-            "secondaryCta": "Learn More",
-            "imageAlt": "Green Prod & Sustainable S.A.C - Innovation for a sustainable future in bio-inputs and environmental projects"
+            "title": "Your green path to",
+            "titleHighlight": "Productivity",
+            "subtitle": "We drive agricultural and marine productivity through innovative and environmentally friendly practices, producing organic fertilizers and seafood products that improve the quality of life of local communities.",
+            "primaryCta": "View Products and Services",
+            "secondaryCta": "Contact Us",
+            "imageAlt": "Greenprod Sustainable - Your green path to agricultural and marine productivity"
         },
         "values": {
             "title": "Our Values",
+            "label": "OUR VALUES",
             "subtitle": "The principles that guide every decision and action at Green Prod & Sustainable S.A.C",
             "items": {
                 "quality": {
@@ -75,6 +194,7 @@
             }
         },
         "certifications": {
+            "label": "QUALITY GUARANTEED",
             "title": "Certifications and Standards",
             "subtitle": "Recognition that validates our commitment to quality and sustainability",
             "items": {
@@ -116,7 +236,7 @@
         "businessLines": {
             "title": "Our Business Lines",
             "subtitle": "Comprehensive solutions in sustainable products and services for businesses",
-            "viewMore": "Learn more",
+            "viewMore": "View more",
             "items": {
                 "balik": {
                     "title": "Balik",
@@ -145,19 +265,36 @@
             }
         },
         "missionVision": {
+            "essence_title": "Our Essence",
+            "title": "Mission and Vision",
+            "subtitle": "The pillars that guide our commitment to sustainability and productive development",
             "mission": {
                 "title": "Our Mission",
-                "text": "To provide high-quality sustainable products and services that generate shared value for our clients, collaborators, and the environment, leading the transformation towards a circular economy in the industry."
+                "text": "To drive agricultural and marine productivity through innovative and environmentally friendly practices, producing organic fertilizers and seafood products that improve the quality of life of local communities."
             },
             "vision": {
                 "title": "Our Vision",
-                "text": "To be the leading company in Latin America for B2B sustainable solutions, recognized for our innovation, environmental commitment, and operational excellence, inspiring the industry towards more responsible practices."
+                "text": "To be a leading company in the production of agricultural bio-inputs and sustainable seafood products, recognized for our innovation, environmental commitment, and contribution to responsible agriculture and fishing that improve the quality of life of local communities and promote healthy ecosystems."
             }
         },
         "sustainability": {
             "title": "Commitment to Sustainability",
             "subtitle": "Concrete initiatives that demonstrate our leadership in environmental responsibility",
             "learnMore": "Learn more",
+            "highlight": {
+                "our_commitment": "Our Commitment",
+                "sustainable_agriculture_fishing": "Sustainable Agriculture & Fishing",
+                "sustainability": "Sustainability",
+                "title": "We produce without compromising the",
+                "titleHighlight": "future of the planet",
+                "description": "At Green Prod & Sustainable, every product and service is designed to close the production cycle, minimize waste and regenerate ecosystems. We don't just produce; we build a business model that respects and enhances nature.",
+                "items": [
+                    "Sustainable Agriculture: bio-inputs, organic fertilizers and technical advice",
+                    "Responsible Fishing: fresh fish and value-added seafood products",
+                    "Integral Consulting: business plans, training and competitive funds"
+                ],
+                "cta": "Learn about our initiatives"
+            },
             "backgroundImageAlt": "Sustainable environmental practices and circular economy initiatives in action",
             "items": {
                 "circular": {

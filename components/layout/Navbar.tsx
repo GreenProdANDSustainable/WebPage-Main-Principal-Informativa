@@ -7,43 +7,83 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu as MenuIcon, X, ChevronDown, Search, Globe, Phone, Mail } from 'lucide-react';
 
-const navLinks = [
-  { name: 'Acerca de Nosotros', href: '/nosotros' },
-  { name: 'Catálogo', href: '/catalogo' },
-  { name: 'Sostenibilidad', href: '/sostenibilidad' },
-];
-
-const productsMenu = [
-  {
-    category: 'Productos (P)',
-    items: [
-      { name: 'Balik', desc: 'Conservas de pescado, empacados al vacío y pescado fresco.', href: '/productos-y-servicios/balik' },
-      { name: 'Ceprobio', desc: 'Producción de bioinsumos.', href: '/productos-y-servicios/ceprobio' },
-      { name: 'Planta de Tratamiento', desc: 'Hidrolizado de pescado, jabón potásico, aceite agrícola.', href: '/productos-y-servicios/planta-tratamiento' },
-      { name: 'Carniprod', desc: 'Producción de productos cárnicos.', href: '/productos-y-servicios/carniprod' },
-    ]
-  },
-  {
-    category: 'Servicios (S)',
-    items: [
-      { name: 'Proveeduría Sostenible', desc: 'Líneas de servicio sostenibles.', href: '/productos-y-servicios/proveeduria' },
-      { name: 'Proyectos Sostenibles', desc: 'Formación, capacitación y emprendimientos sostenibles.', href: '/productos-y-servicios/proyectos' },
-    ]
-  }
-];
-
-const aboutMenu = {
-  main: [
-    { name: '¿Quiénes Somos?', desc: 'Nuestra misión, visión y valores fundamentales.', href: '/nosotros/quienes-somos' },
-    { name: 'Nuestra Trayectoria', desc: 'Historia y evolución de Green Prod & Sustainable S.A.C.', href: '/nosotros/nuestra-trayectoria' }
-  ],
-  sidebar: [
-    { name: 'Trabaja con Nosotros', href: '/empleos', icon: Phone },
-    { name: 'Contactos', href: '/contacto', icon: Mail }
-  ]
+type Dictionary = {
+  Navbar: {
+    about: string;
+    catalog: string;
+    sustainability: string;
+    contact: string;
+    products: string;
+    services: string;
+    products_services_title: string;
+    work_with_us: string;
+    contacts: string;
+    who_we_are: string;
+    who_we_are_desc: string;
+    our_history: string;
+    our_history_desc: string;
+    industry_solutions: string;
+    learn_more_vision: string;
+    view_about_page: string;
+    balik: string;
+    balik_desc: string;
+    Ceprobio: string;
+    Ceprobio_desc: string;
+    planta: string;
+    planta_desc: string;
+    carniprod: string;
+    carniprod_desc: string;
+    proveeduria: string;
+    proveeduria_desc: string;
+    proyectos: string;
+    proyectos_desc: string;
+    [key: string]: any;
+  };
 };
 
-export default function Navbar() {
+interface NavbarProps {
+  dictionary: Dictionary;
+}
+
+export default function Navbar({ dictionary }: NavbarProps) {
+  const d = dictionary.Navbar;
+  
+  const navLinks = [
+    { name: d.about, href: '/nosotros' },
+    { name: d.catalog, href: '/catalogo' },
+    { name: d.sustainability, href: '/sostenibilidad' },
+  ];
+
+  const productsMenu = [
+    {
+      category: d.products,
+      items: [
+        { name: d.balik, desc: d.balik_desc, href: '/productos-y-servicios/balik' },
+        { name: d.Ceprobio, desc: d.Ceprobio_desc, href: '/productos-y-servicios/ceprobio' },
+        { name: d.planta, desc: d.planta_desc, href: '/productos-y-servicios/planta-tratamiento' },
+        { name: d.carniprod, desc: d.carniprod_desc, href: '/productos-y-servicios/carniprod' },
+      ]
+    },
+    {
+      category: d.services,
+      items: [
+        { name: d.proveeduria, desc: d.proveeduria_desc, href: '/productos-y-servicios/proveeduria' },
+        { name: d.proyectos, desc: d.proyectos_desc, href: '/productos-y-servicios/proyectos' },
+      ]
+    }
+  ];
+
+  const aboutMenu = {
+    main: [
+      { name: d.who_we_are, desc: d.who_we_are_desc, href: '/nosotros/quienes-somos' },
+      { name: d.our_history, desc: d.our_history_desc, href: '/nosotros/nuestra-trayectoria' }
+    ],
+    sidebar: [
+      { name: d.work_with_us, href: '/empleos', icon: Phone },
+      { name: d.contacts, href: '/contacto', icon: Mail }
+    ]
+  };
+
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -115,7 +155,7 @@ export default function Navbar() {
         <div className={`hidden md:flex justify-end items-center px-8 py-2 text-xs transition-colors duration-700 ${isSolid ? 'bg-slate-100 text-slate-600' : 'bg-black/20 text-white backdrop-blur-sm'}`}>
           <div className="flex items-center gap-6">
             <Link href={`/${currentLang}/contacto`} className="flex items-center gap-2 hover:text-gp-green transition-colors">
-              <Mail className="h-3 w-3" /> Contáctanos
+              <Mail className="h-3 w-3" /> {d.contact}
             </Link>
             <Link href={`/${currentLang === 'es' ? 'en' : 'es'}${rawPath}`} className="flex items-center gap-2 hover:text-gp-green transition-colors cursor-pointer">
               <Globe className="h-3 w-3" /> {currentLang === 'es' ? 'English (EN)' : 'Español (ES)'}
@@ -147,7 +187,7 @@ export default function Navbar() {
               <button
                 className={`px-4 lg:px-6 h-full flex items-center gap-1 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
               >
-                Acerca de Nosotros <ChevronDown className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'nosotros' ? 'rotate-180' : ''}`} />
+                {d.about} <ChevronDown className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'nosotros' ? 'rotate-180' : ''}`} />
               </button>
             </div>
 
@@ -159,7 +199,7 @@ export default function Navbar() {
               <button
                 className={`px-4 lg:px-6 h-full flex items-center gap-1 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${activeDropdown === 'productos' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
               >
-                Productos y Servicios <ChevronDown className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'productos' ? 'rotate-180' : ''}`} />
+                {d.products_services_title} <ChevronDown className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'productos' ? 'rotate-180' : ''}`} />
               </button>
             </div>
 
@@ -167,14 +207,14 @@ export default function Navbar() {
               href={`/${currentLang}/catalogo`}
               className={`px-4 lg:px-6 h-full flex items-center text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${rawPath === '/catalogo' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
             >
-              Catálogo
+              {d.catalog}
             </Link>
 
             <Link
               href={`/${currentLang}/sostenibilidad`}
               className={`px-4 lg:px-6 h-full flex items-center text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${rawPath === '/sostenibilidad' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
             >
-              Sostenibilidad
+              {d.sustainability}
             </Link>
 
             <div className="ml-4 flex items-center gap-4 border-l border-slate-300/30 pl-6">
@@ -236,7 +276,7 @@ export default function Navbar() {
               {/* Mega Menu Footer Banner */}
               <div className="bg-slate-50 border-t border-slate-100 px-8 py-4">
                 <div className="mx-auto max-w-7xl flex justify-between items-center text-sm">
-                  <span className="text-slate-600 font-medium">Soluciones integrales para la industria.</span>
+                  <span className="text-slate-600 font-medium">{d.industry_solutions}</span>
                 </div>
               </div>
             </motion.div>
@@ -292,9 +332,9 @@ export default function Navbar() {
               </div>
               <div className="bg-slate-50 border-t border-slate-100 px-8 py-4">
                 <div className="mx-auto max-w-7xl flex justify-between items-center text-sm">
-                  <span className="text-slate-600 font-medium">Conoce más sobre nuestra visión y compromiso ambiental.</span>
+                  <span className="text-slate-600 font-medium">{d.learn_more_vision}</span>
                   <Link href={`/${currentLang}/nosotros`} className="text-gp-blue font-bold hover:text-gp-green flex items-center gap-1 transition-colors" onClick={() => setActiveDropdown(null)}>
-                    Ver página Nosotros <ChevronDown className="h-4 w-4 -rotate-90" />
+                    {d.view_about_page} <ChevronDown className="h-4 w-4 -rotate-90" />
                   </Link>
                 </div>
               </div>
@@ -315,7 +355,7 @@ export default function Navbar() {
                 {/* Mobile Top Bar */}
                 <div className="bg-slate-50 flex justify-between px-6 py-4 border-b border-slate-100 text-sm font-medium text-slate-600">
                   <Link href={`/${currentLang}/contacto`} onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" /> Contáctanos
+                    <Mail className="h-4 w-4" /> {d.contact}
                   </Link>
                   <Link href={`/${currentLang === 'es' ? 'en' : 'es'}${rawPath}`} className="flex items-center gap-2">
                     <Globe className="h-4 w-4" /> {currentLang === 'es' ? 'EN' : 'ES'}
@@ -329,7 +369,7 @@ export default function Navbar() {
                       className={`w-full px-6 py-4 flex justify-between items-center text-lg font-bold uppercase tracking-wide text-slate-800`}
                       onClick={() => setActiveDropdown(activeDropdown === 'mobile-nosotros' ? null : 'mobile-nosotros')}
                     >
-                      Acerca de Nosotros
+                      {d.about}
                       <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-nosotros' ? 'rotate-180 text-gp-green' : 'text-slate-400'}`} />
                     </button>
 
@@ -378,7 +418,7 @@ export default function Navbar() {
                       className={`w-full px-6 py-4 flex justify-between items-center text-lg font-bold uppercase tracking-wide text-slate-800`}
                       onClick={() => setActiveDropdown(activeDropdown === 'mobile-productos' ? null : 'mobile-productos')}
                     >
-                      Productos y Servicios
+                      {d.products_services_title}
                       <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-productos' ? 'rotate-180 text-gp-green' : 'text-slate-400'}`} />
                     </button>
 
@@ -420,7 +460,7 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className={`block px-6 py-4 text-lg font-bold uppercase tracking-wide border-b border-slate-50 ${rawPath === '/catalogo' ? 'text-gp-green' : 'text-slate-800'}`}
                   >
-                    Catálogo
+                    {d.catalog}
                   </Link>
 
                   <Link
@@ -428,7 +468,7 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className={`block px-6 py-4 text-lg font-bold uppercase tracking-wide ${rawPath === '/sostenibilidad' ? 'text-gp-green' : 'text-slate-800'}`}
                   >
-                    Sostenibilidad
+                    {d.sustainability}
                   </Link>
                 </div>
 
@@ -440,7 +480,7 @@ export default function Navbar() {
                     className="w-full flex justify-center items-center py-4 rounded-xl bg-gp-green text-white font-bold text-lg hover:bg-gp-blue transition-colors"
                   >
                     <Phone className="h-5 w-5 mr-2" />
-                    Trabaja con Nosotros
+                    {d.work_with_us}
                   </Link>
                 </div>
               </div>

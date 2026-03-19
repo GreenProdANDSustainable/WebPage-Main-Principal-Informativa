@@ -1,8 +1,13 @@
 import Link from 'next/link';
 import { Flag, TrendingUp, Users, Globe } from 'lucide-react';
+import esMessages from '@/messages/es.json';
+import enMessages from '@/messages/en.json';
 
 export default async function NuestraTrayectoria({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params;
+    const dictionary = lang === 'es' ? esMessages : enMessages;
+    const d = dictionary.Pages.about;
+    const nav = dictionary.Navbar;
 
     const milestones = [
         {
@@ -52,11 +57,11 @@ export default async function NuestraTrayectoria({ params }: { params: Promise<{
                 </div>
                 <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-white">
                     <Link href={`/${lang}/nosotros`} className="inline-flex items-center gap-2 text-white/60 text-sm mb-6 hover:text-gp-green transition-colors">
-                        ← Acerca de Nosotros
+                        ← {nav.about}
                     </Link>
-                    <span className="block text-gp-green text-sm font-bold uppercase tracking-widest mb-4">Greenprod Sustainable</span>
+                    <span className="block text-gp-green text-sm font-bold uppercase tracking-widest mb-4">{d.label}</span>
                     <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6">
-                        Nuestra Trayectoria
+                        {d.our_history}
                     </h1>
                     <p className="text-lg text-white/80 max-w-2xl mx-auto">
                         El camino recorrido hacia una agricultura y pesca más sostenibles, paso a paso.
@@ -111,13 +116,13 @@ export default async function NuestraTrayectoria({ params }: { params: Promise<{
                             href={`/${lang}/nosotros/quienes-somos`}
                             className="inline-flex items-center justify-center rounded-full bg-gp-blue px-8 py-4 text-base font-semibold text-white transition-all hover:bg-gp-green hover:scale-105"
                         >
-                            ¿Quiénes Somos?
+                            {d.title}
                         </Link>
                         <Link
                             href={`/${lang}/contacto`}
                             className="inline-flex items-center justify-center rounded-full border-2 border-gp-blue px-8 py-4 text-base font-semibold text-gp-blue transition-all hover:bg-gp-blue hover:text-white hover:scale-105"
                         >
-                            Contáctanos
+                            {nav.contact}
                         </Link>
                     </div>
                 </div>

@@ -3,7 +3,12 @@
 import Link from 'next/link';
 import { ArrowLeft, Wrench } from 'lucide-react';
 
-export default function CatalogoEnConstruccion() {
+interface CatalogoEnConstruccionProps {
+  dict: any;
+}
+
+export default function CatalogoEnConstruccion({ dict }: CatalogoEnConstruccionProps) {
+  const d = dict.Pages.construction;
   const currentLang = typeof window !== 'undefined' ? window.location.pathname.split('/')[1] || 'es' : 'es';
 
   return (
@@ -16,11 +21,11 @@ export default function CatalogoEnConstruccion() {
           </div>
 
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Página en Construcción
+            {d.title}
           </h1>
 
           <p className="text-lg text-slate-600 mb-10 max-w-lg mx-auto leading-relaxed">
-            Estamos trabajando arduamente para traerte nuestro nuevo catálogo interactivo. ¡Pronto estará disponible!
+            {d.description}
           </p>
 
           <Link
@@ -28,7 +33,7 @@ export default function CatalogoEnConstruccion() {
             className="inline-flex items-center justify-center rounded-full bg-gp-green hover:bg-gp-blue text-white font-bold py-4 px-8 transition-colors duration-300 gap-2"
           >
             <ArrowLeft className="h-5 w-5" />
-            Volver a la Página Principal
+            {d.backButton}
           </Link>
         </div>
 

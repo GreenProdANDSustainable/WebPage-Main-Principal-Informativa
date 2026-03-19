@@ -28,15 +28,15 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
                     <div className="inline-flex items-center gap-2 text-gp-green text-sm font-bold uppercase tracking-widest mb-4">
                         <Sparkles className="w-4 h-4" />
                         <span className="h-px w-8 bg-gp-green"></span>
-                        Nuestra Esencia
+                        {dict.Home.missionVision.essence_title}
                         <span className="h-px w-8 bg-gp-green"></span>
                         <Sparkles className="w-4 h-4" />
                     </div>
                     <h2 className="font-serif text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-                        Misión y Visión
+                        {dict.Home.missionVision.title}
                     </h2>
                     <p className="text-slate-500 max-w-2xl mx-auto">
-                        Los pilares que guían nuestro compromiso con la sostenibilidad y el desarrollo productivo
+                        {dict.Home.missionVision.subtitle}
                     </p>
                 </motion.div>
 

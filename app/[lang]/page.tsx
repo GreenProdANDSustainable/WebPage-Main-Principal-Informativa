@@ -39,11 +39,11 @@ export default async function Home({ params }: HomeProps) {
   return (
     <div className="flex flex-col min-h-screen -mt-20">
       <HeroSection dict={dict} lang={lang} />
-      <PartnersSection />
+      <PartnersSection dict={dict} />
       <MissionVisionSection dict={dict} />
       <SustainabilityHighlightSection dict={dict} lang={lang} />
-      <NewsSection />
-      <VideoSection />
+      <NewsSection dict={dict} />
+      <VideoSection dict={dict} />
 
       {/* Testimonials Section - Conditional based on environment variable */}
       {testimonialsEnabled && (

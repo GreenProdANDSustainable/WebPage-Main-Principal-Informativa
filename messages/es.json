@@ -1,4 +1,95 @@
 {
+    "Metadata": {
+        "title": "Green Prod & Sustainable S.A.C | Innovación y Sostenibilidad",
+        "description": "Soluciones sostenibles para la industria agropecuaria, pesquera y ambiental."
+    },
+    "Partners": {
+        "title": "Alianzas Estratégicas — Próximamente"
+    },
+    "News": {
+        "title": "Últimas Novedades",
+        "subtitle": "Casos de Éxito — Próximamente"
+    },
+    "Video": {
+        "title": "Nuestra Esencia",
+        "subtitle": "Descubre quiénes somos en un minuto.",
+        "placeholder": "Video Corporativo — Próximamente"
+    },
+    "Pages": {
+        "construction": {
+            "title": "Página en Construcción",
+            "description": "Estamos trabajando arduamente para traerte nuestro nuevo catálogo interactivo. ¡Pronto estará disponible!",
+            "backButton": "Volver a la Página Principal"
+        },
+        "contact": {
+            "title": "Contáctanos",
+            "subtitle": "Estamos listos para ayudarte a implementar soluciones sostenibles en tu empresa. Escríbenos y un asesor se pondrá en contacto contigo.",
+            "contactInfo": "Información de Contacto",
+            "mainOffice": "Oficina Principal",
+            "address": "Av. Sostenibilidad 123, Distrito Verde<br />Lima, Perú",
+            "phone": "Teléfono",
+            "phoneDetail": "+51 987 654 321<br />Atención de Lunes a Viernes, 9am - 6pm",
+            "email": "Correo Electrónico",
+            "emailDetail": "contacto@greenprod.pe<br />ventas@greenprod.pe",
+            "mapPlaceholder": "[Mapa Interactivo]",
+            "formTitle": "Envíanos un Mensaje",
+            "name": "Nombre Completo",
+            "namePlaceholder": "Ej. Juan Pérez",
+            "company": "Empresa",
+            "companyPlaceholder": "Ej. AgroIndustrias S.A.",
+            "emailLabel": "Correo Electrónico",
+            "emailPlaceholder": "juan@empresa.com",
+            "subject": "Asunto",
+            "subjectOptions": ["Consulta sobre Bioinsumos", "Consulta sobre Conservas", "Proyectos Ambientales", "Otro"],
+            "message": "Mensaje",
+            "messagePlaceholder": "¿En qué podemos ayudarte?",
+            "submitButton": "Enviar Mensaje"
+        },
+        "sustainability": {
+            "title": "Sostenibilidad",
+            "description": "Página en construcción. Aquí irán los detalles sobre nuestras iniciativas y reportes de sostenibilidad."
+        },
+        "about": {
+            "label": "Greenprod Sustainable",
+            "title": "¿Quiénes Somos?",
+            "our_history": "Nuestra Trayectoria",
+            "tagline": "Tu camino verde hacia la productividad",
+            "history": {
+                "title": "Nuestra Historia",
+                "text": "Greenprod Sustainable nació con la convicción de que la productividad y el cuidado del medio ambiente pueden ir de la mano. Somos una empresa enfocada en impulsar la productividad agrícola y marina a través de prácticas innovadoras, produciendo fertilizantes orgánicos y generando valor en los productos del mar para mejorar la calidad de vida de las comunidades locales."
+            },
+            "missionVision": {
+                "title": "Misión y Visión",
+                "mission": "Misión",
+                "missionText": "Impulsar la productividad agrícola y marina mediante prácticas innovadoras y respetuosas con el medio ambiente, produciendo fertilizantes orgánicos y productos del mar que mejoren la calidad de vida de las comunidades locales.",
+                "vision": "Visión",
+                "visionText": "Ser una empresa líder en la producción de bioinsumos agrícolas y productos marinos sostenibles, reconocida por su innovación, compromiso ambiental y contribución al desarrollo de una agricultura y pesca responsables que mejoren la calidad de vida de las comunidades locales y promuevan ecosistemas saludables."
+            },
+            "interventionAxes": {
+                "label": "Lo que hacemos",
+                "title": "Nuestros Ejes de Intervención",
+                "subtitle": "Tres líneas de acción que generan impacto real en la agricultura, la pesca y el desarrollo empresarial sostenible."
+            },
+            "values": {
+                "title": "Nuestros Valores",
+                "subtitle": "Los principios que guían cada una de nuestras decisiones y proyectos.",
+                "sustainability": "Sostenibilidad",
+                "sustainabilityDesc": "Compromiso inquebrantable con el medio ambiente y las comunidades locales.",
+                "innovation": "Innovación",
+                "innovationDesc": "Búsqueda constante de bioinsumos y métodos productivos que superen los estándares convencionales.",
+                "quality": "Calidad",
+                "qualityDesc": "Inocuidad, eficacia y accesibilidad en cada producto y servicio que entregamos.",
+                "responsibility": "Responsabilidad",
+                "responsibilityDesc": "Transparencia, ética y pago justo en todas nuestras relaciones comerciales y con pescadores."
+            },
+            "agriculture": "Agricultura Sostenible",
+            "agricultureItems": ["Abonos orgánicos y biocontroladores (gp-biol, gp-trich)", "Estudio de suelos y cultivos agrícolas", "Asesoramiento técnico en bioestimulantes"],
+            "fishing": "Pesca Responsable",
+            "fishingItems": ["Pescado fresco refrigerado con trazabilidad", "Línea \"mi pez\": productos listos para consumir", "Formación a gremios de pescadores"],
+            "consulting": "Consultoría Integral",
+            "consultingItems": ["Fortalecimiento de capacidades productivas", "Elaboración de planes de negocio", "Postulación a fondos concursables"]
+        }
+    },
     "Navbar": {
         "about": "Acerca de Nosotros",
         "catalog": "Catálogo",
@@ -6,6 +97,16 @@
         "contact": "Contáctanos",
         "products": "Productos (P)",
         "services": "Servicios (S)",
+        "products_services_title": "Productos y Servicios",
+        "work_with_us": "Trabaja con Nosotros",
+        "contacts": "Contactos",
+        "who_we_are": "¿Quiénes Somos?",
+        "who_we_are_desc": "Nuestra misión, visión y valores fundamentales.",
+        "our_history": "Nuestra Trayectoria",
+        "our_history_desc": "Historia y evolución de Green Prod & Sustainable S.A.C.",
+        "industry_solutions": "Soluciones integrales para la industria.",
+        "learn_more_vision": "Conoce más sobre nuestra visión y compromiso ambiental.",
+        "view_about_page": "Ver página Nosotros",
         "balik": "Balik",
         "balik_desc": "Conservas de pescado, empacados al vacío y pescado fresco.",
         "Ceprobio": "Ceprobio",
@@ -17,8 +118,25 @@
         "proveeduria": "Proveeduría Sostenible",
         "proveeduria_desc": "Líneas de servicio sostenibles.",
         "proyectos": "Proyectos Sostenibles",
-        "proyectos_desc": "Formación, capacitación y emprendimientos sostenibles.",
-        "products_services_title": "Productos y Servicios"
+        "proyectos_desc": "Formación, capacitación y emprendimientos sostenibles."
+    },
+    "Footer": {
+        "description": "Producción de bioinsumos, conservas y proyectos ambientales. Comprometidos con un futuro más verde y sostenible para las próximas generaciones.",
+        "quick_links_title": "Enlaces Rápidos",
+        "about_us": "Acerca de Nosotros",
+        "product_catalog": "Catálogo de Productos",
+        "contact_label": "Contacto",
+        "categories_title": "Categorías",
+        "bioinsumos": "Bioinsumos",
+        "conservas": "Conservas",
+        "environmental_projects": "Proyectos Ambientales",
+        "contact_title": "Contacto",
+        "address": "Av. Sostenibilidad 123, Distrito Verde, Lima, Perú",
+        "phone": "+51 987 654 321",
+        "email": "contacto@greenprod.pe",
+        "copyright": "Todos los derechos reservados.",
+        "privacy_policy": "Política de Privacidad",
+        "terms_of_service": "Términos de Servicio"
     },
     "ProductsServices": {
         "hero": {
@@ -46,6 +164,7 @@
         },
         "values": {
             "title": "Nuestros Valores",
+            "label": "NUESTROS VALORES",
             "subtitle": "Los principios que guían cada decisión y acción en Green Prod & Sustainable S.A.C",
             "items": {
                 "quality": {
@@ -75,6 +194,7 @@
             }
         },
         "certifications": {
+            "label": "CALIDAD GARANTIZADA",
             "title": "Certificaciones y Estándares",
             "subtitle": "Reconocimientos que validan nuestro compromiso con la calidad y sostenibilidad",
             "items": {
@@ -145,6 +265,9 @@
             }
         },
         "missionVision": {
+            "essence_title": "Nuestra Esencia",
+            "title": "Misión y Visión",
+            "subtitle": "Los pilares que guían nuestro compromiso con la sostenibilidad y el desarrollo productivo",
             "mission": {
                 "title": "Nuestra Misión",
                 "text": "Impulsar la productividad agrícola y marina mediante prácticas innovadoras y respetuosas con el medio ambiente, produciendo fertilizantes orgánicos y productos del mar que mejoren la calidad de vida de las comunidades locales."
@@ -158,6 +281,20 @@
             "title": "Compromiso con la Sostenibilidad",
             "subtitle": "Iniciativas concretas que demuestran nuestro liderazgo en responsabilidad ambiental",
             "learnMore": "Conoce más",
+            "highlight": {
+                "our_commitment": "Nuestro Compromiso",
+                "sustainable_agriculture_fishing": "Agricultura & Pesca Sostenibles",
+                "sustainability": "Sostenibilidad",
+                "title": "Producimos sin comprometer el",
+                "titleHighlight": "futuro del planeta",
+                "description": "En Green Prod & Sustainable, cada producto y servicio está diseñado para cerrar el ciclo productivo, minimizar residuos y regenerar los ecosistemas. No solo producimos; construimos un modelo de negocio que respeta y potencia la naturaleza.",
+                "items": [
+                    "Agricultura Sostenible: bioinsumos, abonos orgánicos y asesoramiento técnico",
+                    "Pesca Responsable: pescado fresco y productos marinos con valor agregado",
+                    "Consultoría Integral: planes de negocio, capacitación y fondos concursables"
+                ],
+                "cta": "Conoce nuestras iniciativas"
+            },
             "backgroundImageAlt": "Prácticas ambientales sostenibles e iniciativas de economía circular en acción",
             "items": {
                 "circular": {

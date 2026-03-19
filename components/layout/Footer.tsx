@@ -2,7 +2,40 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Leaf, Mail, MapPin, Phone, Facebook, Instagram, Linkedin } from 'lucide-react';
 
-export default function Footer() {
+type Dictionary = {
+  Footer: {
+    description: string;
+    quick_links_title: string;
+    about_us: string;
+    product_catalog: string;
+    contact_label: string;
+    categories_title: string;
+    bioinsumos: string;
+    conservas: string;
+    environmental_projects: string;
+    contact_title: string;
+    address: string;
+    phone: string;
+    email: string;
+    copyright: string;
+    privacy_policy: string;
+    terms_of_service: string;
+  };
+  Navbar: {
+    about: string;
+    catalog: string;
+    [key: string]: any;
+  };
+};
+
+interface FooterProps {
+  dictionary: Dictionary;
+}
+
+export default function Footer({ dictionary }: FooterProps) {
+  const d = dictionary.Footer;
+  const nav = dictionary.Navbar;
+
   return (
     <footer className="bg-gp-blue text-[#e8e4db]/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -20,7 +53,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-[#e8e4db]/70">
-              Producción de bioinsumos, conservas y proyectos ambientales. Comprometidos con un futuro más verde y sostenible para las próximas generaciones.
+              {d.description}
             </p>
             <div className="flex gap-4">
               <a href="#" className="hover:text-[#beede0] transition-colors"><Facebook className="h-5 w-5" /></a>
@@ -31,39 +64,39 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#beede0] mb-6">Enlaces Rápidos</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#beede0] mb-6">{d.quick_links_title}</h3>
             <ul className="space-y-4">
-              <li><Link href="/nosotros" className="text-sm hover:text-[#beede0] transition-colors">Acerca de Nosotros</Link></li>
-              <li><Link href="/catalogo" className="text-sm hover:text-[#beede0] transition-colors">Catálogo de Productos</Link></li>
-              <li><Link href="/contacto" className="text-sm hover:text-[#beede0] transition-colors">Contacto</Link></li>
+              <li><Link href="/nosotros" className="text-sm hover:text-[#beede0] transition-colors">{d.about_us}</Link></li>
+              <li><Link href="/catalogo" className="text-sm hover:text-[#beede0] transition-colors">{d.product_catalog}</Link></li>
+              <li><Link href="/contacto" className="text-sm hover:text-[#beede0] transition-colors">{d.contact_label}</Link></li>
             </ul>
           </div>
 
           {/* Catalog */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#beede0] mb-6">Categorías</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#beede0] mb-6">{d.categories_title}</h3>
             <ul className="space-y-4">
-              <li><Link href="/catalogo#bioinsumos" className="text-sm hover:text-[#beede0] transition-colors">Bioinsumos</Link></li>
-              <li><Link href="/catalogo#conservas" className="text-sm hover:text-[#beede0] transition-colors">Conservas</Link></li>
-              <li><Link href="/catalogo#proyectos" className="text-sm hover:text-[#beede0] transition-colors">Proyectos Ambientales</Link></li>
+              <li><Link href="/catalogo#bioinsumos" className="text-sm hover:text-[#beede0] transition-colors">{d.bioinsumos}</Link></li>
+              <li><Link href="/catalogo#conservas" className="text-sm hover:text-[#beede0] transition-colors">{d.conservas}</Link></li>
+              <li><Link href="/catalogo#proyectos" className="text-sm hover:text-[#beede0] transition-colors">{d.environmental_projects}</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#beede0] mb-6">Contacto</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#beede0] mb-6">{d.contact_title}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-gp-green shrink-0" />
-                <span className="text-sm text-[#e8e4db]/80">Av. Sostenibilidad 123, Distrito Verde, Lima, Perú</span>
+                <span className="text-sm text-[#e8e4db]/80">{d.address}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-gp-green shrink-0" />
-                <span className="text-sm text-[#e8e4db]/80">+51 987 654 321</span>
+                <span className="text-sm text-[#e8e4db]/80">{d.phone}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-gp-green shrink-0" />
-                <span className="text-sm text-[#e8e4db]/80">contacto@greenprod.pe</span>
+                <span className="text-sm text-[#e8e4db]/80">{d.email}</span>
               </li>
             </ul>
           </div>
@@ -71,11 +104,11 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-[#1a4430] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-[#e8e4db]/50">
-            &copy; {new Date().getFullYear()} Green Prod & Sustainable S.A.C. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Green Prod & Sustainable S.A.C. {d.copyright}
           </p>
           <div className="flex gap-6 text-sm text-[#e8e4db]/50">
-            <a href="#" className="hover:text-[#beede0] transition-colors">Política de Privacidad</a>
-            <a href="#" className="hover:text-[#beede0] transition-colors">Términos de Servicio</a>
+            <a href="#" className="hover:text-[#beede0] transition-colors">{d.privacy_policy}</a>
+            <a href="#" className="hover:text-[#beede0] transition-colors">{d.terms_of_service}</a>
           </div>
         </div>
       </div>
