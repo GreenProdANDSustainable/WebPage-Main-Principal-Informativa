@@ -1,7 +1,3 @@
-import type { Config } from "@opennextjs/cloudflare";
+import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 
-const config: Config = {
-  // cfTrick: { adapter: "next" },
-};
-
-export default config;
+export default defineCloudflareConfig({});
