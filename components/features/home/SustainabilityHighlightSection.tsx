@@ -18,7 +18,7 @@ export default function SustainabilityHighlightSection({ dict, lang }: Sustainab
                     <div className="relative h-80 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl order-last lg:order-first">
                         <Image
                             src="/images/home/sostenibilidad-banner.jpg"
-                            alt="Green Prod & Sustainable - Compromiso Ambiental"
+                            alt={d.imageAlt}
                             fill
                             className="object-cover"
                         />
