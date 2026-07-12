@@ -98,11 +98,14 @@ export interface HomeDictionary {
   testimonials: {
     title: string;
     subtitle: string;
-    items: Record<string, {
-      name: string;
-      company: string;
-      position: string;
-      text: string;
-    }>;
+    items: Record<
+      string,
+      {
+        name: string;
+        company: string;
+        position: string;
+        text: string;
+      }
+    >;
   };
 }

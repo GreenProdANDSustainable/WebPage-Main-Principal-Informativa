@@ -7,14 +7,10 @@ export default async function Sostenibilidad({ params }: { params: Promise<{ lan
   const d = dictionary.Pages.sustainability;
 
   return (
-    <div className="flex flex-col min-h-screen bg-white py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-          {d.title}
-        </h1>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-12">
-          {d.description}
-        </p>
+    <div className="flex min-h-screen flex-col bg-white py-24">
+      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">{d.title}</h1>
+        <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-600">{d.description}</p>
       </div>
     </div>
   );

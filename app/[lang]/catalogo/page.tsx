@@ -9,24 +9,24 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
   const d = dictionary.Pages.construction;
 
   return (
-    <div className="min-h-screen bg-slate-50 py-24 flex items-center justify-center">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 w-full text-center">
-        <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-12 md:p-16 flex flex-col items-center">
-          <div className="w-24 h-24 bg-gp-green/10 rounded-full flex items-center justify-center mb-8">
-            <Wrench className="h-12 w-12 text-gp-green" />
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 py-24">
+      <div className="mx-auto w-full max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center rounded-3xl border border-slate-100 bg-white p-12 shadow-xl md:p-16">
+          <div className="bg-gp-green/10 mb-8 flex h-24 w-24 items-center justify-center rounded-full">
+            <Wrench className="text-gp-green h-12 w-12" />
           </div>
 
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
             {d.title}
           </h1>
 
-          <p className="text-lg text-slate-600 mb-10 max-w-lg mx-auto leading-relaxed">
+          <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-slate-600">
             {d.description}
           </p>
 
           <Link
             href={`/${lang}`}
-            className="inline-flex items-center justify-center rounded-full bg-gp-green hover:bg-gp-blue text-white font-bold py-4 px-8 transition-colors duration-300 gap-2"
+            className="bg-gp-green hover:bg-gp-blue inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-white transition-colors duration-300"
           >
             <ArrowLeft className="h-5 w-5" />
             {d.backButton}

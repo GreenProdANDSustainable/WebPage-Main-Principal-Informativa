@@ -6,8 +6,8 @@ import Footer from '@/components/layout/Footer';
 import { getDictionary } from '@/get-dictionary';
 
 const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
+  variable: '--font-jakarta',
+  subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
 });
 
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   const dictionary = await getDictionary(lang as 'es' | 'en');
-  
+
   return {
     title: dictionary.Metadata.title,
     description: dictionary.Metadata.description,
@@ -42,12 +42,10 @@ export default async function RootLayout({
   return (
     <html lang={lang} className="scroll-smooth">
       <body
-        className={`${jakarta.variable} antialiased bg-slate-50 text-slate-900 selection:bg-gp-green selection:text-white min-h-screen flex flex-col font-[family-name:var(--font-jakarta)]`}
+        className={`${jakarta.variable} selection:bg-gp-green flex min-h-screen flex-col bg-slate-50 font-[family-name:var(--font-jakarta)] text-slate-900 antialiased selection:text-white`}
       >
         <Navbar dictionary={dictionary} />
-        <main className="flex-1 pt-20">
-          {children}
-        </main>
+        <main className="flex-1 pt-20">{children}</main>
         <Footer dictionary={dictionary} />
       </body>
     </html>

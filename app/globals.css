@@ -1,10 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-gp-blue: #2475ba;
   --color-gp-green: #6dbe51;
-  --color-gp-white: #FFFFFF;
-  --color-gp-neutral: #F4F4F4;
+  --color-gp-white: #ffffff;
+  --color-gp-neutral: #f4f4f4;
 
   /* Plus Jakarta Sans as sole typeface */
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;

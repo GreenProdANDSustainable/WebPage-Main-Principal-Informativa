@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
       href="https://wa.me/51930287875"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gp-green text-white shadow-lg hover:bg-gp-blue focus:outline-none focus:ring-2 focus:ring-gp-green focus:ring-offset-2"
+      className="bg-gp-green hover:bg-gp-blue focus:ring-gp-green fixed right-6 bottom-6 z-50 flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       initial={{ opacity: 0, y: 50 }}
