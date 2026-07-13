@@ -1,122 +1,95 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'motion/react';
+import ValorizationFlow from './ValorizationFlow';
 
 interface HeroSectionProps {
   dict: any;
   lang: string;
 }
 
-// Para agregar más imágenes, simplemente añádelas a esta lista:
-const bannerImages = [
-  '/images/home/banners/BannerPrincipal.jpg',
-  '/images/home/banners/PancaCampo.jpg',
-];
-
 export default function HeroSection({ dict, lang }: HeroSectionProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Auto-play
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
-    }, 6000); // Cambia cada 6 segundos
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + bannerImages.length) % bannerImages.length);
-  };
+  const hero = dict.Home.hero;
 
   return (
-    <section className="relative flex h-[90vh] min-h-[600px] items-center justify-center overflow-hidden">
-      {/* Image Carousel */}
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: 'easeInOut' }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={bannerImages[currentIndex]}
-              alt={`${dict.Home.hero.imageAlt} - Imagen ${currentIndex + 1}`}
-              fill
-              className="object-cover"
-              priority={currentIndex === 0}
-              referrerPolicy="no-referrer"
-            />
-          </motion.div>
-        </AnimatePresence>
+    <section className="bg-ink relative overflow-hidden">
+      {/* Textura de fondo: campo real, tratado a muy baja opacidad */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/home/banners/PancaCampo.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-[0.14] mix-blend-luminosity"
+          priority
+        />
+        <div className="bg-ink absolute inset-0 opacity-90" />
       </div>
 
-      <div className="absolute inset-0 z-[1] bg-black/60" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-12">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-gp-green mb-5 text-[13px] tracking-wide"
+              style={{ fontFamily: 'var(--font-plex-mono)' }}
+            >
+              ECONOMÍA CIRCULAR AGROINDUSTRIAL
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-display text-paper mb-6 text-4xl leading-[1.08] font-semibold tracking-tight md:text-5xl lg:text-6xl"
+            >
+              {hero.title} <br />
+              <span className="text-gp-green">{hero.titleHighlight}</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="text-husk/75 mb-10 max-w-xl text-lg"
+            >
+              {hero.subtitle}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col gap-4 sm:flex-row sm:items-center"
+            >
+              <Link
+                href={`/${lang}/catalogo`}
+                className="bg-gp-green text-ink hover:bg-husk inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold transition-colors"
+              >
+                {hero.primaryCta}
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                href={`/${lang}/contacto`}
+                className="border-line-warm/40 text-paper hover:border-gp-green/60 inline-flex items-center justify-center rounded-full border px-7 py-3.5 text-base font-semibold transition-colors"
+              >
+                {hero.secondaryCta}
+              </Link>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-line-warm mt-8 text-xs tracking-wide"
+              style={{ fontFamily: 'var(--font-plex-mono)' }}
+            >
+              CERTIFICADO ISO 14001 · LIMA, PERÚ
+            </motion.p>
+          </div>
 
-      {/* Carousel Indicators */}
-      {bannerImages.length > 1 && (
-        <div className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 gap-3">
-          {bannerImages.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? 'bg-gp-green w-8' : 'w-2 bg-white/50 hover:bg-white'
-              }`}
-              aria-label={`Ir a la imagen ${idx + 1}`}
-            />
-          ))}
+          <ValorizationFlow dict={hero.flow} />
         </div>
-      )}
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 text-center text-white sm:px-6 lg:px-8">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-6 font-serif text-5xl font-bold tracking-tight md:text-7xl"
-        >
-          {dict.Home.hero.title} <br />
-          <span className="text-gp-green">{dict.Home.hero.titleHighlight}</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mx-auto mb-10 max-w-2xl text-lg text-slate-200 md:text-xl"
-        >
-          {dict.Home.hero.subtitle}
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col justify-center gap-4 sm:flex-row"
-        >
-          <Link
-            href={`/${lang}/catalogo`}
-            className="bg-gp-green hover:bg-gp-blue shadow-gp-green/30 inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:scale-105"
-          >
-            {dict.Home.hero.primaryCta}
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
-          <Link
-            href={`/${lang}/nosotros`}
-            className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/20"
-          >
-            {dict.Home.hero.secondaryCta}
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

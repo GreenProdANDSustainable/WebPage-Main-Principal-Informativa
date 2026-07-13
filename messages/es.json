@@ -155,12 +155,25 @@
     },
     "Home": {
         "hero": {
-            "title": "Tu camino verde hacia",
-            "titleHighlight": "la Productividad",
-            "subtitle": "Impulsamos la productividad agrícola y marina mediante prácticas innovadoras y respetuosas con el medio ambiente, produciendo fertilizantes orgánicos y productos del mar que mejoran la calidad de vida de las comunidades locales.",
-            "primaryCta": "Ver Productos y Servicios",
+            "title": "De subproducto industrial",
+            "titleHighlight": "a recurso sostenible",
+            "subtitle": "Transformamos residuos de la pesca, la ganadería y el agro en bioinsumos, fertilizantes y alimentos trazables — con 95% de aprovechamiento y procesos certificados ISO 14001.",
+            "primaryCta": "Ver productos y servicios",
             "secondaryCta": "Contáctanos",
-            "imageAlt": "Greenprod Sustainable - Tu camino verde hacia la productividad agrícola y marina"
+            "imageAlt": "Diagrama del proceso de valorización de Green Prod: de subproductos de pesca, ganadería y agro a bioinsumos, fertilizantes y alimentos trazables",
+            "flow": {
+                "inputsLabel": "Subproductos",
+                "inputPesca": "Pesca",
+                "inputAgro": "Agro",
+                "inputCarnico": "Ganadería",
+                "process": "Valorización",
+                "outputsLabel": "Resultado",
+                "outputBioinsumos": "Bioinsumos",
+                "outputFertilizantes": "Fertilizantes",
+                "outputConservas": "Alimentos trazables",
+                "stat": "95%",
+                "statLabel": "de aprovechamiento"
+            }
         },
         "values": {
             "title": "Nuestros Valores",

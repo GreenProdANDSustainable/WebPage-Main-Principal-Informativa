@@ -12,4 +12,7 @@ export default defineConfig([
     extends: [...next],
   },
   prettier,
+  {
+    ignores: ['coverage/**'],
+  },
 ]);

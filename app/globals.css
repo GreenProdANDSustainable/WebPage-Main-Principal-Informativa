@@ -6,8 +6,19 @@
   --color-gp-white: #ffffff;
   --color-gp-neutral: #f4f4f4;
 
-  /* Plus Jakarta Sans as sole typeface */
+  /* Paleta ampliada para la nueva dirección visual: tonos cálidos y
+     materiales (tierra, grano) en vez de blanco/gris estéril. */
+  --color-ink: #14170f;
+  --color-ink-soft: #20261a;
+  --color-husk: #eae4d3;
+  --color-paper: #f6f4ec;
+  --color-line-warm: #c9c2ae;
+
+  /* Plus Jakarta Sans para cuerpo de texto (se mantiene) */
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Bricolage Grotesque para titulares: la firma tipográfica del rediseño */
+  --font-display: var(--font-bricolage), var(--font-jakarta), sans-serif;
 }

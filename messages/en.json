@@ -155,12 +155,25 @@
     },
     "Home": {
         "hero": {
-            "title": "Your green path to",
-            "titleHighlight": "Productivity",
-            "subtitle": "We drive agricultural and marine productivity through innovative and environmentally friendly practices, producing organic fertilizers and seafood products that improve the quality of life of local communities.",
-            "primaryCta": "View Products and Services",
-            "secondaryCta": "Contact Us",
-            "imageAlt": "Greenprod Sustainable - Your green path to agricultural and marine productivity"
+            "title": "From industrial byproduct",
+            "titleHighlight": "to sustainable resource",
+            "subtitle": "We turn fishing, livestock and agricultural waste into bio-inputs, fertilizers and traceable food — with 95% utilization and ISO 14001 certified processes.",
+            "primaryCta": "View products and services",
+            "secondaryCta": "Contact us",
+            "imageAlt": "Diagram of Green Prod's valorization process: from fishing, livestock and agricultural byproducts to bio-inputs, fertilizers and traceable food",
+            "flow": {
+                "inputsLabel": "Byproducts",
+                "inputPesca": "Fishing",
+                "inputAgro": "Agriculture",
+                "inputCarnico": "Livestock",
+                "process": "Valorization",
+                "outputsLabel": "Output",
+                "outputBioinsumos": "Bio-inputs",
+                "outputFertilizantes": "Fertilizers",
+                "outputConservas": "Traceable food",
+                "stat": "95%",
+                "statLabel": "utilization"
+            }
         },
         "values": {
             "title": "Our Values",
