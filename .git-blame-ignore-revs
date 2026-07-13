@@ -1,0 +1,8 @@
+# Commits listados aquí se ignoran en `git blame` (y en la vista Blame de GitHub).
+# Útil para reformateos masivos que no cambian lógica, así el blame real
+# sigue apuntando a quién escribió cada línea originalmente.
+#
+# Para usarlo en local: git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# style: apply Prettier formatting across the codebase
+63c5f063d12e1c644fda01e7a974a7c60684f9d2
