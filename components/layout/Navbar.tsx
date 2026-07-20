@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu as MenuIcon, X, ChevronDown, Search, Globe, Phone, Mail } from 'lucide-react';
+import { Menu as MenuIcon, X, ChevronDown, Search, Globe, Phone, Mail, Leaf } from 'lucide-react';
 
 type Dictionary = {
   Navbar: {
@@ -93,14 +93,11 @@ export default function Navbar({ dictionary }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Extract current language from pathname (e.g. /es/nosotros -> es)
   const currentLang = pathname.split('/')[1] || 'es';
-  // Helper to get raw path without lang prefix for language switching
   const rawPath = pathname.replace(`/${currentLang}`, '') || '/';
 
   useEffect(() => {
     const handleScroll = () => {
-      // 15% of the viewport height
       setIsScrolled(window.scrollY > window.innerHeight * 0.1);
     };
     handleScroll();
@@ -108,14 +105,15 @@ export default function Navbar({ dictionary }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isHome = rawPath === '/';
   const transparentPages = ['/'];
   const isTransparentPage = transparentPages.includes(rawPath);
   const isSolid = isScrolled || !isTransparentPage || isOpen;
   const transparentMode = isTransparentPage && !isSolid;
 
-  const textColorClass = transparentMode ? 'text-white' : 'text-slate-900';
+  const textColorClass = transparentMode ? 'text-paper' : 'text-ink';
   const hoverColorClass = transparentMode ? 'hover:text-gp-green' : 'hover:text-gp-blue';
+  const underlineClass =
+    'relative after:absolute after:left-1/2 after:bottom-2.5 after:h-[2px] after:w-0 after:-translate-x-1/2 after:bg-current after:transition-all after:duration-300 hover:after:w-7';
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -129,12 +127,11 @@ export default function Navbar({ dictionary }: NavbarProps) {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 300); // 0.3 seconds delay
+    }, 300);
   };
 
   return (
     <>
-      {/* Background Blur Overlay for Mega Menu */}
       <AnimatePresence>
         {(activeDropdown === 'productos' || activeDropdown === 'nosotros') && (
           <motion.div
@@ -142,21 +139,21 @@ export default function Navbar({ dictionary }: NavbarProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-gp-green/30 pointer-events-none fixed inset-0 z-40 backdrop-blur-md"
-            //className="fixed inset-0 z-40 bg-gp-blue/30 backdrop-blur-md pointer-events-none"
+            className="bg-ink/40 pointer-events-none fixed inset-0 z-40 backdrop-blur-md"
           />
         )}
       </AnimatePresence>
 
       <header
         className={`fixed top-0 z-50 w-full transition-all duration-700 ${
-          isSolid ? 'bg-white shadow-md' : 'bg-transparent'
+          isSolid
+            ? 'bg-paper/90 border-line-warm/50 border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.35)] backdrop-blur-xl'
+            : 'bg-transparent'
         }`}
         onMouseLeave={handleMouseLeave}
       >
-        {/* Top Bar - Hidden on mobile */}
         <div
-          className={`hidden items-center justify-end px-8 py-2 text-xs transition-colors duration-700 md:flex ${isSolid ? 'bg-slate-100 text-slate-600' : 'bg-black/20 text-white backdrop-blur-sm'}`}
+          className={`hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex ${isSolid ? 'bg-husk/30 text-ink/70' : 'bg-black/20 text-paper backdrop-blur-sm'}`}
         >
           <div className="flex items-center gap-6">
             <Link
@@ -174,7 +171,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
           </div>
         </div>
 
-        {/* Main Nav */}
         <div
           className={`mx-auto flex items-center justify-between px-4 transition-all duration-700 sm:px-6 lg:px-8 ${isSolid ? 'h-20' : 'h-24'}`}
         >
@@ -196,15 +192,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="relative hidden h-full items-center gap-1 md:flex lg:gap-2">
-            {/* About Us Mega Menu Trigger */}
-            <div
-              className="flex h-full items-center"
-              onMouseEnter={() => handleMouseEnter('nosotros')}
-            >
+            <div className="flex h-full items-center" onMouseEnter={() => handleMouseEnter('nosotros')}>
               <button
-                className={`flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+                className={`${underlineClass} flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
               >
                 {d.about}{' '}
                 <ChevronDown
@@ -213,13 +204,9 @@ export default function Navbar({ dictionary }: NavbarProps) {
               </button>
             </div>
 
-            {/* Mega Menu Trigger */}
-            <div
-              className="flex h-full items-center"
-              onMouseEnter={() => handleMouseEnter('productos')}
-            >
+            <div className="flex h-full items-center" onMouseEnter={() => handleMouseEnter('productos')}>
               <button
-                className={`flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'productos' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+                className={`${underlineClass} flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'productos' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
               >
                 {d.products_services_title}{' '}
                 <ChevronDown
@@ -230,36 +217,35 @@ export default function Navbar({ dictionary }: NavbarProps) {
 
             <Link
               href={`/${currentLang}/catalogo`}
-              className={`flex h-full items-center px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${rawPath === '/catalogo' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+              className={`${underlineClass} flex h-full items-center px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${rawPath === '/catalogo' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
             >
               {d.catalog}
             </Link>
 
             <Link
               href={`/${currentLang}/sostenibilidad`}
-              className={`flex h-full items-center px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${rawPath === '/sostenibilidad' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+              className={`${underlineClass} flex h-full items-center px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${rawPath === '/sostenibilidad' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
             >
               {d.sustainability}
             </Link>
 
-            <div className="ml-4 flex items-center gap-4 border-l border-slate-300/30 pl-6">
+            <div className="border-line-warm/40 ml-4 flex items-center gap-4 border-l pl-6">
               <button
-                className={`p-2 transition-colors duration-300 ${transparentMode ? 'hover:text-gp-green text-white' : 'hover:text-gp-blue text-slate-600'}`}
+                className={`rounded-full p-2 transition-colors duration-300 ${transparentMode ? 'hover:text-gp-green hover:bg-paper/10 text-paper' : 'hover:text-gp-blue hover:bg-husk/40 text-ink/70'}`}
               >
                 <Search className="h-5 w-5" />
               </button>
             </div>
           </nav>
 
-          {/* Mobile Menu Toggle */}
           <div className="flex items-center gap-4 md:hidden">
             <button
-              className={`p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-white' : 'hover:text-gp-blue text-slate-600'}`}
+              className={`rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
             >
               <Search className="h-5 w-5" />
             </button>
             <button
-              className={`p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-white' : 'hover:text-gp-blue text-slate-600'}`}
+              className={`rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -268,7 +254,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
           </div>
         </div>
 
-        {/* Mega Menu Dropdown */}
         <AnimatePresence>
           {activeDropdown === 'productos' && (
             <motion.div
@@ -276,7 +261,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 hidden w-full border-t border-slate-100/50 bg-white shadow-xl md:block"
+              className="border-line-warm/40 absolute top-full left-0 hidden w-full border-t bg-paper/98 shadow-2xl backdrop-blur-xl md:block"
               onMouseEnter={() => handleMouseEnter('productos')}
               onMouseLeave={handleMouseLeave}
             >
@@ -284,21 +269,26 @@ export default function Navbar({ dictionary }: NavbarProps) {
                 <div className="grid grid-cols-2 gap-12">
                   {productsMenu.map((column, idx) => (
                     <div key={idx}>
-                      <h3 className="text-gp-blue mb-6 border-b border-slate-100 pb-2 font-serif text-xl font-bold">
+                      <h3 className="font-display text-ink border-line-warm/50 mb-6 border-b pb-2 text-xl font-bold">
                         {column.category}
                       </h3>
-                      <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-2">
                         {column.items.map((item, idxi) => (
                           <Link
                             key={idxi}
                             href={`/${currentLang}${item.href}`}
-                            className="group block"
+                            className="group hover:bg-husk/30 flex items-start gap-3 rounded-xl p-3 transition-colors"
                             onClick={() => setActiveDropdown(null)}
                           >
-                            <h4 className="group-hover:text-gp-green mb-1 text-base font-bold text-slate-800 transition-colors">
-                              {item.name}
-                            </h4>
-                            <p className="text-sm leading-snug text-slate-500">{item.desc}</p>
+                            <span className="bg-gp-green/10 text-gp-green group-hover:bg-gp-green group-hover:text-paper mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors">
+                              <Leaf className="h-4 w-4" />
+                            </span>
+                            <span>
+                              <h4 className="group-hover:text-gp-green text-ink mb-1 text-base font-bold transition-colors">
+                                {item.name}
+                              </h4>
+                              <p className="text-ink/60 text-sm leading-snug">{item.desc}</p>
+                            </span>
                           </Link>
                         ))}
                       </div>
@@ -306,10 +296,9 @@ export default function Navbar({ dictionary }: NavbarProps) {
                   ))}
                 </div>
               </div>
-              {/* Mega Menu Footer Banner */}
-              <div className="border-t border-slate-100 bg-slate-50 px-8 py-4">
+              <div className="border-line-warm/40 bg-husk/20 border-t px-8 py-4">
                 <div className="mx-auto flex max-w-7xl items-center justify-between text-sm">
-                  <span className="font-medium text-slate-600">{d.industry_solutions}</span>
+                  <span className="text-ink/70 font-medium">{d.industry_solutions}</span>
                 </div>
               </div>
             </motion.div>
@@ -321,28 +310,28 @@ export default function Navbar({ dictionary }: NavbarProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 hidden w-full border-t border-slate-100/50 bg-white shadow-xl md:block"
+              className="border-line-warm/40 absolute top-full left-0 hidden w-full border-t bg-paper/98 shadow-2xl backdrop-blur-xl md:block"
               onMouseEnter={() => handleMouseEnter('nosotros')}
               onMouseLeave={handleMouseLeave}
             >
               <div className="mx-auto max-w-7xl px-8 py-10">
                 <div className="flex gap-12">
-                  <div className="flex-1 border-r border-slate-100 pr-12">
-                    <h3 className="text-gp-blue mb-6 border-b border-slate-100 pb-2 font-serif text-xl font-bold">
+                  <div className="border-line-warm/40 flex-1 border-r pr-12">
+                    <h3 className="font-display text-ink border-line-warm/50 mb-6 border-b pb-2 text-xl font-bold">
                       Green Prod & Sustainable S.A.C
                     </h3>
-                    <div className="grid grid-cols-2 gap-8">
+                    <div className="grid grid-cols-2 gap-4">
                       {aboutMenu.main.map((item, idx) => (
                         <Link
                           key={idx}
                           href={`/${currentLang}${item.href}`}
-                          className="group block"
+                          className="group hover:bg-husk/30 block rounded-xl p-3 transition-colors"
                           onClick={() => setActiveDropdown(null)}
                         >
-                          <h4 className="group-hover:text-gp-green mb-2 text-base font-bold text-slate-800 transition-colors">
+                          <h4 className="group-hover:text-gp-green text-ink mb-2 text-base font-bold transition-colors">
                             {item.name}
                           </h4>
-                          <p className="text-sm leading-snug text-slate-500">{item.desc}</p>
+                          <p className="text-ink/60 text-sm leading-snug">{item.desc}</p>
                         </Link>
                       ))}
                     </div>
@@ -354,10 +343,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
                         <Link
                           key={idx}
                           href={`/${currentLang}${item.href}`}
-                          className="hover:text-gp-blue flex items-center gap-3 rounded-lg p-3 text-slate-600 transition-colors hover:bg-slate-50"
+                          className="hover:text-gp-blue text-ink/70 hover:bg-husk/30 flex items-center gap-3 rounded-lg p-3 transition-colors"
                           onClick={() => setActiveDropdown(null)}
                         >
-                          <div className="rounded-md bg-slate-100 p-2 text-slate-500">
+                          <div className="bg-husk/50 text-ink/60 rounded-md p-2">
                             <Icon className="h-4 w-4" />
                           </div>
                           <span className="text-sm font-semibold">{item.name}</span>
@@ -367,9 +356,9 @@ export default function Navbar({ dictionary }: NavbarProps) {
                   </div>
                 </div>
               </div>
-              <div className="border-t border-slate-100 bg-slate-50 px-8 py-4">
+              <div className="border-line-warm/40 bg-husk/20 border-t px-8 py-4">
                 <div className="mx-auto flex max-w-7xl items-center justify-between text-sm">
-                  <span className="font-medium text-slate-600">{d.learn_more_vision}</span>
+                  <span className="text-ink/70 font-medium">{d.learn_more_vision}</span>
                   <Link
                     href={`/${currentLang}/nosotros`}
                     className="text-gp-blue hover:text-gp-green flex items-center gap-1 font-bold transition-colors"
@@ -383,18 +372,16 @@ export default function Navbar({ dictionary }: NavbarProps) {
           )}
         </AnimatePresence>
 
-        {/* Mobile Nav */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 w-full overflow-hidden bg-white shadow-xl md:hidden"
+              className="absolute top-full left-0 w-full overflow-hidden bg-paper shadow-2xl md:hidden"
             >
               <div className="flex h-[calc(100vh-80px)] flex-col overflow-y-auto">
-                {/* Mobile Top Bar */}
-                <div className="flex justify-between border-b border-slate-100 bg-slate-50 px-6 py-4 text-sm font-medium text-slate-600">
+                <div className="border-line-warm/40 bg-husk/20 text-ink/70 flex justify-between border-b px-6 py-4 text-sm font-medium">
                   <Link
                     href={`/${currentLang}/contacto`}
                     onClick={() => setIsOpen(false)}
@@ -411,19 +398,16 @@ export default function Navbar({ dictionary }: NavbarProps) {
                 </div>
 
                 <div className="flex-1 py-4">
-                  {/* Mobile Accordion for About Us */}
-                  <div className="border-b border-slate-50">
+                  <div className="border-line-warm/30 border-b">
                     <button
-                      className={`flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide text-slate-800 uppercase`}
+                      className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
                       onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === 'mobile-nosotros' ? null : 'mobile-nosotros'
-                        )
+                        setActiveDropdown(activeDropdown === 'mobile-nosotros' ? null : 'mobile-nosotros')
                       }
                     >
                       {d.about}
                       <ChevronDown
-                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-nosotros' ? 'text-gp-green rotate-180' : 'text-slate-400'}`}
+                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-nosotros' ? 'text-gp-green rotate-180' : 'text-ink/40'}`}
                       />
                     </button>
 
@@ -433,14 +417,14 @@ export default function Navbar({ dictionary }: NavbarProps) {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden bg-slate-50"
+                          className="bg-husk/20 overflow-hidden"
                         >
                           <div className="space-y-6 px-6 py-2 pb-6">
                             <div>
                               <h3 className="text-gp-blue mb-3 text-sm font-bold tracking-wider uppercase">
                                 CONOCE MÁS
                               </h3>
-                              <div className="space-y-4 border-l-2 border-slate-200 pl-2">
+                              <div className="border-line-warm/40 space-y-4 border-l-2 pl-2">
                                 {aboutMenu.main.map((item, idx) => (
                                   <Link
                                     key={idx}
@@ -448,8 +432,8 @@ export default function Navbar({ dictionary }: NavbarProps) {
                                     className="block pl-3"
                                     onClick={() => setIsOpen(false)}
                                   >
-                                    <div className="font-bold text-slate-700">{item.name}</div>
-                                    <div className="mt-1 text-xs text-slate-500">{item.desc}</div>
+                                    <div className="text-ink/80 font-bold">{item.name}</div>
+                                    <div className="text-ink/50 mt-1 text-xs">{item.desc}</div>
                                   </Link>
                                 ))}
                                 {aboutMenu.sidebar.map((item, idx) => (
@@ -459,7 +443,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                                     className="block pl-3"
                                     onClick={() => setIsOpen(false)}
                                   >
-                                    <div className="font-bold text-slate-700">{item.name}</div>
+                                    <div className="text-ink/80 font-bold">{item.name}</div>
                                   </Link>
                                 ))}
                               </div>
@@ -469,18 +453,16 @@ export default function Navbar({ dictionary }: NavbarProps) {
                       )}
                     </AnimatePresence>
                   </div>
-                  <div className="border-b border-slate-50">
+                  <div className="border-line-warm/30 border-b">
                     <button
-                      className={`flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide text-slate-800 uppercase`}
+                      className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
                       onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === 'mobile-productos' ? null : 'mobile-productos'
-                        )
+                        setActiveDropdown(activeDropdown === 'mobile-productos' ? null : 'mobile-productos')
                       }
                     >
                       {d.products_services_title}
                       <ChevronDown
-                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-productos' ? 'text-gp-green rotate-180' : 'text-slate-400'}`}
+                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-productos' ? 'text-gp-green rotate-180' : 'text-ink/40'}`}
                       />
                     </button>
 
@@ -490,7 +472,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden bg-slate-50"
+                          className="bg-husk/20 overflow-hidden"
                         >
                           <div className="space-y-6 px-6 py-2 pb-6">
                             {productsMenu.map((column, idx) => (
@@ -498,7 +480,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                                 <h3 className="text-gp-blue mb-3 text-sm font-bold tracking-wider uppercase">
                                   {column.category}
                                 </h3>
-                                <div className="space-y-4 border-l-2 border-slate-200 pl-2">
+                                <div className="border-line-warm/40 space-y-4 border-l-2 pl-2">
                                   {column.items.map((item, idxi) => (
                                     <Link
                                       key={idxi}
@@ -506,8 +488,8 @@ export default function Navbar({ dictionary }: NavbarProps) {
                                       className="block pl-3"
                                       onClick={() => setIsOpen(false)}
                                     >
-                                      <div className="font-bold text-slate-700">{item.name}</div>
-                                      <div className="mt-1 text-xs text-slate-500">{item.desc}</div>
+                                      <div className="text-ink/80 font-bold">{item.name}</div>
+                                      <div className="text-ink/50 mt-1 text-xs">{item.desc}</div>
                                     </Link>
                                   ))}
                                 </div>
@@ -522,7 +504,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                   <Link
                     href={`/${currentLang}/catalogo`}
                     onClick={() => setIsOpen(false)}
-                    className={`block border-b border-slate-50 px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/catalogo' ? 'text-gp-green' : 'text-slate-800'}`}
+                    className={`border-line-warm/30 block border-b px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/catalogo' ? 'text-gp-green' : 'text-ink'}`}
                   >
                     {d.catalog}
                   </Link>
@@ -530,18 +512,17 @@ export default function Navbar({ dictionary }: NavbarProps) {
                   <Link
                     href={`/${currentLang}/sostenibilidad`}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/sostenibilidad' ? 'text-gp-green' : 'text-slate-800'}`}
+                    className={`block px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/sostenibilidad' ? 'text-gp-green' : 'text-ink'}`}
                   >
                     {d.sustainability}
                   </Link>
                 </div>
 
-                {/* Mobile Footer Area */}
-                <div className="mt-auto bg-slate-900 px-6 py-8">
+                <div className="bg-ink mt-auto px-6 py-8">
                   <Link
                     href={`/${currentLang}/contacto`}
                     onClick={() => setIsOpen(false)}
-                    className="bg-gp-green hover:bg-gp-blue flex w-full items-center justify-center rounded-xl py-4 text-lg font-bold text-white transition-colors"
+                    className="bg-gp-green text-ink hover:bg-husk flex w-full items-center justify-center rounded-xl py-4 text-lg font-bold transition-colors"
                   >
                     <Phone className="mr-2 h-5 w-5" />
                     {d.work_with_us}
