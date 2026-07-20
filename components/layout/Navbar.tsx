@@ -153,7 +153,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
         onMouseLeave={handleMouseLeave}
       >
         <div
-          className={`hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex ${isSolid ? 'bg-husk/30 text-ink/70' : 'bg-black/20 text-paper backdrop-blur-sm'}`}
+          className={`hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex ${isSolid ? 'bg-husk/30 text-ink/70' : 'text-paper bg-black/20 backdrop-blur-sm'}`}
         >
           <div className="flex items-center gap-6">
             <Link
@@ -193,7 +193,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
           </Link>
 
           <nav className="relative hidden h-full items-center gap-1 md:flex lg:gap-2">
-            <div className="flex h-full items-center" onMouseEnter={() => handleMouseEnter('nosotros')}>
+            <div
+              className="flex h-full items-center"
+              onMouseEnter={() => handleMouseEnter('nosotros')}
+            >
               <button
                 className={`${underlineClass} flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
               >
@@ -204,7 +207,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
               </button>
             </div>
 
-            <div className="flex h-full items-center" onMouseEnter={() => handleMouseEnter('productos')}>
+            <div
+              className="flex h-full items-center"
+              onMouseEnter={() => handleMouseEnter('productos')}
+            >
               <button
                 className={`${underlineClass} flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'productos' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
               >
@@ -261,7 +267,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="border-line-warm/40 absolute top-full left-0 hidden w-full border-t bg-paper/98 shadow-2xl backdrop-blur-xl md:block"
+              className="border-line-warm/40 bg-paper/98 absolute top-full left-0 hidden w-full border-t shadow-2xl backdrop-blur-xl md:block"
               onMouseEnter={() => handleMouseEnter('productos')}
               onMouseLeave={handleMouseLeave}
             >
@@ -310,7 +316,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="border-line-warm/40 absolute top-full left-0 hidden w-full border-t bg-paper/98 shadow-2xl backdrop-blur-xl md:block"
+              className="border-line-warm/40 bg-paper/98 absolute top-full left-0 hidden w-full border-t shadow-2xl backdrop-blur-xl md:block"
               onMouseEnter={() => handleMouseEnter('nosotros')}
               onMouseLeave={handleMouseLeave}
             >
@@ -378,7 +384,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 w-full overflow-hidden bg-paper shadow-2xl md:hidden"
+              className="bg-paper absolute top-full left-0 w-full overflow-hidden shadow-2xl md:hidden"
             >
               <div className="flex h-[calc(100vh-80px)] flex-col overflow-y-auto">
                 <div className="border-line-warm/40 bg-husk/20 text-ink/70 flex justify-between border-b px-6 py-4 text-sm font-medium">
@@ -402,7 +408,9 @@ export default function Navbar({ dictionary }: NavbarProps) {
                     <button
                       className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
                       onClick={() =>
-                        setActiveDropdown(activeDropdown === 'mobile-nosotros' ? null : 'mobile-nosotros')
+                        setActiveDropdown(
+                          activeDropdown === 'mobile-nosotros' ? null : 'mobile-nosotros'
+                        )
                       }
                     >
                       {d.about}
@@ -457,7 +465,9 @@ export default function Navbar({ dictionary }: NavbarProps) {
                     <button
                       className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
                       onClick={() =>
-                        setActiveDropdown(activeDropdown === 'mobile-productos' ? null : 'mobile-productos')
+                        setActiveDropdown(
+                          activeDropdown === 'mobile-productos' ? null : 'mobile-productos'
+                        )
                       }
                     >
                       {d.products_services_title}
