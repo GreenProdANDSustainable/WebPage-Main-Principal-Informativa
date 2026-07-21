@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+:root {
+  /* Leelawadee UI es una fuente del sistema (Windows) y no se puede
+     auto-hospedar; en dispositivos sin ella el navegador usa el respaldo. */
+  --font-jakarta: 'Leelawadee UI', ui-sans-serif, system-ui, sans-serif;
+  --font-bricolage: 'Leelawadee UI', ui-sans-serif, system-ui, sans-serif;
+  --font-plex-mono: 'Leelawadee UI', ui-monospace, monospace;
+}
+
 @theme {
   --color-gp-blue: #2475ba;
   --color-gp-green: #6dbe51;
@@ -14,11 +22,8 @@
   --color-paper: #f6f4ec;
   --color-line-warm: #c9c2ae;
 
-  /* Plus Jakarta Sans para cuerpo de texto (se mantiene) */
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
-
-  /* Bricolage Grotesque para titulares: la firma tipográfica del rediseño */
   --font-display: var(--font-bricolage), var(--font-jakarta), sans-serif;
 }
