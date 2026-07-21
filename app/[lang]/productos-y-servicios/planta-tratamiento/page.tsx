@@ -54,7 +54,7 @@ export default async function PlantaTratamientoPage({
         </div>
         <div className="space-y-4">
           {productosDesc.map((product) => (
-            <ProductAccordion key={product.id} product={product} />
+            <ProductAccordion key={product.id} product={product} lang={lang} />
           ))}
         </div>
       </div>

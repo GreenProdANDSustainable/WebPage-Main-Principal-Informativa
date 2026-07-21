@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client';
-import { Target, Eye, Sparkles } from 'lucide-react';
+import { Target, Eye, Leaf } from 'lucide-react';
 
 interface MissionVisionSectionProps {
   dict: any;
@@ -25,11 +25,11 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
             className="text-gp-green mb-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase"
             style={{ fontFamily: 'var(--font-plex-mono)' }}
           >
-            <Sparkles className="h-4 w-4" />
+            <Leaf className="h-4 w-4" />
             <span className="bg-gp-green h-px w-8"></span>
             {dict.Home.missionVision.essence_title}
             <span className="bg-gp-green h-px w-8"></span>
-            <Sparkles className="h-4 w-4" />
+            <Leaf className="h-4 w-4" />
           </div>
           <h2 className="font-display text-ink mb-4 text-3xl font-semibold tracking-tight md:text-5xl">
             {dict.Home.missionVision.title}
@@ -45,7 +45,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
             transition={{ duration: 0.6, delay: 0.1 }}
             className="group relative overflow-hidden rounded-3xl shadow-xl transition-all duration-500 hover:shadow-2xl"
           >
-            <div className="from-gp-blue absolute inset-0 bg-gradient-to-br to-blue-700"></div>
+            <div className="bg-gp-blue absolute inset-0"></div>
 
             <div className="relative z-10 flex h-full flex-col p-8 md:p-12">
               <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl border border-white/30 bg-white/20 backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
@@ -73,7 +73,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
             transition={{ duration: 0.6, delay: 0.2 }}
             className="group relative overflow-hidden rounded-3xl shadow-xl transition-all duration-500 hover:shadow-2xl"
           >
-            <div className="from-gp-green absolute inset-0 bg-gradient-to-br to-emerald-700"></div>
+            <div className="bg-gp-green absolute inset-0"></div>
 
             <div className="relative z-10 flex h-full flex-col p-8 md:p-12">
               <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl border border-white/30 bg-white/20 backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6">

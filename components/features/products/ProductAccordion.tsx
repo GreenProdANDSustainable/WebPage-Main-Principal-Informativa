@@ -15,7 +15,7 @@ interface Product {
   features: string[];
 }
 
-export default function ProductAccordion({ product }: { product: Product }) {
+export default function ProductAccordion({ product, lang }: { product: Product; lang: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -78,7 +78,7 @@ export default function ProductAccordion({ product }: { product: Product }) {
                   </div>
                   <div className="pt-4">
                     <Link
-                      href="/contacto"
+                      href={`/${lang}/contacto`}
                       className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
                     >
                       Solicitar Cotización

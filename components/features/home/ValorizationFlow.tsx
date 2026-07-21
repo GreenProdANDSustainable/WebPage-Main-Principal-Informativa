@@ -77,7 +77,7 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
   ];
   const cx = 280;
   const cy = 170;
-  const r = 54;
+  const r = 62;
 
   const inPaths = inputs.map((n) => `M 140 ${n.y} C 205 ${n.y}, 205 ${cy}, ${cx - r} ${cy}`);
   const outPaths = outputs.map((n) => `M ${cx + r} ${cy} C 355 ${cy}, 355 ${n.y}, 420 ${n.y}`);

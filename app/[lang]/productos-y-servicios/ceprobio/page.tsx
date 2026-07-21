@@ -59,7 +59,7 @@ export default async function CeprobioPage({ params }: { params: Promise<{ lang:
         </div>
         <div className="space-y-4">
           {bioinsumos.map((product) => (
-            <ProductAccordion key={product.id} product={product} />
+            <ProductAccordion key={product.id} product={product} lang={lang} />
           ))}
         </div>
       </div>

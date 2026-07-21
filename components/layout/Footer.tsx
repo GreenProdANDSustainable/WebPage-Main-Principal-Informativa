@@ -30,9 +30,10 @@ type Dictionary = {
 
 interface FooterProps {
   dictionary: Dictionary;
+  lang: string;
 }
 
-export default function Footer({ dictionary }: FooterProps) {
+export default function Footer({ dictionary, lang }: FooterProps) {
   const d = dictionary.Footer;
   const nav = dictionary.Navbar;
 
@@ -43,15 +44,15 @@ export default function Footer({ dictionary }: FooterProps) {
   ];
 
   const quickLinks = [
-    { label: d.about_us, href: '/nosotros' },
-    { label: d.product_catalog, href: '/catalogo' },
-    { label: d.contact_label, href: '/contacto' },
+    { label: d.about_us, href: `/${lang}/nosotros` },
+    { label: d.product_catalog, href: `/${lang}/catalogo` },
+    { label: d.contact_label, href: `/${lang}/contacto` },
   ];
 
   const categories = [
-    { label: d.bioinsumos, href: '/catalogo#bioinsumos' },
-    { label: d.conservas, href: '/catalogo#conservas' },
-    { label: d.environmental_projects, href: '/catalogo#proyectos' },
+    { label: d.bioinsumos, href: `/${lang}/catalogo#bioinsumos` },
+    { label: d.conservas, href: `/${lang}/catalogo#conservas` },
+    { label: d.environmental_projects, href: `/${lang}/catalogo#proyectos` },
   ];
 
   return (
@@ -63,7 +64,7 @@ export default function Footer({ dictionary }: FooterProps) {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Brand */}
           <div className="space-y-6">
-            <Link href="/" className="inline-flex items-center gap-2 text-white">
+            <Link href={`/${lang}`} className="inline-flex items-center gap-2 text-white">
               <div className="relative h-12 w-32 transition-transform duration-300 hover:scale-105 md:h-14 md:w-36">
                 <Image
                   src="/greenprod blanco png.png"

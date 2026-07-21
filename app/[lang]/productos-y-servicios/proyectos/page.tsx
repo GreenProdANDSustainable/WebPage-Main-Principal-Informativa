@@ -63,7 +63,7 @@ export default async function ProyectosSosteniblesPage({
         </div>
         <div className="space-y-4">
           {proyectosDesc.map((product) => (
-            <ProductAccordion key={product.id} product={product} />
+            <ProductAccordion key={product.id} product={product} lang={lang} />
           ))}
         </div>
       </div>

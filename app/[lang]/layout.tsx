@@ -58,7 +58,7 @@ export default async function RootLayout({
       >
         <Navbar dictionary={dictionary} />
         <main className="flex-1 pt-20">{children}</main>
-        <Footer dictionary={dictionary} />
+        <Footer dictionary={dictionary} lang={lang} />
       </body>
     </html>
   );
