@@ -24,11 +24,11 @@ export default function AnimatedStat({ value, suffix, label }: AnimatedStatProps
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center">
-      <div className="mb-2 font-serif text-5xl font-bold text-[#beede0] md:text-6xl">
+      <div className="font-display text-gp-green mb-2 text-5xl font-bold md:text-6xl">
         <motion.span>{rounded}</motion.span>
         {suffix}
       </div>
-      <div className="text-lg text-[#e8e4db]/80">{label}</div>
+      <div className="text-husk/70 text-lg">{label}</div>
     </div>
   );
 }
