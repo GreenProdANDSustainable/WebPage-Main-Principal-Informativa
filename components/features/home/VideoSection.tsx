@@ -17,7 +17,7 @@ export default function VideoSection({ dict }: VideoSectionProps) {
             </div>
             <span
               className="text-sm font-semibold tracking-wider uppercase"
-              style={{ fontFamily: 'var(--font-plex-mono)' }}
+              style={{ fontFamily: 'var(--font-mono)' }}
             >
               {dict.Video.placeholder}
             </span>

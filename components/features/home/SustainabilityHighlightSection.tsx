@@ -53,7 +53,7 @@ export default function SustainabilityHighlightSection({
           >
             <span
               className="text-gp-green inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase"
-              style={{ fontFamily: 'var(--font-plex-mono)' }}
+              style={{ fontFamily: 'var(--font-mono)' }}
             >
               <span className="bg-gp-green h-px w-8"></span>
               {d.sustainability}

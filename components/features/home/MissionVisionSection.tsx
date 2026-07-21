@@ -23,7 +23,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
         >
           <div
             className="text-gp-green mb-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase"
-            style={{ fontFamily: 'var(--font-plex-mono)' }}
+            style={{ fontFamily: 'var(--font-mono)' }}
           >
             <Leaf className="h-4 w-4" />
             <span className="bg-gp-green h-px w-8"></span>

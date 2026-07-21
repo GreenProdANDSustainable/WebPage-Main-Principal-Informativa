@@ -36,7 +36,7 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-gp-green mb-5 text-[13px] tracking-wide"
-              style={{ fontFamily: 'var(--font-plex-mono)' }}
+              style={{ fontFamily: 'var(--font-mono)' }}
             >
               ECONOMÍA CIRCULAR AGROINDUSTRIAL
             </motion.p>
@@ -82,7 +82,7 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-line-warm mt-8 text-xs tracking-wide"
-              style={{ fontFamily: 'var(--font-plex-mono)' }}
+              style={{ fontFamily: 'var(--font-mono)' }}
             >
               CERTIFICADO ISO 14001 · LIMA, PERÚ
             </motion.p>

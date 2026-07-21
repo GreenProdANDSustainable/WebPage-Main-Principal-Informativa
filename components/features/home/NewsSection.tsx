@@ -15,7 +15,7 @@ export default function NewsSection({ dict }: NewsSectionProps) {
           <Newspaper className="h-5 w-5" />
           <span
             className="text-sm font-semibold tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-plex-mono)' }}
+            style={{ fontFamily: 'var(--font-mono)' }}
           >
             {dict.News.subtitle}
           </span>

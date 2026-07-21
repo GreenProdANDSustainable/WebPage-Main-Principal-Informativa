@@ -18,7 +18,7 @@ export default function ValuesSection({ dict, values }: ValuesSectionProps) {
         >
           <div
             className="text-gp-green mb-4 text-[11px] font-semibold tracking-[0.2em] uppercase"
-            style={{ fontFamily: 'var(--font-plex-mono)' }}
+            style={{ fontFamily: 'var(--font-mono)' }}
           >
             {dict.Home.values.label}
           </div>

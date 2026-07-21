@@ -1,13 +1,5 @@
 @import 'tailwindcss';
 
-:root {
-  /* Leelawadee UI es una fuente del sistema (Windows) y no se puede
-     auto-hospedar; en dispositivos sin ella el navegador usa el respaldo. */
-  --font-jakarta: 'Leelawadee UI', ui-sans-serif, system-ui, sans-serif;
-  --font-bricolage: 'Leelawadee UI', ui-sans-serif, system-ui, sans-serif;
-  --font-plex-mono: 'Leelawadee UI', ui-monospace, monospace;
-}
-
 @theme {
   --color-gp-blue: #2475ba;
   --color-gp-green: #6dbe51;
@@ -22,8 +14,15 @@
   --color-paper: #f6f4ec;
   --color-line-warm: #c9c2ae;
 
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
-  --font-display: var(--font-bricolage), var(--font-jakarta), sans-serif;
+  /* Leelawadee UI es una fuente de Windows y no se puede auto-hospedar;
+     Selawik (alternativa libre de Microsoft, visualmente equivalente,
+     incrustada vía next/font/local como --font-selawik) se ve igual en
+     cualquier dispositivo. Los valores van directos aquí (sin variables
+     intermedias) porque Tailwind v4 elimina del CSS final cualquier
+     variable "--font-*"/"--color-*" personalizada que no se use también
+     como clase literal en el código. */
+  --font-sans: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Leelawadee UI', var(--font-selawik), ui-monospace, monospace;
+  --font-display: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
 }

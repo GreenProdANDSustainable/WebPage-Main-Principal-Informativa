@@ -36,7 +36,7 @@ function Label({
       y={y}
       textAnchor={anchor}
       className="fill-husk"
-      style={{ fontFamily: 'var(--font-plex-mono)', fontSize: 12.5, letterSpacing: '0.01em' }}
+      style={{ fontFamily: 'var(--font-mono)', fontSize: 12.5, letterSpacing: '0.01em' }}
     >
       <tspan x={x} dy={dy0}>
         {parts[0]}
@@ -139,7 +139,7 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
           y={cy - 14}
           textAnchor="middle"
           className="fill-gp-green"
-          style={{ fontFamily: 'var(--font-plex-mono)', fontSize: 26, fontWeight: 600 }}
+          style={{ fontFamily: 'var(--font-mono)', fontSize: 26, fontWeight: 600 }}
         >
           {dict.stat}
         </text>
@@ -148,7 +148,7 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
           y={cy + 8}
           textAnchor="middle"
           className="fill-husk"
-          style={{ fontFamily: 'var(--font-plex-mono)', fontSize: 10.5 }}
+          style={{ fontFamily: 'var(--font-mono)', fontSize: 10.5 }}
         >
           {dict.statLabel}
         </text>
@@ -157,7 +157,7 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
           y={cy + 28}
           textAnchor="middle"
           className="fill-husk/70"
-          style={{ fontFamily: 'var(--font-plex-mono)', fontSize: 9.5, letterSpacing: '0.08em' }}
+          style={{ fontFamily: 'var(--font-mono)', fontSize: 9.5, letterSpacing: '0.08em' }}
         >
           {dict.process.toUpperCase()}
         </text>
@@ -166,13 +166,13 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
       <div className="mt-2 flex justify-between px-1">
         <span
           className="text-line-warm text-[11px] tracking-wide"
-          style={{ fontFamily: 'var(--font-plex-mono)' }}
+          style={{ fontFamily: 'var(--font-mono)' }}
         >
           {dict.inputsLabel}
         </span>
         <span
           className="text-line-warm text-[11px] tracking-wide"
-          style={{ fontFamily: 'var(--font-plex-mono)' }}
+          style={{ fontFamily: 'var(--font-mono)' }}
         >
           {dict.outputsLabel}
         </span>
