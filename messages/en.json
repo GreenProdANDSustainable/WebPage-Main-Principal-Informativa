@@ -26,9 +26,9 @@
             "subtitle": "We are ready to help you implement sustainable solutions in your company. Write to us and an advisor will contact you.",
             "contactInfo": "Contact Information",
             "mainOffice": "Main Office",
-            "address": "Av. Sostenibilidad 123, Distrito Verde<br />Lima, Peru",
+            "address": "Av. Uno Mz. 1 Lote 1, Block \"E\", AA.HH. Tres Estrellas, modules 6, 12 & 13<br />Nuevo Chimbote, Áncash, Peru",
             "phone": "Phone",
-            "phoneDetail": "+51 987 654 321<br />Monday to Friday, 9am - 6pm",
+            "phoneDetail": "+51 919 514 085<br />Monday to Friday, 8am - 6pm",
             "email": "Email",
             "emailDetail": "contacto@greenprod.pe<br />ventas@greenprod.pe",
             "mapPlaceholder": "[Interactive Map]",
@@ -43,7 +43,9 @@
             "subjectOptions": ["Bio-inputs Inquiry", "Preserves Inquiry", "Environmental Projects", "Other"],
             "message": "Message",
             "messagePlaceholder": "How can we help you?",
-            "submitButton": "Send Message"
+            "submitButton": "Send Message",
+            "assistantTitle": "Virtual Assistant",
+            "assistantSubtitle": "Have a quick question? Ask our AI-powered assistant."
         },
         "sustainability": {
             "title": "Sustainability",
@@ -131,8 +133,8 @@
         "conservas": "Preserves",
         "environmental_projects": "Environmental Projects",
         "contact_title": "Contact",
-        "address": "Av. Sostenibilidad 123, Distrito Verde, Lima, Peru",
-        "phone": "+51 987 654 321",
+        "address": "Av. Uno Mz. 1 Lote 1, Block \"E\", AA.HH. Tres Estrellas, Nuevo Chimbote, Áncash, Peru",
+        "phone": "+51 919 514 085",
         "email": "contacto@greenprod.pe",
         "copyright": "All rights reserved.",
         "privacy_policy": "Privacy Policy",

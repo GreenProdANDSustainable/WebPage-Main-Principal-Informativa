@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Leaf, Mail, MapPin, Phone, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Leaf, Mail, MapPin, Phone, Facebook, Instagram } from 'lucide-react';
 
 type Dictionary = {
   Footer: {
@@ -38,9 +38,8 @@ export default function Footer({ dictionary, lang }: FooterProps) {
   const nav = dictionary.Navbar;
 
   const socials = [
-    { Icon: Facebook, label: 'Facebook' },
-    { Icon: Instagram, label: 'Instagram' },
-    { Icon: Linkedin, label: 'LinkedIn' },
+    { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/greenprodsustainable' },
+    { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/greenprodsustainable' },
   ];
 
   const quickLinks = [
@@ -76,10 +75,12 @@ export default function Footer({ dictionary, lang }: FooterProps) {
             </Link>
             <p className="text-paper/60 max-w-xs text-sm leading-relaxed">{d.description}</p>
             <div className="flex gap-3">
-              {socials.map(({ Icon, label }) => (
+              {socials.map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="border-paper/10 text-paper/70 hover:border-gp-green hover:bg-gp-green hover:text-ink flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5"
                 >

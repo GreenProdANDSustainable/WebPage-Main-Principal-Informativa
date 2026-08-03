@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import { getDictionary } from '@/get-dictionary';
 
 const selawik = localFont({
@@ -51,6 +52,7 @@ export default async function RootLayout({
         <Navbar dictionary={dictionary} />
         <main className="flex-1 pt-20">{children}</main>
         <Footer dictionary={dictionary} lang={lang} />
+        <WhatsAppButton />
       </body>
     </html>
   );

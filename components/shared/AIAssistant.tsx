@@ -1,4 +1,4 @@
-// AUN EN DESARROLLO E IMPLEMENTACION, NO IMPLEMENTADO, IMPLEMENTAR
+// Asistente conversacional con Gemini. Requiere la variable NEXT_PUBLIC_GEMINI_API_KEY.
 'use client';
 
 import { useState, useRef, useEffect } from 'react';

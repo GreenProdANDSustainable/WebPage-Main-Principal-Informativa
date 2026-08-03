@@ -6,7 +6,7 @@ describe('<WhatsAppButton />', () => {
   it('enlaza al número de WhatsApp correcto', () => {
     render(<WhatsAppButton />);
     const link = screen.getByRole('link', { name: /contactar por whatsapp/i });
-    expect(link).toHaveAttribute('href', 'https://wa.me/51930287875');
+    expect(link).toHaveAttribute('href', 'https://wa.me/51919514085');
   });
 
   it('abre en una pestaña nueva de forma segura', () => {

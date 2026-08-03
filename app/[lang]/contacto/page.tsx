@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
+import AIAssistant from '@/components/shared/AIAssistant';
 
 export default async function Contacto({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -62,11 +63,16 @@ export default async function Contacto({ params }: { params: Promise<{ lang: str
               </div>
             </div>
 
-            {/* Mapa (Placeholder) */}
+            {/* Mapa */}
             <div className="relative h-64 overflow-hidden rounded-2xl bg-slate-200">
-              <div className="absolute inset-0 flex items-center justify-center font-medium text-slate-500">
-                {d.mapPlaceholder}
-              </div>
+              <iframe
+                src="https://www.google.com/maps?q=AA.HH.%20Tres%20Estrellas,%20Nuevo%20Chimbote,%20Ancash,%20Peru&output=embed"
+                title="Ubicación de Green Prod & Sustainable"
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
 
@@ -140,6 +146,19 @@ export default async function Contacto({ params }: { params: Promise<{ lang: str
                 {d.submitButton}
               </button>
             </form>
+          </div>
+        </div>
+
+        {/* Asistente Virtual con IA */}
+        <div className="mt-20">
+          <div className="mb-8 text-center">
+            <h2 className="mb-3 font-serif text-3xl font-bold text-slate-900">
+              {d.assistantTitle}
+            </h2>
+            <p className="mx-auto max-w-2xl text-slate-600">{d.assistantSubtitle}</p>
+          </div>
+          <div className="mx-auto max-w-2xl">
+            <AIAssistant />
           </div>
         </div>
       </div>

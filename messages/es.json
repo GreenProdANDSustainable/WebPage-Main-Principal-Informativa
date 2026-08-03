@@ -26,9 +26,9 @@
             "subtitle": "Estamos listos para ayudarte a implementar soluciones sostenibles en tu empresa. Escríbenos y un asesor se pondrá en contacto contigo.",
             "contactInfo": "Información de Contacto",
             "mainOffice": "Oficina Principal",
-            "address": "Av. Sostenibilidad 123, Distrito Verde<br />Lima, Perú",
+            "address": "Av. Uno Mz. 1 Lote 1, Bloque \"E\", AA.HH. Tres Estrellas, módulos 6, 12 y 13<br />Nuevo Chimbote, Áncash, Perú",
             "phone": "Teléfono",
-            "phoneDetail": "+51 987 654 321<br />Atención de Lunes a Viernes, 9am - 6pm",
+            "phoneDetail": "+51 919 514 085<br />Atención de Lunes a Viernes, 8am - 6pm",
             "email": "Correo Electrónico",
             "emailDetail": "contacto@greenprod.pe<br />ventas@greenprod.pe",
             "mapPlaceholder": "[Mapa Interactivo]",
@@ -43,7 +43,9 @@
             "subjectOptions": ["Consulta sobre Bioinsumos", "Consulta sobre Conservas", "Proyectos Ambientales", "Otro"],
             "message": "Mensaje",
             "messagePlaceholder": "¿En qué podemos ayudarte?",
-            "submitButton": "Enviar Mensaje"
+            "submitButton": "Enviar Mensaje",
+            "assistantTitle": "Asistente Virtual",
+            "assistantSubtitle": "¿Tienes una consulta rápida? Pregúntale a nuestro asistente con inteligencia artificial."
         },
         "sustainability": {
             "title": "Sostenibilidad",
@@ -131,8 +133,8 @@
         "conservas": "Conservas",
         "environmental_projects": "Proyectos Ambientales",
         "contact_title": "Contacto",
-        "address": "Av. Sostenibilidad 123, Distrito Verde, Lima, Perú",
-        "phone": "+51 987 654 321",
+        "address": "Av. Uno Mz. 1 Lote 1, Bloque \"E\", AA.HH. Tres Estrellas, Nuevo Chimbote, Áncash, Perú",
+        "phone": "+51 919 514 085",
         "email": "contacto@greenprod.pe",
         "copyright": "Todos los derechos reservados.",
         "privacy_policy": "Política de Privacidad",
