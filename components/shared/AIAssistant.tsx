@@ -1,9 +1,9 @@
-// Asistente conversacional con Gemini. Requiere la variable NEXT_PUBLIC_GEMINI_API_KEY.
+// Asistente conversacional con Gemini. La clave vive en el servidor
+// (variable GEMINI_API_KEY); este componente solo habla con /api/chat.
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from '@google/genai';
-import { Send, Bot, User, Loader2 } from 'lucide-react';
+import { Send, Bot, Loader2 } from 'lucide-react';
 
 interface Message {
   role: 'user' | 'model';
@@ -30,52 +30,34 @@ export default function AIAssistant() {
   }, [messages]);
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || isLoading) return;
 
     const userMessage = input.trim();
+    const history = [...messages, { role: 'user' as const, text: userMessage }];
     setInput('');
-    setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
+    setMessages(history);
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
-
-      const chat = ai.chats.create({
-        model: 'gemini-3-flash-preview',
-        config: {
-          systemInstruction:
-            'Eres un asistente experto en agricultura sostenible, bioinsumos, conservas premium y proyectos ambientales. Trabajas para la empresa "Green Prod & Sustainable S.A.C". Responde de manera profesional, concisa y persuasiva. Recomienda productos del catálogo cuando sea relevante.',
-        },
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
       });
 
-      // Replay history
-      for (let i = 1; i < messages.length; i++) {
-        // Note: The SDK manages chat history automatically if we use the same chat instance,
-        // but since we create a new instance per request (for simplicity in this stateless component),
-        // we should ideally pass history. For this simple demo, we'll just send the latest message.
-        // A more robust implementation would maintain the chat instance or pass history.
+      if (!res.ok) {
+        const fallback =
+          res.status === 503
+            ? 'El asistente todavía no está disponible. Por favor, escríbenos por WhatsApp o el formulario de contacto.'
+            : 'Ocurrió un error al conectar con el asistente. Por favor, intenta de nuevo.';
+        setMessages((prev) => [...prev, { role: 'model', text: fallback }]);
+        return;
       }
 
-      // We'll just send the current message for simplicity, but ideally we'd use the chat instance properly.
-      // To keep it simple and avoid history formatting issues, let's just use generateContent with the full context.
-
-      const promptContext =
-        messages
-          .map((m) => `${m.role === 'user' ? 'Cliente' : 'Asistente'}: ${m.text}`)
-          .join('\n') + `\nCliente: ${userMessage}\nAsistente:`;
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: promptContext,
-        config: {
-          systemInstruction:
-            'Eres un asistente experto en agricultura sostenible, bioinsumos, conservas premium y proyectos ambientales. Trabajas para la empresa "Green Prod & Sustainable S.A.C". Responde de manera profesional, concisa y persuasiva. Recomienda productos del catálogo cuando sea relevante.',
-        },
-      });
-
+      const data = (await res.json()) as { text?: string };
       setMessages((prev) => [
         ...prev,
-        { role: 'model', text: response.text || 'Lo siento, no pude procesar tu solicitud.' },
+        { role: 'model', text: data.text || 'Lo siento, no pude procesar tu solicitud.' },
       ]);
     } catch (error) {
       console.error(error);
@@ -83,7 +65,7 @@ export default function AIAssistant() {
         ...prev,
         {
           role: 'model',
-          text: 'Ocurrió un error al conectar con el servidor. Por favor, intenta de nuevo.',
+          text: 'Ocurrió un error al conectar con el asistente. Por favor, intenta de nuevo.',
         },
       ]);
     } finally {
@@ -97,7 +79,7 @@ export default function AIAssistant() {
         <Bot className="h-6 w-6" />
         <div>
           <h3 className="font-bold">Asistente Green Prod</h3>
-          <p className="text-xs text-green-100">Desarrollado con Gemini 3 Flash</p>
+          <p className="text-xs text-green-100">Desarrollado con IA de Google (Gemini)</p>
         </div>
       </div>
 
