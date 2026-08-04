@@ -26,7 +26,7 @@ export default function SustainabilityHighlightSection({
             className="relative order-last h-80 overflow-hidden rounded-3xl shadow-2xl lg:order-first lg:h-[500px]"
           >
             <Image
-              src="/images/home/sostenibilidad-banner.jpg"
+              src="/images/home/compromiso.jpg"
               alt={d.imageAlt}
               fill
               className="object-cover"

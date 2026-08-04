@@ -16,16 +16,16 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
 
   return (
     <section className="bg-ink relative overflow-hidden">
-      {/* Textura de fondo: campo real, tratado a muy baja opacidad */}
+      {/* Textura de fondo: campo real, tratado como marca de agua sutil */}
       <div className="absolute inset-0">
         <Image
-          src="/images/home/banners/PancaCampo.jpg"
+          src="/images/home/banners/fondo-hero.webp"
           alt=""
           fill
-          className="object-cover opacity-[0.14] mix-blend-luminosity"
+          className="object-cover object-center opacity-[0.32]"
           priority
         />
-        <div className="bg-ink absolute inset-0 opacity-90" />
+        <div className="bg-ink absolute inset-0 opacity-[0.74]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
