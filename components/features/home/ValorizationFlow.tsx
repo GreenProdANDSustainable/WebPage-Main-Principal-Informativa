@@ -29,20 +29,20 @@ function Label({
   anchor: 'start' | 'end';
 }) {
   const parts = text.includes(' ') && text.length > 11 ? text.split(/ (.*)/).slice(0, 2) : [text];
-  const dy0 = parts.length === 2 ? -6 : 4;
+  const dy0 = parts.length === 2 ? -7 : 5;
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
       className="fill-husk"
-      style={{ fontFamily: 'var(--font-mono)', fontSize: 12.5, letterSpacing: '0.01em' }}
+      style={{ fontFamily: 'var(--font-mono)', fontSize: 15, letterSpacing: '0.005em' }}
     >
       <tspan x={x} dy={dy0}>
         {parts[0]}
       </tspan>
       {parts[1] && (
-        <tspan x={x} dy={16}>
+        <tspan x={x} dy={18}>
           {parts[1]}
         </tspan>
       )}

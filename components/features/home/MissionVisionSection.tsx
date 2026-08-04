@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client';
-import { Target, Eye, Leaf } from 'lucide-react';
+import { Target, Eye } from 'lucide-react';
 
 interface MissionVisionSectionProps {
   dict: any;
@@ -21,16 +21,9 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div
-            className="text-gp-green mb-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase"
-            style={{ fontFamily: 'var(--font-mono)' }}
-          >
-            <Leaf className="h-4 w-4" />
-            <span className="bg-gp-green h-px w-8"></span>
+          <p className="text-gp-green mb-3 text-base font-semibold tracking-wide md:text-lg">
             {dict.Home.missionVision.essence_title}
-            <span className="bg-gp-green h-px w-8"></span>
-            <Leaf className="h-4 w-4" />
-          </div>
+          </p>
           <h2 className="font-display text-ink mb-4 text-3xl font-semibold tracking-tight md:text-5xl">
             {dict.Home.missionVision.title}
           </h2>
