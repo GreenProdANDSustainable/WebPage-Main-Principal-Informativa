@@ -26,23 +26,23 @@ function Label({
   x: number;
   y: number;
   text: string;
-  anchor: 'start' | 'end';
+  anchor: 'start' | 'middle' | 'end';
 }) {
   const parts = text.includes(' ') && text.length > 11 ? text.split(/ (.*)/).slice(0, 2) : [text];
-  const dy0 = parts.length === 2 ? -7 : 5;
+  const twoLine = parts.length === 2;
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
-      className="fill-husk"
-      style={{ fontFamily: 'var(--font-mono)', fontSize: 15, letterSpacing: '0.005em' }}
+      className="fill-husk text-[20px] lg:text-[15px]"
+      style={{ fontFamily: 'var(--font-mono)', letterSpacing: '0.005em' }}
     >
-      <tspan x={x} dy={dy0}>
+      <tspan x={x} dy={twoLine ? '-0.12em' : '0.34em'}>
         {parts[0]}
       </tspan>
       {parts[1] && (
-        <tspan x={x} dy={18}>
+        <tspan x={x} dy="1.05em">
           {parts[1]}
         </tspan>
       )}
@@ -50,7 +50,7 @@ function Label({
   );
 }
 
-function Node({ x, y, w = 130, h = 40 }: { x: number; y: number; w?: number; h?: number }) {
+function Node({ x, y, w = 145, h = 52 }: { x: number; y: number; w?: number; h?: number }) {
   return (
     <rect
       x={x}
@@ -79,8 +79,8 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
   const cy = 170;
   const r = 62;
 
-  const inPaths = inputs.map((n) => `M 140 ${n.y} C 205 ${n.y}, 205 ${cy}, ${cx - r} ${cy}`);
-  const outPaths = outputs.map((n) => `M ${cx + r} ${cy} C 355 ${cy}, 355 ${n.y}, 420 ${n.y}`);
+  const inPaths = inputs.map((n) => `M 155 ${n.y} C 210 ${n.y}, 210 ${cy}, ${cx - r} ${cy}`);
+  const outPaths = outputs.map((n) => `M ${cx + r} ${cy} C 350 ${cy}, 350 ${n.y}, 405 ${n.y}`);
 
   return (
     <motion.div
@@ -115,13 +115,13 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
         {inputs.map((n, i) => (
           <g key={`in-${i}`}>
             <Node x={10} y={n.y} />
-            <Label x={22} y={n.y} text={n.label} anchor="start" />
+            <Label x={82} y={n.y} text={n.label} anchor="middle" />
           </g>
         ))}
         {outputs.map((n, i) => (
           <g key={`out-${i}`}>
-            <Node x={420} y={n.y} />
-            <Label x={538} y={n.y} text={n.label} anchor="end" />
+            <Node x={405} y={n.y} />
+            <Label x={478} y={n.y} text={n.label} anchor="middle" />
           </g>
         ))}
 
@@ -145,19 +145,19 @@ export default function ValorizationFlow({ dict }: { dict: FlowDict }) {
         </text>
         <text
           x={cx}
-          y={cy + 8}
+          y={cy + 9}
           textAnchor="middle"
-          className="fill-husk"
-          style={{ fontFamily: 'var(--font-mono)', fontSize: 10.5 }}
+          className="fill-husk text-[12.5px] lg:text-[10.5px]"
+          style={{ fontFamily: 'var(--font-mono)' }}
         >
           {dict.statLabel}
         </text>
         <text
           x={cx}
-          y={cy + 28}
+          y={cy + 30}
           textAnchor="middle"
-          className="fill-husk/70"
-          style={{ fontFamily: 'var(--font-mono)', fontSize: 9.5, letterSpacing: '0.08em' }}
+          className="fill-husk/70 text-[11px] lg:text-[9.5px]"
+          style={{ fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}
         >
           {dict.process.toUpperCase()}
         </text>
