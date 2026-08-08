@@ -1,7 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useInView, useMotionValue, useTransform, animate, motion } from 'framer-motion';
+// Se importa desde "motion" (el paquete declarado en package.json). No se
+// debe importar "framer-motion" directamente: llega solo como dependencia
+// de motion, y declararlo aparte rompe el arbol de dependencias del deploy.
+import { useInView, useMotionValue, useTransform, animate, motion } from 'motion/react';
 
 interface AnimatedStatProps {
   value: number;
