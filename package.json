@@ -19,7 +19,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@google/genai": "^1.17.0",
+    "@google/genai": "^2.11.0",
     "@hookform/resolvers": "^5.2.1",
     "@opennextjs/cloudflare": "^1.17.3",
     "autoprefixer": "^10.4.21",
