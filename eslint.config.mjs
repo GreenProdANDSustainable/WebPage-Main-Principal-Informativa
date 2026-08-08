@@ -13,6 +13,7 @@ export default defineConfig([
   },
   prettier,
   {
-    ignores: ['coverage/**'],
+    // Artefactos de compilación: no son código fuente nuestro.
+    ignores: ['coverage/**', '.next/**', '.open-next/**', '.wrangler/**'],
   },
 ]);

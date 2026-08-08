@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import ValorizationFlow from './ValorizationFlow';
 import AmbientSpores from '@/components/shared/AmbientSpores';
+import KineticHeading from '@/components/shared/KineticHeading';
 import { ease, stagger, staggerChild } from '@/lib/motion';
 
 interface HeroSectionProps {
@@ -65,13 +66,13 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
             >
               ECONOMÍA CIRCULAR AGROINDUSTRIAL
             </motion.p>
-            <motion.h1
-              variants={staggerChild}
+            <KineticHeading
+              as="h1"
+              text={hero.title}
+              highlight={hero.titleHighlight}
+              delay={0.15}
               className="font-display text-paper mb-6 text-4xl leading-[1.08] font-semibold tracking-tight md:text-5xl lg:text-6xl"
-            >
-              {hero.title} <br />
-              <span className="text-gp-green">{hero.titleHighlight}</span>
-            </motion.h1>
+            />
             <motion.p
               variants={staggerChild}
               className="text-husk/75 mx-auto mb-10 max-w-xl text-lg lg:mx-0"
