@@ -4,6 +4,8 @@ import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
+import GrowthProgress from '@/components/shared/GrowthProgress';
+import MotionProvider from '@/components/shared/MotionProvider';
 import { getDictionary } from '@/get-dictionary';
 
 const selawik = localFont({
@@ -49,10 +51,13 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${selawik.variable} scroll-smooth`}>
       <body className="selection:bg-gp-green flex min-h-screen flex-col bg-slate-50 font-sans text-slate-900 antialiased selection:text-white">
-        <Navbar dictionary={dictionary} />
-        <main className="flex-1 pt-20">{children}</main>
-        <Footer dictionary={dictionary} lang={lang} />
-        <WhatsAppButton />
+        <MotionProvider>
+          <Navbar dictionary={dictionary} />
+          <main className="flex-1 pt-20">{children}</main>
+          <Footer dictionary={dictionary} lang={lang} />
+          <GrowthProgress />
+          <WhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   );

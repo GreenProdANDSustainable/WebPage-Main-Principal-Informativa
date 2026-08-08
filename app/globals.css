@@ -26,3 +26,21 @@
   --font-mono: 'Leelawadee UI', var(--font-selawik), ui-monospace, monospace;
   --font-display: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Red de seguridad de accesibilidad: si el sistema pide menos movimiento,
+   nada se anima. Los componentes ya lo contemplan uno a uno; esto cubre
+   además animaciones puramente de CSS y el desplazamiento suave. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
