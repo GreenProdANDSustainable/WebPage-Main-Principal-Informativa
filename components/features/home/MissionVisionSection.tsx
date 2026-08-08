@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Target, Eye } from 'lucide-react';
 import {
   motion,
@@ -10,63 +9,41 @@ import {
   useSpring,
 } from 'motion/react';
 import KineticHeading from '@/components/shared/KineticHeading';
+import VideoBackdrop from '@/components/shared/VideoBackdrop';
 import { ease, viewport } from '@/lib/motion';
 
 interface MissionVisionSectionProps {
   dict: any;
 }
 
-type PanelId = 'mission' | 'vision';
-
 /**
- * Misión y Visión como dos paneles vivos.
+ * Misión y Visión sobre el campo en movimiento.
  *
- * En vez de dos tarjetas quietas, cada panel reacciona: se ensancha al
- * acercarse el cursor, un foco de luz sigue el puntero y el aro del icono
- * se expande. En el celular se apilan y se abren al tocarlos, así que la
- * interacción existe en ambos mundos.
+ * Detrás corre una secuencia agrícola —brote, riego, cosecha— que enseña
+ * hacia dónde apunta la empresa. Encima, dos tarjetas independientes de
+ * vidrio: cada una vive por su cuenta, se levanta al acercarse el cursor
+ * y deja pasar el video por debajo. El contraste entre el fondo vivo y la
+ * quietud de las tarjetas es lo que genera el impacto.
  */
 export default function MissionVisionSection({ dict }: MissionVisionSectionProps) {
   const d = dict.Home.missionVision;
-  const reduced = useReducedMotion();
-  const [active, setActive] = useState<PanelId | null>(null);
 
   const panels = [
-    {
-      id: 'mission' as PanelId,
-      index: '01',
-      Icon: Target,
-      title: d.mission.title,
-      text: d.mission.text,
-      base: 'bg-gp-blue',
-      glow: 'rgba(255,255,255,0.22)',
-    },
-    {
-      id: 'vision' as PanelId,
-      index: '02',
-      Icon: Eye,
-      title: d.vision.title,
-      text: d.vision.text,
-      base: 'bg-gp-green',
-      glow: 'rgba(255,255,255,0.26)',
-    },
+    { index: '01', Icon: Target, title: d.mission.title, text: d.mission.text },
+    { index: '02', Icon: Eye, title: d.vision.title, text: d.vision.text },
   ];
 
   return (
-    <section className="bg-paper relative overflow-hidden py-20 md:py-28">
-      {/* Atmósfera: masas de color que se desplazan muy despacio. */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <motion.div
-          className="bg-gp-green/10 absolute -top-40 -right-40 h-96 w-96 rounded-full blur-3xl"
-          animate={reduced ? undefined : { scale: [1, 1.15, 1], x: [0, -24, 0], y: [0, 18, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="bg-gp-blue/10 absolute -bottom-40 -left-40 h-96 w-96 rounded-full blur-3xl"
-          animate={reduced ? undefined : { scale: [1, 1.18, 1], x: [0, 28, 0], y: [0, -16, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-        />
-      </div>
+    <section className="bg-ink relative isolate overflow-hidden py-24 md:py-32">
+      <VideoBackdrop
+        sources={[
+          '/videos/agro-1-germinacion.mp4',
+          '/videos/agro-2-riego.mp4',
+          '/videos/agro-3-cosecha.mp4',
+        ]}
+        poster="/images/ProductosServicios/Banner.jpg"
+        posterAlt=""
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-14 text-center">
@@ -82,10 +59,10 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           <KineticHeading
             text={d.title}
             as="h2"
-            className="font-display text-ink mb-4 text-4xl font-semibold tracking-tight md:text-6xl"
+            className="font-display text-paper mb-4 text-4xl font-semibold tracking-tight md:text-6xl"
           />
           <motion.p
-            className="text-ink/60 mx-auto max-w-2xl text-lg"
+            className="text-husk/75 mx-auto max-w-2xl text-lg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={viewport}
@@ -95,17 +72,9 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           </motion.p>
         </div>
 
-        <div className="flex flex-col gap-5 lg:flex-row lg:gap-6">
-          {panels.map((panel) => (
-            <Panel
-              key={panel.id}
-              {...panel}
-              isActive={active === panel.id}
-              isDimmed={active !== null && active !== panel.id}
-              onActivate={() => setActive(panel.id)}
-              onRelease={() => setActive(null)}
-              reduced={!!reduced}
-            />
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+          {panels.map((panel, i) => (
+            <GlassPanel key={panel.index} {...panel} delay={i * 0.15} />
           ))}
         </div>
       </div>
@@ -113,52 +82,38 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
   );
 }
 
-function Panel({
+function GlassPanel({
   index,
   Icon,
   title,
   text,
-  base,
-  glow,
-  isActive,
-  isDimmed,
-  onActivate,
-  onRelease,
-  reduced,
+  delay,
 }: {
   index: string;
   Icon: typeof Target;
   title: string;
   text: string;
-  base: string;
-  glow: string;
-  isActive: boolean;
-  isDimmed: boolean;
-  onActivate: () => void;
-  onRelease: () => void;
-  reduced: boolean;
+  delay: number;
 }) {
-  // Foco de luz que persigue al cursor dentro del panel.
+  const reduced = useReducedMotion();
+
+  // Reflejo que sigue al cursor sobre el cristal.
   const mx = useMotionValue(50);
   const my = useMotionValue(50);
   const sx = useSpring(mx, { stiffness: 150, damping: 25 });
   const sy = useSpring(my, { stiffness: 150, damping: 25 });
-  const spotlight = useMotionTemplate`radial-gradient(420px circle at ${sx}% ${sy}%, ${glow}, transparent 65%)`;
+  const sheen = useMotionTemplate`radial-gradient(460px circle at ${sx}% ${sy}%, rgba(109,190,81,0.28), transparent 62%)`;
 
   return (
-    <motion.div
-      className="group relative flex-1 overflow-hidden rounded-[28px] shadow-xl"
-      initial={{ opacity: 0, y: 32 }}
+    <motion.article
+      className="group border-paper/15 relative overflow-hidden rounded-[28px] border bg-white/10 shadow-2xl backdrop-blur-xl"
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
-      animate={{
-        flexGrow: reduced ? 1 : isActive ? 1.45 : isDimmed ? 0.8 : 1,
-        opacity: isDimmed ? 0.86 : 1,
-      }}
+      whileHover={reduced ? undefined : { y: -8 }}
       transition={{
-        opacity: { duration: 0.4 },
-        y: { duration: 0.7, ease: ease.growth },
-        flexGrow: { duration: 0.6, ease: ease.growth },
+        opacity: { duration: 0.7, delay, ease: ease.growth },
+        y: { duration: 0.7, delay, ease: ease.growth },
       }}
       onPointerMove={(e) => {
         if (reduced || e.pointerType !== 'mouse') return;
@@ -166,50 +121,28 @@ function Panel({
         mx.set(((e.clientX - r.left) / r.width) * 100);
         my.set(((e.clientY - r.top) / r.height) * 100);
       }}
-      onPointerEnter={(e) => {
-        if (e.pointerType === 'mouse') onActivate();
-      }}
-      onPointerLeave={(e) => {
-        if (e.pointerType === 'mouse') onRelease();
-      }}
-      onClick={() => (isActive ? onRelease() : onActivate())}
     >
-      <div className={`absolute inset-0 ${base}`} />
-      {!reduced && <motion.div className="absolute inset-0" style={{ background: spotlight }} />}
+      {!reduced && (
+        <motion.div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{ background: sheen }}
+        />
+      )}
 
-      {/* Trama diagonal muy tenue: textura, no ruido. */}
-      <div
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 1px, transparent 12px)',
-        }}
-      />
+      {/* Filo superior iluminado: da el aspecto de cristal biselado. */}
+      <span className="via-gp-green/70 pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent" />
 
-      <div className="relative z-10 flex h-full flex-col p-8 md:p-12">
-        <div className="mb-7 flex items-center justify-between">
-          <div className="relative">
-            <motion.div
-              className="flex h-[74px] w-[74px] items-center justify-center rounded-2xl border border-white/30 bg-white/20 backdrop-blur-sm"
-              animate={{
-                rotate: isActive && !reduced ? 6 : 0,
-                scale: isActive && !reduced ? 1.06 : 1,
-              }}
-              transition={{ duration: 0.5, ease: ease.sprout }}
-            >
-              <Icon className="h-9 w-9 text-white" />
-            </motion.div>
-            {/* Aro que se expande al activar el panel. */}
-            {!reduced && (
-              <motion.span
-                className="pointer-events-none absolute inset-0 rounded-2xl border border-white/50"
-                animate={isActive ? { scale: 1.35, opacity: 0 } : { scale: 1, opacity: 0 }}
-                transition={{ duration: 0.85, ease: 'easeOut' }}
-              />
-            )}
-          </div>
+      <div className="relative z-10 flex h-full flex-col p-8 md:p-11">
+        <div className="mb-7 flex items-start justify-between">
+          <motion.span
+            className="border-paper/25 flex h-[70px] w-[70px] items-center justify-center rounded-2xl border bg-white/15 backdrop-blur-sm"
+            whileHover={reduced ? undefined : { rotate: 6, scale: 1.07 }}
+            transition={{ duration: 0.45, ease: ease.sprout }}
+          >
+            <Icon className="text-gp-green h-9 w-9" />
+          </motion.span>
           <span
-            className="text-6xl font-bold text-white/15 md:text-7xl"
+            className="text-paper/20 text-6xl font-bold md:text-7xl"
             style={{ fontFamily: 'var(--font-mono)' }}
             aria-hidden="true"
           >
@@ -217,16 +150,11 @@ function Panel({
           </span>
         </div>
 
-        <h3 className="font-display mb-5 text-2xl font-semibold text-white md:text-3xl">{title}</h3>
-        <p className="max-w-2xl text-lg leading-relaxed text-white/90">{text}</p>
+        <h3 className="font-display text-paper mb-4 text-2xl font-semibold md:text-3xl">{title}</h3>
+        <p className="text-husk/85 text-base leading-relaxed md:text-lg">{text}</p>
 
-        {/* Barra que crece al activar: señal de que el panel está vivo. */}
-        <motion.span
-          className="mt-8 block h-[3px] rounded-full bg-white/70"
-          animate={{ width: isActive && !reduced ? 96 : 40 }}
-          transition={{ duration: 0.5, ease: ease.growth }}
-        />
+        <span className="bg-gp-green mt-8 block h-[3px] w-10 rounded-full transition-all duration-500 group-hover:w-24" />
       </div>
-    </motion.div>
+    </motion.article>
   );
 }

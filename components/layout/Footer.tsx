@@ -48,6 +48,11 @@ export default function Footer({ dictionary, lang }: FooterProps) {
     { label: d.contact_label, href: `/${lang}/contacto` },
   ];
 
+  // Misma ubicación que el mapa de la página de contacto.
+  const mapsUrl =
+    'https://www.google.com/maps/search/?api=1&query=' +
+    encodeURIComponent('AA.HH. Tres Estrellas, Nuevo Chimbote, Áncash, Perú');
+
   const categories = [
     { label: d.bioinsumos, href: `/${lang}/catalogo#bioinsumos` },
     { label: d.conservas, href: `/${lang}/catalogo#conservas` },
@@ -139,17 +144,42 @@ export default function Footer({ dictionary, lang }: FooterProps) {
               {d.contact_title}
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="text-gp-green mt-0.5 h-5 w-5 shrink-0" />
-                <span className="text-paper/70 text-sm">{d.address}</span>
+              {/* La dirección abre el mapa; el teléfono y el correo se
+                  pueden pulsar directamente desde el celular. */}
+              <li>
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group hover:text-paper flex items-start gap-3 transition-colors"
+                >
+                  <MapPin className="text-gp-green mt-0.5 h-5 w-5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span className="text-paper/70 group-hover:text-paper text-sm underline-offset-4 transition-colors group-hover:underline">
+                    {d.address}
+                  </span>
+                </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="text-gp-green h-5 w-5 shrink-0" />
-                <span className="text-paper/70 text-sm">{d.phone}</span>
+              <li>
+                <a
+                  href={`tel:${d.phone.replace(/\s+/g, '')}`}
+                  className="group flex items-center gap-3 transition-colors"
+                >
+                  <Phone className="text-gp-green h-5 w-5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span className="text-paper/70 group-hover:text-paper text-sm underline-offset-4 transition-colors group-hover:underline">
+                    {d.phone}
+                  </span>
+                </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="text-gp-green h-5 w-5 shrink-0" />
-                <span className="text-paper/70 text-sm">{d.email}</span>
+              <li>
+                <a
+                  href={`mailto:${d.email}`}
+                  className="group flex items-center gap-3 transition-colors"
+                >
+                  <Mail className="text-gp-green h-5 w-5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span className="text-paper/70 group-hover:text-paper text-sm underline-offset-4 transition-colors group-hover:underline">
+                    {d.email}
+                  </span>
+                </a>
               </li>
             </ul>
           </div>

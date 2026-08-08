@@ -31,8 +31,6 @@ type Dictionary = {
     Ceprobio_desc: string;
     planta: string;
     planta_desc: string;
-    carniprod: string;
-    carniprod_desc: string;
     proveeduria: string;
     proveeduria_desc: string;
     proyectos: string;
@@ -61,7 +59,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
         { name: d.balik, desc: d.balik_desc, href: '/productos-y-servicios/balik' },
         { name: d.Ceprobio, desc: d.Ceprobio_desc, href: '/productos-y-servicios/ceprobio' },
         { name: d.planta, desc: d.planta_desc, href: '/productos-y-servicios/planta-tratamiento' },
-        { name: d.carniprod, desc: d.carniprod_desc, href: '/productos-y-servicios/carniprod' },
       ],
     },
     {

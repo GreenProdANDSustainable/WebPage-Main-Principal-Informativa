@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Beef, Droplets, Fish, GraduationCap, Sprout, Truck } from 'lucide-react';
+import { ArrowUpRight, Droplets, Fish, GraduationCap, Sprout, Truck } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { LucideIcon } from 'lucide-react';
 import KineticHeading from '@/components/shared/KineticHeading';
@@ -13,12 +14,12 @@ interface ServicesBentoProps {
 }
 
 /**
- * Las seis líneas de negocio en retícula asimétrica (bento).
+ * Las líneas de negocio en retícula asimétrica (bento), cada una con una
+ * imagen que muestra de qué va.
  *
- * Cada bloque tiene un peso distinto según su papel en la empresa, así que
- * la vista no cae en el patrón plano de "seis tarjetas iguales": recorre.
- * Al pasar el cursor, la tarjeta se eleva y una veladura de color barre el
- * fondo, que es lo que da la sensación de material y no de plantilla.
+ * El peso de cada bloque responde a su papel en la empresa, así la vista
+ * recorre en vez de barrer cinco tarjetas iguales. Al pasar el cursor la
+ * foto se acerca y el velo se abre: la tarjeta se siente como una ventana.
  */
 export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
   const d = dict.Navbar;
@@ -30,8 +31,7 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
     desc: string;
     Icon: LucideIcon;
     span: string;
-    tone: string;
-    accent: string;
+    image: string;
   }[] = [
     {
       slug: 'balik',
@@ -39,53 +39,39 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
       desc: d.balik_desc,
       Icon: Fish,
       span: 'md:col-span-2 lg:col-span-2 lg:row-span-2',
-      tone: 'from-gp-blue/95 to-gp-blue',
-      accent: 'text-white',
+      image: '/images/servicios/balik.webp',
     },
     {
       slug: 'ceprobio',
       title: d.Ceprobio,
       desc: d.Ceprobio_desc,
       Icon: Sprout,
-      span: 'lg:col-span-2',
-      tone: 'from-gp-green/95 to-gp-green',
-      accent: 'text-white',
+      span: 'md:col-span-2 lg:col-span-2',
+      image: '/images/servicios/ceprobio.webp',
     },
     {
       slug: 'planta-tratamiento',
       title: d.planta,
       desc: d.planta_desc,
       Icon: Droplets,
-      span: 'lg:col-span-1',
-      tone: 'from-ink-soft to-ink',
-      accent: 'text-husk',
-    },
-    {
-      slug: 'carniprod',
-      title: d.carniprod,
-      desc: d.carniprod_desc,
-      Icon: Beef,
-      span: 'lg:col-span-1',
-      tone: 'from-ink-soft to-ink',
-      accent: 'text-husk',
+      span: 'md:col-span-2 lg:col-span-2',
+      image: '/images/servicios/planta-tratamiento.webp',
     },
     {
       slug: 'proveeduria',
       title: d.proveeduria,
       desc: d.proveeduria_desc,
       Icon: Truck,
-      span: 'lg:col-span-2',
-      tone: 'from-ink to-ink-soft',
-      accent: 'text-husk',
+      span: 'md:col-span-1 lg:col-span-2',
+      image: '/images/servicios/proveeduria.webp',
     },
     {
       slug: 'proyectos',
       title: d.proyectos,
       desc: d.proyectos_desc,
       Icon: GraduationCap,
-      span: 'md:col-span-2 lg:col-span-2',
-      tone: 'from-gp-green/90 to-gp-blue/90',
-      accent: 'text-white',
+      span: 'md:col-span-1 lg:col-span-2',
+      image: '/images/servicios/proyectos.webp',
     },
   ];
 
@@ -110,15 +96,15 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
           />
         </div>
 
-        <div className="grid auto-rows-[minmax(190px,auto)] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ slug, title, desc, Icon, span, tone, accent }, i) => (
+        <div className="grid auto-rows-[minmax(210px,auto)] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {items.map(({ slug, title, desc, Icon, span, image }, i) => (
             <motion.div
               key={slug}
               className={span}
               initial={{ opacity: 0, y: 26 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: ease.growth }}
+              transition={{ duration: 0.6, delay: i * 0.09, ease: ease.growth }}
             >
               <motion.div
                 className="h-full"
@@ -127,25 +113,31 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
               >
                 <Link
                   href={`/${lang}/productos-y-servicios/${slug}`}
-                  className={`group border-line-warm/15 focus-visible:ring-gp-green relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br p-7 ${tone} focus-visible:ring-2 focus-visible:outline-none`}
+                  className="group border-line-warm/15 focus-visible:ring-gp-green relative flex h-full flex-col justify-end overflow-hidden rounded-3xl border p-7 focus-visible:ring-2 focus-visible:outline-none"
                 >
-                  {/* Veladura que barre la tarjeta al pasar el cursor. */}
-                  <span className="pointer-events-none absolute inset-0 translate-y-full bg-white/10 transition-transform duration-500 ease-out group-hover:translate-y-0" />
+                  <Image
+                    src={image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
+                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"
+                  />
 
-                  <div className="relative z-10 flex items-start justify-between gap-4">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/25 bg-white/15 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                      <Icon className={`h-6 w-6 ${accent}`} />
+                  {/* Velo: la foto acompaña, el texto se lee siempre. */}
+                  <span className="from-ink/95 via-ink/70 absolute inset-0 bg-gradient-to-t to-transparent transition-opacity duration-500 group-hover:opacity-90" />
+
+                  <div className="pointer-events-none absolute inset-x-7 top-7 z-10 flex items-start justify-between">
+                    <span className="border-paper/25 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border bg-white/15 backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                      <Icon className="text-paper h-6 w-6" />
                     </span>
-                    <ArrowUpRight
-                      className={`h-5 w-5 shrink-0 opacity-45 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100 ${accent}`}
-                    />
+                    <ArrowUpRight className="text-paper h-5 w-5 shrink-0 opacity-50 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100" />
                   </div>
 
-                  <div className="relative z-10 mt-8">
-                    <h3 className={`font-display mb-2 text-xl font-semibold md:text-2xl ${accent}`}>
+                  <div className="relative z-10 mt-24">
+                    <h3 className="font-display text-paper mb-2 text-xl font-semibold md:text-2xl">
                       {title}
                     </h3>
-                    <p className={`text-sm leading-relaxed opacity-75 ${accent}`}>{desc}</p>
+                    <p className="text-husk/80 text-sm leading-relaxed">{desc}</p>
                   </div>
                 </Link>
               </motion.div>
