@@ -40,7 +40,12 @@
             "emailLabel": "Email",
             "emailPlaceholder": "john@company.com",
             "subject": "Subject",
-            "subjectOptions": ["Bio-inputs Inquiry", "Preserves Inquiry", "Environmental Projects", "Other"],
+            "subjectOptions": [
+                "Bio-inputs Inquiry",
+                "Preserves Inquiry",
+                "Environmental Projects",
+                "Other"
+            ],
             "message": "Message",
             "messagePlaceholder": "How can we help you?",
             "submitButton": "Send Message",
@@ -85,11 +90,23 @@
                 "responsibilityDesc": "Transparency, ethics, and fair payment in all our business relationships and with fishermen."
             },
             "agriculture": "Sustainable Agriculture",
-            "agricultureItems": ["Organic fertilizers and biocontrol agents (gp-biol, gp-trich)", "Soil and crop studies", "Technical advice on biostimulants"],
+            "agricultureItems": [
+                "Organic fertilizers and biocontrol agents (gp-biol, gp-trich)",
+                "Soil and crop studies",
+                "Technical advice on biostimulants"
+            ],
             "fishing": "Responsible Fishing",
-            "fishingItems": ["Refrigerated fresh fish with traceability", "\"My fish\" line: ready-to-consume products", "Training for fishermen guilds"],
+            "fishingItems": [
+                "Refrigerated fresh fish with traceability",
+                "\"My fish\" line: ready-to-consume products",
+                "Training for fishermen guilds"
+            ],
             "consulting": "Integral Consulting",
-            "consultingItems": ["Strengthening productive capacities", "Business plan development", "Application to competitive funds"]
+            "consultingItems": [
+                "Strengthening productive capacities",
+                "Business plan development",
+                "Application to competitive funds"
+            ]
         }
     },
     "Navbar": {
@@ -115,8 +132,6 @@
         "Ceprobio_desc": "Bio-inputs production.",
         "planta": "Treatment Plant",
         "planta_desc": "Fish hydrolysate, potassium soap, agricultural oil.",
-        "carniprod": "Carniprod",
-        "carniprod_desc": "Meat products production.",
         "proveeduria": "Sustainable Procurement",
         "proveeduria_desc": "Sustainable service lines.",
         "proyectos": "Sustainable Projects",
@@ -150,7 +165,6 @@
             "balikImageAlt": "Premium canned fish and fresh seafood products with complete traceability",
             "ceprobioImageAlt": "Organic agricultural bio-inputs and sustainable fertilizers",
             "plantaImageAlt": "Fish hydrolysate and agricultural oils from circular economy processes",
-            "carniprodImageAlt": "Certified processed meat products for industrial sector",
             "proveeduriaImageAlt": "Sustainable supply chain and responsible procurement services",
             "proyectosImageAlt": "Sustainable business consulting and training programs"
         }
@@ -264,10 +278,6 @@
                 "planta": {
                     "title": "Treatment Plant",
                     "description": "Fish hydrolysate and agricultural oils through certified circular economy processes."
-                },
-                "carniprod": {
-                    "title": "Carniprod",
-                    "description": "Processed meat products with certified standards for the industrial sector."
                 },
                 "proveeduria": {
                     "title": "Sustainable Procurement",

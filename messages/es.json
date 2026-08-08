@@ -40,7 +40,12 @@
             "emailLabel": "Correo Electrónico",
             "emailPlaceholder": "juan@empresa.com",
             "subject": "Asunto",
-            "subjectOptions": ["Consulta sobre Bioinsumos", "Consulta sobre Conservas", "Proyectos Ambientales", "Otro"],
+            "subjectOptions": [
+                "Consulta sobre Bioinsumos",
+                "Consulta sobre Conservas",
+                "Proyectos Ambientales",
+                "Otro"
+            ],
             "message": "Mensaje",
             "messagePlaceholder": "¿En qué podemos ayudarte?",
             "submitButton": "Enviar Mensaje",
@@ -85,11 +90,23 @@
                 "responsibilityDesc": "Transparencia, ética y pago justo en todas nuestras relaciones comerciales y con pescadores."
             },
             "agriculture": "Agricultura Sostenible",
-            "agricultureItems": ["Abonos orgánicos y biocontroladores (gp-biol, gp-trich)", "Estudio de suelos y cultivos agrícolas", "Asesoramiento técnico en bioestimulantes"],
+            "agricultureItems": [
+                "Abonos orgánicos y biocontroladores (gp-biol, gp-trich)",
+                "Estudio de suelos y cultivos agrícolas",
+                "Asesoramiento técnico en bioestimulantes"
+            ],
             "fishing": "Pesca Responsable",
-            "fishingItems": ["Pescado fresco refrigerado con trazabilidad", "Línea \"mi pez\": productos listos para consumir", "Formación a gremios de pescadores"],
+            "fishingItems": [
+                "Pescado fresco refrigerado con trazabilidad",
+                "Línea \"mi pez\": productos listos para consumir",
+                "Formación a gremios de pescadores"
+            ],
             "consulting": "Consultoría Integral",
-            "consultingItems": ["Fortalecimiento de capacidades productivas", "Elaboración de planes de negocio", "Postulación a fondos concursables"]
+            "consultingItems": [
+                "Fortalecimiento de capacidades productivas",
+                "Elaboración de planes de negocio",
+                "Postulación a fondos concursables"
+            ]
         }
     },
     "Navbar": {
@@ -115,8 +132,6 @@
         "Ceprobio_desc": "Producción de bioinsumos.",
         "planta": "Planta de Tratamiento",
         "planta_desc": "Hidrolizado de pescado, jabón potásico, aceite agrícola.",
-        "carniprod": "Carniprod",
-        "carniprod_desc": "Producción de productos cárnicos.",
         "proveeduria": "Proveeduría Sostenible",
         "proveeduria_desc": "Líneas de servicio sostenibles.",
         "proyectos": "Proyectos Sostenibles",
@@ -150,7 +165,6 @@
             "balikImageAlt": "Conservas premium de pescado y productos del mar frescos con trazabilidad completa",
             "ceprobioImageAlt": "Bioinsumos agrícolas orgánicos y fertilizantes sostenibles",
             "plantaImageAlt": "Hidrolizado de pescado y aceites agrícolas de procesos de economía circular",
-            "carniprodImageAlt": "Productos cárnicos procesados certificados para sector industrial",
             "proveeduriaImageAlt": "Cadena de suministro sostenible y servicios de proveeduría responsable",
             "proyectosImageAlt": "Consultoría empresarial sostenible y programas de capacitación"
         }
@@ -264,10 +278,6 @@
                 "planta": {
                     "title": "Planta de Tratamiento",
                     "description": "Hidrolizado de pescado y aceites agrícolas mediante economía circular certificada."
-                },
-                "carniprod": {
-                    "title": "Carniprod",
-                    "description": "Productos cárnicos procesados con estándares certificados para sector industrial."
                 },
                 "proveeduria": {
                     "title": "Proveeduría Sostenible",
