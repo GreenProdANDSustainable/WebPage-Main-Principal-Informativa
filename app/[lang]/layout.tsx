@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import GrowthProgress from '@/components/shared/GrowthProgress';
 import MotionProvider from '@/components/shared/MotionProvider';
+import PageTransition from '@/components/shared/PageTransition';
 import { getDictionary } from '@/get-dictionary';
 
 const selawik = localFont({
@@ -26,7 +27,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  const dictionary = await getDictionary(lang as 'es' | 'en');
+  const dictionary = await getDictionary(lang);
 
   return {
     title: dictionary.Metadata.title,
@@ -46,14 +47,16 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
-  const dictionary = await getDictionary(lang as 'es' | 'en');
+  const dictionary = await getDictionary(lang);
 
   return (
     <html lang={lang} className={`${selawik.variable} scroll-smooth`}>
       <body className="selection:bg-gp-green flex min-h-screen flex-col bg-slate-50 font-sans text-slate-900 antialiased selection:text-white">
         <MotionProvider>
           <Navbar dictionary={dictionary} />
-          <main className="flex-1 pt-20">{children}</main>
+          <main className="flex-1 pt-20">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer dictionary={dictionary} lang={lang} />
           <GrowthProgress />
           <WhatsAppButton />

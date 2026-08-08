@@ -48,9 +48,10 @@ export default async function ProyectosSosteniblesPage({
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <Link
           href={`/${lang}/productos-y-servicios`}
-          className="text-gp-blue hover:text-gp-green mb-12 inline-flex items-center text-sm font-semibold transition-colors"
+          className="text-gp-blue hover:text-gp-green group mb-12 inline-flex items-center text-sm font-semibold transition-colors"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" /> {d.products_services_title}
+          <ArrowLeft className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />{' '}
+          {d.products_services_title}
         </Link>
         <div className="mb-16 border-b border-slate-200 pb-8">
           <div className="mb-6 inline-block rounded-full bg-slate-200 px-4 py-1.5 text-sm font-bold tracking-wide text-slate-700 uppercase">
