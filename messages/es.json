@@ -318,8 +318,8 @@
             }
         },
         "missionVision": {
-            "essence_title": "Nuestra Esencia",
-            "title": "Misión y Visión",
+            "essence_title": "",
+            "title": "Nosotros",
             "subtitle": "Los pilares que guían nuestro compromiso con la sostenibilidad y el desarrollo productivo",
             "mission": {
                 "title": "Nuestra Misión",
