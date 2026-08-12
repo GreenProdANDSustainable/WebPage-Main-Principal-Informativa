@@ -185,12 +185,12 @@ export default function Navbar({ dictionary }: NavbarProps) {
         className={`fixed top-0 z-50 w-full transition-all duration-700 ${
           isSolid
             ? 'bg-paper/90 border-line-warm/50 border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.35)] backdrop-blur-xl'
-            : 'bg-transparent'
+            : 'bg-gp-blue shadow-[0_10px_40px_-20px_rgba(20,23,15,0.35)]'
         }`}
         onMouseLeave={handleMouseLeave}
       >
         <div
-          className={`hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex ${isSolid ? 'bg-husk/30 text-ink/70' : 'text-paper bg-black/20 backdrop-blur-sm'}`}
+          className={`hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex ${isSolid ? 'bg-husk/30 text-ink/70' : 'text-paper bg-black/10'}`}
         >
           <div className="flex items-center gap-6">
             <Link
@@ -220,7 +220,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               className={`relative transition-all duration-700 ${isSolid ? 'h-12 w-32 md:h-14 md:w-36' : 'h-16 w-40 md:h-20 md:w-48'}`}
             >
               <Image
-                src={transparentMode ? '/greenprod blanco png.png' : '/greenprod png.png'}
+                src="/greenprod png.png"
                 alt="Green Prod & Sustainable S.A.C Logo"
                 fill
                 className="object-contain"
