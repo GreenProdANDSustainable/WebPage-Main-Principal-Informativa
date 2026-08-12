@@ -28,7 +28,11 @@ export default function HeroSection({ dict }: HeroSectionProps) {
   const intro = stagger(0.1, 0.04);
 
   return (
-    <section id="inicio" ref={sectionRef} className="bg-ink relative overflow-hidden">
+    <section
+      id="inicio"
+      ref={sectionRef}
+      className="bg-ink relative flex min-h-[75vh] items-end overflow-hidden lg:min-h-[85vh]"
+    >
       {/* Video de fondo: hojas de palta en movimiento, tratado como marca de agua sutil */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -46,7 +50,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         <AmbientSpores />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div className="relative z-10 w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <motion.div
           className="max-w-md"
           variants={intro}
