@@ -2,7 +2,7 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `a5fede8`.
+> Última actualización: commit `6016a3d`.
 
 ---
 
@@ -79,17 +79,22 @@ El lenguaje de animación nace del rubro: crecimiento orgánico, flujo y ciclo.
 ## 4. Estructura del inicio (`app/[lang]/page.tsx`)
 
 ```
-Hero (titular cinético + diagrama 95% + polen + parallax)
-  ↓ Marquee (cinta con lo que hace la empresa)
-  ↓ ServicesBento (5 líneas de negocio, retícula asimétrica con fotos)
-  ↓ MissionVision (video agrícola de fondo + 2 tarjetas de vidrio independientes)
-  ↓ SustainabilityHighlight (foto con parallax + lista)
-  ↓ Partners · News · Video (los tres siguen como "Próximamente")
+Hero id="inicio"          (titular cinético + video de fondo -palta/lluvia- + polen + parallax)
+  ↓ Marquee                (cinta con lo que hace la empresa)
+  ↓ ServicesBento id="soluciones"      (5 líneas de negocio, retícula asimétrica con fotos)
+  ↓ MissionVision id="mision-vision"   (video agrícola de fondo + 2 tarjetas de vidrio)
+  ↓ SustainabilityHighlight id="compromiso"  (foto con parallax + lista)
+  ↓ Partners id="aliados" · News id="casos-exito" · Video (los tres siguen "Próximamente")
 ```
 
-**`ValorizationFlow`** (el diagrama del 95%) es la pieza emblema: se narra sola
-—late el núcleo, entran los subproductos, se trazan los cauces, salen los
-recursos—, el 95 % sube desde cero y una órbita punteada gira lento.
+Los `id` existen porque el menú "Inicio" del navbar salta a cada sección con
+anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
+`app/globals.css` para que el navbar fijo no tape el título al llegar.
+
+> `ValorizationFlow` (el diagrama del 95% que tenía el hero) **se eliminó**
+> a pedido del usuario junto con el rediseño del navbar (commit
+> `bea14c4`). El texto del hero conserva la mención al 95% de
+> aprovechamiento; solo se quitó la pieza visual.
 
 ---
 
@@ -139,6 +144,45 @@ pidió menos movimiento; en ese caso queda la foto de portada.
 
 Línea **discontinuada**. Se eliminó por completo: tarjeta, página, menú, logo y
 claves de los diccionarios. No reintroducir.
+
+### Navbar ampliado y carrito de compras (commit `bea14c4`)
+
+El usuario pidió replicar un mockup de referencia: navbar con mega-menú,
+fondo verde tipo "pastilla" al pasar el mouse por cualquier link o
+dropdown (`pillClass` en `Navbar.tsx`), y un carrito de compras.
+
+- **Menú**: Inicio (anclas al home), Nosotros, Productos y Servicios,
+  Sostenibilidad (ahora también dropdown, con Indicadores de Impacto y
+  Certificaciones), Clientes, Certificaciones, Contacto.
+- **"Nuestra Capacidad"**, **"Indicadores de Impacto"** y
+  **"Certificaciones"** son secciones nuevas con el componente compartido
+  `ComingSoon` (mismo patrón punteado que ya usaban Aliados/Casos de
+  Éxito) — **a propósito no se activó** `CertificationsSection` ni
+  `ImpactStatsSection` con datos, porque esa decisión sigue pendiente
+  (ver §7) y esas cifras no se pueden inventar.
+- **Carrito** (`lib/cart-context.tsx`, `CartDrawer.tsx`,
+  `AddToCartButton.tsx`): persiste en `localStorage` vía
+  `useSyncExternalStore` (mismo patrón que `VideoBackdrop`, para no romper
+  la hidratación). Tiene botón "Agregar al carrito" en las 5 líneas reales
+  de producto/servicio (Balik, Ceprobio, Planta, Proveeduría, Proyectos).
+
+  > **Importante — el usuario pidió pago real con tarjeta, pero eso no
+  > está construido todavía.** Hoy no hay precios reales de ningún
+  > producto (las páginas siguen con Lorem ipsum) ni una pasarela de pago
+  > conectada (Culqi/MercadoPago/etc. necesitan que el usuario cree la
+  > cuenta y entregue las claves, igual que con `GEMINI_API_KEY`). Como
+  > no se pueden inventar precios, el carrito hoy cierra con **"Solicitar
+  > cotización por WhatsApp"** (arma el mensaje con los productos y
+  > cantidades). Cuando haya precios reales y una cuenta de pago, hay que
+  > reemplazar ese botón por el checkout real.
+
+### Video del hero (commit `6016a3d`)
+
+`public/videos/hero-avocado.mp4` (~11 MB, hojas de palta bajo lluvia,
+Pixabay Content License — uso comercial libre, autor
+MaliAroestiPhotography). Reemplaza la foto fija del hero vía
+`VideoBackdrop`. Se eligió la variante "tiny" de Pixabay (no la de máxima
+calidad, ~68 MB) por el público que entra desde el celular.
 
 ---
 
@@ -190,6 +234,14 @@ siempre `true`), así que:
 - [ ] Textos legales (Política de Privacidad y Términos van a `#`).
 - [ ] **Formulario de contacto**: no envía nada. Falta decidir a dónde llegan
       los mensajes.
+- [ ] **Pago real del carrito**: crear cuenta en una pasarela de pago
+      (Culqi recomendado para Perú) y dar las claves; y precios reales por
+      producto. Hasta entonces el carrito cierra por WhatsApp (ver §5).
+- [ ] **Confirmar certificaciones reales**: `Home.certifications` en los
+      diccionarios ya lista ISO 9001, ISO 14001, HACCP y "Certificación
+      Orgánica" — hay que confirmar que la empresa las tiene de verdad
+      antes de activar `CertificationsSection` (afirmar una certificación
+      que no se tiene es un problema serio, no solo estético).
 
 ### Técnico
 
