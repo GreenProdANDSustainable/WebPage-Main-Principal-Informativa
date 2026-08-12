@@ -1,12 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import AmbientSpores from '@/components/shared/AmbientSpores';
 import KineticHeading from '@/components/shared/KineticHeading';
+import VideoBackdrop from '@/components/shared/VideoBackdrop';
 import { ease, stagger, staggerChild } from '@/lib/motion';
 
 interface HeroSectionProps {
@@ -31,20 +31,19 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
 
   return (
     <section id="inicio" ref={sectionRef} className="bg-ink relative overflow-hidden">
-      {/* Textura de fondo: campo real, tratado como marca de agua sutil */}
+      {/* Video de fondo: hojas de palta en movimiento, tratado como marca de agua sutil */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute inset-x-0 -top-[8%] h-[118%]"
           style={reduced ? undefined : { y: bgY }}
         >
-          <Image
-            src="/images/home/banners/fondo-hero.webp"
-            alt=""
-            fill
-            className="object-cover object-center opacity-[0.32]"
-            priority
+          <VideoBackdrop
+            sources={['/videos/hero-avocado.mp4']}
+            poster="/images/home/banners/fondo-hero.webp"
+            posterAlt=""
           />
         </motion.div>
+        {/* Mismo velo que llevaba la foto: mantiene el contraste para el texto. */}
         <div className="bg-ink absolute inset-0 opacity-[0.74]" />
         {/* Polen en suspensión sobre el campo. */}
         <AmbientSpores />
