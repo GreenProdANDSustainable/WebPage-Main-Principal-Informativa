@@ -8,7 +8,6 @@ import SustainabilityHighlightSection from '@/components/features/home/Sustainab
 import PartnersSection from '@/components/features/home/PartnersSection';
 import NewsSection from '@/components/features/home/NewsSection';
 import VideoSection from '@/components/features/home/VideoSection';
-import Marquee from '@/components/shared/Marquee';
 
 interface HomeProps {
   params: Promise<{
@@ -26,29 +25,9 @@ export default async function Home({ params }: HomeProps) {
 
   const testimonialsEnabled = process.env.NEXT_PUBLIC_TESTIMONIALS_ENABLED === 'true';
 
-  // Cinta con lo que la empresa realmente hace: da pulso al pasar del
-  // hero al resto de la página.
-  const nav = dict.Navbar;
-  const marqueeItems = [
-    nav.Ceprobio_desc,
-    nav.balik_desc,
-    nav.planta_desc,
-    nav.proyectos_desc,
-    'ISO 14001',
-    nav.proveeduria_desc,
-  ];
-
   return (
     <div className="-mt-20 flex min-h-screen flex-col">
       <HeroSection dict={dict} lang={lang} />
-
-      {/* Cinta transportadora: el proceso no se detiene. */}
-      <div
-        className="bg-ink-soft border-line-warm/15 text-husk/70 border-y py-4 text-sm tracking-wide"
-        style={{ fontFamily: 'var(--font-mono)' }}
-      >
-        <Marquee items={marqueeItems} duration={42} />
-      </div>
 
       <ServicesBento dict={dict} lang={lang} />
       <MissionVisionSection dict={dict} />
