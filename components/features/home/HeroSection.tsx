@@ -46,7 +46,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         <AmbientSpores />
       </div>
 
-      <div className="relative z-10 px-4 py-16 sm:px-6 lg:py-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <motion.div
           className="max-w-md"
           variants={intro}
