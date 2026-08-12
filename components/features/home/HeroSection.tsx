@@ -41,18 +41,17 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
             sources={['/videos/hero-avocado.mp4']}
             poster="/images/home/banners/fondo-hero.webp"
             posterAlt=""
+            veil={false}
           />
         </motion.div>
-        {/* Mismo velo que llevaba la foto: mantiene el contraste para el texto. */}
-        <div className="bg-ink absolute inset-0 opacity-[0.74]" />
         {/* Polen en suspensión sobre el campo. */}
         <AmbientSpores />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="grid items-center gap-16">
           <motion.div
-            className="text-center"
+            className="max-w-2xl text-left [text-shadow:0_2px_24px_rgba(0,0,0,0.85)]"
             variants={intro}
             initial={reduced ? false : 'hidden'}
             animate="visible"
@@ -71,15 +70,12 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
               delay={0.15}
               className="font-display text-paper mb-6 text-4xl leading-[1.08] font-semibold tracking-tight md:text-5xl lg:text-6xl"
             />
-            <motion.p
-              variants={staggerChild}
-              className="text-husk/75 mx-auto mb-10 max-w-xl text-lg"
-            >
+            <motion.p variants={staggerChild} className="text-husk/75 mb-10 max-w-xl text-lg">
               {hero.subtitle}
             </motion.p>
             <motion.div
               variants={staggerChild}
-              className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+              className="flex flex-col items-center justify-start gap-4 sm:flex-row"
             >
               <motion.div
                 whileHover={reduced ? undefined : { y: -3, scale: 1.02 }}

@@ -24,6 +24,8 @@ interface VideoBackdropProps {
   posterAlt?: string;
   /** Segundos que se muestra cada clip antes de fundir al siguiente. */
   hold?: number;
+  /** Oscurece arriba y abajo para que el texto encima sea legible. Por defecto sí. */
+  veil?: boolean;
 }
 
 /**
@@ -42,6 +44,7 @@ export default function VideoBackdrop({
   poster,
   posterAlt = '',
   hold = 7000,
+  veil = true,
 }: VideoBackdropProps) {
   const reduced = useReducedMotion();
   const [current, setCurrent] = useState(0);
@@ -106,7 +109,9 @@ export default function VideoBackdrop({
 
       {/* Velo: oscurece arriba y abajo, donde va el texto, y deja el centro
           despejado para que el campo se vea de verdad. */}
-      <div className="from-ink/85 via-ink/35 to-ink/80 absolute inset-0 bg-gradient-to-b" />
+      {veil && (
+        <div className="from-ink/85 via-ink/35 to-ink/80 absolute inset-0 bg-gradient-to-b" />
+      )}
     </div>
   );
 }
