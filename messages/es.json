@@ -135,7 +135,30 @@
         "proveeduria": "Proveeduría Sostenible",
         "proveeduria_desc": "Líneas de servicio sostenibles.",
         "proyectos": "Proyectos Sostenibles",
-        "proyectos_desc": "Formación, capacitación y emprendimientos sostenibles."
+        "proyectos_desc": "Formación, capacitación y emprendimientos sostenibles.",
+        "home": "Inicio",
+        "home_solutions": "Nuestras Soluciones",
+        "home_mission_vision": "Misión y Visión",
+        "home_commitment": "Compromiso Ambiental",
+        "home_partners": "Aliados",
+        "home_success_stories": "Casos de Éxito",
+        "our_capacity": "Nuestra Capacidad",
+        "clients": "Clientes",
+        "certifications": "Certificaciones",
+        "impact_indicators": "Indicadores de Impacto",
+        "view_sustainability_page": "Ver página de Sostenibilidad",
+        "cart_title": "Carrito",
+        "cart_empty": "Tu carrito está vacío.",
+        "cart_empty_hint": "Agrega líneas de producto desde sus páginas.",
+        "cart_add": "Agregar al carrito",
+        "cart_added": "Agregado",
+        "cart_request_quote": "Solicitar cotización por WhatsApp",
+        "cart_remove": "Quitar",
+        "cart_pending_price": "A cotizar",
+        "cart_note": "Los precios se confirman por cotización.",
+        "cart_view": "Ver carrito",
+        "cart_close": "Cerrar carrito",
+        "cart_quantity": "Cantidad"
     },
     "Footer": {
         "description": "Producción de bioinsumos, conservas y proyectos ambientales. Comprometidos con un futuro más verde y sostenible para las próximas generaciones.",
@@ -190,6 +213,11 @@
                 "stat": "95%",
                 "statLabel": "de aprovechamiento"
             }
+        },
+        "comingSoon": {
+            "capacity": "Nuestra Capacidad — Próximamente",
+            "impact": "Indicadores de Impacto — Próximamente",
+            "certifications": "Certificaciones — Próximamente"
         },
         "values": {
             "title": "Nuestros Valores",

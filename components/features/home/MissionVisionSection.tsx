@@ -34,7 +34,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
   ];
 
   return (
-    <section className="bg-ink relative isolate overflow-hidden py-24 md:py-32">
+    <section id="mision-vision" className="bg-ink relative isolate overflow-hidden py-24 md:py-32">
       <VideoBackdrop
         sources={[
           '/videos/agro-1-germinacion.mp4',

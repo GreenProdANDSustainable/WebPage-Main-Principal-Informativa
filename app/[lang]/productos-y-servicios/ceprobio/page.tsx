@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import ProductAccordion from '@/components/features/products/ProductAccordion';
+import AddToCartButton from '@/components/shared/AddToCartButton';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 
@@ -56,7 +57,14 @@ export default async function CeprobioPage({ params }: { params: Promise<{ lang:
           <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
             {d.Ceprobio}
           </h1>
-          <p className="text-xl leading-relaxed text-slate-600">{d.Ceprobio_desc}</p>
+          <p className="mb-8 text-xl leading-relaxed text-slate-600">{d.Ceprobio_desc}</p>
+          <AddToCartButton
+            id="ceprobio"
+            name={d.Ceprobio}
+            href="/productos-y-servicios/ceprobio"
+            addLabel={d.cart_add}
+            addedLabel={d.cart_added}
+          />
         </div>
         <div className="space-y-4">
           {bioinsumos.map((product) => (

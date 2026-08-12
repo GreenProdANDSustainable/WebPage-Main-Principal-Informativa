@@ -27,6 +27,12 @@
   --font-display: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* El navbar es fijo: sin esto, saltar a un ancla del menú (ej. #soluciones)
+   deja el título tapado detrás de la barra. */
+html {
+  scroll-padding-top: 7rem;
+}
+
 /* Red de seguridad de accesibilidad: si el sistema pide menos movimiento,
    nada se anima. Los componentes ya lo contemplan uno a uno; esto cubre
    además animaciones puramente de CSS y el desplazamiento suave. */

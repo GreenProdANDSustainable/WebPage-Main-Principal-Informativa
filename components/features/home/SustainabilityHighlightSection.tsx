@@ -18,7 +18,7 @@ export default function SustainabilityHighlightSection({
   const d = dict.Home.sustainability.highlight;
 
   return (
-    <section className="bg-paper py-24">
+    <section id="compromiso" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal preset="rootScale" className="order-last lg:order-first">

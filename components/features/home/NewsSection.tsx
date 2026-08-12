@@ -7,7 +7,7 @@ interface NewsSectionProps {
 
 export default function NewsSection({ dict }: NewsSectionProps) {
   return (
-    <section className="bg-paper py-24">
+    <section id="casos-exito" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal group gap={0.12}>
           <Reveal preset="child">

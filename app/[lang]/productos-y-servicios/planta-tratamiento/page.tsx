@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import ProductAccordion from '@/components/features/products/ProductAccordion';
+import AddToCartButton from '@/components/shared/AddToCartButton';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 
@@ -51,7 +52,14 @@ export default async function PlantaTratamientoPage({
           <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
             {d.planta}
           </h1>
-          <p className="text-xl leading-relaxed text-slate-600">{d.planta_desc}</p>
+          <p className="mb-8 text-xl leading-relaxed text-slate-600">{d.planta_desc}</p>
+          <AddToCartButton
+            id="planta"
+            name={d.planta}
+            href="/productos-y-servicios/planta-tratamiento"
+            addLabel={d.cart_add}
+            addedLabel={d.cart_added}
+          />
         </div>
         <div className="space-y-4">
           {productosDesc.map((product) => (

@@ -7,6 +7,8 @@ import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import GrowthProgress from '@/components/shared/GrowthProgress';
 import MotionProvider from '@/components/shared/MotionProvider';
 import PageTransition from '@/components/shared/PageTransition';
+import CartDrawer from '@/components/shared/CartDrawer';
+import { CartProvider } from '@/lib/cart-context';
 import { getDictionary } from '@/get-dictionary';
 
 const selawik = localFont({
@@ -53,13 +55,16 @@ export default async function RootLayout({
     <html lang={lang} className={`${selawik.variable} scroll-smooth`}>
       <body className="selection:bg-gp-green flex min-h-screen flex-col bg-slate-50 font-sans text-slate-900 antialiased selection:text-white">
         <MotionProvider>
-          <Navbar dictionary={dictionary} />
-          <main className="flex-1 pt-20">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer dictionary={dictionary} lang={lang} />
-          <GrowthProgress />
-          <WhatsAppButton />
+          <CartProvider>
+            <Navbar dictionary={dictionary} />
+            <main className="flex-1 pt-20">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer dictionary={dictionary} lang={lang} />
+            <GrowthProgress />
+            <WhatsAppButton />
+            <CartDrawer dict={dictionary.Navbar} lang={lang} />
+          </CartProvider>
         </MotionProvider>
       </body>
     </html>

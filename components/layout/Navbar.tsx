@@ -5,7 +5,19 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu as MenuIcon, X, ChevronDown, Search, Globe, Phone, Mail, Leaf } from 'lucide-react';
+import {
+  Menu as MenuIcon,
+  X,
+  ChevronDown,
+  Search,
+  Globe,
+  Phone,
+  Mail,
+  Leaf,
+  Gauge,
+  ShoppingCart,
+} from 'lucide-react';
+import { useCart } from '@/lib/cart-context';
 
 type Dictionary = {
   Navbar: {
@@ -35,6 +47,18 @@ type Dictionary = {
     proveeduria_desc: string;
     proyectos: string;
     proyectos_desc: string;
+    home: string;
+    home_solutions: string;
+    home_mission_vision: string;
+    home_commitment: string;
+    home_partners: string;
+    home_success_stories: string;
+    our_capacity: string;
+    clients: string;
+    certifications: string;
+    impact_indicators: string;
+    view_sustainability_page: string;
+    cart_view: string;
     [key: string]: any;
   };
 };
@@ -45,11 +69,21 @@ interface NavbarProps {
 
 export default function Navbar({ dictionary }: NavbarProps) {
   const d = dictionary.Navbar;
+  const { count, openCart } = useCart();
 
-  const navLinks = [
-    { name: d.about, href: '/nosotros' },
-    { name: d.catalog, href: '/catalogo' },
-    { name: d.sustainability, href: '/sostenibilidad' },
+  const homeMenu = [
+    { name: d.home, href: '#inicio' },
+    { name: d.home_solutions, href: '#soluciones' },
+    { name: d.home_mission_vision, href: '#mision-vision' },
+    { name: d.home_commitment, href: '#compromiso' },
+    { name: d.home_partners, href: '#aliados' },
+    { name: d.home_success_stories, href: '#casos-exito' },
+  ];
+
+  const sostenibilidadMenu = [
+    { name: d.view_sustainability_page, href: '/sostenibilidad' },
+    { name: d.impact_indicators, href: '/sostenibilidad#impacto' },
+    { name: d.certifications, href: '/sostenibilidad#certificaciones' },
   ];
 
   const productsMenu = [
@@ -80,6 +114,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
       { name: d.our_history, desc: d.our_history_desc, href: '/nosotros/nuestra-trayectoria' },
     ],
     sidebar: [
+      { name: d.our_capacity, href: '/nosotros#capacidad', icon: Gauge },
       { name: d.work_with_us, href: '/empleos', icon: Phone },
       { name: d.contacts, href: '/contacto', icon: Mail },
     ],
@@ -108,9 +143,12 @@ export default function Navbar({ dictionary }: NavbarProps) {
   const transparentMode = isTransparentPage && !isSolid;
 
   const textColorClass = transparentMode ? 'text-paper' : 'text-ink';
-  const hoverColorClass = transparentMode ? 'hover:text-gp-green' : 'hover:text-gp-blue';
-  const underlineClass =
-    'relative after:absolute after:left-1/2 after:bottom-2.5 after:h-[2px] after:w-0 after:-translate-x-1/2 after:bg-current after:transition-all after:duration-300 hover:after:w-7';
+
+  // Pastilla verde al pasar el mouse: el mismo gesto en cada link del menú,
+  // ya sea disparador de dropdown o enlace simple.
+  const pillClass = `inline-flex items-center gap-1.5 rounded-full px-4 lg:px-5 py-2.5 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 hover:bg-gp-green hover:text-ink`;
+
+  const activeTextClass = transparentMode ? 'text-gp-green' : 'text-gp-blue';
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -127,10 +165,12 @@ export default function Navbar({ dictionary }: NavbarProps) {
     }, 300);
   };
 
+  const dropdownsWithBackdrop = ['productos', 'nosotros', 'inicio', 'sostenibilidad'];
+
   return (
     <>
       <AnimatePresence>
-        {(activeDropdown === 'productos' || activeDropdown === 'nosotros') && (
+        {activeDropdown && dropdownsWithBackdrop.includes(activeDropdown) && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -189,13 +229,27 @@ export default function Navbar({ dictionary }: NavbarProps) {
             </div>
           </Link>
 
-          <nav className="relative hidden h-full items-center gap-1 md:flex lg:gap-2">
+          <nav className="relative hidden h-full items-center md:flex">
+            <div
+              className="flex h-full items-center"
+              onMouseEnter={() => handleMouseEnter('inicio')}
+            >
+              <button
+                className={`${pillClass} ${activeDropdown === 'inicio' || rawPath === '/' ? activeTextClass : textColorClass}`}
+              >
+                {d.home}{' '}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'inicio' ? 'rotate-180' : ''}`}
+                />
+              </button>
+            </div>
+
             <div
               className="flex h-full items-center"
               onMouseEnter={() => handleMouseEnter('nosotros')}
             >
               <button
-                className={`${underlineClass} flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+                className={`${pillClass} ${activeDropdown === 'nosotros' || rawPath === '/nosotros' ? activeTextClass : textColorClass}`}
               >
                 {d.about}{' '}
                 <ChevronDown
@@ -209,7 +263,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               onMouseEnter={() => handleMouseEnter('productos')}
             >
               <button
-                className={`${underlineClass} flex h-full items-center gap-1 px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${activeDropdown === 'productos' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+                className={`${pillClass} ${activeDropdown === 'productos' ? activeTextClass : textColorClass}`}
               >
                 {d.products_services_title}{' '}
                 <ChevronDown
@@ -218,34 +272,71 @@ export default function Navbar({ dictionary }: NavbarProps) {
               </button>
             </div>
 
-            <Link
-              href={`/${currentLang}/catalogo`}
-              className={`${underlineClass} flex h-full items-center px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${rawPath === '/catalogo' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+            <div
+              className="flex h-full items-center"
+              onMouseEnter={() => handleMouseEnter('sostenibilidad')}
             >
-              {d.catalog}
+              <button
+                className={`${pillClass} ${activeDropdown === 'sostenibilidad' || rawPath === '/sostenibilidad' ? activeTextClass : textColorClass}`}
+              >
+                {d.sustainability}{' '}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'sostenibilidad' ? 'rotate-180' : ''}`}
+                />
+              </button>
+            </div>
+
+            <Link href={`/${currentLang}#aliados`} className={`${pillClass} ${textColorClass}`}>
+              {d.clients}
             </Link>
 
             <Link
-              href={`/${currentLang}/sostenibilidad`}
-              className={`${underlineClass} flex h-full items-center px-4 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 lg:px-6 ${rawPath === '/sostenibilidad' ? (transparentMode ? 'text-gp-green' : 'text-gp-blue') : textColorClass} ${hoverColorClass}`}
+              href={`/${currentLang}/sostenibilidad#certificaciones`}
+              className={`${pillClass} ${textColorClass}`}
             >
-              {d.sustainability}
+              {d.certifications}
             </Link>
 
-            <div className="border-line-warm/40 ml-4 flex items-center gap-4 border-l pl-6">
+            <Link
+              href={`/${currentLang}/contacto`}
+              className={`${pillClass} ${rawPath === '/contacto' ? activeTextClass : textColorClass}`}
+            >
+              {d.contact}
+            </Link>
+
+            <div className="border-line-warm/40 ml-2 flex items-center gap-2 border-l pl-4">
               <button
                 className={`rounded-full p-2 transition-colors duration-300 ${transparentMode ? 'hover:text-gp-green hover:bg-paper/10 text-paper' : 'hover:text-gp-blue hover:bg-husk/40 text-ink/70'}`}
               >
                 <Search className="h-5 w-5" />
               </button>
+              <button
+                onClick={openCart}
+                aria-label={d.cart_view}
+                className={`relative rounded-full p-2 transition-colors duration-300 ${transparentMode ? 'hover:text-gp-green hover:bg-paper/10 text-paper' : 'hover:text-gp-blue hover:bg-husk/40 text-ink/70'}`}
+              >
+                <ShoppingCart className="h-5 w-5" />
+                {count > 0 && (
+                  <span className="bg-gp-green text-ink absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold">
+                    {count > 9 ? '9+' : count}
+                  </span>
+                )}
+              </button>
             </div>
           </nav>
 
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <button
-              className={`rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
+              onClick={openCart}
+              aria-label={d.cart_view}
+              className={`relative rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
             >
-              <Search className="h-5 w-5" />
+              <ShoppingCart className="h-5 w-5" />
+              {count > 0 && (
+                <span className="bg-gp-green text-ink absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold">
+                  {count > 9 ? '9+' : count}
+                </span>
+              )}
             </button>
             <button
               className={`rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
@@ -258,6 +349,60 @@ export default function Navbar({ dictionary }: NavbarProps) {
         </div>
 
         <AnimatePresence>
+          {activeDropdown === 'inicio' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="border-line-warm/40 bg-paper/98 absolute top-full left-0 hidden w-full border-t shadow-2xl backdrop-blur-xl md:block"
+              onMouseEnter={() => handleMouseEnter('inicio')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="mx-auto max-w-7xl px-8 py-8">
+                <div className="flex flex-wrap gap-2">
+                  {homeMenu.map((item, idx) => (
+                    <Link
+                      key={idx}
+                      href={`/${currentLang}${item.href}`}
+                      className="text-ink hover:bg-gp-green hover:text-ink rounded-full px-5 py-2.5 text-sm font-semibold transition-colors"
+                      onClick={() => setActiveDropdown(null)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeDropdown === 'sostenibilidad' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="border-line-warm/40 bg-paper/98 absolute top-full left-0 hidden w-full border-t shadow-2xl backdrop-blur-xl md:block"
+              onMouseEnter={() => handleMouseEnter('sostenibilidad')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="mx-auto max-w-7xl px-8 py-8">
+                <div className="flex flex-wrap gap-2">
+                  {sostenibilidadMenu.map((item, idx) => (
+                    <Link
+                      key={idx}
+                      href={`/${currentLang}${item.href}`}
+                      className="text-ink hover:bg-gp-green hover:text-ink rounded-full px-5 py-2.5 text-sm font-semibold transition-colors"
+                      onClick={() => setActiveDropdown(null)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {activeDropdown === 'productos' && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -280,7 +425,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                           <Link
                             key={idxi}
                             href={`/${currentLang}${item.href}`}
-                            className="group hover:bg-husk/30 flex items-start gap-3 rounded-xl p-3 transition-colors"
+                            className="group hover:bg-gp-green/15 flex items-start gap-3 rounded-xl p-3 transition-colors"
                             onClick={() => setActiveDropdown(null)}
                           >
                             <span className="bg-gp-green/10 text-gp-green group-hover:bg-gp-green group-hover:text-paper mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors">
@@ -328,7 +473,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                         <Link
                           key={idx}
                           href={`/${currentLang}${item.href}`}
-                          className="group hover:bg-husk/30 block rounded-xl p-3 transition-colors"
+                          className="group hover:bg-gp-green/15 block rounded-xl p-3 transition-colors"
                           onClick={() => setActiveDropdown(null)}
                         >
                           <h4 className="group-hover:text-gp-green text-ink mb-2 text-base font-bold transition-colors">
@@ -346,7 +491,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                         <Link
                           key={idx}
                           href={`/${currentLang}${item.href}`}
-                          className="hover:text-gp-blue text-ink/70 hover:bg-husk/30 flex items-center gap-3 rounded-lg p-3 transition-colors"
+                          className="hover:text-ink text-ink/70 hover:bg-gp-green flex items-center gap-3 rounded-lg p-3 transition-colors"
                           onClick={() => setActiveDropdown(null)}
                         >
                           <div className="bg-husk/50 text-ink/60 rounded-md p-2">
@@ -401,6 +546,45 @@ export default function Navbar({ dictionary }: NavbarProps) {
                 </div>
 
                 <div className="flex-1 py-4">
+                  <div className="border-line-warm/30 border-b">
+                    <button
+                      className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
+                      onClick={() =>
+                        setActiveDropdown(
+                          activeDropdown === 'mobile-inicio' ? null : 'mobile-inicio'
+                        )
+                      }
+                    >
+                      {d.home}
+                      <ChevronDown
+                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-inicio' ? 'text-gp-green rotate-180' : 'text-ink/40'}`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {activeDropdown === 'mobile-inicio' && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="bg-husk/20 overflow-hidden"
+                        >
+                          <div className="space-y-1 px-6 py-2 pb-6">
+                            {homeMenu.map((item, idx) => (
+                              <Link
+                                key={idx}
+                                href={`/${currentLang}${item.href}`}
+                                className="text-ink/80 hover:text-gp-green block py-2 font-semibold"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
                   <div className="border-line-warm/30 border-b">
                     <button
                       className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
@@ -508,20 +692,69 @@ export default function Navbar({ dictionary }: NavbarProps) {
                     </AnimatePresence>
                   </div>
 
+                  <div className="border-line-warm/30 border-b">
+                    <button
+                      className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
+                      onClick={() =>
+                        setActiveDropdown(
+                          activeDropdown === 'mobile-sostenibilidad'
+                            ? null
+                            : 'mobile-sostenibilidad'
+                        )
+                      }
+                    >
+                      {d.sustainability}
+                      <ChevronDown
+                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-sostenibilidad' ? 'text-gp-green rotate-180' : 'text-ink/40'}`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {activeDropdown === 'mobile-sostenibilidad' && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="bg-husk/20 overflow-hidden"
+                        >
+                          <div className="space-y-1 px-6 py-2 pb-6">
+                            {sostenibilidadMenu.map((item, idx) => (
+                              <Link
+                                key={idx}
+                                href={`/${currentLang}${item.href}`}
+                                className="text-ink/80 hover:text-gp-green block py-2 font-semibold"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
                   <Link
-                    href={`/${currentLang}/catalogo`}
+                    href={`/${currentLang}#aliados`}
                     onClick={() => setIsOpen(false)}
-                    className={`border-line-warm/30 block border-b px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/catalogo' ? 'text-gp-green' : 'text-ink'}`}
+                    className="border-line-warm/30 text-ink block border-b px-6 py-4 text-lg font-bold tracking-wide uppercase"
                   >
-                    {d.catalog}
+                    {d.clients}
                   </Link>
 
                   <Link
-                    href={`/${currentLang}/sostenibilidad`}
+                    href={`/${currentLang}/sostenibilidad#certificaciones`}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/sostenibilidad' ? 'text-gp-green' : 'text-ink'}`}
+                    className="border-line-warm/30 text-ink block border-b px-6 py-4 text-lg font-bold tracking-wide uppercase"
                   >
-                    {d.sustainability}
+                    {d.certifications}
+                  </Link>
+
+                  <Link
+                    href={`/${currentLang}/contacto`}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-6 py-4 text-lg font-bold tracking-wide uppercase ${rawPath === '/contacto' ? 'text-gp-green' : 'text-ink'}`}
+                  >
+                    {d.contact}
                   </Link>
                 </div>
 

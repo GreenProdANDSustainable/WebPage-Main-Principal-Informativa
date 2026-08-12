@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import ProductAccordion from '@/components/features/products/ProductAccordion';
+import AddToCartButton from '@/components/shared/AddToCartButton';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 
@@ -48,7 +49,14 @@ export default async function BalikPage({ params }: { params: Promise<{ lang: st
           <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
             {d.balik}
           </h1>
-          <p className="text-xl leading-relaxed text-slate-600">{d.balik_desc}</p>
+          <p className="mb-8 text-xl leading-relaxed text-slate-600">{d.balik_desc}</p>
+          <AddToCartButton
+            id="balik"
+            name={d.balik}
+            href="/productos-y-servicios/balik"
+            addLabel={d.cart_add}
+            addedLabel={d.cart_added}
+          />
         </div>
         <div className="space-y-4">
           {productosDesc.map((product) => (

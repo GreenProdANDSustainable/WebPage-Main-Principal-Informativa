@@ -8,7 +8,7 @@ interface PartnersSectionProps {
 
 export default function PartnersSection({ dict }: PartnersSectionProps) {
   return (
-    <section className="border-line-warm/20 bg-paper border-y py-20">
+    <section id="aliados" className="border-line-warm/20 bg-paper border-y py-20">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal preset="rootScale">
           <div className="border-line-warm/50 text-ink/40 hover:border-gp-green/50 hover:text-ink/60 inline-flex items-center gap-3 rounded-full border-2 border-dashed px-8 py-4 transition-colors duration-500">

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
-import ValorizationFlow from './ValorizationFlow';
 import AmbientSpores from '@/components/shared/AmbientSpores';
 import KineticHeading from '@/components/shared/KineticHeading';
 import { ease, stagger, staggerChild } from '@/lib/motion';
@@ -31,7 +30,7 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
   const intro = stagger(0.1, 0.04);
 
   return (
-    <section ref={sectionRef} className="bg-ink relative overflow-hidden">
+    <section id="inicio" ref={sectionRef} className="bg-ink relative overflow-hidden">
       {/* Textura de fondo: campo real, tratado como marca de agua sutil */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -51,10 +50,10 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
         <AmbientSpores />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-12">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div className="grid items-center gap-16">
           <motion.div
-            className="text-center lg:text-left"
+            className="text-center"
             variants={intro}
             initial={reduced ? false : 'hidden'}
             animate="visible"
@@ -75,13 +74,13 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
             />
             <motion.p
               variants={staggerChild}
-              className="text-husk/75 mx-auto mb-10 max-w-xl text-lg lg:mx-0"
+              className="text-husk/75 mx-auto mb-10 max-w-xl text-lg"
             >
               {hero.subtitle}
             </motion.p>
             <motion.div
               variants={staggerChild}
-              className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:items-start lg:justify-start"
+              className="flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
               <motion.div
                 whileHover={reduced ? undefined : { y: -3, scale: 1.02 }}
@@ -117,8 +116,6 @@ export default function HeroSection({ dict, lang }: HeroSectionProps) {
               CERTIFICADO ISO 14001 · NUEVO CHIMBOTE, PERÚ
             </motion.p>
           </motion.div>
-
-          <ValorizationFlow dict={hero.flow} />
         </div>
       </div>
     </section>

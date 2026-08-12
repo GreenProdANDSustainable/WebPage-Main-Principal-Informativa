@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, Clock } from 'lucide-react';
+import AddToCartButton from '@/components/shared/AddToCartButton';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 
@@ -25,7 +26,14 @@ export default async function ProveeduriaPage({ params }: { params: Promise<{ la
           <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
             {d.proveeduria}
           </h1>
-          <p className="text-xl leading-relaxed text-slate-600">{d.proveeduria_desc}</p>
+          <p className="mb-8 text-xl leading-relaxed text-slate-600">{d.proveeduria_desc}</p>
+          <AddToCartButton
+            id="proveeduria"
+            name={d.proveeduria}
+            href="/productos-y-servicios/proveeduria"
+            addLabel={d.cart_add}
+            addedLabel={d.cart_added}
+          />
         </div>
         <div className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm">
           <Clock className="mb-6 h-16 w-16 text-slate-400" />

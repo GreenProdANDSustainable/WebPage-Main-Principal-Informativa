@@ -135,7 +135,30 @@
         "proveeduria": "Sustainable Procurement",
         "proveeduria_desc": "Sustainable service lines.",
         "proyectos": "Sustainable Projects",
-        "proyectos_desc": "Training and sustainable entrepreneurship."
+        "proyectos_desc": "Training and sustainable entrepreneurship.",
+        "home": "Home",
+        "home_solutions": "Our Solutions",
+        "home_mission_vision": "Mission & Vision",
+        "home_commitment": "Environmental Commitment",
+        "home_partners": "Partners",
+        "home_success_stories": "Success Stories",
+        "our_capacity": "Our Capacity",
+        "clients": "Clients",
+        "certifications": "Certifications",
+        "impact_indicators": "Impact Indicators",
+        "view_sustainability_page": "View Sustainability Page",
+        "cart_title": "Cart",
+        "cart_empty": "Your cart is empty.",
+        "cart_empty_hint": "Add product lines from their pages.",
+        "cart_add": "Add to cart",
+        "cart_added": "Added",
+        "cart_request_quote": "Request a quote via WhatsApp",
+        "cart_remove": "Remove",
+        "cart_pending_price": "Quote on request",
+        "cart_note": "Prices are confirmed by quote.",
+        "cart_view": "View cart",
+        "cart_close": "Close cart",
+        "cart_quantity": "Quantity"
     },
     "Footer": {
         "description": "Production of bio-inputs, preserves, and environmental projects. Committed to a greener and more sustainable future for generations to come.",
@@ -190,6 +213,11 @@
                 "stat": "95%",
                 "statLabel": "utilization"
             }
+        },
+        "comingSoon": {
+            "capacity": "Our Capacity — Coming Soon",
+            "impact": "Impact Indicators — Coming Soon",
+            "certifications": "Certifications — Coming Soon"
         },
         "values": {
             "title": "Our Values",

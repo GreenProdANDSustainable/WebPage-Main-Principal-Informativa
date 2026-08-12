@@ -76,7 +76,7 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
   ];
 
   return (
-    <section className="bg-ink relative overflow-hidden py-20 md:py-28">
+    <section id="soluciones" className="bg-ink relative overflow-hidden py-20 md:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-3xl">
           <motion.p
