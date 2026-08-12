@@ -119,7 +119,7 @@ export default function SustainabilityHighlightSection({
                 >
                   <Link
                     href={`/${lang}/sostenibilidad`}
-                    className="bg-gp-black text-ink hover:bg-husk inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold shadow-[0_0_0_0_rgba(109,190,81,0)] transition-[background-color,box-shadow] duration-300 hover:shadow-[0_12px_34px_-12px_rgba(109,190,81,0.8)]"
+                    className="bg-ink text-paper hover:bg-husk hover:text-ink inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold shadow-[0_0_0_0_rgba(20,23,15,0)] transition-[background-color,color,box-shadow] duration-300 hover:shadow-[0_12px_34px_-12px_rgba(20,23,15,0.4)]"
                   >
                     {d.cta}
                   </Link>
