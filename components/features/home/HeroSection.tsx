@@ -59,7 +59,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         >
           <motion.p
             variants={staggerChild}
-            className="text-gp-green mb-3 text-[11px] tracking-wide"
+            className="text-paper mb-3 text-[11px] font-semibold tracking-wide"
             style={{ fontFamily: 'var(--font-mono)' }}
           >
             ECONOMÍA CIRCULAR AGROINDUSTRIAL
@@ -68,6 +68,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             as="h1"
             text={hero.title}
             highlight={hero.titleHighlight}
+            highlightClassName="text-paper"
             delay={0.15}
             className="font-display text-paper mb-4 text-2xl leading-[1.15] font-semibold tracking-tight md:text-3xl lg:text-4xl"
           />

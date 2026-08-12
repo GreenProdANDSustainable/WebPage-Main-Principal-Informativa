@@ -76,7 +76,7 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
   ];
 
   return (
-    <section id="soluciones" className="bg-ink relative overflow-hidden py-20 md:py-28">
+    <section id="soluciones" className="bg-paper relative overflow-hidden py-20 md:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-3xl">
           <motion.p
@@ -92,7 +92,7 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
           <KineticHeading
             text={d.industry_solutions}
             as="h2"
-            className="font-display text-paper text-4xl leading-[1.1] font-semibold tracking-tight md:text-5xl"
+            className="font-display text-ink text-4xl leading-[1.1] font-semibold tracking-tight md:text-5xl"
           />
         </div>
 
