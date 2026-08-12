@@ -74,7 +74,7 @@ export default function SustainabilityHighlightSection({
             </Reveal>
 
             <Reveal preset="child">
-              <h2 className="font-display text-ink text-4xl leading-tight font-semibold tracking-tight md:text-5xl">
+              <h2 className="font-display text-gp-blue text-4xl leading-tight font-semibold tracking-tight md:text-5xl">
                 {d.title} <span className="text-gp-blue">{d.titleHighlight}</span>
               </h2>
             </Reveal>
