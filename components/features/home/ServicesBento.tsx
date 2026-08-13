@@ -11,15 +11,15 @@ interface ServicesBentoProps {
 
 /**
  * Lo que la empresa asegura, en una sola imagen: la línea completa de
- * bioinsumos sobre el campo, y debajo quién respalda esa producción.
+ * bioinsumos sobre el campo, titular en una sola línea arriba y las
+ * certificaciones incrustadas como una placa al pie de la misma imagen.
  */
 export default function ServicesBento({ dict }: ServicesBentoProps) {
   const s = dict.Home.solutions;
 
   return (
     <section id="soluciones" className="bg-paper relative overflow-hidden py-20 md:py-28">
-      {/* Imagen a todo el ancho de la pantalla, con el titular incrustado encima */}
-      <div className="relative mb-14 h-[60vh] min-h-[420px] w-full overflow-hidden md:mb-20 md:h-[75vh]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[2/1]">
         <Image
           src="/images/home/productos-campo.webp"
           alt={s.productsAlt}
@@ -29,70 +29,68 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="object-cover"
           priority
         />
-        <div className="bg-ink/45 absolute inset-0" />
-        <div className="relative z-10 flex h-full items-center justify-center px-4">
+        <div className="bg-ink/50 absolute inset-0" />
+
+        <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 py-6 sm:py-10 md:py-14">
           <motion.h2
-            className="font-display text-paper max-w-4xl text-center leading-tight font-semibold tracking-tight"
-            style={{ fontSize: 'clamp(1.6rem, 5vw, 3.5rem)' }}
+            className="font-display text-paper text-center leading-tight font-semibold tracking-tight whitespace-nowrap"
+            style={{ fontSize: 'clamp(0.65rem, calc((100vw - 32px) / 31), 3.5rem)' }}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            {s.headingLead}{' '}
-            <span className="text-gp-green text-[1.1em] font-extrabold">{s.headingAccent}</span>{' '}
+            {s.headingLead} <span className="text-gp-green font-extrabold">{s.headingAccent}</span>{' '}
             {s.headingTail}
           </motion.h2>
-        </div>
-      </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="bg-gp-green rounded-3xl px-8 py-10 shadow-xl md:px-14 md:py-12"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewport}
-          transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
-        >
-          <div className="flex flex-col items-center gap-7">
-            <p
-              className="text-ink/70 text-xs font-bold tracking-[0.25em] uppercase"
-              style={{ fontFamily: 'var(--font-mono)' }}
-            >
-              {s.certifiedBy}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-              <a
-                href="https://www.gob.pe/senasa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-paper flex items-center justify-center rounded-2xl px-6 py-4 shadow-md transition-transform duration-300 hover:scale-105"
+          <motion.div
+            className="bg-gp-green w-full max-w-3xl rounded-2xl px-4 py-3 shadow-xl sm:px-8 sm:py-5 md:rounded-3xl"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
+          >
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-8">
+              <p
+                className="text-ink/70 text-[10px] font-bold tracking-[0.2em] uppercase sm:text-xs sm:tracking-[0.25em]"
+                style={{ fontFamily: 'var(--font-mono)' }}
               >
-                <Image
-                  src="/images/logos/senasa.webp"
-                  alt="SENASA Perú"
-                  width={420}
-                  height={297}
-                  className="h-16 w-auto md:h-20"
-                />
-              </a>
-              <a
-                href="https://www.kiwa.com/pe/es/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-paper flex items-center justify-center rounded-2xl px-6 py-4 shadow-md transition-transform duration-300 hover:scale-105"
-              >
-                <Image
-                  src="/images/logos/kiwa-bcs.webp"
-                  alt="Kiwa BCS Öko-Garantie"
-                  width={200}
-                  height={200}
-                  className="h-16 w-auto md:h-20"
-                />
-              </a>
+                {s.certifiedBy}
+              </p>
+              <div className="flex items-center justify-center gap-3 sm:gap-6">
+                <a
+                  href="https://www.gob.pe/senasa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-paper flex items-center justify-center rounded-xl px-3 py-2 shadow-md transition-transform duration-300 hover:scale-105 sm:rounded-2xl sm:px-5 sm:py-3"
+                >
+                  <Image
+                    src="/images/logos/senasa.webp"
+                    alt="SENASA Perú"
+                    width={420}
+                    height={297}
+                    className="h-8 w-auto sm:h-12 md:h-16"
+                  />
+                </a>
+                <a
+                  href="https://www.kiwa.com/pe/es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-paper flex items-center justify-center rounded-xl px-3 py-2 shadow-md transition-transform duration-300 hover:scale-105 sm:rounded-2xl sm:px-5 sm:py-3"
+                >
+                  <Image
+                    src="/images/logos/kiwa-bcs.webp"
+                    alt="Kiwa BCS Öko-Garantie"
+                    width={200}
+                    height={200}
+                    className="h-8 w-auto sm:h-12 md:h-16"
+                  />
+                </a>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
