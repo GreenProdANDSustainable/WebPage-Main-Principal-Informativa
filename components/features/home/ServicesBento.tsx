@@ -29,24 +29,25 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="object-cover"
           priority
         />
-        <div className="bg-ink/50 absolute inset-0" />
-
         <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 py-6 sm:py-10 md:py-14">
           <motion.h2
             className="font-display text-paper text-center leading-tight font-semibold tracking-tight whitespace-nowrap"
-            style={{ fontSize: 'clamp(0.6rem, calc((100vw - 32px) / 34), 3.5rem)' }}
+            style={{
+              fontSize: 'clamp(0.6rem, calc((100vw - 32px) / 36), 3.5rem)',
+              textShadow: '0 2px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.85)',
+            }}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
             {s.headingLead}{' '}
-            <span className="text-gp-green text-[1.15em] font-extrabold">{s.headingAccent}</span>{' '}
+            <span className="text-gp-green text-[1.3em] font-extrabold">{s.headingAccent}</span>{' '}
             {s.headingTail}
           </motion.h2>
 
           <motion.div
-            className="bg-gp-green w-fit max-w-[92%] rounded-xl px-3 py-2 shadow-xl sm:px-5 sm:py-3 md:rounded-2xl"
+            className="bg-paper w-fit max-w-[92%] rounded-xl px-3 py-2 shadow-xl sm:px-5 sm:py-3 md:rounded-2xl"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
