@@ -59,7 +59,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           <KineticHeading
             text={d.title}
             as="h2"
-            className="font-display text-paper mb-4 text-4xl font-semibold tracking-tight md:text-6xl"
+            className="font-display text-paper mb-4 text-4xl font-semibold tracking-tight md:text-5xl"
           />
           <motion.p
             className="text-husk/75 mx-auto max-w-2xl text-lg"

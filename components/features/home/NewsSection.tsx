@@ -11,7 +11,7 @@ export default function NewsSection({ dict }: NewsSectionProps) {
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal group gap={0.12}>
           <Reveal preset="child">
-            <h2 className="font-display text-ink/30 mb-8 text-4xl font-semibold tracking-tight">
+            <h2 className="font-display text-ink/30 mb-8 text-4xl font-semibold tracking-tight md:text-5xl">
               {dict.News.title}
             </h2>
           </Reveal>

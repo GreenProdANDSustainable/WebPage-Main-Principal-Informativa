@@ -33,13 +33,16 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
 
         <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 py-6 sm:py-10 md:py-14">
           <motion.h2
-            className="font-display text-paper max-w-2xl text-center text-3xl leading-[1.15] font-semibold tracking-tight md:text-4xl lg:text-5xl"
+            className="font-display text-paper text-center leading-tight font-semibold tracking-tight whitespace-nowrap"
+            style={{ fontSize: 'clamp(0.6rem, calc((100vw - 32px) / 34), 3.5rem)' }}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            {s.headingLead} <span className="text-gp-green">{s.headingAccent}</span> {s.headingTail}
+            {s.headingLead}{' '}
+            <span className="text-gp-green text-[1.15em] font-extrabold">{s.headingAccent}</span>{' '}
+            {s.headingTail}
           </motion.h2>
 
           <motion.div
