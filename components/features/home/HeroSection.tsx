@@ -41,8 +41,8 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         >
           <VideoBackdrop sources={['/videos/hero-avocado.mp4']} veil={false} />
         </motion.div>
-        {/* Velo leve: asienta el video para que el texto resalte. */}
-        <div className="bg-ink/35 absolute inset-0" />
+        {/* Velo: asienta el video para que el texto resalte. */}
+        <div className="bg-ink/45 absolute inset-0" />
         {/* Polen en suspensión sobre el campo. */}
         <AmbientSpores />
       </div>

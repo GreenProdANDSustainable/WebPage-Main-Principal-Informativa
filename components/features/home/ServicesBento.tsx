@@ -29,7 +29,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="object-cover"
           priority
         />
-        <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 py-6 sm:py-10 md:py-14">
+        <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 pt-6 pb-3 sm:pt-10 sm:pb-5 md:pt-14 md:pb-6">
           <motion.h2
             className="font-display text-paper text-center leading-tight font-semibold tracking-tight whitespace-nowrap"
             style={{
@@ -47,20 +47,20 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           </motion.h2>
 
           <motion.div
-            className="bg-paper w-fit max-w-[92%] rounded-xl px-3 py-2 shadow-xl sm:px-5 sm:py-3 md:rounded-2xl"
+            className="bg-paper w-fit max-w-[94%] rounded-2xl px-5 py-3 shadow-xl sm:px-8 sm:py-5 md:rounded-3xl"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
           >
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-5">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-7">
               <p
-                className="text-ink/70 text-[9px] font-bold tracking-[0.2em] uppercase sm:text-[11px] sm:tracking-[0.25em]"
+                className="text-ink/70 text-[10px] font-bold tracking-[0.2em] uppercase sm:text-xs sm:tracking-[0.25em]"
                 style={{ fontFamily: 'var(--font-mono)' }}
               >
                 {s.certifiedBy}
               </p>
-              <div className="flex items-center justify-center gap-3 sm:gap-5">
+              <div className="flex items-center justify-center gap-4 sm:gap-7">
                 <a
                   href="https://www.gob.pe/senasa"
                   target="_blank"
@@ -72,7 +72,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                     alt="SENASA Perú"
                     width={420}
                     height={297}
-                    className="h-7 w-auto mix-blend-multiply sm:h-9 md:h-11"
+                    className="h-10 w-auto mix-blend-multiply sm:h-14 md:h-16"
                   />
                 </a>
                 <a
@@ -86,7 +86,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                     alt="Kiwa BCS Öko-Garantie"
                     width={200}
                     height={200}
-                    className="h-7 w-auto mix-blend-multiply sm:h-9 md:h-11"
+                    className="h-10 w-auto mix-blend-multiply sm:h-14 md:h-16"
                   />
                 </a>
               </div>

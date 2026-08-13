@@ -62,7 +62,10 @@ export default function VideoBackdrop({
     conn?.addEventListener?.('change', onChange);
     return () => conn?.removeEventListener?.('change', onChange);
   }, []);
-  const frugal = useSyncExternalStore(subscribe, readFrugal, () => true);
+  // Se asume "no ahorra datos" para el primer render: el video entra ya en
+  // el HTML inicial y arranca sin esperar a que hidrate el cliente. Solo se
+  // desmonta después si el navegador confirma una conexión con Save-Data.
+  const frugal = useSyncExternalStore(subscribe, readFrugal, () => false);
 
   const playVideo = !reduced && !frugal;
 
@@ -99,6 +102,7 @@ export default function VideoBackdrop({
               refs.current[i] = el;
             }}
             src={src}
+            autoPlay
             muted
             loop
             playsInline
