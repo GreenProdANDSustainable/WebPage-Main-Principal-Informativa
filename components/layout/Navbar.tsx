@@ -186,7 +186,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
         className="bg-paper/75 border-line-warm/40 fixed top-0 z-50 w-full border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.25)] backdrop-blur-xl transition-all duration-700"
         onMouseLeave={handleMouseLeave}
       >
-        <div className="bg-husk/30 text-ink/70 hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex">
+        <div className="text-ink/70 hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex">
           <div className="flex items-center gap-6">
             <Link
               href={`/${currentLang}/asistente-ia`}
@@ -522,7 +522,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               className="bg-paper absolute top-full left-0 w-full overflow-hidden shadow-2xl md:hidden"
             >
               <div className="flex h-[calc(100vh-80px)] flex-col overflow-y-auto">
-                <div className="border-line-warm/40 bg-husk/20 text-ink/70 flex justify-between border-b px-6 py-4 text-sm font-medium">
+                <div className="border-line-warm/40 text-ink/70 flex justify-between border-b px-6 py-4 text-sm font-medium">
                   <Link
                     href={`/${currentLang}/asistente-ia`}
                     onClick={() => setIsOpen(false)}
