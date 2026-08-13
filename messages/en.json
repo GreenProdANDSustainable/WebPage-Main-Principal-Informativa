@@ -48,9 +48,11 @@
             ],
             "message": "Message",
             "messagePlaceholder": "How can we help you?",
-            "submitButton": "Send Message",
-            "assistantTitle": "Virtual Assistant",
-            "assistantSubtitle": "Have a quick question? Ask our AI-powered assistant."
+            "submitButton": "Send Message"
+        },
+        "assistant": {
+            "title": "Virtual Assistant",
+            "subtitle": "Have a quick question? Ask our AI-powered assistant."
         },
         "sustainability": {
             "title": "Sustainability",
@@ -114,6 +116,7 @@
         "catalog": "Catalog",
         "sustainability": "Sustainability",
         "contact": "Contact Us",
+        "assistant": "AI Assistant",
         "products": "Products (P)",
         "services": "Services (S)",
         "products_services_title": "Products & Services",

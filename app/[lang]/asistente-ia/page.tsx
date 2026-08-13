@@ -1,0 +1,31 @@
+import esMessages from '@/messages/es.json';
+import enMessages from '@/messages/en.json';
+import AIAssistant from '@/components/shared/AIAssistant';
+import Reveal from '@/components/shared/Reveal';
+
+export default async function AsistenteIA({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const dictionary = lang === 'es' ? esMessages : enMessages;
+  const d = dictionary.Pages.assistant;
+
+  return (
+    <div className="min-h-screen bg-slate-50 py-24">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <Reveal group gap={0.12} className="mb-12 text-center">
+          <Reveal preset="child">
+            <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
+              {d.title}
+            </h1>
+          </Reveal>
+          <Reveal preset="child">
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">{d.subtitle}</p>
+          </Reveal>
+        </Reveal>
+
+        <Reveal preset="rootScale">
+          <AIAssistant />
+        </Reveal>
+      </div>
+    </div>
+  );
+}

@@ -13,6 +13,7 @@ import {
   Globe,
   Phone,
   Mail,
+  Bot,
   Leaf,
   Gauge,
   ShoppingCart,
@@ -25,6 +26,7 @@ type Dictionary = {
     catalog: string;
     sustainability: string;
     contact: string;
+    assistant: string;
     products: string;
     services: string;
     products_services_title: string;
@@ -187,10 +189,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
         <div className="bg-husk/30 text-ink/70 hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex">
           <div className="flex items-center gap-6">
             <Link
-              href={`/${currentLang}/contacto`}
+              href={`/${currentLang}/asistente-ia`}
               className="hover:text-gp-green flex items-center gap-2 transition-colors"
             >
-              <Mail className="h-3 w-3" /> {d.contact}
+              <Bot className="h-3 w-3" /> {d.assistant}
             </Link>
             <Link
               href={`/${currentLang === 'es' ? 'en' : 'es'}${rawPath}`}
@@ -522,11 +524,11 @@ export default function Navbar({ dictionary }: NavbarProps) {
               <div className="flex h-[calc(100vh-80px)] flex-col overflow-y-auto">
                 <div className="border-line-warm/40 bg-husk/20 text-ink/70 flex justify-between border-b px-6 py-4 text-sm font-medium">
                   <Link
-                    href={`/${currentLang}/contacto`}
+                    href={`/${currentLang}/asistente-ia`}
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-2"
                   >
-                    <Mail className="h-4 w-4" /> {d.contact}
+                    <Bot className="h-4 w-4" /> {d.assistant}
                   </Link>
                   <Link
                     href={`/${currentLang === 'es' ? 'en' : 'es'}${rawPath}`}

@@ -2,7 +2,6 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import * as motion from 'motion/react-client';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
-import AIAssistant from '@/components/shared/AIAssistant';
 import Reveal from '@/components/shared/Reveal';
 import { ease, viewport } from '@/lib/motion';
 
@@ -153,23 +152,6 @@ export default async function Contacto({ params }: { params: Promise<{ lang: str
                 {d.submitButton}
               </motion.button>
             </form>
-          </Reveal>
-        </div>
-
-        {/* Asistente Virtual con IA */}
-        <div className="mt-20">
-          <Reveal group gap={0.12} className="mb-8 text-center">
-            <Reveal preset="child">
-              <h2 className="mb-3 font-serif text-3xl font-bold text-slate-900">
-                {d.assistantTitle}
-              </h2>
-            </Reveal>
-            <Reveal preset="child">
-              <p className="mx-auto max-w-2xl text-slate-600">{d.assistantSubtitle}</p>
-            </Reveal>
-          </Reveal>
-          <Reveal preset="rootScale" className="mx-auto max-w-2xl">
-            <AIAssistant />
           </Reveal>
         </div>
       </div>
