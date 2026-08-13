@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
   },
   // Allow access to remote image placeholder.
   images: {
+    // Next 15 solo sirve las calidades declaradas aquí: pedir una que no
+    // esté en la lista devuelve 400 y la imagen no carga. 90 es la que usa
+    // la foto de productos en 4K.
+    qualities: [75, 90, 100],
     remotePatterns: [
       {
         protocol: 'https',

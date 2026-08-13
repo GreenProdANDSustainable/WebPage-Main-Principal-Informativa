@@ -47,7 +47,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
               alt={s.productsAlt}
               width={3840}
               height={2160}
-              sizes="(max-width: 1024px) 100vw, 64rem"
+              sizes="(max-width: 1024px) 100vw, 1280px"
               quality={90}
               className="h-auto w-full"
               priority
