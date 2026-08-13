@@ -219,6 +219,13 @@
             "impact": "Indicadores de Impacto — Próximamente",
             "certifications": "Certificaciones — Próximamente"
         },
+        "solutions": {
+            "headingLead": "Aseguramos a la",
+            "headingAccent": "agricultura orgánica",
+            "headingTail": "y sostenible",
+            "productsAlt": "Línea completa de bioinsumos Green Prod sobre un campo de cultivo",
+            "certifiedBy": "Certificado por"
+        },
         "values": {
             "title": "Nuestros Valores",
             "label": "NUESTROS VALORES",

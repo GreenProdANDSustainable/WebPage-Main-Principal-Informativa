@@ -60,7 +60,7 @@ export default function Footer({ dictionary, lang }: FooterProps) {
   ];
 
   return (
-    <footer className="bg-ink text-paper/70 relative overflow-hidden">
+    <footer className="bg-gp-blue text-paper/70 relative overflow-hidden">
       <div className="from-gp-green via-gp-blue to-gp-green h-1 w-full bg-gradient-to-r" />
       <div className="bg-gp-green/10 pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full blur-3xl" />
 

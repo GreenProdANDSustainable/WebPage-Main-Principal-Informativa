@@ -140,15 +140,14 @@ export default function Navbar({ dictionary }: NavbarProps) {
   const transparentPages = ['/'];
   const isTransparentPage = transparentPages.includes(rawPath);
   const isSolid = isScrolled || !isTransparentPage || isOpen;
-  const transparentMode = isTransparentPage && !isSolid;
 
-  const textColorClass = transparentMode ? 'text-paper' : 'text-ink';
+  const textColorClass = 'text-ink';
 
   // Pastilla verde al pasar el mouse: el mismo gesto en cada link del menú,
   // ya sea disparador de dropdown o enlace simple.
   const pillClass = `inline-flex items-center gap-1.5 rounded-full px-4 lg:px-5 py-2.5 text-sm font-semibold tracking-wide uppercase transition-colors duration-300 hover:bg-gp-green hover:text-ink`;
 
-  const activeTextClass = transparentMode ? 'text-gp-green' : 'text-gp-blue';
+  const activeTextClass = 'text-gp-blue';
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -182,16 +181,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
       </AnimatePresence>
 
       <header
-        className={`fixed top-0 z-50 w-full transition-all duration-700 ${
-          isSolid
-            ? 'bg-paper/90 border-line-warm/50 border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.35)] backdrop-blur-xl'
-            : 'bg-gp-blue shadow-[0_10px_40px_-20px_rgba(20,23,15,0.35)]'
-        }`}
+        className="bg-paper/75 border-line-warm/40 fixed top-0 z-50 w-full border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.25)] backdrop-blur-xl transition-all duration-700"
         onMouseLeave={handleMouseLeave}
       >
-        <div
-          className={`hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex ${isSolid ? 'bg-husk/30 text-ink/70' : 'text-paper bg-black/10'}`}
-        >
+        <div className="bg-husk/30 text-ink/70 hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex">
           <div className="flex items-center gap-6">
             <Link
               href={`/${currentLang}/contacto`}
@@ -305,15 +298,13 @@ export default function Navbar({ dictionary }: NavbarProps) {
             </Link>
 
             <div className="border-line-warm/40 ml-2 flex items-center gap-2 border-l pl-4">
-              <button
-                className={`rounded-full p-2 transition-colors duration-300 ${transparentMode ? 'hover:text-gp-green hover:bg-paper/10 text-paper' : 'hover:text-gp-blue hover:bg-husk/40 text-ink/70'}`}
-              >
+              <button className="hover:text-gp-blue hover:bg-husk/40 text-ink/70 rounded-full p-2 transition-colors duration-300">
                 <Search className="h-5 w-5" />
               </button>
               <button
                 onClick={openCart}
                 aria-label={d.cart_view}
-                className={`relative rounded-full p-2 transition-colors duration-300 ${transparentMode ? 'hover:text-gp-green hover:bg-paper/10 text-paper' : 'hover:text-gp-blue hover:bg-husk/40 text-ink/70'}`}
+                className="hover:text-gp-blue hover:bg-husk/40 text-ink/70 relative rounded-full p-2 transition-colors duration-300"
               >
                 <ShoppingCart className="h-5 w-5" />
                 {count > 0 && (
@@ -329,7 +320,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
             <button
               onClick={openCart}
               aria-label={d.cart_view}
-              className={`relative rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
+              className="hover:text-gp-blue text-ink/70 relative rounded-full p-2 transition-colors duration-700"
             >
               <ShoppingCart className="h-5 w-5" />
               {count > 0 && (
@@ -339,7 +330,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
               )}
             </button>
             <button
-              className={`rounded-full p-2 transition-colors duration-700 ${transparentMode ? 'hover:text-gp-green text-paper' : 'hover:text-gp-blue text-ink/70'}`}
+              className="hover:text-gp-blue text-ink/70 rounded-full p-2 transition-colors duration-700"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >

@@ -23,6 +23,7 @@ interface ServicesBentoProps {
  */
 export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
   const d = dict.Navbar;
+  const s = dict.Home.solutions;
   const reduced = useReducedMotion();
 
   const items: {
@@ -78,23 +79,75 @@ export default function ServicesBento({ dict, lang }: ServicesBentoProps) {
   return (
     <section id="soluciones" className="bg-paper relative overflow-hidden py-20 md:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-3xl">
-          <motion.p
-            className="text-gp-green mb-3 text-sm font-semibold tracking-[0.2em] uppercase"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.6, ease: ease.growth }}
-            style={{ fontFamily: 'var(--font-mono)' }}
-          >
-            {d.products_services_title}
-          </motion.p>
-          <KineticHeading
-            text={d.industry_solutions}
-            as="h2"
-            className="font-display text-ink text-4xl leading-[1.1] font-semibold tracking-tight md:text-5xl"
-          />
-        </div>
+        <motion.h2
+          className="font-display text-ink mx-auto mb-10 max-w-5xl text-center text-3xl leading-[1.15] font-semibold tracking-tight md:mb-14 md:text-5xl lg:text-6xl"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.7, ease: ease.growth }}
+        >
+          {s.headingLead}{' '}
+          <span className="text-gp-green text-[1.35em] font-extrabold">{s.headingAccent}</span>{' '}
+          {s.headingTail}
+        </motion.h2>
+
+        <motion.div
+          className="mx-auto mb-12 max-w-5xl md:mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
+        >
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+            <Image
+              src="/images/home/productos-campo.webp"
+              alt={s.productsAlt}
+              width={1800}
+              height={1013}
+              sizes="(max-width: 1024px) 100vw, 64rem"
+              className="h-auto w-full"
+            />
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-5">
+            <p
+              className="text-ink/50 text-xs font-semibold tracking-[0.2em] uppercase"
+              style={{ fontFamily: 'var(--font-mono)' }}
+            >
+              {s.certifiedBy}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+              <a
+                href="https://www.gob.pe/senasa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+              >
+                <Image
+                  src="/images/logos/senasa.webp"
+                  alt="SENASA Perú"
+                  width={420}
+                  height={297}
+                  className="h-14 w-auto md:h-16"
+                />
+              </a>
+              <a
+                href="https://www.kiwa.com/pe/es/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+              >
+                <Image
+                  src="/images/logos/kiwa-bcs.webp"
+                  alt="Kiwa BCS Öko-Garantie"
+                  width={200}
+                  height={200}
+                  className="h-14 w-auto md:h-16"
+                />
+              </a>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="grid auto-rows-[minmax(210px,auto)] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {items.map(({ slug, title, desc, Icon, span, image }, i) => (

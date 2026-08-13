@@ -219,6 +219,13 @@
             "impact": "Impact Indicators — Coming Soon",
             "certifications": "Certifications — Coming Soon"
         },
+        "solutions": {
+            "headingLead": "We support",
+            "headingAccent": "organic farming",
+            "headingTail": "and sustainability",
+            "productsAlt": "Full line of Green Prod bio-inputs on a crop field",
+            "certifiedBy": "Certified by"
+        },
         "values": {
             "title": "Our Values",
             "label": "OUR VALUES",

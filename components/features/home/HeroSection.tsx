@@ -46,6 +46,8 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             veil={false}
           />
         </motion.div>
+        {/* Velo muy leve: apenas asienta el video para que el texto resalte. */}
+        <div className="bg-ink/25 absolute inset-0" />
         {/* Polen en suspensión sobre el campo. */}
         <AmbientSpores />
       </div>
@@ -62,14 +64,14 @@ export default function HeroSection({ dict }: HeroSectionProps) {
 
       <div className="relative z-10 w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <motion.div
-          className="max-w-md"
+          className="max-w-xl"
           variants={intro}
           initial={reduced ? false : 'hidden'}
           animate="visible"
         >
           <motion.p
             variants={staggerChild}
-            className="text-paper mb-3 text-[11px] font-semibold tracking-wide"
+            className="text-paper mb-3 text-xs font-semibold tracking-wide md:text-sm"
             style={{ fontFamily: 'var(--font-mono)' }}
           >
             ECONOMÍA CIRCULAR AGROINDUSTRIAL
@@ -78,13 +80,13 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             as="h1"
             text={hero.title}
             highlight={hero.titleHighlight}
-            highlightClassName="text-paper"
+            highlightClassName="text-gp-green"
             delay={0.15}
-            className="font-display text-paper mb-4 text-2xl leading-[1.15] font-semibold tracking-tight md:text-3xl lg:text-4xl"
+            className="font-display text-paper mb-4 text-3xl leading-[1.15] font-semibold tracking-tight md:text-4xl lg:text-5xl"
           />
           <motion.p
             variants={staggerChild}
-            className="text-husk/85 text-sm leading-relaxed md:text-base"
+            className="text-husk/90 text-base leading-relaxed md:text-lg"
           >
             {hero.subtitle}
           </motion.p>
