@@ -19,8 +19,12 @@ function readFrugal() {
 interface VideoBackdropProps {
   /** Clips que se encadenan en bucle. */
   sources: string[];
-  /** Imagen que se ve mientras carga y cuando no se reproduce video. */
-  poster: string;
+  /**
+   * Imagen que se ve mientras carga y cuando no se reproduce video.
+   * Si se omite, no se muestra ninguna: el video entra directo sobre el
+   * fondo de la sección (evita el parpadeo de una foto distinta al abrir).
+   */
+  poster?: string;
   posterAlt?: string;
   /** Segundos que se muestra cada clip antes de fundir al siguiente. */
   hold?: number;
@@ -85,7 +89,7 @@ export default function VideoBackdrop({
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <Image src={poster} alt={posterAlt} fill priority className="object-cover" />
+      {poster && <Image src={poster} alt={posterAlt} fill priority className="object-cover" />}
 
       {playVideo &&
         sources.map((src, i) => (
@@ -103,7 +107,9 @@ export default function VideoBackdrop({
             className="absolute inset-0 h-full w-full object-cover"
             initial={{ opacity: 0 }}
             animate={{ opacity: i === current ? 1 : 0 }}
-            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            // Con un solo clip no hay nada que encadenar: entra casi de
+            // inmediato para que no se note un hueco al abrir la página.
+            transition={{ duration: sources.length > 1 ? 1.4 : 0.35, ease: 'easeInOut' }}
           />
         ))}
 

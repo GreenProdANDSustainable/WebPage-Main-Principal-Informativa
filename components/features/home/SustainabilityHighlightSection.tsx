@@ -22,13 +22,16 @@ export default function SustainabilityHighlightSection({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal preset="rootScale" className="order-last lg:order-first">
-            <div className="relative h-80 overflow-hidden rounded-3xl shadow-2xl lg:h-[500px]">
+            {/* La foto es 3:2 y las tres personas ocupan todo el ancho: el
+                contenedor respeta esa proporción para no recortar a nadie. */}
+            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-3xl shadow-2xl">
               <ParallaxMedia className="absolute inset-0">
                 <Image
                   src="/images/home/compromiso.jpg"
                   alt={d.imageAlt}
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-contain"
                 />
               </ParallaxMedia>
 

@@ -29,8 +29,8 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
   const d = dict.Home.missionVision;
 
   const panels = [
-    { index: '01', Icon: Target, title: d.mission.title, text: d.mission.text },
-    { index: '02', Icon: Eye, title: d.vision.title, text: d.vision.text },
+    { key: 'mission', Icon: Target, title: d.mission.title, text: d.mission.text },
+    { key: 'vision', Icon: Eye, title: d.vision.title, text: d.vision.text },
   ];
 
   return (
@@ -73,8 +73,8 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
-          {panels.map((panel, i) => (
-            <GlassPanel key={panel.index} {...panel} delay={i * 0.15} />
+          {panels.map(({ key, ...panel }, i) => (
+            <GlassPanel key={key} {...panel} delay={i * 0.15} />
           ))}
         </div>
       </div>
@@ -83,13 +83,11 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
 }
 
 function GlassPanel({
-  index,
   Icon,
   title,
   text,
   delay,
 }: {
-  index: string;
   Icon: typeof Target;
   title: string;
   text: string;
@@ -133,7 +131,7 @@ function GlassPanel({
       <span className="via-gp-green/70 pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent" />
 
       <div className="relative z-10 flex h-full flex-col p-8 md:p-11">
-        <div className="mb-7 flex items-start justify-between">
+        <div className="mb-7 flex items-start">
           <motion.span
             className="border-paper/25 flex h-[70px] w-[70px] items-center justify-center rounded-2xl border bg-white/15 backdrop-blur-sm"
             whileHover={reduced ? undefined : { rotate: 6, scale: 1.07 }}
@@ -141,13 +139,6 @@ function GlassPanel({
           >
             <Icon className="text-gp-green h-9 w-9" />
           </motion.span>
-          <span
-            className="text-paper/20 text-6xl font-bold md:text-7xl"
-            style={{ fontFamily: 'var(--font-mono)' }}
-            aria-hidden="true"
-          >
-            {index}
-          </span>
         </div>
 
         <h3 className="font-display text-paper mb-4 text-2xl font-semibold md:text-3xl">{title}</h3>
