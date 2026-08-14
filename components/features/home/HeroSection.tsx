@@ -39,7 +39,11 @@ export default function HeroSection({ dict }: HeroSectionProps) {
           className="absolute inset-x-0 -top-[8%] h-[118%]"
           style={reduced ? undefined : { y: bgY }}
         >
-          <VideoBackdrop sources={['/videos/hero-avocado.mp4']} veil={false} />
+          <VideoBackdrop
+            sources={['/videos/hero-avocado.mp4']}
+            poster="/images/home/hero-avocado-poster.jpg"
+            veil={false}
+          />
         </motion.div>
         {/* Velo: asienta el video para que el texto resalte. */}
         <div className="bg-ink/45 absolute inset-0" />
