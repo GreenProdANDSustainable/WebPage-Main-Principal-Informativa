@@ -45,7 +45,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           '/videos/agro-2-riego.mp4',
           '/videos/agro-3-cosecha.mp4',
         ]}
-        poster="/images/ProductosServicios/Banner.jpg"
+        poster="/images/home/agro-1-poster.jpg"
         posterAlt=""
       />
 
