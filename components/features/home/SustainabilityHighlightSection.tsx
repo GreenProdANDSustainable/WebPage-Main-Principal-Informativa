@@ -61,19 +61,6 @@ export default function SustainabilityHighlightSection({
 
           <Reveal group gap={0.11} className="flex flex-col gap-6">
             <Reveal preset="child">
-              <span className="text-gp-green inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase">
-                <motion.span
-                  className="bg-gp-green block h-px"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: 32 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.7, delay: 0.2, ease: ease.growth }}
-                />
-                {d.sustainability}
-              </span>
-            </Reveal>
-
-            <Reveal preset="child">
               <h2 className="font-display text-gp-blue text-4xl leading-tight font-semibold tracking-tight md:text-5xl">
                 {d.title} <span className="text-gp-green">{d.titleHighlight}</span>
               </h2>
