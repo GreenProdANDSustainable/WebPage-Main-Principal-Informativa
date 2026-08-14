@@ -31,7 +31,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
     <section
       id="inicio"
       ref={sectionRef}
-      className="bg-ink relative flex min-h-[75vh] items-end overflow-hidden lg:min-h-[85vh]"
+      className="bg-ink relative flex min-h-[100dvh] items-end overflow-hidden"
     >
       {/* Video de fondo: hojas de palta en movimiento, tratado como marca de agua sutil */}
       <div className="absolute inset-0 overflow-hidden">

@@ -34,7 +34,6 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
             className="font-display text-paper text-center leading-tight font-semibold tracking-tight whitespace-nowrap"
             style={{
               fontSize: 'clamp(0.6rem, calc((100vw - 32px) / 36), 3.5rem)',
-              textShadow: '0 2px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.85)',
             }}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
