@@ -21,9 +21,13 @@
      intermedias) porque Tailwind v4 elimina del CSS final cualquier
      variable "--font-*"/"--color-*" personalizada que no se use también
      como clase literal en el código. */
+  /* Las cuatro terminan en el mismo respaldo genérico (sans-serif, nunca
+     monospace) a propósito: mientras Selawik carga, todo el texto —
+     titulares y etiquetas por igual— tiene que verse con la misma familia,
+     nunca una mezcla de proporcional y monoespaciada. */
   --font-sans: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Leelawadee UI', var(--font-selawik), ui-monospace, monospace;
+  --font-mono: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Leelawadee UI', var(--font-selawik), ui-sans-serif, system-ui, sans-serif;
 }
 

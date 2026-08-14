@@ -19,22 +19,24 @@ export default function TeamSection({ dict }: TeamSectionProps) {
         <Image src={TEAM_PHOTO_SRC} alt={d.imageAlt} fill sizes="100vw" className="object-cover" />
         <div className="from-ink via-ink/25 absolute inset-0 bg-gradient-to-t to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-end px-4 pb-14 text-center sm:pb-20">
+        <div className="absolute inset-0 flex flex-col items-center justify-end px-4 pb-8 text-center sm:pb-14 md:pb-20">
           <Reveal preset="growUp">
             <p
-              className="text-gp-green mb-3 text-sm font-semibold tracking-[0.2em] uppercase"
+              className="text-gp-green mb-2 text-xs font-semibold tracking-[0.2em] uppercase sm:mb-3 sm:text-sm"
               style={{ fontFamily: 'var(--font-mono)' }}
             >
               {d.label}
             </p>
           </Reveal>
           <Reveal preset="growUp" delay={0.1}>
-            <h2 className="font-display text-paper max-w-3xl text-3xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="font-display text-paper max-w-3xl text-xl font-semibold tracking-tight sm:text-3xl md:text-5xl">
               {d.title}
             </h2>
           </Reveal>
           <Reveal preset="growUp" delay={0.2}>
-            <p className="text-husk/80 mt-4 max-w-xl text-base md:text-lg">{d.subtitle}</p>
+            <p className="text-husk/80 mt-2 max-w-xl text-sm sm:mt-4 sm:text-base md:text-lg">
+              {d.subtitle}
+            </p>
           </Reveal>
         </div>
       </div>

@@ -142,6 +142,10 @@ export default function Navbar({ dictionary }: NavbarProps) {
   const transparentPages = ['/'];
   const isTransparentPage = transparentPages.includes(rawPath);
   const isSolid = isScrolled || !isTransparentPage || isOpen;
+  // Arriba del todo (sobre el video del hero) va 100% opaco para que se lea
+  // limpio; recién al bajar se afloja un poco la opacidad. En el resto de
+  // páginas, sin hero detrás, se queda siempre opaco.
+  const headerBgClass = isTransparentPage && isScrolled && !isOpen ? 'bg-paper/65' : 'bg-paper';
 
   const textColorClass = 'text-ink';
 
@@ -183,7 +187,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
       </AnimatePresence>
 
       <header
-        className="bg-paper/75 border-line-warm/40 fixed top-0 z-50 w-full border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.25)] backdrop-blur-xl transition-all duration-700"
+        className={`${headerBgClass} border-line-warm/40 fixed top-0 z-50 w-full border-b shadow-[0_10px_40px_-20px_rgba(20,23,15,0.25)] backdrop-blur-xl transition-all duration-700`}
         onMouseLeave={handleMouseLeave}
       >
         <div className="text-ink/70 hidden items-center justify-end px-8 py-2 text-xs tracking-wide transition-colors duration-700 md:flex">
