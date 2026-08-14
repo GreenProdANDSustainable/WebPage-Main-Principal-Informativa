@@ -340,6 +340,19 @@
                 "text": "Ser una empresa líder en la producción de bioinsumos agrícolas y productos marinos sostenibles, reconocida por su innovación, compromiso ambiental y contribución al desarrollo de una agricultura y pesca responsables que mejoren la calidad de vida de las comunidades locales y promuevan ecosistemas saludables."
             }
         },
+        "fieldGallery": {
+            "label": "Nuestro trabajo en campo",
+            "hint": "Desliza para ver más fotos",
+            "slotAlt": "Foto del trabajo de campo de Green Prod & Sustainable",
+            "prev": "Foto anterior",
+            "next": "Foto siguiente"
+        },
+        "team": {
+            "label": "Las personas",
+            "title": "El equipo detrás de Green Prod",
+            "subtitle": "Profesionales comprometidos con llevar la economía circular agroindustrial a cada campo del Perú.",
+            "imageAlt": "Equipo de Green Prod & Sustainable en campo"
+        },
         "sustainability": {
             "title": "Compromiso con la Sostenibilidad",
             "subtitle": "Iniciativas concretas que demuestran nuestro liderazgo en responsabilidad ambiental",

@@ -8,6 +8,7 @@ import {
   useReducedMotion,
   useSpring,
 } from 'motion/react';
+import FieldGallerySection from '@/components/features/home/FieldGallerySection';
 import KineticHeading from '@/components/shared/KineticHeading';
 import VideoBackdrop from '@/components/shared/VideoBackdrop';
 import { ease, viewport } from '@/lib/motion';
@@ -34,7 +35,10 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
   ];
 
   return (
-    <section id="mision-vision" className="bg-ink relative isolate overflow-hidden py-24 md:py-32">
+    <section id="mision-vision" className="bg-ink relative isolate overflow-hidden">
+      {/* Un solo video de fondo: cubre esta sección y la galería de fotos
+          que sigue, para que se lean como un mismo lienzo continuo, nunca
+          como dos videos distintos. */}
       <VideoBackdrop
         sources={[
           '/videos/agro-1-germinacion.mp4',
@@ -45,7 +49,7 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
         posterAlt=""
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-32 lg:px-8">
         <div className="mb-14 text-center">
           <motion.p
             className="text-gp-green mb-3 text-sm font-semibold tracking-[0.2em] uppercase"
@@ -78,6 +82,8 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           ))}
         </div>
       </div>
+
+      <FieldGallerySection dict={dict} />
     </section>
   );
 }

@@ -340,6 +340,19 @@
                 "text": "To be a leading company in the production of agricultural bio-inputs and sustainable seafood products, recognized for our innovation, environmental commitment, and contribution to responsible agriculture and fishing that improve the quality of life of local communities and promote healthy ecosystems."
             }
         },
+        "fieldGallery": {
+            "label": "Our work in the field",
+            "hint": "Swipe to see more photos",
+            "slotAlt": "Photo of Green Prod & Sustainable's field work",
+            "prev": "Previous photo",
+            "next": "Next photo"
+        },
+        "team": {
+            "label": "The people",
+            "title": "The team behind Green Prod",
+            "subtitle": "Professionals committed to bringing agro-industrial circular economy to every field in Peru.",
+            "imageAlt": "Green Prod & Sustainable team in the field"
+        },
         "sustainability": {
             "title": "Commitment to Sustainability",
             "subtitle": "Concrete initiatives that demonstrate our leadership in environmental responsibility",

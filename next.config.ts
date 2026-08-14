@@ -21,6 +21,14 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**', // This allows any path under the hostname
       },
+      {
+        // Fotos temporales de relleno (carrusel de "Nosotros" y foto de
+        // equipo) hasta que se reemplacen por material propio.
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   output: 'standalone',
