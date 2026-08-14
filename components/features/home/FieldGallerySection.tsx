@@ -50,40 +50,28 @@ export default function FieldGallerySection({ dict }: FieldGallerySectionProps) 
   return (
     <div id="campo" className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-10 lg:px-8">
       <motion.div
-        className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+        className="mb-4 hidden justify-end gap-3 sm:flex"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={viewport}
         transition={{ duration: 0.6, ease: ease.growth }}
       >
-        <div>
-          <p
-            className="text-gp-green mb-3 text-sm font-semibold tracking-[0.2em] uppercase"
-            style={{ fontFamily: 'var(--font-mono)' }}
-          >
-            {d.label}
-          </p>
-          <p className="text-husk/75 max-w-xl text-base md:text-lg">{d.hint}</p>
-        </div>
-
-        <div className="hidden shrink-0 gap-3 sm:flex">
-          <button
-            type="button"
-            onClick={() => scrollByCard(-1)}
-            aria-label={d.prev}
-            className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollByCard(1)}
-            aria-label={d.next}
-            className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => scrollByCard(-1)}
+          aria-label={d.prev}
+          className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollByCard(1)}
+          aria-label={d.next}
+          className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
       </motion.div>
 
       <div className="relative">

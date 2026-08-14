@@ -61,10 +61,7 @@ export default function SustainabilityHighlightSection({
 
           <Reveal group gap={0.11} className="flex flex-col gap-6">
             <Reveal preset="child">
-              <span
-                className="text-gp-green inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase"
-                style={{ fontFamily: 'var(--font-mono)' }}
-              >
+              <span className="text-gp-green inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase">
                 <motion.span
                   className="bg-gp-green block h-px"
                   initial={{ width: 0 }}
