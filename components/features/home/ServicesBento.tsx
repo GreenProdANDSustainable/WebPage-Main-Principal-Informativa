@@ -31,7 +31,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
         />
         <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 pt-6 pb-3 sm:pt-10 sm:pb-5 md:pt-14 md:pb-6">
           <motion.h2
-            className="font-display text-paper text-center text-3xl leading-[1.15] font-semibold tracking-tight md:text-4xl lg:text-5xl"
+            className="font-display text-paper text-center text-[clamp(0.7rem,calc(100vw/28),1.875rem)] leading-[1.15] font-semibold tracking-tight sm:text-4xl lg:text-5xl"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
