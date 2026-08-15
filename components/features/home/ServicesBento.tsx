@@ -35,7 +35,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="from-ink/85 via-ink/30 pointer-events-none absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b to-transparent"
           aria-hidden="true"
         />
-        <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 pt-6 pb-3 sm:pt-10 sm:pb-5 md:pt-14 md:pb-6">
+        <div className="absolute inset-0 z-10 px-4 pt-6 sm:pt-10 md:pt-14">
           {/* Mismo tamaño que el titular del hero, para que los dos grandes
               mensajes de la portada pesen igual. */}
           <motion.h2
@@ -48,18 +48,19 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
             {s.headingLead} <span className="text-gp-green">{s.headingAccent}</span> {s.headingTail}
           </motion.h2>
 
+          {/* Anclado al borde inferior: así queda siempre sobre el pasto y
+              no invade los productos, sin importar el alto de la sección. */}
           <motion.div
-            className="bg-paper w-fit max-w-[94%] rounded-xl px-3 py-1.5 shadow-xl sm:rounded-2xl sm:px-8 sm:py-5 md:rounded-3xl"
+            className="bg-paper absolute bottom-[2.5%] left-1/2 w-fit max-w-[94%] -translate-x-1/2 rounded-xl px-3 py-1.5 shadow-xl sm:rounded-2xl sm:px-6 sm:py-2.5 md:rounded-3xl md:px-8 md:py-3"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
           >
             <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-7">
-              <p
-                className="text-ink/70 text-[7px] font-bold tracking-[0.15em] uppercase sm:text-xs sm:tracking-[0.25em]"
-                style={{ fontFamily: 'var(--font-mono)' }}
-              >
+              {/* Misma familia y peso que el titular del hero: sin el
+                  espaciado ancho de la versión anterior, que se veía mal. */}
+              <p className="font-display text-ink/70 text-[9px] font-semibold tracking-tight sm:text-sm md:text-base">
                 {s.certifiedBy}
               </p>
               <div className="flex items-center justify-center gap-2 sm:gap-7">
@@ -74,7 +75,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                     alt="SENASA Perú"
                     width={420}
                     height={297}
-                    className="h-5 w-auto mix-blend-multiply sm:h-14 md:h-16"
+                    className="h-5 w-auto mix-blend-multiply sm:h-10 md:h-12"
                   />
                 </a>
                 <a
@@ -88,7 +89,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                     alt="Kiwa BCS Öko-Garantie"
                     width={200}
                     height={200}
-                    className="h-5 w-auto mix-blend-multiply sm:h-14 md:h-16"
+                    className="h-5 w-auto mix-blend-multiply sm:h-10 md:h-12"
                   />
                 </a>
               </div>
