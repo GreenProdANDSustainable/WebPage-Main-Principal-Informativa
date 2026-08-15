@@ -36,10 +36,12 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           aria-hidden="true"
         />
         <div className="absolute inset-0 z-10 px-4 pt-6 sm:pt-10 md:pt-14">
-          {/* Mismo tamaño que el titular del hero, para que los dos grandes
-              mensajes de la portada pesen igual. */}
+          {/* Siempre en un solo renglón: el tamaño se ata al ancho de la
+              pantalla y topa en 3rem, que es el mismo tamaño que ya tenía en
+              escritorio. Con saltos por breakpoint se partía en tres líneas
+              en celular. */}
           <motion.h2
-            className="font-display text-paper text-center text-3xl leading-[1.15] font-semibold tracking-tight md:text-4xl lg:text-5xl"
+            className="font-display text-paper text-center text-[clamp(0.75rem,4vw,3rem)] leading-[1.15] font-semibold tracking-tight whitespace-nowrap"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
