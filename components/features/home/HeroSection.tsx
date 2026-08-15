@@ -68,9 +68,14 @@ export default function HeroSection({ dict }: HeroSectionProps) {
           initial={reduced ? false : 'hidden'}
           animate="visible"
         >
+          {/* En celular el bloque entero se achica: el titular usa la misma
+              medida que el de "Aseguramos a la agricultura orgánica", y el
+              rótulo y el subtítulo bajan en la misma proporción, con un piso
+              para que sigan siendo legibles. En escritorio todo queda igual
+              que antes (14 / 48 / 18 px). */}
           <motion.p
             variants={staggerChild}
-            className="text-paper mb-3 text-xs font-semibold tracking-wide md:text-sm"
+            className="text-paper mb-3 text-[clamp(0.5625rem,1.167vw,0.875rem)] font-semibold tracking-wide"
             style={{ fontFamily: 'var(--font-mono)' }}
           >
             ECONOMÍA CIRCULAR AGROINDUSTRIAL
@@ -81,11 +86,11 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             highlight={hero.titleHighlight}
             highlightClassName="text-gp-green"
             delay={0.15}
-            className="font-display text-paper mb-4 text-3xl leading-[1.15] font-semibold tracking-tight md:text-4xl lg:text-5xl"
+            className="font-display text-paper mb-4 text-[clamp(0.75rem,4vw,3rem)] leading-[1.15] font-semibold tracking-tight"
           />
           <motion.p
             variants={staggerChild}
-            className="text-husk/90 text-base leading-relaxed md:text-lg"
+            className="text-husk/90 text-[clamp(0.75rem,1.5vw,1.125rem)] leading-relaxed"
           >
             {hero.subtitle}
           </motion.p>
