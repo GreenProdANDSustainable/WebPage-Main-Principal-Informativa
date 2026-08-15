@@ -45,6 +45,24 @@ html {
   html {
     font-size: 13px;
   }
+
+  /* Y todos los encabezados y textos quedan en la misma escala que el
+     titular del hero, para que ninguna sección pese más que otra. */
+  h1,
+  h2 {
+    font-size: clamp(0.9rem, 4vw, 1.75rem) !important;
+  }
+
+  h3,
+  h4 {
+    font-size: clamp(0.8rem, 3.1vw, 1.35rem) !important;
+  }
+
+  p,
+  li,
+  blockquote {
+    font-size: clamp(0.7rem, 3vw, 1rem) !important;
+  }
 }
 
 /* Cinta de logos: la lista va repetida cuatro veces, así que desplazarla
