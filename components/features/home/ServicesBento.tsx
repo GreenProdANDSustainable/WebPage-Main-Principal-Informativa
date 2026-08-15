@@ -29,17 +29,23 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="object-cover"
           priority
         />
+        {/* Velo solo en la franja de arriba, donde va el titular: le da
+            contraste al texto blanco sin apagar los productos ni el campo. */}
+        <div
+          className="from-ink/85 via-ink/30 pointer-events-none absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b to-transparent"
+          aria-hidden="true"
+        />
         <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 pt-6 pb-3 sm:pt-10 sm:pb-5 md:pt-14 md:pb-6">
+          {/* Mismo tamaño que el titular del hero, para que los dos grandes
+              mensajes de la portada pesen igual. */}
           <motion.h2
-            className="font-display text-paper text-center text-[clamp(0.7rem,calc(100vw/28),1.875rem)] leading-[1.15] font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+            className="font-display text-paper text-center text-3xl leading-[1.15] font-semibold tracking-tight md:text-4xl lg:text-5xl"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            {s.headingLead}{' '}
-            <span className="text-gp-green text-[1.3em] font-extrabold">{s.headingAccent}</span>{' '}
-            {s.headingTail}
+            {s.headingLead} <span className="text-gp-green">{s.headingAccent}</span> {s.headingTail}
           </motion.h2>
 
           <motion.div
