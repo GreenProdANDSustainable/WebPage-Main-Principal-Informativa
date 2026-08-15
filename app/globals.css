@@ -37,6 +37,16 @@ html {
   scroll-padding-top: 7rem;
 }
 
+/* Solo en celular: se achica la medida base de la que cuelgan todos los
+   tamaños de Tailwind (que van en rem). Así titulares, subtítulos y textos
+   de todo el sitio bajan a la vez y en la misma proporción, sin tocar ni un
+   componente y sin alterar nada en tablet ni escritorio. */
+@media (max-width: 639px) {
+  html {
+    font-size: 13px;
+  }
+}
+
 /* Cinta de logos: la lista va repetida cuatro veces, así que desplazarla
    un cuarto de su ancho deja la segunda copia justo donde arrancó la
    primera y el bucle se ve continuo, sin salto. */
