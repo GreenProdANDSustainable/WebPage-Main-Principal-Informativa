@@ -41,7 +41,8 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
               escritorio. Con saltos por breakpoint se partía en tres líneas
               en celular. */}
           <motion.h2
-            className="font-display text-paper text-center text-[clamp(0.75rem,4vw,3rem)] leading-[1.15] font-semibold tracking-tight whitespace-nowrap"
+            data-fit
+            className="font-display text-paper text-center text-[clamp(0.75rem,4.5vw,3rem)] leading-[1.15] font-semibold tracking-tight whitespace-nowrap max-sm:-mx-4 max-sm:tracking-[-0.045em]"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
