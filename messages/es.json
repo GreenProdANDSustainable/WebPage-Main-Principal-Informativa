@@ -198,8 +198,6 @@
     },
     "Home": {
         "hero": {
-            "title": "De subproducto industrial",
-            "titleHighlight": "a recurso sostenible",
             "subtitle": "Transformamos residuos de la pesca, la ganadería y el agro en bioinsumos, fertilizantes y alimentos trazables — con 95% de aprovechamiento y procesos certificados ISO 14001.",
             "primaryCta": "Ver productos y servicios",
             "secondaryCta": "Contáctanos",
@@ -216,7 +214,10 @@
                 "outputConservas": "Alimentos trazables",
                 "stat": "95%",
                 "statLabel": "de aprovechamiento"
-            }
+            },
+            "titleLead": "Aseguramos a la",
+            "titleAccent": "agricultura orgánica",
+            "titleTail": "y sostenible"
         },
         "comingSoon": {
             "capacity": "Nuestra Capacidad — Próximamente",
@@ -224,11 +225,8 @@
             "certifications": "Certificaciones — Próximamente"
         },
         "solutions": {
-            "headingLead": "Aseguramos a la",
-            "headingAccent": "agricultura orgánica",
-            "headingTail": "y sostenible",
             "productsAlt": "Línea completa de bioinsumos Green Prod sobre un campo de cultivo",
-            "certifiedBy": "Certificado por"
+            "certifiedByTitle": "Certificado por: Senasa y Kiwa"
         },
         "values": {
             "title": "Nuestros Valores",
@@ -330,8 +328,8 @@
         },
         "missionVision": {
             "essence_title": "",
-            "title": "Nosotros",
-            "subtitle": "Los pilares que guían nuestro compromiso con la sostenibilidad y el desarrollo productivo",
+            "title": "¿Quiénes Somos?",
+            "subtitle": "Somos una empresa peruana de innovación y producción sostenible que transforma residuos marinos en soluciones para una agricultura más eficiente y responsable.",
             "mission": {
                 "title": "Nuestra Misión",
                 "text": "Impulsar la productividad agrícola y marina mediante prácticas innovadoras y respetuosas con el medio ambiente, produciendo fertilizantes orgánicos y productos del mar que mejoren la calidad de vida de las comunidades locales."

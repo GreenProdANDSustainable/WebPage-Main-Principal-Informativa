@@ -7,6 +7,7 @@ import MissionVisionSection from '@/components/features/home/MissionVisionSectio
 import TeamSection from '@/components/features/home/TeamSection';
 import SustainabilityHighlightSection from '@/components/features/home/SustainabilityHighlightSection';
 import PartnersSection from '@/components/features/home/PartnersSection';
+import FieldGallerySection from '@/components/features/home/FieldGallerySection';
 import NewsSection from '@/components/features/home/NewsSection';
 import VideoSection from '@/components/features/home/VideoSection';
 
@@ -32,8 +33,9 @@ export default async function Home({ params }: HomeProps) {
 
       <ServicesBento dict={dict} lang={lang} />
       <MissionVisionSection dict={dict} />
-      <TeamSection dict={dict} />
       <PartnersSection dict={dict} />
+      <TeamSection dict={dict} />
+      <FieldGallerySection dict={dict} />
       <SustainabilityHighlightSection dict={dict} lang={lang} />
       <NewsSection dict={dict} />
       <VideoSection dict={dict} />

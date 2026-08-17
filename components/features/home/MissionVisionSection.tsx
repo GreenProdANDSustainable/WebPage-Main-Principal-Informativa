@@ -8,7 +8,6 @@ import {
   useReducedMotion,
   useSpring,
 } from 'motion/react';
-import FieldGallerySection from '@/components/features/home/FieldGallerySection';
 import KineticHeading from '@/components/shared/KineticHeading';
 import VideoBackdrop from '@/components/shared/VideoBackdrop';
 import { ease, viewport } from '@/lib/motion';
@@ -25,6 +24,9 @@ interface MissionVisionSectionProps {
  * vidrio: cada una vive por su cuenta, se levanta al acercarse el cursor
  * y deja pasar el video por debajo. El contraste entre el fondo vivo y la
  * quietud de las tarjetas es lo que genera el impacto.
+ *
+ * La galería de fotos ya no vive aquí dentro: ahora es su propia sección
+ * en el orden de la página (ver page.tsx).
  */
 export default function MissionVisionSection({ dict }: MissionVisionSectionProps) {
   const d = dict.Home.missionVision;
@@ -82,8 +84,6 @@ export default function MissionVisionSection({ dict }: MissionVisionSectionProps
           ))}
         </div>
       </div>
-
-      <FieldGallerySection dict={dict} />
     </section>
   );
 }

@@ -28,12 +28,12 @@ const PHOTOS = [
 ];
 
 /**
- * Segunda "página" del video de Nosotros: NO trae su propio video — vive
- * dentro del mismo fondo que MissionVisionSection ya puso encima, para que
- * sea un único video continuo y no dos instancias separadas. Las fotos
- * corren en un carrusel horizontal (no un grid cerrado de 3): la última
- * tarjeta visible siempre queda cortada a la mitad y hay flechas, para que
- * quede claro que sigue habiendo más para deslizar.
+ * Galería de fotos del campo, en su propia sección (antes vivía dentro de
+ * MissionVisionSection, compartiendo su video; ahora es independiente, con
+ * fondo oscuro propio para no perder el tono de la marca). Las fotos corren
+ * en un carrusel horizontal (no un grid cerrado de 3): la última tarjeta
+ * visible siempre queda cortada a la mitad y hay flechas, para que quede
+ * claro que sigue habiendo más para deslizar.
  */
 export default function FieldGallerySection({ dict }: FieldGallerySectionProps) {
   const d = dict.Home.fieldGallery;
@@ -48,47 +48,49 @@ export default function FieldGallerySection({ dict }: FieldGallerySectionProps) 
   };
 
   return (
-    <div id="campo" className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-10 lg:px-8">
-      <motion.div
-        className="mb-4 hidden justify-end gap-3 sm:flex"
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={viewport}
-        transition={{ duration: 0.6, ease: ease.growth }}
-      >
-        <button
-          type="button"
-          onClick={() => scrollByCard(-1)}
-          aria-label={d.prev}
-          className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
+    <section id="campo" className="bg-ink relative overflow-hidden py-16 md:py-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="mb-4 hidden justify-end gap-3 sm:flex"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.6, ease: ease.growth }}
         >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          onClick={() => scrollByCard(1)}
-          aria-label={d.next}
-          className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </motion.div>
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            aria-label={d.prev}
+            className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            aria-label={d.next}
+            className="border-paper/25 text-paper hover:bg-paper hover:text-ink flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </motion.div>
 
-      <div className="relative">
-        <div
-          ref={trackRef}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {PHOTOS.map((src, i) => (
-            <PhotoCard key={src} src={src} alt={d.slotAlt} delay={Math.min(i, 6) * 0.06} />
-          ))}
+        <div className="relative">
+          <div
+            ref={trackRef}
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {PHOTOS.map((src, i) => (
+              <PhotoCard key={src} src={src} alt={d.slotAlt} delay={Math.min(i, 6) * 0.06} />
+            ))}
+          </div>
+
+          {/* Degradado en el borde derecho: refuerza que el carrusel sigue,
+              aunque ya se note por la tarjeta cortada a la mitad. */}
+          <div className="from-ink pointer-events-none absolute inset-y-0 right-0 w-14 bg-gradient-to-l to-transparent sm:w-20 md:w-28" />
         </div>
-
-        {/* Degradado en el borde derecho: refuerza que el carrusel sigue,
-            aunque ya se note por la tarjeta cortada a la mitad. */}
-        <div className="from-ink pointer-events-none absolute inset-y-0 right-0 w-14 bg-gradient-to-l to-transparent sm:w-20 md:w-28" />
       </div>
-    </div>
+    </section>
   );
 }
 

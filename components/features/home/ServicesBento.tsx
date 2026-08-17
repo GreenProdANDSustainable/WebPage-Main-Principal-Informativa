@@ -35,7 +35,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="from-ink/85 via-ink/30 pointer-events-none absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b to-transparent"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 z-10 px-4 pt-6 sm:pt-10 md:pt-14">
+        <div className="absolute inset-0 z-10 px-4 pt-10 sm:pt-14 md:pt-20">
           {/* Siempre en un solo renglón: el tamaño se ata al ancho de la
               pantalla y topa en 3rem, que es el mismo tamaño que ya tenía en
               escritorio. Con saltos por breakpoint se partía en tres líneas
@@ -48,55 +48,47 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            {s.headingLead} <span className="text-gp-green">{s.headingAccent}</span> {s.headingTail}
+            {s.certifiedByTitle}
           </motion.h2>
 
-          {/* Anclado al borde inferior: así queda siempre sobre el pasto y
-              no invade los productos, sin importar el alto de la sección. */}
+          {/* Sin placa ni rótulo: los logos solos, anclados al borde
+              inferior sobre el pasto. Sombra suave en vez de fondo blanco,
+              para que se lean sobre la foto sin taparla. */}
           <motion.div
-            className="bg-paper absolute bottom-[2.5%] left-1/2 w-fit max-w-[94%] -translate-x-1/2 rounded-xl px-3 py-1.5 shadow-xl sm:rounded-2xl sm:px-6 sm:py-2.5 md:rounded-3xl md:px-8 md:py-3"
+            className="absolute bottom-[3%] left-1/2 flex -translate-x-1/2 items-center gap-6 sm:gap-10 md:gap-14"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
           >
-            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-7">
-              {/* Misma familia y peso que el titular del hero: sin el
-                  espaciado ancho de la versión anterior, que se veía mal. */}
-              <p className="font-display text-ink/70 text-[9px] font-semibold tracking-tight sm:text-sm md:text-base">
-                {s.certifiedBy}
-              </p>
-              <div className="flex items-center justify-center gap-2 sm:gap-7">
-                <a
-                  href="https://www.gob.pe/senasa"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
-                >
-                  <Image
-                    src="/images/logos/senasa.webp"
-                    alt="SENASA Perú"
-                    width={420}
-                    height={297}
-                    className="h-5 w-auto mix-blend-multiply sm:h-10 md:h-12"
-                  />
-                </a>
-                <a
-                  href="https://www.kiwa.com/pe/es/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
-                >
-                  <Image
-                    src="/images/logos/kiwa-bcs.webp"
-                    alt="Kiwa BCS Öko-Garantie"
-                    width={200}
-                    height={200}
-                    className="h-5 w-auto mix-blend-multiply sm:h-10 md:h-12"
-                  />
-                </a>
-              </div>
-            </div>
+            <a
+              href="https://www.gob.pe/senasa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
+            >
+              <Image
+                src="/images/logos/senasa.webp"
+                alt="SENASA Perú"
+                width={420}
+                height={297}
+                className="h-8 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:h-12 md:h-14"
+              />
+            </a>
+            <a
+              href="https://www.kiwa.com/pe/es/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
+            >
+              <Image
+                src="/images/logos/kiwa-bcs.webp"
+                alt="Kiwa BCS Öko-Garantie"
+                width={200}
+                height={200}
+                className="h-8 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:h-12 md:h-14"
+              />
+            </a>
           </motion.div>
         </div>
       </div>

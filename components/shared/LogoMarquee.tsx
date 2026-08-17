@@ -53,7 +53,7 @@ export default function LogoMarquee({ logos, duration = 32 }: LogoMarqueeProps) 
         {[0, 1, 2, 3].map((copy) => (
           <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy !== 0}>
             {logos.map((logo) => (
-              <div key={`${copy}-${logo.src}`} className="px-8 md:px-14">
+              <div key={`${copy}-${logo.src}`} className="px-10 md:px-20">
                 <LogoItem logo={logo} />
               </div>
             ))}
@@ -73,7 +73,7 @@ function LogoItem({ logo }: { logo: MarqueeLogo }) {
       height={400}
       // Los archivos ya llevan el fondo recortado (transparente), así que
       // se apoyan directo sobre el color de la sección.
-      className="h-14 w-auto object-contain opacity-75 transition-opacity duration-300 hover:opacity-100 md:h-20"
+      className="h-20 w-auto object-contain opacity-75 transition-opacity duration-300 hover:opacity-100 md:h-32"
     />
   );
 

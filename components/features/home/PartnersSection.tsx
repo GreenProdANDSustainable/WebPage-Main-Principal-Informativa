@@ -24,7 +24,7 @@ const partners: MarqueeLogo[] = [
 
 export default function PartnersSection({ dict }: PartnersSectionProps) {
   return (
-    <section id="aliados" className="border-line-warm/20 bg-paper border-y py-20">
+    <section id="aliados" className="border-line-warm/20 bg-paper border-y py-24">
       <div className="mb-12 px-4 text-center sm:px-6 lg:px-8">
         <Reveal group gap={0.12}>
           <Reveal preset="child">

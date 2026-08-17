@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import AmbientSpores from '@/components/shared/AmbientSpores';
-import KineticHeading from '@/components/shared/KineticHeading';
 import VideoBackdrop from '@/components/shared/VideoBackdrop';
 import { stagger, staggerChild } from '@/lib/motion';
 
@@ -80,14 +79,13 @@ export default function HeroSection({ dict }: HeroSectionProps) {
           >
             ECONOMÍA CIRCULAR AGROINDUSTRIAL
           </motion.p>
-          <KineticHeading
-            as="h1"
-            text={hero.title}
-            highlight={hero.titleHighlight}
-            highlightClassName="text-gp-green"
-            delay={0.15}
+          <motion.h1
+            variants={staggerChild}
             className="font-display text-paper mb-4 text-[clamp(0.75rem,4vw,3rem)] leading-[1.15] font-semibold tracking-tight"
-          />
+          >
+            {hero.titleLead} <span className="text-gp-green">{hero.titleAccent}</span>{' '}
+            {hero.titleTail}
+          </motion.h1>
           <motion.p
             variants={staggerChild}
             className="text-husk/90 text-[clamp(0.75rem,1.5vw,1.125rem)] leading-relaxed"

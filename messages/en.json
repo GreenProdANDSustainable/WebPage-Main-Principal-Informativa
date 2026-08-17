@@ -198,8 +198,6 @@
     },
     "Home": {
         "hero": {
-            "title": "From industrial byproduct",
-            "titleHighlight": "to sustainable resource",
             "subtitle": "We turn fishing, livestock and agricultural waste into bio-inputs, fertilizers and traceable food — with 95% utilization and ISO 14001 certified processes.",
             "primaryCta": "View products and services",
             "secondaryCta": "Contact us",
@@ -216,7 +214,10 @@
                 "outputConservas": "Traceable food",
                 "stat": "95%",
                 "statLabel": "utilization"
-            }
+            },
+            "titleLead": "We support",
+            "titleAccent": "organic farming",
+            "titleTail": "and sustainability"
         },
         "comingSoon": {
             "capacity": "Our Capacity — Coming Soon",
@@ -224,11 +225,8 @@
             "certifications": "Certifications — Coming Soon"
         },
         "solutions": {
-            "headingLead": "We support",
-            "headingAccent": "organic farming",
-            "headingTail": "and sustainability",
             "productsAlt": "Full line of Green Prod bio-inputs on a crop field",
-            "certifiedBy": "Certified by"
+            "certifiedByTitle": "Certified by: Senasa and Kiwa"
         },
         "values": {
             "title": "Our Values",
@@ -330,8 +328,8 @@
         },
         "missionVision": {
             "essence_title": "Our Essence",
-            "title": "Mission and Vision",
-            "subtitle": "The pillars that guide our commitment to sustainability and productive development",
+            "title": "Who We Are",
+            "subtitle": "We are a Peruvian company of innovation and sustainable production that transforms marine waste into solutions for a more efficient and responsible agriculture.",
             "mission": {
                 "title": "Our Mission",
                 "text": "To drive agricultural and marine productivity through innovative and environmentally friendly practices, producing organic fertilizers and seafood products that improve the quality of life of local communities."
