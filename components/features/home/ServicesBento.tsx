@@ -52,12 +52,16 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
               rel="noopener noreferrer"
               className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
             >
+              {/* El logo de SENASA es azul oscuro (luminancia ~64) y se apoya
+                  sobre la franja oscura de la foto (~71): sin este realce
+                  queda ilegible. El de Kiwa no lo necesita porque su propio
+                  fondo es claro. */}
               <Image
                 src="/images/logos/senasa.webp"
                 alt="SENASA Perú"
                 width={420}
                 height={297}
-                className="h-6 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)] sm:h-9 md:h-11"
+                className="h-9 w-auto drop-shadow-[0_1px_6px_rgba(255,255,255,0.75)] sm:h-14 md:h-16"
               />
             </a>
             <a
@@ -71,7 +75,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                 alt="Kiwa BCS Öko-Garantie"
                 width={200}
                 height={200}
-                className="h-7 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)] sm:h-10 md:h-12"
+                className="h-11 w-auto sm:h-16 md:h-[4.5rem]"
               />
             </a>
           </motion.div>
