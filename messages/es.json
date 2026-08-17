@@ -226,7 +226,19 @@
         },
         "solutions": {
             "productsAlt": "Línea completa de bioinsumos Green Prod sobre un campo de cultivo",
-            "certifiedByTitle": "Certificado por: Senasa y Kiwa"
+            "certifiedByTitle": "Certificado por:"
+        },
+        "products": {
+            "title": "Productos",
+            "subtitle": "Nuestra línea completa, en fotos muy pronto.",
+            "itemLabel": "Producto",
+            "comingSoon": "Foto próximamente"
+        },
+        "reach": {
+            "titleLead": "GreenProd",
+            "titleTail": "llegó hasta",
+            "qrLabel": "Escanéanos",
+            "qrComingSoon": "Código QR próximamente"
         },
         "values": {
             "title": "Nuestros Valores",

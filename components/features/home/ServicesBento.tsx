@@ -11,8 +11,8 @@ interface ServicesBentoProps {
 
 /**
  * Lo que la empresa asegura, en una sola imagen: la línea completa de
- * bioinsumos sobre el campo, titular con el mismo tamaño de fuente que el
- * del hero y las certificaciones como una placa pequeña al pie de la imagen.
+ * bioinsumos sobre el campo, con el aviso de certificación como una placa
+ * blanca al pie de la imagen.
  */
 export default function ServicesBento({ dict }: ServicesBentoProps) {
   const s = dict.Home.solutions;
@@ -29,38 +29,19 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="object-cover"
           priority
         />
-        {/* Velo solo en la franja de arriba, donde va el titular: le da
-            contraste al texto blanco sin apagar los productos ni el campo. */}
-        <div
-          className="from-ink/85 via-ink/30 pointer-events-none absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b to-transparent"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 z-10 px-4 pt-10 sm:pt-14 md:pt-20">
-          {/* Siempre en un solo renglón: el tamaño se ata al ancho de la
-              pantalla y topa en 3rem, que es el mismo tamaño que ya tenía en
-              escritorio. Con saltos por breakpoint se partía en tres líneas
-              en celular. */}
-          <motion.h2
-            data-fit
-            className="font-display text-paper text-center text-[clamp(0.75rem,4.5vw,3rem)] leading-[1.15] font-semibold tracking-tight whitespace-nowrap max-sm:-mx-4 max-sm:tracking-[-0.045em]"
-            initial={{ opacity: 0, y: 16 }}
+        <div className="absolute inset-0 z-10 flex items-end justify-center pb-[4%]">
+          {/* Placa blanca única: el aviso de certificación y los logos
+              viven juntos, con fondo propio y legible sobre la foto. */}
+          <motion.div
+            className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm sm:gap-5 sm:px-6 sm:py-4"
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            {s.certifiedByTitle}
-          </motion.h2>
-
-          {/* Sin placa ni rótulo: los logos solos, anclados al borde
-              inferior sobre el pasto. Sombra suave en vez de fondo blanco,
-              para que se lean sobre la foto sin taparla. */}
-          <motion.div
-            className="absolute bottom-[3%] left-1/2 flex -translate-x-1/2 items-center gap-6 sm:gap-10 md:gap-14"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.7, delay: 0.1, ease: ease.growth }}
-          >
+            <span className="text-ink/70 font-display text-xs font-semibold tracking-wide whitespace-nowrap sm:text-sm">
+              {s.certifiedByTitle}
+            </span>
             <a
               href="https://www.gob.pe/senasa"
               target="_blank"
@@ -72,9 +53,10 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                 alt="SENASA Perú"
                 width={420}
                 height={297}
-                className="h-8 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:h-12 md:h-14"
+                className="h-6 w-auto sm:h-9 md:h-11"
               />
             </a>
+            <span className="bg-ink/10 h-7 w-px sm:h-9" aria-hidden="true" />
             <a
               href="https://www.kiwa.com/pe/es/"
               target="_blank"
@@ -86,7 +68,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                 alt="Kiwa BCS Öko-Garantie"
                 width={200}
                 height={200}
-                className="h-8 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:h-12 md:h-14"
+                className="h-6 w-auto sm:h-9 md:h-11"
               />
             </a>
           </motion.div>

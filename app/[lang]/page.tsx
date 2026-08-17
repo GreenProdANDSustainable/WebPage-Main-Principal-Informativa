@@ -7,9 +7,11 @@ import MissionVisionSection from '@/components/features/home/MissionVisionSectio
 import TeamSection from '@/components/features/home/TeamSection';
 import SustainabilityHighlightSection from '@/components/features/home/SustainabilityHighlightSection';
 import PartnersSection from '@/components/features/home/PartnersSection';
+import ProductsSection from '@/components/features/home/ProductsSection';
 import FieldGallerySection from '@/components/features/home/FieldGallerySection';
 import NewsSection from '@/components/features/home/NewsSection';
 import VideoSection from '@/components/features/home/VideoSection';
+import ReachMapSection from '@/components/features/home/ReachMapSection';
 
 interface HomeProps {
   params: Promise<{
@@ -34,11 +36,13 @@ export default async function Home({ params }: HomeProps) {
       <ServicesBento dict={dict} lang={lang} />
       <MissionVisionSection dict={dict} />
       <PartnersSection dict={dict} />
+      <ProductsSection dict={dict} />
       <TeamSection dict={dict} />
       <FieldGallerySection dict={dict} />
       <SustainabilityHighlightSection dict={dict} lang={lang} />
       <NewsSection dict={dict} />
       <VideoSection dict={dict} />
+      <ReachMapSection dict={dict} />
 
       {/* Testimonials Section - Conditional based on environment variable */}
       {testimonialsEnabled && (

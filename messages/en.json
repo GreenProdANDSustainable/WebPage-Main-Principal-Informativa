@@ -226,7 +226,19 @@
         },
         "solutions": {
             "productsAlt": "Full line of Green Prod bio-inputs on a crop field",
-            "certifiedByTitle": "Certified by: Senasa and Kiwa"
+            "certifiedByTitle": "Certified by:"
+        },
+        "products": {
+            "title": "Products",
+            "subtitle": "Our full line, in photos very soon.",
+            "itemLabel": "Product",
+            "comingSoon": "Photo coming soon"
+        },
+        "reach": {
+            "titleLead": "GreenProd",
+            "titleTail": "reaches",
+            "qrLabel": "Scan us",
+            "qrComingSoon": "QR code coming soon"
         },
         "values": {
             "title": "Our Values",
