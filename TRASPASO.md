@@ -2,7 +2,7 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `a7b4942`.
+> Última actualización: commit `2498a58`.
 >
 > Entre `6016a3d` (la actualización anterior de este documento) y `ee06ff2`
 > hubo ~44 commits sin traspaso al día: tipografía y hero achicados para
@@ -93,8 +93,8 @@ Hero id="inicio"                     (titular cinético + video de fondo -palta/
   ↓ MissionVision id="mision-vision" (video agrícola de fondo + 2 tarjetas de vidrio)
   ↓ Partners id="aliados"            (Alianzas Estratégicas, cinta de logos)
   ↓ Products id="productos"          (5 tarjetas de adelanto + botón "Ver catálogo" → /catalogo)
+  ↓ FieldGallery id="campo"          (carrusel de fotos del campo, fondo ink)
   ↓ Team                             (Equipo Greenprod)
-  ↓ FieldGallery                     (galería de fotos del campo, fondo ink)
   ↓ SustainabilityHighlight id="compromiso"  (foto con parallax + lista, "Nuestro Compromiso")
   ↓ News id="casos-exito"            (sigue "Próximamente")
   ↓ Video                            ("Nuestra Esencia", sigue "Próximamente")
@@ -102,10 +102,9 @@ Hero id="inicio"                     (titular cinético + video de fondo -palta/
 ```
 
 `/[lang]/catalogo/page.tsx` ya no es la página "en construcción" genérica:
-ahora lista las 7 categorías reales de producto (Biofungicidas,
-Bioinsecticidas, Nematicida, Biofertilizante, Bioestimulante, Aceite
-Agrícola, Jabón Potásico) desde el diccionario `Catalog.categories`, cada
-una todavía como marcador de posición ("Fotos y fichas próximamente").
+ahora es una sección por categoría con sus productos reales, desde el
+diccionario `Catalog.categories` (`{ name, products }`). Falta solo la foto
+de cada producto ("Foto próximamente").
 
 Los `id` existen porque el menú "Inicio" del navbar salta a cada sección con
 anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
@@ -128,21 +127,49 @@ A pedido del usuario:
 - **`/[lang]/catalogo`**: página nueva con las 7 categorías reales de
   producto (ver dict `Catalog.categories`), cada una todavía como
   marcador de posición a la espera de fotos y fichas técnicas reales.
-- **`ReachMapSection`**: el contorno del Perú **es geografía real**
-  (`PERU_PATH`, proyección equirectangular desde el polígono de frontera
-  de Natural Earth / world.geo.json, dominio público — no un dibujo a
-  mano). Las 12 ciudades/regiones usan sus coordenadas reales; las
-  etiquetas viven en dos rieles laterales conectados por una línea al
-  pin porque, con ubicaciones reales, varias ciudades del norte quedan
-  muy juntas para escribir el texto pegado al pin. Cada pin crece y se
-  pone verde al pasar el mouse (`group-hover` en SVG). Incluye el logo
-  blanco, el código QR real (`public/images/home/qr-greenprod.jpg`, el
-  usuario lo dejó en su carpeta de Descargas) y los iconos de Facebook e
-  Instagram (no se agregó TikTok: no está confirmado si la empresa tiene
-  cuenta).
+- **`ReachMapSection`** (ver también §4.1): geografía real, con los 25
+  departamentos y las 12 ciudades en sus coordenadas reales. Cada pin
+  crece y se pone verde al pasar el mouse. Incluye el logo blanco, el
+  código QR real (`public/images/home/qr-greenprod.jpg`, el usuario lo
+  dejó en su carpeta de Descargas) y los iconos de Facebook e Instagram
+  (no se agregó TikTok: no está confirmado si la empresa tiene cuenta).
 - La placa "Certificado por: Senasa y Kiwa" de `ServicesBento` pasó a ser
   una sola placa blanca con el texto corto "Certificado por:" + ambos
   logos, en vez del titular grande sobre la foto.
+
+### 4.1 El mapa de "GreenProd llegó hasta" — cómo está armado
+
+Los datos viven en `lib/peru-map-data.ts` y **no se calculan en runtime**:
+los genera un script a partir de los límites departamentales del INEI
+(github.com/juaneladio/peru-geojson, dominio público), con proyección
+equirectangular. Reglas que costó afinar y conviene no romper:
+
+- **El relleno del país se arma concatenando las mismas 26 piezas
+  departamentales** que se dibujan como líneas divisorias
+  (`PERU_DEPT_PATHS.join(' ')`). Antes el relleno venía de otra fuente y
+  se salía de las líneas. No volver a meter un contorno nacional aparte.
+- **El rótulo va siempre DEBAJO de su línea guía**, que es una polilínea:
+  sale del pin, llega al costado del mapa (`railX`) y sigue en horizontal
+  a lo ancho del rótulo (`blockW`).
+- **El texto crece hacia afuera del mapa**, nunca hacia adentro: a la
+  izquierda `text-anchor="end"`, a la derecha `"start"`. Tenerlo al revés
+  fue lo que hacía que Chanchamayo se viera encimado sobre el país.
+- **`railX` se calcula midiendo el borde del país en toda la franja que
+  ocupa el rótulo**, no solo a la altura de su línea: el país se ensancha
+  hacia abajo y si no, la esquina inferior del texto lo pisa.
+- **`blockW` sale de medir el texto REAL en el navegador**
+  (`getComputedTextLength`) al tamaño con que se dibuja (14px el nombre,
+  11px la región). Si se cambia el tamaño o un nombre, hay que volver a
+  medir y regenerar; si no, el reparto deja de ser fiable.
+- **Por debajo de `lg` los rótulos se ocultan** y los nombres pasan a una
+  lista HTML a 13px: dentro del mapa quedarían en ~4px en celular. Ahí el
+  SVG se agranda al 145% dentro de un contenedor con `overflow-hidden` y
+  se corre al 46.2% (no al 50%) para centrar **el país**, no el lienzo
+  —que es más ancho del lado del rótulo largo de Junín.
+
+Verificado sobre el DOM ya renderizado (no solo en el script): los 12
+rótulos quedan debajo de su línea, ninguno pisa a otro, ninguno toca el
+relleno del país (`isPointInFill`) y ninguno se sale del lienzo.
 
 **Pendiente del usuario:** ver §7.
 
@@ -287,9 +314,8 @@ siempre `true`), así que:
 - [x] ~~Código QR para "GreenProd llegó hasta"~~ — resuelto: el usuario dejó el
       archivo en su carpeta de Descargas, se copió a
       `public/images/home/qr-greenprod.jpg` (commit `c12983f`).
-- [x] ~~El mapa de "GreenProd llegó hasta" era un contorno dibujado a mano, sin
-      divisiones, con etiquetas amontonadas y el relleno blanco se salía de
-      las líneas~~ — resuelto en tres pasadas (`381c46b`, `1501643`,
+- [x] ~~El mapa de "GreenProd llegó hasta": contorno a mano, sin divisiones,
+      etiquetas amontonadas y relleno saliéndose de las líneas~~ — resuelto en tres pasadas (`381c46b`, `1501643`,
       `b5ca8f5`): los 25 departamentos como líneas internas (fuente INEI vía
       juaneladio/peru-geojson) + mapa a mayor escala para que las etiquetas
       del norte no se encimen + pin tipo marcador (gota oscura con punto
