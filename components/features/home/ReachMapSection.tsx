@@ -89,17 +89,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                       x={city.railX}
                       y={city.labelY + 3}
                       textAnchor={anchor}
-                      className="fill-ink group-hover:fill-gp-green text-[11px] font-semibold transition-colors duration-300"
-                      stroke="white"
-                      strokeWidth={3}
-                      paintOrder="stroke"
+                      className="fill-ink group-hover:fill-gp-green font-display text-[11px] font-semibold transition-colors duration-300"
                     >
                       {city.label}
                       {city.detail && (
                         <tspan
                           x={city.railX}
                           dy="12"
-                          className="fill-ink/60 text-[9px] font-normal"
+                          className="fill-ink/60 font-display text-[9px] font-normal"
                         >
                           {city.detail}
                         </tspan>
