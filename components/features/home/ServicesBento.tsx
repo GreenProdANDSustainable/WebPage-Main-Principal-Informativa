@@ -52,16 +52,19 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
               rel="noopener noreferrer"
               className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
             >
-              {/* El logo de SENASA es azul oscuro (luminancia ~64) y se apoya
-                  sobre la franja oscura de la foto (~71): sin este realce
-                  queda ilegible. El de Kiwa no lo necesita porque su propio
-                  fondo es claro. */}
+              {/* El archivo venía con un margen transparente enorme: el logo
+                  ocupaba solo el 21% del alto, por eso se veía diminuto al
+                  lado del sello de Kiwa. Ya recortado, se escala buscando
+                  igual peso visual: es un logotipo apaisado (3.45:1) frente a
+                  un sello cuadrado, así que se igualan por área, no por alto.
+                  Conserva el realce porque es azul oscuro (luminancia ~64)
+                  sobre la franja oscura de la foto (~71). */}
               <Image
                 src="/images/logos/senasa.webp"
                 alt="SENASA Perú"
-                width={420}
-                height={297}
-                className="h-9 w-auto drop-shadow-[0_1px_6px_rgba(255,255,255,0.75)] sm:h-14 md:h-16"
+                width={214}
+                height={62}
+                className="h-6 w-auto drop-shadow-[0_1px_6px_rgba(255,255,255,0.75)] sm:h-9 md:h-10"
               />
             </a>
             <a
