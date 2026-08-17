@@ -36,7 +36,7 @@ export default async function Home({ params }: HomeProps) {
       <ServicesBento dict={dict} lang={lang} />
       <MissionVisionSection dict={dict} />
       <PartnersSection dict={dict} />
-      <ProductsSection dict={dict} />
+      <ProductsSection dict={dict} lang={lang} />
       <TeamSection dict={dict} />
       <FieldGallerySection dict={dict} />
       <SustainabilityHighlightSection dict={dict} lang={lang} />

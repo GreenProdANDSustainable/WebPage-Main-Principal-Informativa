@@ -16,12 +16,22 @@
         "subtitle": "Discover who we are in one minute.",
         "placeholder": "Corporate Video — Coming Soon"
     },
+    "Catalog": {
+        "title": "Catalog",
+        "subtitle": "Our line of bio-inputs, organized by category.",
+        "backButton": "Back to Home",
+        "comingSoon": "Photos and spec sheets coming soon",
+        "categories": [
+            "Biofungicides",
+            "Bioinsecticides",
+            "Nematicide",
+            "Biofertilizer",
+            "Biostimulant",
+            "Agricultural Oil",
+            "Potassium Soap"
+        ]
+    },
     "Pages": {
-        "construction": {
-            "title": "Page Under Construction",
-            "description": "We are working hard to bring you our new interactive catalog. It will be available soon!",
-            "backButton": "Back to Home"
-        },
         "contact": {
             "title": "Contact Us",
             "subtitle": "We are ready to help you implement sustainable solutions in your company. Write to us and an advisor will contact you.",
@@ -230,15 +240,14 @@
         },
         "products": {
             "title": "Products",
-            "subtitle": "Our full line, in photos very soon.",
             "itemLabel": "Product",
-            "comingSoon": "Photo coming soon"
+            "comingSoon": "Photo coming soon",
+            "viewCatalog": "View catalog"
         },
         "reach": {
             "titleLead": "GreenProd",
             "titleTail": "reaches",
-            "qrLabel": "Scan us",
-            "qrComingSoon": "QR code coming soon"
+            "qrLabel": "Scan us"
         },
         "values": {
             "title": "Our Values",

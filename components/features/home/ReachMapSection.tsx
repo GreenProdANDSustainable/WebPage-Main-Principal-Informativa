@@ -149,10 +149,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                 <span className="text-paper/70 font-display text-sm font-semibold tracking-wide uppercase">
                   {r.qrLabel}
                 </span>
-                {/* Reemplazar por <Image src="/images/home/qr-greenprod.png" .../> cuando
-                    el archivo del QR esté en esa ruta dentro de public/. */}
-                <div className="border-paper/30 text-paper/50 flex h-36 w-36 items-center justify-center rounded-2xl border-2 border-dashed bg-white/5 p-3 text-center text-[11px]">
-                  {r.qrComingSoon}
+                <div className="h-36 w-36 overflow-hidden rounded-2xl bg-white p-2">
+                  <Image
+                    src="/images/home/qr-greenprod.jpg"
+                    alt={r.qrLabel}
+                    width={288}
+                    height={288}
+                    className="h-full w-full object-contain"
+                  />
                 </div>
               </div>
             </Reveal>

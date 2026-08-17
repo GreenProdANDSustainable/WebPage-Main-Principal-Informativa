@@ -1,33 +1,30 @@
-import { ImageOff } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, ImageOff } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
 
 interface ProductsSectionProps {
   dict: any;
+  lang: string;
 }
 
-const PRODUCT_COUNT = 13;
+const PRODUCT_COUNT = 5;
 
 /**
- * Retícula de 3 columnas para las 13 líneas de producto. Hoy son tarjetas
- * marcador de posición (sin foto ni nombre real todavía): el espacio queda
- * reservado para cuando lleguen las imágenes.
+ * Adelanto de 5 tarjetas marcador de posición (sin foto ni nombre real
+ * todavía) que invita al catálogo completo, donde los productos van
+ * divididos por categoría.
  */
-export default function ProductsSection({ dict }: ProductsSectionProps) {
+export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
   const p = dict.Home.products;
 
   return (
     <section id="productos" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <Reveal group gap={0.12}>
-            <Reveal preset="child">
-              <h2 className="font-display text-ink mb-3 text-3xl font-semibold tracking-tight md:text-4xl">
-                {p.title}
-              </h2>
-            </Reveal>
-            <Reveal preset="child">
-              <p className="text-ink/60 mx-auto max-w-2xl text-base">{p.subtitle}</p>
-            </Reveal>
+          <Reveal preset="growUp">
+            <h2 className="font-display text-ink text-3xl font-semibold tracking-tight md:text-4xl">
+              {p.title}
+            </h2>
           </Reveal>
         </div>
 
@@ -54,6 +51,16 @@ export default function ProductsSection({ dict }: ProductsSectionProps) {
               </div>
             </Reveal>
           ))}
+        </Reveal>
+
+        <Reveal preset="growUp" className="mt-12 text-center">
+          <Link
+            href={`/${lang}/catalogo`}
+            className="bg-gp-green text-ink hover:bg-husk group inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold transition-all hover:scale-105"
+          >
+            {p.viewCatalog}
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </Reveal>
       </div>
     </section>

@@ -16,12 +16,22 @@
         "subtitle": "Descubre quiénes somos en un minuto.",
         "placeholder": "Video Corporativo — Próximamente"
     },
+    "Catalog": {
+        "title": "Catálogo",
+        "subtitle": "Nuestra línea de bioinsumos, organizada por categoría.",
+        "backButton": "Volver a la Página Principal",
+        "comingSoon": "Fotos y fichas próximamente",
+        "categories": [
+            "Biofungicidas",
+            "Bioinsecticidas",
+            "Nematicida",
+            "Biofertilizante",
+            "Bioestimulante",
+            "Aceite Agrícola",
+            "Jabón Potásico"
+        ]
+    },
     "Pages": {
-        "construction": {
-            "title": "Página en Construcción",
-            "description": "Estamos trabajando arduamente para traerte nuestro nuevo catálogo interactivo. ¡Pronto estará disponible!",
-            "backButton": "Volver a la Página Principal"
-        },
         "contact": {
             "title": "Contáctanos",
             "subtitle": "Estamos listos para ayudarte a implementar soluciones sostenibles en tu empresa. Escríbenos y un asesor se pondrá en contacto contigo.",
@@ -230,15 +240,14 @@
         },
         "products": {
             "title": "Productos",
-            "subtitle": "Nuestra línea completa, en fotos muy pronto.",
             "itemLabel": "Producto",
-            "comingSoon": "Foto próximamente"
+            "comingSoon": "Foto próximamente",
+            "viewCatalog": "Ver catálogo"
         },
         "reach": {
             "titleLead": "GreenProd",
             "titleTail": "llegó hasta",
-            "qrLabel": "Escanéanos",
-            "qrComingSoon": "Código QR próximamente"
+            "qrLabel": "Escanéanos"
         },
         "values": {
             "title": "Nuestros Valores",

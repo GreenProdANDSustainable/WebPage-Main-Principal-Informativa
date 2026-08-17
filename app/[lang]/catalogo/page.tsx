@@ -1,52 +1,59 @@
 import Link from 'next/link';
-import { ArrowLeft, Wrench } from 'lucide-react';
-import * as motion from 'motion/react-client';
+import { ArrowLeft, ImageOff } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
-import { ease } from '@/lib/motion';
 
 export default async function Catalogo({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dictionary = lang === 'es' ? esMessages : enMessages;
-  const d = dictionary.Pages.construction;
+  const c = dictionary.Catalog;
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 py-24">
-      <div className="mx-auto w-full max-w-2xl px-4 text-center sm:px-6 lg:px-8">
-        <Reveal preset="rootScale">
-          <div className="flex flex-col items-center rounded-3xl border border-slate-100 bg-white p-12 shadow-xl md:p-16">
-            <motion.div
-              className="bg-gp-green/10 mb-8 flex h-24 w-24 items-center justify-center rounded-full"
-              animate={{ rotate: [0, -12, 0, 12, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', repeatDelay: 2.5 }}
-            >
-              <Wrench className="text-gp-green h-12 w-12" />
-            </motion.div>
+    <div className="bg-paper min-h-screen py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal preset="fadeIn">
+          <Link
+            href={`/${lang}`}
+            className="text-ink/50 hover:text-gp-green mb-10 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {c.backButton}
+          </Link>
+        </Reveal>
 
-            <h1 className="mb-6 font-serif text-4xl font-bold text-slate-900 md:text-5xl">
-              {d.title}
-            </h1>
+        <div className="mb-14 text-center">
+          <Reveal group gap={0.12}>
+            <Reveal preset="child">
+              <h1 className="font-display text-ink mb-3 text-4xl font-semibold tracking-tight md:text-5xl">
+                {c.title}
+              </h1>
+            </Reveal>
+            <Reveal preset="child">
+              <p className="text-ink/60 mx-auto max-w-2xl text-base">{c.subtitle}</p>
+            </Reveal>
+          </Reveal>
+        </div>
 
-            <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-slate-600">
-              {d.description}
-            </p>
-
-            <motion.span
-              className="inline-block"
-              whileHover={{ y: -3, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.3, ease: ease.growth }}
-            >
-              <Link
-                href={`/${lang}`}
-                className="group bg-gp-green hover:bg-gp-blue inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-white transition-colors duration-300"
-              >
-                <ArrowLeft className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1" />
-                {d.backButton}
-              </Link>
-            </motion.span>
-          </div>
+        <Reveal
+          group
+          gap={0.08}
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-3"
+        >
+          {c.categories.map((category: string) => (
+            <Reveal key={category} preset="child">
+              <div className="border-line-warm/50 hover:border-gp-green/50 flex flex-col items-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors duration-500">
+                <ImageOff className="text-ink/25 h-8 w-8" />
+                <h2 className="font-display text-ink text-lg font-semibold">{category}</h2>
+                <p
+                  className="text-ink/35 text-xs tracking-wide uppercase"
+                  style={{ fontFamily: 'var(--font-mono)' }}
+                >
+                  {c.comingSoon}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </Reveal>
       </div>
     </div>
