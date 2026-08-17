@@ -2,7 +2,16 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `6016a3d`.
+> Última actualización: commit `ee06ff2`.
+>
+> Entre `6016a3d` (la actualización anterior de este documento) y `ee06ff2`
+> hubo ~44 commits sin traspaso al día: tipografía y hero achicados para
+> celular, restauración del video del hero a máxima calidad, galería de
+> campo y sección de equipo, Sostenibilidad movida al final, nueva foto de
+> productos y cinta de aliados, y — en el commit de hoy — el nuevo titular
+> del hero, "¿Quiénes Somos?", el reorden de secciones y las tres piezas de
+> la sección 4 más abajo. Si algo de la sección 5 (decisiones antiguas) no
+> coincide con el código actual, confiar en el código.
 
 ---
 
@@ -79,12 +88,17 @@ El lenguaje de animación nace del rubro: crecimiento orgánico, flujo y ciclo.
 ## 4. Estructura del inicio (`app/[lang]/page.tsx`)
 
 ```
-Hero id="inicio"          (titular cinético + video de fondo -palta/lluvia- + polen + parallax)
-  ↓ Marquee                (cinta con lo que hace la empresa)
-  ↓ ServicesBento id="soluciones"      (5 líneas de negocio, retícula asimétrica con fotos)
-  ↓ MissionVision id="mision-vision"   (video agrícola de fondo + 2 tarjetas de vidrio)
-  ↓ SustainabilityHighlight id="compromiso"  (foto con parallax + lista)
-  ↓ Partners id="aliados" · News id="casos-exito" · Video (los tres siguen "Próximamente")
+Hero id="inicio"                     (titular cinético + video de fondo -palta/lluvia- + polen + parallax)
+  ↓ ServicesBento id="soluciones"    (foto de productos + placa blanca "Certificado por: Senasa y Kiwa")
+  ↓ MissionVision id="mision-vision" (video agrícola de fondo + 2 tarjetas de vidrio)
+  ↓ Partners id="aliados"            (Alianzas Estratégicas, cinta de logos)
+  ↓ Products id="productos"          (13 tarjetas marcador de posición, 3 por fila — NUEVO, ver §7)
+  ↓ Team                             (Equipo Greenprod)
+  ↓ FieldGallery                     (galería de fotos del campo, fondo ink)
+  ↓ SustainabilityHighlight id="compromiso"  (foto con parallax + lista, "Nuestro Compromiso")
+  ↓ News id="casos-exito"            (sigue "Próximamente")
+  ↓ Video                            ("Nuestra Esencia", sigue "Próximamente")
+  ↓ ReachMap id="cobertura"          (mapa del Perú interactivo "GreenProd llegó hasta" — NUEVO, ver §7)
 ```
 
 Los `id` existen porque el menú "Inicio" del navbar salta a cada sección con
@@ -95,6 +109,28 @@ anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
 > a pedido del usuario junto con el rediseño del navbar (commit
 > `bea14c4`). El texto del hero conserva la mención al 95% de
 > aprovechamiento; solo se quitó la pieza visual.
+
+### Productos y GreenProd llegó hasta (commit `ee06ff2`, borrador)
+
+A pedido del usuario:
+
+- **`ProductsSection`**: retícula de 13 tarjetas marcador de posición
+  (sin foto ni nombre real todavía), 3 por fila, con espacio reservado
+  para cuando lleguen las imágenes reales. Mismo patrón punteado que
+  `ComingSoon`.
+- **`ReachMapSection`**: mapa del Perú **dibujado a mano** (`PERU_PATH`
+  en el componente — no es geografía exacta, es un borrador) con las 12
+  ciudades/regiones que el usuario pidió, ubicadas por aproximación. Cada
+  pin crece y se pone verde al pasar el mouse (`group-hover` en SVG).
+  Incluye el logo blanco, un marcador de posición para el código QR
+  (el usuario no pudo pegar el archivo, solo se vio la imagen en el chat)
+  y los iconos de Facebook e Instagram (no se agregó TikTok: no está
+  confirmado si la empresa tiene cuenta).
+- La placa "Certificado por: Senasa y Kiwa" de `ServicesBento` pasó a ser
+  una sola placa blanca con el texto corto "Certificado por:" + ambos
+  logos, en vez del titular grande sobre la foto.
+
+**Pendiente del usuario para cerrar este borrador:** ver §7.
 
 ---
 
@@ -209,6 +245,18 @@ siempre `true`), así que:
 - **Las capturas en ancho de móvil salen recortadas: es un artefacto del
   headless, no un desbordamiento real.** Comprobar siempre midiendo
   `scrollWidth === clientWidth` en el navegador tras `resize_window`.
+- **El hero usa `min-h-screen`: con este método, la captura NUNCA muestra
+  nada debajo del hero**, porque el alto de la captura es igual al
+  `--window-size` y el hero ya ocupa esa misma altura completa (100vh).
+  No sirve agrandar `--window-size` para "bajar más": el hero crece con
+  la ventana y se lo sigue comiendo todo.
+- **Navegar con ancla (`http://localhost:3000/es#seccion`) para saltar
+  más abajo da una captura rota** (navbar fantasma, huecos en blanco):
+  probado el 2026-08-17, no se encontró la causa exacta ni una bandera
+  de Chrome que lo arregle. Cuando se necesite ver algo debajo del hero,
+  usar `get_page_text` / `read_page` / JS (`scrollIntoView` +
+  `getComputedStyle`) para verificar contenido y estructura — es
+  fiable — y no insistir con capturas de pantalla para esas secciones.
 
 ---
 
@@ -222,6 +270,20 @@ siempre `true`), así que:
       el enlace de Google Maps del local.
 - [ ] **Enlace de LinkedIn** (se quitó el icono para no dejarlo muerto; ya están
       Facebook e Instagram).
+- [ ] **Código QR** para la sección "GreenProd llegó hasta": el usuario lo pegó
+      en el chat pero no hay forma de bajar esa imagen al repo desde ahí. Falta
+      que la guarde como archivo en `public/images/home/qr-greenprod.png` (o
+      diga a dónde debe apuntar el QR para generarlo de nuevo) y reemplazar el
+      marcador de posición en `ReachMapSection.tsx`.
+- [ ] **Nombres reales de los 13 productos** de la nueva sección "Productos"
+      (hoy son "Producto 01"…"13" de marcador de posición) y sus fotos.
+- [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
+      hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
+      y, de ser así, el enlace de la cuenta.
+- [ ] **Revisar el mapa del Perú de "GreenProd llegó hasta"**: es un contorno
+      dibujado a mano (borrador), no un mapa geográfico real. Las 12
+      ciudades están ubicadas por aproximación. Pedir ajustes si alguna
+      queda mal puesta.
 - [ ] **Contenido real de las páginas de producto**: siguen con texto
       _Lorem ipsum_ y fotos de `picsum.photos`.
 - [ ] **Fotos y video propios** de planta, productos y equipo, para reemplazar
