@@ -2,7 +2,7 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `c12983f`.
+> Última actualización: commit `1501643`.
 >
 > Entre `6016a3d` (la actualización anterior de este documento) y `ee06ff2`
 > hubo ~44 commits sin traspaso al día: tipografía y hero achicados para
@@ -287,9 +287,14 @@ siempre `true`), así que:
 - [x] ~~Código QR para "GreenProd llegó hasta"~~ — resuelto: el usuario dejó el
       archivo en su carpeta de Descargas, se copió a
       `public/images/home/qr-greenprod.jpg` (commit `c12983f`).
-- [x] ~~El mapa de "GreenProd llegó hasta" era un contorno dibujado a mano~~ —
-      resuelto: ahora es el contorno real del Perú, proyectado desde
-      coordenadas geográficas reales (commit `381c46b`, ver §4).
+- [x] ~~El mapa de "GreenProd llegó hasta" era un contorno dibujado a mano, sin
+      divisiones y con etiquetas amontonadas~~ — resuelto en dos pasadas
+      (`381c46b` y `1501643`): contorno real + los 25 departamentos como
+      líneas internas (fuente INEI vía juaneladio/peru-geojson) + mapa a
+      mayor escala para que las etiquetas del norte no se encimen + pin
+      tipo marcador (gota oscura con punto verde). Datos en
+      `lib/peru-map-data.ts`. Pendiente que el usuario confirme que las
+      12 ubicaciones quedaron bien esta vez.
 - [ ] **Nombres y fotos reales de los 5 productos** de adelanto en el inicio
       (hoy son "Producto 01"…"05" de marcador de posición) y **fichas/fotos
       por categoría** en `/catalogo` (Biofungicidas, Bioinsecticidas,
@@ -299,10 +304,6 @@ siempre `true`), así que:
 - [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
       hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
       y, de ser así, el enlace de la cuenta.
-- [ ] **Revisar si las 12 ciudades del mapa quedan bien ubicadas** ahora que
-      usan coordenadas reales — algunas etiquetas del norte (Lambayeque,
-      Cajamarca) quedan con poco espacio entre sí por lo cerca que están en
-      la realidad.
 - [ ] **Contenido real de las páginas de producto**: siguen con texto
       _Lorem ipsum_ y fotos de `picsum.photos`.
 - [ ] **Fotos y video propios** de planta, productos y equipo, para reemplazar
