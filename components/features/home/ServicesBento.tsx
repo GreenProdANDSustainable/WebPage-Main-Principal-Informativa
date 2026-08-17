@@ -29,7 +29,10 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 z-10 flex items-end justify-center pb-[4%]">
+        {/* El bloque baja hasta apoyarse justo en el borde inferior de la
+            foto: queda al ras de donde arranca la sección siguiente, sin
+            invadirla. */}
+        <div className="absolute inset-0 z-10 flex items-end justify-center">
           {/* Solo el aviso va dentro del recuadro verde; los logos quedan
               fuera y sin fondo. La sombra los mantiene legibles sobre la
               foto sin necesidad de una placa blanca detrás. */}
