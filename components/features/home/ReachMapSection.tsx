@@ -1,7 +1,22 @@
 import Image from 'next/image';
-import { Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram, Factory, FlaskConical, Microscope, Users } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
 import { PERU_VIEWBOX, PERU_DEPT_PATHS, PERU_CITIES } from '@/lib/peru-map-data';
+
+/** Iconos del bloque "Contamos con:", por clave del diccionario. */
+const ICONOS_CAPACIDAD: Record<string, LucideIcon> = {
+  planta: Factory,
+  bioinsumos: FlaskConical,
+  laboratorio: Microscope,
+  equipo: Users,
+};
+
+interface Capacidad {
+  icon: string;
+  text: string;
+  figure?: string;
+}
 
 // El relleno se arma con las mismas 26 piezas departamentales que se
 // dibujan como líneas divisorias, así el contorno nunca puede quedar por
@@ -32,15 +47,17 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
 
   return (
     <section id="cobertura" className="bg-gp-blue py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal preset="growUp">
           <h2 className="font-display text-paper mb-10 text-center text-3xl font-semibold tracking-tight md:text-4xl">
             <span className="text-gp-green">{r.titleLead}</span> {r.titleTail}
           </h2>
         </Reveal>
 
-        <div className="flex flex-col items-center gap-12 xl:flex-row xl:items-center xl:gap-16">
-          <div className="w-full xl:flex-1">
+        {/* El mapa se lleva todo el ancho que sobra y la columna de la derecha
+            queda fija y angosta: así el mapa corre hacia la izquierda. */}
+        <div className="flex flex-col items-center gap-12 xl:flex-row xl:items-center xl:gap-12">
+          <div className="w-full xl:min-w-0 xl:flex-1">
             <Reveal preset="rootScale" soft>
               {/* Hasta lg el lienzo se agranda y se recorta el margen que
                   ocupan los rótulos (que ahí van en la lista de abajo), para
@@ -155,7 +172,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
             </Reveal>
           </div>
 
-          <div className="flex flex-col items-center gap-8 text-center xl:items-start xl:text-left">
+          <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[22rem] xl:shrink-0 xl:items-start xl:text-left">
             <Reveal preset="slideInRight">
               <div className="relative h-14 w-40 md:h-16 md:w-44">
                 <Image
@@ -168,19 +185,29 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
             </Reveal>
 
             <Reveal preset="slideInRight" delay={0.1}>
-              <div className="flex flex-col items-center gap-3 xl:items-start">
-                <span className="text-paper/70 font-display text-sm font-semibold tracking-wide uppercase">
-                  {r.qrLabel}
-                </span>
-                <div className="h-36 w-36 overflow-hidden rounded-2xl bg-white p-2">
-                  <Image
-                    src="/images/home/qr-greenprod.jpg"
-                    alt={r.qrLabel}
-                    width={288}
-                    height={288}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
+              <div className="w-full text-left">
+                <h3 className="text-gp-green font-display mb-5 text-lg font-semibold">
+                  {r.capabilities.title}
+                </h3>
+                <ul className="space-y-5">
+                  {(r.capabilities.items as Capacidad[]).map((item) => {
+                    const Icon = ICONOS_CAPACIDAD[item.icon] ?? Factory;
+                    return (
+                      <li key={item.text} className="flex items-start gap-3">
+                        <Icon
+                          className="text-gp-green mt-0.5 h-7 w-7 shrink-0"
+                          strokeWidth={1.75}
+                        />
+                        <div>
+                          <p className="text-paper text-[13px] leading-snug">{item.text}</p>
+                          {item.figure && (
+                            <p className="text-gp-green mt-1 text-xl font-bold">{item.figure}</p>
+                          )}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </Reveal>
 

@@ -30,16 +30,17 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
           priority
         />
         <div className="absolute inset-0 z-10 flex items-end justify-center pb-[4%]">
-          {/* Placa blanca única: el aviso de certificación y los logos
-              viven juntos, con fondo propio y legible sobre la foto. */}
+          {/* Solo el aviso va dentro del recuadro verde; los logos quedan
+              fuera y sin fondo. La sombra los mantiene legibles sobre la
+              foto sin necesidad de una placa blanca detrás. */}
           <motion.div
-            className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm sm:gap-5 sm:px-6 sm:py-4"
+            className="flex items-center gap-3 sm:gap-5"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            <span className="text-ink/70 font-display text-xs font-semibold tracking-wide whitespace-nowrap sm:text-sm">
+            <span className="bg-gp-green text-ink font-display rounded-xl px-3 py-2 text-xs font-semibold tracking-wide whitespace-nowrap shadow-lg sm:px-5 sm:py-2.5 sm:text-sm">
               {s.certifiedByTitle}
             </span>
             <a
@@ -53,10 +54,9 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                 alt="SENASA Perú"
                 width={420}
                 height={297}
-                className="h-6 w-auto sm:h-9 md:h-11"
+                className="h-6 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)] sm:h-9 md:h-11"
               />
             </a>
-            <span className="bg-ink/10 h-7 w-px sm:h-9" aria-hidden="true" />
             <a
               href="https://www.kiwa.com/pe/es/"
               target="_blank"
@@ -68,7 +68,7 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                 alt="Kiwa BCS Öko-Garantie"
                 width={200}
                 height={200}
-                className="h-6 w-auto sm:h-9 md:h-11"
+                className="h-7 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)] sm:h-10 md:h-12"
               />
             </a>
           </motion.div>

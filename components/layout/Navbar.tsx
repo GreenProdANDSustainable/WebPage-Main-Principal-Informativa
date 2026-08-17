@@ -12,13 +12,12 @@ import {
   Search,
   Globe,
   Phone,
-  Mail,
   Bot,
   Leaf,
-  Gauge,
   ShoppingCart,
 } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
+import SiteSearch from '@/components/shared/SiteSearch';
 
 type Dictionary = {
   Navbar: {
@@ -45,8 +44,6 @@ type Dictionary = {
     Ceprobio_desc: string;
     planta: string;
     planta_desc: string;
-    proveeduria: string;
-    proveeduria_desc: string;
     proyectos: string;
     proyectos_desc: string;
     home: string;
@@ -56,13 +53,19 @@ type Dictionary = {
     home_partners: string;
     home_success_stories: string;
     our_capacity: string;
-    clients: string;
-    certifications: string;
-    impact_indicators: string;
-    view_sustainability_page: string;
     cart_view: string;
+    search: string;
+    search_placeholder: string;
+    search_no_results: string;
+    search_hint: string;
+    search_close: string;
     [key: string]: any;
   };
+  Catalog: {
+    categories: { slug: string; name: string; products: string[] }[];
+    [key: string]: any;
+  };
+  [key: string]: any;
 };
 
 interface NavbarProps {
@@ -82,29 +85,25 @@ export default function Navbar({ dictionary }: NavbarProps) {
     { name: d.home_success_stories, href: '#casos-exito' },
   ];
 
-  const sostenibilidadMenu = [
-    { name: d.view_sustainability_page, href: '/sostenibilidad' },
-    { name: d.impact_indicators, href: '/sostenibilidad#impacto' },
-    { name: d.certifications, href: '/sostenibilidad#certificaciones' },
-  ];
-
+  // Productos = las siete lineas de bioinsumos (cada una con su pagina) mas
+  // Balik. Servicios = las tres lineas de servicio.
   const productsMenu = [
     {
       category: d.products,
       items: [
+        ...dictionary.Catalog.categories.map((c) => ({
+          name: c.name,
+          desc: c.products.join(' · '),
+          href: `/catalogo/${c.slug}`,
+        })),
         { name: d.balik, desc: d.balik_desc, href: '/productos-y-servicios/balik' },
-        { name: d.Ceprobio, desc: d.Ceprobio_desc, href: '/productos-y-servicios/ceprobio' },
-        { name: d.planta, desc: d.planta_desc, href: '/productos-y-servicios/planta-tratamiento' },
       ],
     },
     {
       category: d.services,
       items: [
-        {
-          name: d.proveeduria,
-          desc: d.proveeduria_desc,
-          href: '/productos-y-servicios/proveeduria',
-        },
+        { name: d.Ceprobio, desc: d.Ceprobio_desc, href: '/productos-y-servicios/ceprobio' },
+        { name: d.planta, desc: d.planta_desc, href: '/productos-y-servicios/planta-tratamiento' },
         { name: d.proyectos, desc: d.proyectos_desc, href: '/productos-y-servicios/proyectos' },
       ],
     },
@@ -115,17 +114,13 @@ export default function Navbar({ dictionary }: NavbarProps) {
       { name: d.who_we_are, desc: d.who_we_are_desc, href: '/nosotros/quienes-somos' },
       { name: d.our_history, desc: d.our_history_desc, href: '/nosotros/nuestra-trayectoria' },
     ],
-    sidebar: [
-      { name: d.our_capacity, href: '/nosotros#capacidad', icon: Gauge },
-      { name: d.work_with_us, href: '/empleos', icon: Phone },
-      { name: d.contacts, href: '/contacto', icon: Mail },
-    ],
   };
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const currentLang = pathname.split('/')[1] || 'es';
   const rawPath = pathname.replace(`/${currentLang}`, '') || '/';
@@ -170,7 +165,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
     }, 300);
   };
 
-  const dropdownsWithBackdrop = ['productos', 'nosotros', 'inicio', 'sostenibilidad'];
+  const dropdownsWithBackdrop = ['productos', 'nosotros', 'inicio'];
 
   return (
     <>
@@ -271,31 +266,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
               </button>
             </div>
 
-            <div
-              className="flex h-full items-center"
-              onMouseEnter={() => handleMouseEnter('sostenibilidad')}
-            >
-              <button
-                className={`${pillClass} ${activeDropdown === 'sostenibilidad' || rawPath === '/sostenibilidad' ? activeTextClass : textColorClass}`}
-              >
-                {d.sustainability}{' '}
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-700 ${activeDropdown === 'sostenibilidad' ? 'rotate-180' : ''}`}
-                />
-              </button>
-            </div>
-
-            <Link href={`/${currentLang}#aliados`} className={`${pillClass} ${textColorClass}`}>
-              {d.clients}
-            </Link>
-
-            <Link
-              href={`/${currentLang}/sostenibilidad#certificaciones`}
-              className={`${pillClass} ${textColorClass}`}
-            >
-              {d.certifications}
-            </Link>
-
             <Link
               href={`/${currentLang}/contacto`}
               className={`${pillClass} ${rawPath === '/contacto' ? activeTextClass : textColorClass}`}
@@ -304,7 +274,11 @@ export default function Navbar({ dictionary }: NavbarProps) {
             </Link>
 
             <div className="border-line-warm/40 ml-2 flex items-center gap-2 border-l pl-4">
-              <button className="hover:text-gp-blue hover:bg-husk/40 text-ink/70 rounded-full p-2 transition-colors duration-300">
+              <button
+                onClick={() => setSearchOpen(true)}
+                aria-label={d.search}
+                className="hover:text-gp-blue hover:bg-husk/40 text-ink/70 rounded-full p-2 transition-colors duration-300"
+              >
                 <Search className="h-5 w-5" />
               </button>
               <button
@@ -323,6 +297,13 @@ export default function Navbar({ dictionary }: NavbarProps) {
           </nav>
 
           <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label={d.search}
+              className="hover:text-gp-blue text-ink/70 rounded-full p-2 transition-colors duration-700"
+            >
+              <Search className="h-5 w-5" />
+            </button>
             <button
               onClick={openCart}
               aria-label={d.cart_view}
@@ -373,33 +354,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
             </motion.div>
           )}
 
-          {activeDropdown === 'sostenibilidad' && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="border-line-warm/40 bg-paper/98 absolute top-full left-0 hidden w-full border-t shadow-2xl backdrop-blur-xl md:block"
-              onMouseEnter={() => handleMouseEnter('sostenibilidad')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="mx-auto max-w-7xl px-8 py-8">
-                <div className="flex flex-wrap gap-2">
-                  {sostenibilidadMenu.map((item, idx) => (
-                    <Link
-                      key={idx}
-                      href={`/${currentLang}${item.href}`}
-                      className="text-ink hover:bg-gp-green hover:text-ink rounded-full px-5 py-2.5 text-sm font-semibold transition-colors"
-                      onClick={() => setActiveDropdown(null)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-
           {activeDropdown === 'productos' && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -411,13 +365,15 @@ export default function Navbar({ dictionary }: NavbarProps) {
               onMouseLeave={handleMouseLeave}
             >
               <div className="mx-auto max-w-7xl px-8 py-10">
-                <div className="grid grid-cols-2 gap-12">
+                <div className="grid grid-cols-[1.7fr_1fr] gap-12">
                   {productsMenu.map((column, idx) => (
                     <div key={idx}>
                       <h3 className="font-display text-ink border-line-warm/50 mb-6 border-b pb-2 text-xl font-bold">
                         {column.category}
                       </h3>
-                      <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                      <div
+                        className={`grid gap-x-6 gap-y-2 ${idx === 0 ? 'grid-cols-2' : 'grid-cols-1'}`}
+                      >
                         {column.items.map((item, idxi) => (
                           <Link
                             key={idxi}
@@ -460,8 +416,8 @@ export default function Navbar({ dictionary }: NavbarProps) {
               onMouseLeave={handleMouseLeave}
             >
               <div className="mx-auto max-w-7xl px-8 py-10">
-                <div className="flex gap-12">
-                  <div className="border-line-warm/40 flex-1 border-r pr-12">
+                <div>
+                  <div>
                     <h3 className="font-display text-ink border-line-warm/50 mb-6 border-b pb-2 text-xl font-bold">
                       Green Prod & Sustainable S.A.C
                     </h3>
@@ -480,24 +436,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
                         </Link>
                       ))}
                     </div>
-                  </div>
-                  <div className="flex w-64 shrink-0 flex-col justify-center space-y-4 pl-12">
-                    {aboutMenu.sidebar.map((item, idx) => {
-                      const Icon = item.icon;
-                      return (
-                        <Link
-                          key={idx}
-                          href={`/${currentLang}${item.href}`}
-                          className="hover:text-ink text-ink/70 hover:bg-gp-green flex items-center gap-3 rounded-lg p-3 transition-colors"
-                          onClick={() => setActiveDropdown(null)}
-                        >
-                          <div className="bg-husk/50 text-ink/60 rounded-md p-2">
-                            <Icon className="h-4 w-4" />
-                          </div>
-                          <span className="text-sm font-semibold">{item.name}</span>
-                        </Link>
-                      );
-                    })}
                   </div>
                 </div>
               </div>
@@ -622,16 +560,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
                                     <div className="text-ink/50 mt-1 text-xs">{item.desc}</div>
                                   </Link>
                                 ))}
-                                {aboutMenu.sidebar.map((item, idx) => (
-                                  <Link
-                                    key={`sb-${idx}`}
-                                    href={`/${currentLang}${item.href}`}
-                                    className="block pl-3"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    <div className="text-ink/80 font-bold">{item.name}</div>
-                                  </Link>
-                                ))}
                               </div>
                             </div>
                           </div>
@@ -689,63 +617,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
                     </AnimatePresence>
                   </div>
 
-                  <div className="border-line-warm/30 border-b">
-                    <button
-                      className="text-ink flex w-full items-center justify-between px-6 py-4 text-lg font-bold tracking-wide uppercase"
-                      onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === 'mobile-sostenibilidad'
-                            ? null
-                            : 'mobile-sostenibilidad'
-                        )
-                      }
-                    >
-                      {d.sustainability}
-                      <ChevronDown
-                        className={`h-5 w-5 transition-transform duration-300 ${activeDropdown === 'mobile-sostenibilidad' ? 'text-gp-green rotate-180' : 'text-ink/40'}`}
-                      />
-                    </button>
-                    <AnimatePresence>
-                      {activeDropdown === 'mobile-sostenibilidad' && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="bg-husk/20 overflow-hidden"
-                        >
-                          <div className="space-y-1 px-6 py-2 pb-6">
-                            {sostenibilidadMenu.map((item, idx) => (
-                              <Link
-                                key={idx}
-                                href={`/${currentLang}${item.href}`}
-                                className="text-ink/80 hover:text-gp-green block py-2 font-semibold"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {item.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <Link
-                    href={`/${currentLang}#aliados`}
-                    onClick={() => setIsOpen(false)}
-                    className="border-line-warm/30 text-ink block border-b px-6 py-4 text-lg font-bold tracking-wide uppercase"
-                  >
-                    {d.clients}
-                  </Link>
-
-                  <Link
-                    href={`/${currentLang}/sostenibilidad#certificaciones`}
-                    onClick={() => setIsOpen(false)}
-                    className="border-line-warm/30 text-ink block border-b px-6 py-4 text-lg font-bold tracking-wide uppercase"
-                  >
-                    {d.certifications}
-                  </Link>
-
                   <Link
                     href={`/${currentLang}/contacto`}
                     onClick={() => setIsOpen(false)}
@@ -770,6 +641,13 @@ export default function Navbar({ dictionary }: NavbarProps) {
           )}
         </AnimatePresence>
       </header>
+
+      <SiteSearch
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        dictionary={dictionary}
+        lang={currentLang}
+      />
     </>
   );
 }

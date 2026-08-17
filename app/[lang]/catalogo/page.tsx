@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, ImageOff } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ImageOff } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
@@ -36,12 +36,19 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
         </div>
 
         <div className="space-y-16">
-          {c.categories.map((category: { name: string; products: string[] }) => (
-            <section key={category.name}>
+          {c.categories.map((category: { slug: string; name: string; products: string[] }) => (
+            <section key={category.slug}>
               <Reveal preset="growUp">
-                <h2 className="font-display text-ink border-line-warm/40 mb-6 border-b pb-3 text-2xl font-semibold tracking-tight">
-                  {category.name}
-                </h2>
+                {/* El título lleva a la página propia de la línea. */}
+                <Link
+                  href={`/${lang}/catalogo/${category.slug}`}
+                  className="group border-line-warm/40 mb-6 flex items-center gap-2 border-b pb-3"
+                >
+                  <h2 className="font-display text-ink group-hover:text-gp-green text-2xl font-semibold tracking-tight transition-colors">
+                    {category.name}
+                  </h2>
+                  <ArrowRight className="text-ink/30 group-hover:text-gp-green h-5 w-5 transition-all duration-300 group-hover:translate-x-1" />
+                </Link>
               </Reveal>
 
               <Reveal

@@ -22,14 +22,63 @@
         "backButton": "Volver a la Página Principal",
         "comingSoon": "Foto próximamente",
         "categories": [
-            { "name": "Biofungicidas", "products": ["Trich", "Subtix", "Trichobac"] },
-            { "name": "Bioinsecticidas", "products": ["Bauver", "Meta", "Thuring", "Warduo"] },
-            { "name": "Nematicida", "products": ["Lilax"] },
-            { "name": "Biofertilizante", "products": ["Megafort"] },
-            { "name": "Bioestimulante", "products": ["Bio"] },
-            { "name": "Aceite Agrícola", "products": ["Oil"] },
-            { "name": "Jabón Potásico", "products": ["Clean"] }
-        ]
+            {
+                "slug": "biofungicidas",
+                "name": "Biofungicidas",
+                "products": [
+                    "Trich",
+                    "Subtix",
+                    "Trichobac"
+                ]
+            },
+            {
+                "slug": "bioinsecticidas",
+                "name": "Bioinsecticidas",
+                "products": [
+                    "Bauver",
+                    "Meta",
+                    "Thuring",
+                    "Warduo"
+                ]
+            },
+            {
+                "slug": "nematicida",
+                "name": "Nematicida",
+                "products": [
+                    "Lilax"
+                ]
+            },
+            {
+                "slug": "biofertilizante",
+                "name": "Biofertilizante",
+                "products": [
+                    "Megafort"
+                ]
+            },
+            {
+                "slug": "bioestimulante",
+                "name": "Bioestimulante",
+                "products": [
+                    "Bio"
+                ]
+            },
+            {
+                "slug": "aceite-agricola",
+                "name": "Aceite Agrícola",
+                "products": [
+                    "Oil"
+                ]
+            },
+            {
+                "slug": "jabon-potasico",
+                "name": "Jabón Potásico",
+                "products": [
+                    "Clean"
+                ]
+            }
+        ],
+        "allCategories": "Ver todas las categorías",
+        "productsIn": "Productos de esta línea"
     },
     "Pages": {
         "contact": {
@@ -124,12 +173,10 @@
     },
     "Navbar": {
         "about": "Acerca de Nosotros",
-        "catalog": "Catálogo",
-        "sustainability": "Sostenibilidad",
         "contact": "Contáctanos",
         "assistant": "Asistente IA",
-        "products": "Productos (P)",
-        "services": "Servicios (S)",
+        "products": "Productos",
+        "services": "Servicios",
         "products_services_title": "Productos y Servicios",
         "work_with_us": "Trabaja con Nosotros",
         "contacts": "Contactos",
@@ -144,10 +191,8 @@
         "balik_desc": "Conservas de pescado, empacados al vacío y pescado fresco.",
         "Ceprobio": "Ceprobio",
         "Ceprobio_desc": "Producción de bioinsumos.",
-        "planta": "Planta de Tratamiento",
-        "planta_desc": "Hidrolizado de pescado, jabón potásico, aceite agrícola.",
-        "proveeduria": "Proveeduría Sostenible",
-        "proveeduria_desc": "Líneas de servicio sostenibles.",
+        "planta": "Planta de Hidrolizado",
+        "planta_desc": "Hidrolizado de pescado, jabón potásico y aceite agrícola.",
         "proyectos": "Proyectos Sostenibles",
         "proyectos_desc": "Formación, capacitación y emprendimientos sostenibles.",
         "home": "Inicio",
@@ -157,10 +202,6 @@
         "home_partners": "Aliados",
         "home_success_stories": "Casos de Éxito",
         "our_capacity": "Nuestra Capacidad",
-        "clients": "Clientes",
-        "certifications": "Certificaciones",
-        "impact_indicators": "Indicadores de Impacto",
-        "view_sustainability_page": "Ver página de Sostenibilidad",
         "cart_title": "Carrito",
         "cart_empty": "Tu carrito está vacío.",
         "cart_empty_hint": "Agrega líneas de producto desde sus páginas.",
@@ -172,7 +213,16 @@
         "cart_note": "Los precios se confirman por cotización.",
         "cart_view": "Ver carrito",
         "cart_close": "Cerrar carrito",
-        "cart_quantity": "Cantidad"
+        "cart_quantity": "Cantidad",
+        "search": "Buscar",
+        "search_placeholder": "Buscar productos, servicios o secciones…",
+        "search_no_results": "No encontramos resultados para",
+        "search_hint": "Escribe para buscar en todo el sitio.",
+        "search_close": "Cerrar búsqueda",
+        "catalog": "Catálogo",
+        "sustainability": "Sostenibilidad",
+        "proveeduria": "Proveeduría Sostenible",
+        "proveeduria_desc": "Líneas de servicio sostenibles."
     },
     "Footer": {
         "description": "Producción de bioinsumos, conservas y proyectos ambientales. Comprometidos con un futuro más verde y sostenible para las próximas generaciones.",
@@ -240,14 +290,34 @@
         },
         "products": {
             "title": "Productos",
-            "itemLabel": "Producto",
-            "comingSoon": "Foto próximamente",
-            "viewCatalog": "Ver catálogo"
+            "comingSoon": "Foto próximamente"
         },
         "reach": {
             "titleLead": "GreenProd",
             "titleTail": "llegó hasta",
-            "qrLabel": "Escanéanos"
+            "capabilities": {
+                "title": "Contamos con:",
+                "items": [
+                    {
+                        "icon": "planta",
+                        "text": "Planta de producción de biofertilizante de pescado y derivados.",
+                        "figure": "10,000 L/mes"
+                    },
+                    {
+                        "icon": "bioinsumos",
+                        "text": "Centro de producción de bioinsumos.",
+                        "figure": "1,000 kg/mes"
+                    },
+                    {
+                        "icon": "laboratorio",
+                        "text": "Laboratorio de análisis fitopatológicos."
+                    },
+                    {
+                        "icon": "equipo",
+                        "text": "Equipo profesional especializado."
+                    }
+                ]
+            }
         },
         "values": {
             "title": "Nuestros Valores",
@@ -350,7 +420,7 @@
         "missionVision": {
             "essence_title": "",
             "title": "¿Quiénes Somos?",
-            "subtitle": "Somos una empresa peruana de innovación y producción sostenible que transforma residuos marinos en soluciones para una agricultura más eficiente y responsable.",
+            "subtitle": "Somos una empresa peruana de innovación y producción sostenible que transforma residuos marinos en soluciones para una agricultura más eficiente y responsable. Producimos bioinsumos y biofertilizantes, integrando biotecnología, ingeniería y economía circular, con el fin de cuidar la salud de los cultivos de manera orgánica, reduciendo los impactos ambientales.",
             "mission": {
                 "title": "Nuestra Misión",
                 "text": "Impulsar la productividad agrícola y marina mediante prácticas innovadoras y respetuosas con el medio ambiente, produciendo fertilizantes orgánicos y productos del mar que mejoren la calidad de vida de las comunidades locales."
