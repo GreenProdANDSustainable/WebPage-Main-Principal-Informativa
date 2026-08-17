@@ -2,7 +2,7 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `ee06ff2`.
+> Última actualización: commit `c12983f`.
 >
 > Entre `6016a3d` (la actualización anterior de este documento) y `ee06ff2`
 > hubo ~44 commits sin traspaso al día: tipografía y hero achicados para
@@ -92,14 +92,20 @@ Hero id="inicio"                     (titular cinético + video de fondo -palta/
   ↓ ServicesBento id="soluciones"    (foto de productos + placa blanca "Certificado por: Senasa y Kiwa")
   ↓ MissionVision id="mision-vision" (video agrícola de fondo + 2 tarjetas de vidrio)
   ↓ Partners id="aliados"            (Alianzas Estratégicas, cinta de logos)
-  ↓ Products id="productos"          (13 tarjetas marcador de posición, 3 por fila — NUEVO, ver §7)
+  ↓ Products id="productos"          (5 tarjetas de adelanto + botón "Ver catálogo" → /catalogo)
   ↓ Team                             (Equipo Greenprod)
   ↓ FieldGallery                     (galería de fotos del campo, fondo ink)
   ↓ SustainabilityHighlight id="compromiso"  (foto con parallax + lista, "Nuestro Compromiso")
   ↓ News id="casos-exito"            (sigue "Próximamente")
   ↓ Video                            ("Nuestra Esencia", sigue "Próximamente")
-  ↓ ReachMap id="cobertura"          (mapa del Perú interactivo "GreenProd llegó hasta" — NUEVO, ver §7)
+  ↓ ReachMap id="cobertura"          (mapa real del Perú interactivo "GreenProd llegó hasta")
 ```
+
+`/[lang]/catalogo/page.tsx` ya no es la página "en construcción" genérica:
+ahora lista las 7 categorías reales de producto (Biofungicidas,
+Bioinsecticidas, Nematicida, Biofertilizante, Bioestimulante, Aceite
+Agrícola, Jabón Potásico) desde el diccionario `Catalog.categories`, cada
+una todavía como marcador de posición ("Fotos y fichas próximamente").
 
 Los `id` existen porque el menú "Inicio" del navbar salta a cada sección con
 anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
@@ -110,27 +116,35 @@ anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
 > `bea14c4`). El texto del hero conserva la mención al 95% de
 > aprovechamiento; solo se quitó la pieza visual.
 
-### Productos y GreenProd llegó hasta (commit `ee06ff2`, borrador)
+### Productos, catálogo y GreenProd llegó hasta (commits `ee06ff2`…`c12983f`)
 
 A pedido del usuario:
 
-- **`ProductsSection`**: retícula de 13 tarjetas marcador de posición
-  (sin foto ni nombre real todavía), 3 por fila, con espacio reservado
-  para cuando lleguen las imágenes reales. Mismo patrón punteado que
-  `ComingSoon`.
-- **`ReachMapSection`**: mapa del Perú **dibujado a mano** (`PERU_PATH`
-  en el componente — no es geografía exacta, es un borrador) con las 12
-  ciudades/regiones que el usuario pidió, ubicadas por aproximación. Cada
-  pin crece y se pone verde al pasar el mouse (`group-hover` en SVG).
-  Incluye el logo blanco, un marcador de posición para el código QR
-  (el usuario no pudo pegar el archivo, solo se vio la imagen en el chat)
-  y los iconos de Facebook e Instagram (no se agregó TikTok: no está
-  confirmado si la empresa tiene cuenta).
+- **`ProductsSection`** (inicio): 5 tarjetas de adelanto (sin foto ni
+  nombre real todavía, mismo patrón punteado que `ComingSoon`) + botón
+  "Ver catálogo" que lleva a `/[lang]/catalogo`. Antes eran 13 tarjetas
+  y no había botón; el usuario pidió bajarlo a 5 y agregar el enlace al
+  catálogo completo.
+- **`/[lang]/catalogo`**: página nueva con las 7 categorías reales de
+  producto (ver dict `Catalog.categories`), cada una todavía como
+  marcador de posición a la espera de fotos y fichas técnicas reales.
+- **`ReachMapSection`**: el contorno del Perú **es geografía real**
+  (`PERU_PATH`, proyección equirectangular desde el polígono de frontera
+  de Natural Earth / world.geo.json, dominio público — no un dibujo a
+  mano). Las 12 ciudades/regiones usan sus coordenadas reales; las
+  etiquetas viven en dos rieles laterales conectados por una línea al
+  pin porque, con ubicaciones reales, varias ciudades del norte quedan
+  muy juntas para escribir el texto pegado al pin. Cada pin crece y se
+  pone verde al pasar el mouse (`group-hover` en SVG). Incluye el logo
+  blanco, el código QR real (`public/images/home/qr-greenprod.jpg`, el
+  usuario lo dejó en su carpeta de Descargas) y los iconos de Facebook e
+  Instagram (no se agregó TikTok: no está confirmado si la empresa tiene
+  cuenta).
 - La placa "Certificado por: Senasa y Kiwa" de `ServicesBento` pasó a ser
   una sola placa blanca con el texto corto "Certificado por:" + ambos
   logos, en vez del titular grande sobre la foto.
 
-**Pendiente del usuario para cerrar este borrador:** ver §7.
+**Pendiente del usuario:** ver §7.
 
 ---
 
@@ -270,20 +284,25 @@ siempre `true`), así que:
       el enlace de Google Maps del local.
 - [ ] **Enlace de LinkedIn** (se quitó el icono para no dejarlo muerto; ya están
       Facebook e Instagram).
-- [ ] **Código QR** para la sección "GreenProd llegó hasta": el usuario lo pegó
-      en el chat pero no hay forma de bajar esa imagen al repo desde ahí. Falta
-      que la guarde como archivo en `public/images/home/qr-greenprod.png` (o
-      diga a dónde debe apuntar el QR para generarlo de nuevo) y reemplazar el
-      marcador de posición en `ReachMapSection.tsx`.
-- [ ] **Nombres reales de los 13 productos** de la nueva sección "Productos"
-      (hoy son "Producto 01"…"13" de marcador de posición) y sus fotos.
+- [x] ~~Código QR para "GreenProd llegó hasta"~~ — resuelto: el usuario dejó el
+      archivo en su carpeta de Descargas, se copió a
+      `public/images/home/qr-greenprod.jpg` (commit `c12983f`).
+- [x] ~~El mapa de "GreenProd llegó hasta" era un contorno dibujado a mano~~ —
+      resuelto: ahora es el contorno real del Perú, proyectado desde
+      coordenadas geográficas reales (commit `381c46b`, ver §4).
+- [ ] **Nombres y fotos reales de los 5 productos** de adelanto en el inicio
+      (hoy son "Producto 01"…"05" de marcador de posición) y **fichas/fotos
+      por categoría** en `/catalogo` (Biofungicidas, Bioinsecticidas,
+      Nematicida, Biofertilizante, Bioestimulante, Aceite Agrícola, Jabón
+      Potásico — hoy cada una es solo un marcador "Fotos y fichas
+      próximamente").
 - [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
       hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
       y, de ser así, el enlace de la cuenta.
-- [ ] **Revisar el mapa del Perú de "GreenProd llegó hasta"**: es un contorno
-      dibujado a mano (borrador), no un mapa geográfico real. Las 12
-      ciudades están ubicadas por aproximación. Pedir ajustes si alguna
-      queda mal puesta.
+- [ ] **Revisar si las 12 ciudades del mapa quedan bien ubicadas** ahora que
+      usan coordenadas reales — algunas etiquetas del norte (Lambayeque,
+      Cajamarca) quedan con poco espacio entre sí por lo cerca que están en
+      la realidad.
 - [ ] **Contenido real de las páginas de producto**: siguen con texto
       _Lorem ipsum_ y fotos de `picsum.photos`.
 - [ ] **Fotos y video propios** de planta, productos y equipo, para reemplazar
