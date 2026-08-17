@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import { Facebook, Instagram } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
-import { PERU_VIEWBOX, PERU_NATION_PATH, PERU_DEPT_PATHS, PERU_CITIES } from '@/lib/peru-map-data';
+import { PERU_VIEWBOX, PERU_DEPT_PATHS, PERU_CITIES } from '@/lib/peru-map-data';
+
+// El relleno se arma con las mismas 26 piezas departamentales que se
+// dibujan como líneas divisorias, así el contorno nunca puede quedar por
+// fuera de las líneas: son literalmente los mismos trazos.
+const PERU_FILL_PATH = PERU_DEPT_PATHS.join(' ');
 
 interface ReachMapSectionProps {
   dict: any;
@@ -33,7 +38,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
           <Reveal preset="rootScale" soft className="w-full lg:flex-1">
             <svg viewBox={PERU_VIEWBOX} className="mx-auto h-auto w-full" aria-hidden="true">
-              <path d={PERU_NATION_PATH} className="fill-paper/90" />
+              <path d={PERU_FILL_PATH} className="fill-paper/90" />
               {/* Límites departamentales, como en la referencia del usuario. */}
               {PERU_DEPT_PATHS.map((d, i) => (
                 <path
