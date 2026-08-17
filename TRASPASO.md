@@ -2,7 +2,7 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `1501643`.
+> Última actualización: commit `b5ca8f5`.
 >
 > Entre `6016a3d` (la actualización anterior de este documento) y `ee06ff2`
 > hubo ~44 commits sin traspaso al día: tipografía y hero achicados para
@@ -288,13 +288,16 @@ siempre `true`), así que:
       archivo en su carpeta de Descargas, se copió a
       `public/images/home/qr-greenprod.jpg` (commit `c12983f`).
 - [x] ~~El mapa de "GreenProd llegó hasta" era un contorno dibujado a mano, sin
-      divisiones y con etiquetas amontonadas~~ — resuelto en dos pasadas
-      (`381c46b` y `1501643`): contorno real + los 25 departamentos como
-      líneas internas (fuente INEI vía juaneladio/peru-geojson) + mapa a
-      mayor escala para que las etiquetas del norte no se encimen + pin
-      tipo marcador (gota oscura con punto verde). Datos en
-      `lib/peru-map-data.ts`. Pendiente que el usuario confirme que las
-      12 ubicaciones quedaron bien esta vez.
+      divisiones, con etiquetas amontonadas y el relleno blanco se salía de
+      las líneas~~ — resuelto en tres pasadas (`381c46b`, `1501643`,
+      `b5ca8f5`): los 25 departamentos como líneas internas (fuente INEI vía
+      juaneladio/peru-geojson) + mapa a mayor escala para que las etiquetas
+      del norte no se encimen + pin tipo marcador (gota oscura con punto
+      verde) + el relleno se arma concatenando las mismas 26 piezas
+      departamentales en vez de un contorno nacional de otra fuente, así es
+      geométricamente imposible que quede por fuera de las líneas. Datos en
+      `lib/peru-map-data.ts`. Pendiente que el usuario confirme que las 12
+      ubicaciones quedaron bien.
 - [ ] **Nombres y fotos reales de los 5 productos** de adelanto en el inicio
       (hoy son "Producto 01"…"05" de marcador de posición) y **fichas/fotos
       por categoría** en `/catalogo` (Biofungicidas, Bioinsecticidas,
