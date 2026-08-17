@@ -2,7 +2,7 @@
 
 > Documento para retomar el trabajo en una sesión nueva. Resume el estado del
 > proyecto, las decisiones tomadas y lo que queda pendiente.
-> Última actualización: commit `b5ca8f5`.
+> Última actualización: commit `a7b4942`.
 >
 > Entre `6016a3d` (la actualización anterior de este documento) y `ee06ff2`
 > hubo ~44 commits sin traspaso al día: tipografía y hero achicados para
@@ -297,13 +297,18 @@ siempre `true`), así que:
       departamentales en vez de un contorno nacional de otra fuente, así es
       geométricamente imposible que quede por fuera de las líneas. Datos en
       `lib/peru-map-data.ts`. Pendiente que el usuario confirme que las 12
-      ubicaciones quedaron bien.
-- [ ] **Nombres y fotos reales de los 5 productos** de adelanto en el inicio
-      (hoy son "Producto 01"…"05" de marcador de posición) y **fichas/fotos
-      por categoría** en `/catalogo` (Biofungicidas, Bioinsecticidas,
-      Nematicida, Biofertilizante, Bioestimulante, Aceite Agrícola, Jabón
-      Potásico — hoy cada una es solo un marcador "Fotos y fichas
-      próximamente").
+      ubicaciones quedaron bien — confirmado por el usuario (commit `a7b4942`).
+- [x] ~~El catálogo mostraba una sola tarjeta por categoría~~ — resuelto
+      (`a7b4942`): cada categoría lista sus productos reales, dato de
+      `Catalog.categories` en `messages/es.json` y `en.json`
+      (`{ name, products }`): Biofungicidas (Trich, Subtix, Trichobac),
+      Bioinsecticidas (Bauver, Meta, Thuring, Warduo), Nematicida (Lilax),
+      Biofertilizante (Megafort), Bioestimulante (Bio), Aceite Agrícola
+      (Oil), Jabón Potásico (Clean).
+- [ ] **Fotos reales de cada producto**, tanto los 5 de adelanto en el
+      inicio (hoy dicen "Producto 01"…"05", sin nombre real todavía) como
+      los 12 de `/catalogo` (ya tienen nombre real, falta la foto — cada
+      tarjeta dice "Foto próximamente").
 - [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
       hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
       y, de ser así, el enlace de la cuenta.
