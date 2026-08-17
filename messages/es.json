@@ -20,15 +20,15 @@
         "title": "Catálogo",
         "subtitle": "Nuestra línea de bioinsumos, organizada por categoría.",
         "backButton": "Volver a la Página Principal",
-        "comingSoon": "Fotos y fichas próximamente",
+        "comingSoon": "Foto próximamente",
         "categories": [
-            "Biofungicidas",
-            "Bioinsecticidas",
-            "Nematicida",
-            "Biofertilizante",
-            "Bioestimulante",
-            "Aceite Agrícola",
-            "Jabón Potásico"
+            { "name": "Biofungicidas", "products": ["Trich", "Subtix", "Trichobac"] },
+            { "name": "Bioinsecticidas", "products": ["Bauver", "Meta", "Thuring", "Warduo"] },
+            { "name": "Nematicida", "products": ["Lilax"] },
+            { "name": "Biofertilizante", "products": ["Megafort"] },
+            { "name": "Bioestimulante", "products": ["Bio"] },
+            { "name": "Aceite Agrícola", "products": ["Oil"] },
+            { "name": "Jabón Potásico", "products": ["Clean"] }
         ]
     },
     "Pages": {

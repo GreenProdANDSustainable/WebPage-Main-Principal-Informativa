@@ -22,7 +22,7 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
           </Link>
         </Reveal>
 
-        <div className="mb-14 text-center">
+        <div className="mb-16 text-center">
           <Reveal group gap={0.12}>
             <Reveal preset="child">
               <h1 className="font-display text-ink mb-3 text-4xl font-semibold tracking-tight md:text-5xl">
@@ -35,26 +35,38 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
           </Reveal>
         </div>
 
-        <Reveal
-          group
-          gap={0.08}
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-3"
-        >
-          {c.categories.map((category: string) => (
-            <Reveal key={category} preset="child">
-              <div className="border-line-warm/50 hover:border-gp-green/50 flex flex-col items-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors duration-500">
-                <ImageOff className="text-ink/25 h-8 w-8" />
-                <h2 className="font-display text-ink text-lg font-semibold">{category}</h2>
-                <p
-                  className="text-ink/35 text-xs tracking-wide uppercase"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {c.comingSoon}
-                </p>
-              </div>
-            </Reveal>
+        <div className="space-y-16">
+          {c.categories.map((category: { name: string; products: string[] }) => (
+            <section key={category.name}>
+              <Reveal preset="growUp">
+                <h2 className="font-display text-ink border-line-warm/40 mb-6 border-b pb-3 text-2xl font-semibold tracking-tight">
+                  {category.name}
+                </h2>
+              </Reveal>
+
+              <Reveal
+                group
+                gap={0.06}
+                className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4"
+              >
+                {category.products.map((product) => (
+                  <Reveal key={product} preset="child">
+                    <div className="border-line-warm/50 hover:border-gp-green/50 flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed px-6 py-10 text-center transition-colors duration-500">
+                      <ImageOff className="text-ink/25 h-7 w-7" />
+                      <p className="text-ink text-base font-semibold">{product}</p>
+                      <p
+                        className="text-ink/35 text-xs tracking-wide uppercase"
+                        style={{ fontFamily: 'var(--font-mono)' }}
+                      >
+                        {c.comingSoon}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </Reveal>
+            </section>
           ))}
-        </Reveal>
+        </div>
       </div>
     </div>
   );

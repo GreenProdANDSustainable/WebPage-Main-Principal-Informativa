@@ -20,15 +20,15 @@
         "title": "Catalog",
         "subtitle": "Our line of bio-inputs, organized by category.",
         "backButton": "Back to Home",
-        "comingSoon": "Photos and spec sheets coming soon",
+        "comingSoon": "Photo coming soon",
         "categories": [
-            "Biofungicides",
-            "Bioinsecticides",
-            "Nematicide",
-            "Biofertilizer",
-            "Biostimulant",
-            "Agricultural Oil",
-            "Potassium Soap"
+            { "name": "Biofungicides", "products": ["Trich", "Subtix", "Trichobac"] },
+            { "name": "Bioinsecticides", "products": ["Bauver", "Meta", "Thuring", "Warduo"] },
+            { "name": "Nematicide", "products": ["Lilax"] },
+            { "name": "Biofertilizer", "products": ["Megafort"] },
+            { "name": "Biostimulant", "products": ["Bio"] },
+            { "name": "Agricultural Oil", "products": ["Oil"] },
+            { "name": "Potassium Soap", "products": ["Clean"] }
         ]
     },
     "Pages": {
