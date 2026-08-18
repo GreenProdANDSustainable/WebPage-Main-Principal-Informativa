@@ -336,7 +336,9 @@
         "proveeduria": "Proveeduría Sostenible",
         "proveeduria_desc": "Líneas de servicio sostenibles.",
         "cart_checkout": "Continuar la compra",
-        "cart_total": "Total"
+        "cart_total": "Total",
+        "home_products": "Productos",
+        "home_team": "Equipo GreenProd"
     },
     "Footer": {
         "description": "Producción de bioinsumos, conservas y proyectos ambientales. Comprometidos con un futuro más verde y sostenible para las próximas generaciones.",
@@ -645,8 +647,12 @@
         "unsubscribe": "Puedes darte de baja cuando quieras, con el enlace que va en cada correo.",
         "errorEmail": "Escribe un correo válido",
         "errorConsent": "Marca la casilla para poder enviarte los correos",
-        "pendingTitle": "Suscripción anotada",
-        "pendingBody": "El envío automático todavía no está conectado. Mientras tanto, tu correo llega al asesor por WhatsApp y te sumamos a la lista."
+        "sending": "Suscribiendo...",
+        "okTitle": "Listo, ya estás suscrito",
+        "okBody": "Te enviamos un correo de bienvenida. Si no lo ves, revisa la carpeta de spam.",
+        "errorTitle": "No pudimos completar la suscripción",
+        "errorBody": "Vuelve a intentarlo en un momento o escríbenos a contacto@greenprod.pe y te sumamos a la lista.",
+        "retry": "Intentar de nuevo"
     },
     "Privacy": {
         "title": "Política de Privacidad",

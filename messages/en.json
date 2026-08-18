@@ -336,7 +336,9 @@
         "proveeduria": "Sustainable Supply",
         "proveeduria_desc": "Sustainable service lines.",
         "cart_checkout": "Continue with the order",
-        "cart_total": "Total"
+        "cart_total": "Total",
+        "home_products": "Products",
+        "home_team": "GreenProd Team"
     },
     "Footer": {
         "description": "Production of bio-inputs, preserves, and environmental projects. Committed to a greener and more sustainable future for generations to come.",
@@ -645,8 +647,12 @@
         "unsubscribe": "You can unsubscribe any time, with the link included in every email.",
         "errorEmail": "Enter a valid email",
         "errorConsent": "Tick the box so we can send you the emails",
-        "pendingTitle": "Subscription noted",
-        "pendingBody": "Automatic sending is not connected yet. In the meantime your email reaches an advisor via WhatsApp and we add you to the list."
+        "sending": "Subscribing...",
+        "okTitle": "You're subscribed",
+        "okBody": "We sent you a welcome email. If you do not see it, check your spam folder.",
+        "errorTitle": "We could not complete the subscription",
+        "errorBody": "Try again in a moment, or write to contacto@greenprod.pe and we will add you to the list.",
+        "retry": "Try again"
     },
     "Privacy": {
         "title": "Privacy Policy",

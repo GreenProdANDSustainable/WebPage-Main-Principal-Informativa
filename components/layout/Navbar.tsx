@@ -77,12 +77,16 @@ export default function Navbar({ dictionary }: NavbarProps) {
   const d = dictionary.Navbar;
   const { count, openCart } = useCart();
 
+  // En el mismo orden en que aparecen al bajar por la portada: si el menu
+  // va en otro orden, el salto desorienta.
   const homeMenu = [
     { name: d.home, href: '#inicio' },
     { name: d.home_solutions, href: '#soluciones' },
     { name: d.home_mission_vision, href: '#mision-vision' },
-    { name: d.home_commitment, href: '#compromiso' },
     { name: d.home_partners, href: '#aliados' },
+    { name: d.home_products, href: '#productos' },
+    { name: d.home_team, href: '#equipo' },
+    { name: d.home_commitment, href: '#compromiso' },
     { name: d.home_success_stories, href: '#casos-exito' },
   ];
 
