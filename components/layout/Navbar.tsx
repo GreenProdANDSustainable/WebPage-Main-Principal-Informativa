@@ -85,7 +85,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
     { name: d.home_success_stories, href: '#casos-exito' },
   ];
 
-  // Productos = las siete lineas de bioinsumos (cada una con su pagina) mas
+  // Productos = las seis lineas de bioinsumos (cada una con su pagina) mas
   // Balik. Servicios = las tres lineas de servicio.
   const productsMenu = [
     {
@@ -630,7 +630,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                   <Link
                     href={`/${currentLang}/contacto`}
                     onClick={() => setIsOpen(false)}
-                    className="bg-gp-green text-ink hover:bg-husk flex w-full items-center justify-center rounded-xl py-4 text-lg font-bold transition-colors"
+                    className="bg-gp-green hover:bg-husk hover:text-ink flex w-full items-center justify-center rounded-xl py-4 text-lg font-bold text-white transition-colors"
                   >
                     <Phone className="mr-2 h-5 w-5" />
                     {d.work_with_us}

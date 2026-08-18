@@ -33,7 +33,7 @@ export default function AddToCartButton({
   return (
     <button
       onClick={handleClick}
-      className={`group bg-gp-green text-ink hover:bg-husk inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-colors duration-300 ${className}`}
+      className={`group bg-gp-green hover:bg-husk hover:text-ink inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition-colors duration-300 ${className}`}
     >
       {justAdded ? (
         <>

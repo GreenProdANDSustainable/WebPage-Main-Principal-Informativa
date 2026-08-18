@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ease, viewport } from '@/lib/motion';
+import BoxedLabel from '@/components/shared/BoxedLabel';
 
 interface ServicesBentoProps {
   dict: any;
@@ -34,8 +35,8 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
             invadirla. */}
         <div className="absolute inset-0 z-10 flex items-end justify-center">
           {/* Solo el aviso va dentro del recuadro verde; los logos quedan
-              fuera y sin fondo. La sombra los mantiene legibles sobre la
-              foto sin necesidad de una placa blanca detrás. */}
+              fuera, sin fondo y sin realce: cualquier halo blanco se nota
+              como un resto de recorte sobre la foto. */}
           <motion.div
             className="flex items-center gap-3 sm:gap-5"
             initial={{ opacity: 0, y: 24 }}
@@ -43,9 +44,9 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
             viewport={viewport}
             transition={{ duration: 0.7, ease: ease.growth }}
           >
-            <span className="bg-gp-green text-ink font-display rounded-xl px-3 py-2 text-xs font-semibold tracking-wide whitespace-nowrap shadow-lg sm:px-5 sm:py-2.5 sm:text-sm">
+            <BoxedLabel size="sm" className="whitespace-nowrap">
               {s.certifiedByTitle}
-            </span>
+            </BoxedLabel>
             <a
               href="https://www.gob.pe/senasa"
               target="_blank"
@@ -57,14 +58,15 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                   lado del sello de Kiwa. Ya recortado, se escala buscando
                   igual peso visual: es un logotipo apaisado (3.45:1) frente a
                   un sello cuadrado, así que se igualan por área, no por alto.
-                  Conserva el realce porque es azul oscuro (luminancia ~64)
-                  sobre la franja oscura de la foto (~71). */}
+                  Va sin realce: el PNG ya es 100% transparente alrededor del
+                  logotipo y se apoya sobre la paja clara del pie de la foto,
+                  donde el azul contrasta solo. */}
               <Image
                 src="/images/logos/senasa.webp"
                 alt="SENASA Perú"
                 width={214}
                 height={62}
-                className="h-6 w-auto drop-shadow-[0_1px_6px_rgba(255,255,255,0.75)] sm:h-9 md:h-10"
+                className="h-6 w-auto sm:h-9 md:h-10"
               />
             </a>
             <a

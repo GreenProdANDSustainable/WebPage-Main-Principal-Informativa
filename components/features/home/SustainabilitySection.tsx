@@ -41,7 +41,7 @@ export default function SustainabilitySection({
             </p>
             <Link
               href={`/${lang}/sostenibilidad`}
-              className="bg-gp-green text-ink hover:bg-husk inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold transition-all hover:scale-105"
+              className="bg-gp-green hover:bg-husk hover:text-ink inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-white transition-all hover:scale-105"
             >
               {dict.Home.sustainability.learnMore}
               <ArrowRight className="ml-2 h-5 w-5" />
