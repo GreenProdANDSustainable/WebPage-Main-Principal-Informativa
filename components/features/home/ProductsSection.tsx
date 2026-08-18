@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
@@ -19,21 +20,32 @@ interface ProductsSectionProps {
 }
 
 /**
- * Las seis líneas de producto. Cada una lleva su nombre dentro del recuadro
- * verde, debajo los productos que la componen, y lleva a su propia página.
- * Ya no hay marcador de foto: mientras no existan las fotos reales, el
- * recuadro vacío solo ensuciaba la sección.
+ * Las seis líneas de producto, cada una en su recuadro verde y nada más.
+ *
+ * El fondo es un fotograma del mismo video que corre en "¿Quiénes Somos?",
+ * así las dos secciones se leen como el mismo campo y no como dos imágenes
+ * de bancos distintos. Va oscurecido para que los recuadros verdes y el
+ * titular blanco se despeguen sin esfuerzo.
  */
 export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
   const p = dict.Home.products;
   const categorias: Categoria[] = dict.Catalog.categories;
 
   return (
-    <section id="productos" className="bg-paper py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
+    <section id="productos" className="bg-ink relative isolate overflow-hidden py-24">
+      <Image
+        src="/images/home/fondos/campo-riego.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover object-[50%_32%]"
+      />
+      <div className="from-ink/80 via-ink/60 to-ink/70 absolute inset-0 -z-10 bg-gradient-to-b" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 text-center">
           <Reveal preset="growUp">
-            <h2 className="font-display text-ink text-3xl font-semibold tracking-tight md:text-4xl">
+            <h2 className="font-display text-paper text-3xl font-semibold tracking-tight md:text-4xl">
               {p.title}
             </h2>
           </Reveal>
@@ -42,30 +54,17 @@ export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
         <Reveal
           group
           gap={0.06}
-          className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-12 lg:grid-cols-3"
+          className="flex flex-wrap items-center justify-center gap-5 md:gap-7"
         >
           {categorias.map((cat) => (
             <Reveal key={cat.slug} preset="child">
-              <Link
-                href={`/${lang}/catalogo/${cat.slug}`}
-                className="group flex flex-col items-center gap-4 text-center"
-              >
+              <Link href={`/${lang}/catalogo/${cat.slug}`} className="group block">
                 <BoxedLabel
                   as="h3"
-                  className="transition-transform duration-300 group-hover:-translate-y-0.5"
+                  className="transition-transform duration-300 group-hover:-translate-y-1"
                 >
                   {cat.name}
                 </BoxedLabel>
-                <ul className="text-ink/70 space-y-1.5">
-                  {cat.products.map((producto) => (
-                    <li
-                      key={producto.slug}
-                      className="group-hover:text-gp-green text-base font-semibold transition-colors duration-300"
-                    >
-                      {producto.name}
-                    </li>
-                  ))}
-                </ul>
               </Link>
             </Reveal>
           ))}

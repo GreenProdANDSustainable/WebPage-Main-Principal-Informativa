@@ -39,7 +39,7 @@ export default async function Home({ params }: HomeProps) {
       <ProductsSection dict={dict} lang={lang} />
       <FieldGallerySection dict={dict} />
       <TeamSection dict={dict} />
-      <SustainabilityHighlightSection dict={dict} lang={lang} />
+      <SustainabilityHighlightSection dict={dict} />
       <NewsSection dict={dict} />
       <VideoSection dict={dict} />
       <ReachMapSection dict={dict} />
