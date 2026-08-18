@@ -75,7 +75,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
 
         {/* El mapa se lleva todo el ancho que sobra y la columna de la derecha
             queda fija y angosta: así el mapa corre hacia la izquierda. */}
-        <div className="flex flex-col items-center gap-12 xl:flex-row xl:items-center xl:gap-8">
+        <div className="flex flex-col items-center gap-12 xl:flex-row xl:items-center xl:gap-12">
           <div className="w-full xl:min-w-0 xl:flex-1">
             <Reveal preset="rootScale" soft>
               {/* Hasta lg el lienzo se agranda y se recorta el margen que
@@ -87,7 +87,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     lienzo, que es más ancho del lado del rótulo de Junín. */}
                 <svg
                   viewBox={VIEWBOX_ROTULOS}
-                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-[108%] lg:-translate-x-[5%]"
+                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-full lg:translate-x-0 xl:w-[104%] xl:-translate-x-[2%] 2xl:w-[114%] 2xl:-translate-x-[9%]"
                   aria-hidden="true"
                 >
                   <path d={PERU_FILL_PATH} className="fill-paper/90" />
@@ -191,7 +191,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
             </Reveal>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[19rem] xl:shrink-0 xl:items-start xl:text-left">
+          <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[17rem] xl:shrink-0 xl:items-start xl:text-left">
             <Reveal preset="slideInRight">
               <div className="relative h-14 w-40 md:h-16 md:w-44">
                 <Image
