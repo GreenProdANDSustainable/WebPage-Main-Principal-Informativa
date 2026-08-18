@@ -217,6 +217,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                 src="/greenprod png.png"
                 alt="Green Prod & Sustainable S.A.C Logo"
                 fill
+                sizes="192px"
                 className="object-contain"
                 priority
               />

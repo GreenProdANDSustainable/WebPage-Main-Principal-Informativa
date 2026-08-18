@@ -20,6 +20,7 @@ export default function SustainabilitySection({
         src="/images/sustainability-bg.jpg"
         alt=""
         fill
+        sizes="100vw"
         className="object-cover opacity-30"
         priority={false}
       />

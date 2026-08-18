@@ -38,6 +38,7 @@ export default async function Nosotros({ params }: { params: Promise<{ lang: str
                 src="https://picsum.photos/seed/teamwork/800/1000"
                 alt="Equipo Greenprod Sustainable"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />

@@ -179,6 +179,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                   src="/greenprod blanco png.png"
                   alt="Green Prod & Sustainable S.A.C"
                   fill
+                  sizes="176px"
                   className="object-contain"
                 />
               </div>

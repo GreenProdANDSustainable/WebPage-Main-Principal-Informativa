@@ -76,6 +76,7 @@ export default function ProductAccordion({ product, lang }: { product: Product; 
                     src={`https://picsum.photos/seed/${product.imageSeed}/400/400`}
                     alt={product.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                     referrerPolicy="no-referrer"
                   />

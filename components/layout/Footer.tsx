@@ -74,6 +74,7 @@ export default function Footer({ dictionary, lang }: FooterProps) {
                   src="/greenprod blanco png.png"
                   alt="Green Prod & Sustainable S.A.C"
                   fill
+                  sizes="144px"
                   className="object-contain"
                 />
               </div>
