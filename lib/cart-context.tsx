@@ -37,7 +37,13 @@ const STORAGE_KEY = 'greenprod-cart';
 // para leer el estado de la red), así se evita el "setState en un efecto"
 // y el parpadeo servidor/cliente en la primera carga.
 type Listener = () => void;
-let cartState: CartItem[] = [];
+// Referencia fija para el render del servidor. Tiene que ser SIEMPRE la
+// misma: React llama a getServerSnapshot varias veces y compara con
+// Object.is, así que devolver un [] nuevo cada vez le hace creer que el
+// carrito cambió en pleno render ("getServerSnapshot should be cached to
+// avoid an infinite loop").
+const CARRITO_VACIO: CartItem[] = [];
+let cartState: CartItem[] = CARRITO_VACIO;
 let hydrated = false;
 let listeners: Listener[] = [];
 
@@ -80,7 +86,7 @@ const cartStore = {
     return cartState;
   },
   getServerSnapshot(): CartItem[] {
-    return [];
+    return CARRITO_VACIO;
   },
 };
 
