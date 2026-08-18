@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Reveal from '@/components/shared/Reveal';
 import LogoMarquee from '@/components/shared/LogoMarquee';
 import type { MarqueeLogo } from '@/components/shared/LogoMarquee';
@@ -23,42 +22,23 @@ const partners: MarqueeLogo[] = [
   },
 ];
 
-/**
- * Aliados sobre el campo.
- *
- * El fondo es un fotograma del mismo video que corre en "¿Quiénes Somos?",
- * para que las dos secciones se lean como el mismo lugar. Los sellos son
- * casi todos de tinta oscura, así que cada uno va sobre su placa clara:
- * sueltos sobre la foto no se leerían.
- */
 export default function PartnersSection({ dict }: PartnersSectionProps) {
   return (
-    <section id="aliados" className="bg-ink relative isolate overflow-hidden py-24">
-      <Image
-        src="/images/home/fondos/campo-germinacion.webp"
-        alt=""
-        fill
-        sizes="100vw"
-        className="-z-10 object-cover"
-      />
-      <div className="bg-ink/70 absolute inset-0 -z-10" />
-
-      <div className="relative mb-12 px-4 text-center sm:px-6 lg:px-8">
+    <section id="aliados" className="border-line-warm/20 bg-paper border-y py-24">
+      <div className="mb-12 px-4 text-center sm:px-6 lg:px-8">
         <Reveal group gap={0.12}>
           <Reveal preset="child">
-            <h2 className="font-display text-paper mb-3 text-3xl font-semibold tracking-tight md:text-4xl">
+            <h2 className="font-display text-ink mb-3 text-3xl font-semibold tracking-tight md:text-4xl">
               {dict.Partners.title}
             </h2>
           </Reveal>
           <Reveal preset="child">
-            <p className="text-paper/70 mx-auto max-w-2xl text-base">{dict.Partners.subtitle}</p>
+            <p className="text-ink/60 mx-auto max-w-2xl text-base">{dict.Partners.subtitle}</p>
           </Reveal>
         </Reveal>
       </div>
 
-      <div className="relative">
-        <LogoMarquee logos={partners} variant="onDark" />
-      </div>
+      <LogoMarquee logos={partners} />
     </section>
   );
 }
