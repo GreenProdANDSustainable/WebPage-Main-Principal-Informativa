@@ -26,53 +26,106 @@
                 "slug": "biofungicidas",
                 "name": "Biofungicidas",
                 "products": [
-                    "GP-Trich",
-                    "GP-Trichobac",
-                    "GP-Subtix"
+                    {
+                        "slug": "gp-trich",
+                        "name": "GP-Trich"
+                    },
+                    {
+                        "slug": "gp-trichobac",
+                        "name": "GP-Trichobac"
+                    },
+                    {
+                        "slug": "gp-subtix",
+                        "name": "GP-Subtix"
+                    }
                 ]
             },
             {
                 "slug": "bioinsecticidas",
                 "name": "Bioinsecticidas",
                 "products": [
-                    "GP-Bauver",
-                    "GP-Meta",
-                    "GP-Thuring",
-                    "GP-Warduo"
+                    {
+                        "slug": "gp-bauver",
+                        "name": "GP-Bauver"
+                    },
+                    {
+                        "slug": "gp-meta",
+                        "name": "GP-Meta"
+                    },
+                    {
+                        "slug": "gp-thuring",
+                        "name": "GP-Thuring"
+                    },
+                    {
+                        "slug": "gp-warduo",
+                        "name": "GP-Warduo"
+                    }
                 ]
             },
             {
                 "slug": "bionematicida",
                 "name": "Bionematicida",
                 "products": [
-                    "GP-Lilax"
+                    {
+                        "slug": "gp-lilax",
+                        "name": "GP-Lilax"
+                    }
                 ]
             },
             {
                 "slug": "biofertilizante",
                 "name": "Biofertilizante",
                 "products": [
-                    "GP-Bio"
+                    {
+                        "slug": "gp-bio",
+                        "name": "GP-Bio"
+                    }
                 ]
             },
             {
                 "slug": "bioestimulante",
                 "name": "Bioestimulante",
                 "products": [
-                    "GP-Megafort"
+                    {
+                        "slug": "gp-megafort",
+                        "name": "GP-Megafort"
+                    }
                 ]
             },
             {
                 "slug": "coadyuvantes",
                 "name": "Coadyuvantes",
                 "products": [
-                    "GP-Clean",
-                    "GP-Oil"
+                    {
+                        "slug": "gp-clean",
+                        "name": "GP-Clean"
+                    },
+                    {
+                        "slug": "gp-oil",
+                        "name": "GP-Oil"
+                    }
                 ]
             }
         ],
         "allCategories": "Ver todas las categorías",
         "productsIn": "Productos de esta línea"
+    },
+    "Product": {
+        "backToLine": "Volver a la línea",
+        "photoPending": "Foto próximamente",
+        "lineLabel": "Línea",
+        "infoTitle": "Información",
+        "infoPending": "La descripción de este producto está en preparación.",
+        "useTitle": "Función",
+        "usePending": "La función y las recomendaciones de uso están en preparación.",
+        "sheetTitle": "Ficha técnica",
+        "sheetDesc": "Composición, dosis y modo de empleo.",
+        "safetyTitle": "Hoja de seguridad",
+        "safetyDesc": "Manejo, primeros auxilios y almacenamiento.",
+        "download": "Descargar PDF",
+        "docPending": "Documento próximamente",
+        "askAdvisor": "Consultar a un asesor",
+        "otherProducts": "Otros productos de esta línea"
     },
     "Checkout": {
         "title": "Finalizar compra",
@@ -565,5 +618,72 @@
                 }
             }
         }
+    },
+    "Cookies": {
+        "title": "Este sitio usa cookies",
+        "body": "Usamos cookies necesarias para que la web funcione y, si aceptas, cookies de medición para entender qué secciones se visitan más. No se comparten con terceros para publicidad.",
+        "accept": "Aceptar todas",
+        "essentialOnly": "Solo las necesarias",
+        "settings": "Configurar",
+        "save": "Guardar preferencias",
+        "close": "Cerrar",
+        "essentialTitle": "Necesarias",
+        "essentialDesc": "Mantienen el carrito y el idioma. No se pueden desactivar porque sin ellas el sitio no funciona.",
+        "essentialAlways": "Siempre activas",
+        "analyticsTitle": "Medición",
+        "analyticsDesc": "Nos dicen cuántas personas entran y qué páginas ven, en forma agregada y anónima.",
+        "privacyLink": "Política de privacidad",
+        "note": "Las cookies no dan acceso a tu correo ni a tus redes. Si quieres recibir novedades por correo, suscríbete abajo: eso es aparte y lo decides tú."
+    },
+    "Newsletter": {
+        "title": "Novedades y descuentos",
+        "subtitle": "Deja tu correo y te avisamos de los lanzamientos, las promociones y las campañas de temporada.",
+        "emailLabel": "Tu correo electrónico",
+        "emailPlaceholder": "nombre@correo.com",
+        "consent": "Acepto recibir correos con novedades y promociones de Green Prod & Sustainable.",
+        "submit": "Suscribirme",
+        "unsubscribe": "Puedes darte de baja cuando quieras, con el enlace que va en cada correo.",
+        "errorEmail": "Escribe un correo válido",
+        "errorConsent": "Marca la casilla para poder enviarte los correos",
+        "pendingTitle": "Suscripción anotada",
+        "pendingBody": "El envío automático todavía no está conectado. Mientras tanto, tu correo llega al asesor por WhatsApp y te sumamos a la lista."
+    },
+    "Privacy": {
+        "title": "Política de Privacidad",
+        "intro": "Green Prod & Sustainable S.A.C., con domicilio en Av. Uno Mz. 1 Lote 1, Bloque \"E\", AA.HH. Tres Estrellas, Nuevo Chimbote, Áncash, es responsable de los datos personales que se recogen en este sitio. Esta política explica qué datos pedimos, para qué los usamos y cómo puedes controlarlos, conforme a la Ley 29733 de Protección de Datos Personales y su reglamento.",
+        "reviewNotice": "Documento pendiente de revisión legal. Falta completar el RUC de la empresa y el número de inscripción del banco de datos personales ante la Autoridad Nacional de Protección de Datos Personales.",
+        "sections": [
+            {
+                "heading": "Qué datos recogemos",
+                "body": "Solo los que tú nos entregas al llenar un formulario: al hacer un pedido pedimos nombre o razón social, DNI o RUC, correo, teléfono y dirección de entrega; al escribirnos por el formulario de contacto, tu nombre, empresa, correo y mensaje; al suscribirte a novedades, únicamente tu correo. No recogemos datos sensibles ni compramos listas de terceros."
+            },
+            {
+                "heading": "Para qué los usamos",
+                "body": "Los datos del pedido sirven para atenderlo, coordinar el pago y la entrega y emitir el comprobante. Los del formulario de contacto, para responderte. El correo de la suscripción, solo para enviarte novedades, lanzamientos y promociones, y nada más."
+            },
+            {
+                "heading": "Cookies",
+                "body": "Usamos cookies necesarias, que mantienen tu carrito y tu idioma y sin las cuales el sitio no funciona, y cookies de medición, que solo se activan si las aceptas y nos dicen de forma agregada y anónima cuántas personas entran y qué páginas ven. Puedes rechazar las de medición sin perder ninguna función. Las cookies solo alcanzan a este sitio: no dan acceso a tu correo, a tus redes sociales ni a tu actividad en otras páginas."
+            },
+            {
+                "heading": "Correos de novedades",
+                "body": "Aceptar las cookies no te suscribe a nada. Solo recibirás correos si dejas tu dirección en el formulario de suscripción y marcas la casilla de aceptación. Cada correo lleva un enlace para darte de baja, y puedes pedir la baja también escribiéndonos."
+            },
+            {
+                "heading": "Con quién se comparten",
+                "body": "No vendemos ni cedemos datos personales. Los comparte únicamente con quienes hacen falta para cumplir tu pedido: la empresa de transporte que lleva el producto y, cuando esté habilitado el pago en línea, la pasarela que procesa el cobro. Los datos de tu tarjeta nunca pasan por este sitio: se ingresan directamente en el formulario de la pasarela."
+            },
+            {
+                "heading": "Cuánto tiempo se guardan",
+                "body": "Los datos de un pedido se conservan mientras dure la relación comercial y el plazo que exige la normativa tributaria. El correo de la suscripción se conserva hasta que pidas la baja."
+            },
+            {
+                "heading": "Tus derechos",
+                "body": "Puedes pedir acceso a tus datos, su corrección, su eliminación o oponerte a que los usemos, escribiendo a contacto@greenprod.pe. Respondemos en los plazos que fija la ley. Si consideras que no atendimos tu solicitud, puedes reclamar ante la Autoridad Nacional de Protección de Datos Personales del Ministerio de Justicia."
+            }
+        ],
+        "contactTitle": "Contacto",
+        "contactBody": "Para cualquier consulta sobre esta política o sobre tus datos: contacto@greenprod.pe · +51 919 514 085",
+        "updated": "Última actualización"
     }
 }

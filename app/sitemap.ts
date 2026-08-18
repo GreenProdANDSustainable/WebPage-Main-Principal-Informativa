@@ -9,7 +9,10 @@ import { SITE_URL, LOCALES, DEFAULT_LOCALE, ROUTES } from '@/lib/site';
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const categorias = esMessages.Catalog.categories.map((c) => `/catalogo/${c.slug}`);
-  const rutas = [...ROUTES, ...categorias];
+  const productos = esMessages.Catalog.categories.flatMap((c) =>
+    c.products.map((prod) => `/catalogo/${c.slug}/${prod.slug}`)
+  );
+  const rutas = [...ROUTES, ...categorias, ...productos];
   const ahora = new Date();
 
   return rutas.flatMap((ruta) =>

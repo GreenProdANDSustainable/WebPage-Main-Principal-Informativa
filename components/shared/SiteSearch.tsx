@@ -104,23 +104,24 @@ function PanelBusqueda({
     const categorias = dictionary.Catalog.categories as {
       slug: string;
       name: string;
-      products: string[];
+      products: { slug: string; name: string }[];
     }[];
     const p = (ruta: string) => `/${lang}${ruta}`;
 
     const lineas: Resultado[] = categorias.map((c) => ({
       label: c.name,
-      sub: c.products.join(' · '),
+      sub: c.products.map((prod) => prod.name).join(' · '),
       href: p(`/catalogo/${c.slug}`),
       group: d.products,
       priority: 2,
     }));
 
+    // Cada producto lleva a su ficha, no al listado de la linea.
     const productos: Resultado[] = categorias.flatMap((c) =>
       c.products.map((prod) => ({
-        label: prod,
+        label: prod.name,
         sub: c.name,
-        href: p(`/catalogo/${c.slug}`),
+        href: p(`/catalogo/${c.slug}/${prod.slug}`),
         group: d.products,
         priority: 3,
       }))

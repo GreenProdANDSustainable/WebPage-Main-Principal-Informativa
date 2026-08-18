@@ -26,53 +26,106 @@
                 "slug": "biofungicidas",
                 "name": "Biofungicides",
                 "products": [
-                    "GP-Trich",
-                    "GP-Trichobac",
-                    "GP-Subtix"
+                    {
+                        "slug": "gp-trich",
+                        "name": "GP-Trich"
+                    },
+                    {
+                        "slug": "gp-trichobac",
+                        "name": "GP-Trichobac"
+                    },
+                    {
+                        "slug": "gp-subtix",
+                        "name": "GP-Subtix"
+                    }
                 ]
             },
             {
                 "slug": "bioinsecticidas",
                 "name": "Bioinsecticides",
                 "products": [
-                    "GP-Bauver",
-                    "GP-Meta",
-                    "GP-Thuring",
-                    "GP-Warduo"
+                    {
+                        "slug": "gp-bauver",
+                        "name": "GP-Bauver"
+                    },
+                    {
+                        "slug": "gp-meta",
+                        "name": "GP-Meta"
+                    },
+                    {
+                        "slug": "gp-thuring",
+                        "name": "GP-Thuring"
+                    },
+                    {
+                        "slug": "gp-warduo",
+                        "name": "GP-Warduo"
+                    }
                 ]
             },
             {
                 "slug": "bionematicida",
                 "name": "Bionematicide",
                 "products": [
-                    "GP-Lilax"
+                    {
+                        "slug": "gp-lilax",
+                        "name": "GP-Lilax"
+                    }
                 ]
             },
             {
                 "slug": "biofertilizante",
                 "name": "Biofertilizer",
                 "products": [
-                    "GP-Bio"
+                    {
+                        "slug": "gp-bio",
+                        "name": "GP-Bio"
+                    }
                 ]
             },
             {
                 "slug": "bioestimulante",
                 "name": "Biostimulant",
                 "products": [
-                    "GP-Megafort"
+                    {
+                        "slug": "gp-megafort",
+                        "name": "GP-Megafort"
+                    }
                 ]
             },
             {
                 "slug": "coadyuvantes",
                 "name": "Adjuvants",
                 "products": [
-                    "GP-Clean",
-                    "GP-Oil"
+                    {
+                        "slug": "gp-clean",
+                        "name": "GP-Clean"
+                    },
+                    {
+                        "slug": "gp-oil",
+                        "name": "GP-Oil"
+                    }
                 ]
             }
         ],
         "allCategories": "View all categories",
         "productsIn": "Products in this line"
+    },
+    "Product": {
+        "backToLine": "Back to the line",
+        "photoPending": "Photo coming soon",
+        "lineLabel": "Line",
+        "infoTitle": "Information",
+        "infoPending": "The description of this product is being prepared.",
+        "useTitle": "Function",
+        "usePending": "The function and usage recommendations are being prepared.",
+        "sheetTitle": "Technical data sheet",
+        "sheetDesc": "Composition, dosage and how to apply it.",
+        "safetyTitle": "Safety data sheet",
+        "safetyDesc": "Handling, first aid and storage.",
+        "download": "Download PDF",
+        "docPending": "Document coming soon",
+        "askAdvisor": "Ask an advisor",
+        "otherProducts": "Other products in this line"
     },
     "Checkout": {
         "title": "Complete your order",
@@ -565,5 +618,72 @@
                 }
             }
         }
+    },
+    "Cookies": {
+        "title": "This site uses cookies",
+        "body": "We use cookies that are necessary for the site to work and, if you accept, measurement cookies to understand which sections get visited most. They are not shared with third parties for advertising.",
+        "accept": "Accept all",
+        "essentialOnly": "Necessary only",
+        "settings": "Customize",
+        "save": "Save preferences",
+        "close": "Close",
+        "essentialTitle": "Necessary",
+        "essentialDesc": "They keep your cart and language. They cannot be turned off because the site does not work without them.",
+        "essentialAlways": "Always on",
+        "analyticsTitle": "Measurement",
+        "analyticsDesc": "They tell us how many people visit and which pages they see, aggregated and anonymous.",
+        "privacyLink": "Privacy policy",
+        "note": "Cookies do not give access to your email or your social accounts. If you want news by email, subscribe below: that is separate and it is your choice."
+    },
+    "Newsletter": {
+        "title": "News and discounts",
+        "subtitle": "Leave your email and we will let you know about launches, promotions and seasonal campaigns.",
+        "emailLabel": "Your email",
+        "emailPlaceholder": "name@email.com",
+        "consent": "I agree to receive emails with news and promotions from Green Prod & Sustainable.",
+        "submit": "Subscribe",
+        "unsubscribe": "You can unsubscribe any time, with the link included in every email.",
+        "errorEmail": "Enter a valid email",
+        "errorConsent": "Tick the box so we can send you the emails",
+        "pendingTitle": "Subscription noted",
+        "pendingBody": "Automatic sending is not connected yet. In the meantime your email reaches an advisor via WhatsApp and we add you to the list."
+    },
+    "Privacy": {
+        "title": "Privacy Policy",
+        "intro": "Green Prod & Sustainable S.A.C., located at Av. Uno Mz. 1 Lote 1, Bloque \"E\", AA.HH. Tres Estrellas, Nuevo Chimbote, Áncash, is responsible for the personal data collected on this site. This policy explains what data we ask for, what we use it for and how you can control it, under Peru's Personal Data Protection Law 29733 and its regulations.",
+        "reviewNotice": "Document pending legal review. The company tax ID (RUC) and the personal data bank registration number with the National Authority for Personal Data Protection still need to be filled in.",
+        "sections": [
+            {
+                "heading": "What we collect",
+                "body": "Only what you give us in a form: to place an order we ask for your name or company name, DNI or RUC, email, phone and delivery address; through the contact form, your name, company, email and message; to subscribe to news, only your email. We do not collect sensitive data and we do not buy third-party lists."
+            },
+            {
+                "heading": "What we use it for",
+                "body": "Order details are used to fulfil the order, arrange payment and delivery and issue the receipt. Contact form details are used to reply to you. The subscription email is used only to send you news, launches and promotions, and nothing else."
+            },
+            {
+                "heading": "Cookies",
+                "body": "We use necessary cookies, which keep your cart and language and without which the site does not work, and measurement cookies, which are only enabled if you accept them and tell us in aggregate, anonymous form how many people visit and which pages they see. You can refuse the measurement ones without losing any feature. Cookies only reach this site: they give no access to your email, your social accounts or your activity on other pages."
+            },
+            {
+                "heading": "Marketing emails",
+                "body": "Accepting cookies does not subscribe you to anything. You will only receive emails if you enter your address in the subscription form and tick the consent box. Every email carries an unsubscribe link, and you can also ask to be removed by writing to us."
+            },
+            {
+                "heading": "Who we share it with",
+                "body": "We do not sell or transfer personal data. We share it only with those needed to fulfil your order: the carrier that delivers the product and, once online payment is enabled, the gateway that processes the charge. Your card details never pass through this site: they are entered directly in the gateway form."
+            },
+            {
+                "heading": "How long we keep it",
+                "body": "Order data is kept for as long as the commercial relationship lasts and for the period required by tax regulations. The subscription email is kept until you ask to be removed."
+            },
+            {
+                "heading": "Your rights",
+                "body": "You can request access to your data, its correction, its deletion, or object to our use of it, by writing to contacto@greenprod.pe. We reply within the deadlines set by law. If you believe your request was not handled, you may complain to the National Authority for Personal Data Protection of the Ministry of Justice."
+            }
+        ],
+        "contactTitle": "Contact",
+        "contactBody": "For any question about this policy or your data: contacto@greenprod.pe · +51 919 514 085",
+        "updated": "Last updated"
     }
 }

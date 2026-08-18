@@ -17,6 +17,7 @@ import {
   ShoppingCart,
 } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
+import ProductPhoto from '@/components/shared/ProductPhoto';
 import SiteSearch from '@/components/shared/SiteSearch';
 
 type Dictionary = {
@@ -62,7 +63,7 @@ type Dictionary = {
     [key: string]: any;
   };
   Catalog: {
-    categories: { slug: string; name: string; products: string[] }[];
+    categories: { slug: string; name: string; products: { slug: string; name: string }[] }[];
     [key: string]: any;
   };
   [key: string]: any;
@@ -85,23 +86,16 @@ export default function Navbar({ dictionary }: NavbarProps) {
     { name: d.home_success_stories, href: '#casos-exito' },
   ];
 
-  // Productos = las seis lineas de bioinsumos (cada una con su pagina) mas
-  // Balik. Servicios = las tres lineas de servicio.
-  const productsMenu = [
-    {
-      category: d.products,
-      items: [
-        ...dictionary.Catalog.categories.map((c) => ({
-          name: c.name,
-          desc: c.products.join(' · '),
-          href: `/catalogo/${c.slug}`,
-        })),
-        { name: d.balik, desc: d.balik_desc, href: '/productos-y-servicios/balik' },
-      ],
-    },
+  // Las seis lineas con sus productos: en el menu cada producto entra por su
+  // cuenta, con su miniatura, y lleva a su ficha.
+  const lineas = dictionary.Catalog.categories;
+
+  // Servicios y Balik siguen siendo entradas sueltas, sin foto.
+  const serviciosMenu = [
     {
       category: d.services,
       items: [
+        { name: d.balik, desc: d.balik_desc, href: '/productos-y-servicios/balik' },
         { name: d.Ceprobio, desc: d.Ceprobio_desc, href: '/productos-y-servicios/ceprobio' },
         { name: d.planta, desc: d.planta_desc, href: '/productos-y-servicios/planta-tratamiento' },
         { name: d.proyectos, desc: d.proyectos_desc, href: '/productos-y-servicios/proyectos' },
@@ -366,15 +360,54 @@ export default function Navbar({ dictionary }: NavbarProps) {
               onMouseLeave={handleMouseLeave}
             >
               <div className="mx-auto max-w-7xl px-8 py-10">
-                <div className="grid grid-cols-[1.7fr_1fr] gap-12">
-                  {productsMenu.map((column, idx) => (
+                <div className="grid grid-cols-[2.2fr_1fr] gap-12">
+                  {/* Cada producto va con su miniatura y lleva a su ficha;
+                      el nombre de la línea lleva a la línea completa. */}
+                  <div>
+                    <h3 className="font-display text-ink border-line-warm/50 mb-5 border-b pb-2 text-xl font-bold">
+                      {d.products}
+                    </h3>
+                    <div className="grid grid-cols-3 gap-x-8 gap-y-4">
+                      {lineas.map((linea) => (
+                        <div key={linea.slug}>
+                          <Link
+                            href={`/${currentLang}/catalogo/${linea.slug}`}
+                            onClick={() => setActiveDropdown(null)}
+                            className="text-gp-blue hover:text-gp-green mb-2 block text-xs font-bold tracking-wider uppercase transition-colors"
+                          >
+                            {linea.name}
+                          </Link>
+                          <div className="space-y-1">
+                            {linea.products.map((prod) => (
+                              <Link
+                                key={prod.slug}
+                                href={`/${currentLang}/catalogo/${linea.slug}/${prod.slug}`}
+                                onClick={() => setActiveDropdown(null)}
+                                className="group hover:bg-gp-green/15 flex items-center gap-2.5 rounded-lg p-1 transition-colors"
+                              >
+                                <ProductPhoto
+                                  id={prod.slug}
+                                  name={prod.name}
+                                  sizes="36px"
+                                  className="w-9 shrink-0"
+                                />
+                                <span className="group-hover:text-gp-green text-ink text-sm font-bold transition-colors">
+                                  {prod.name}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {serviciosMenu.map((column, idx) => (
                     <div key={idx}>
-                      <h3 className="font-display text-ink border-line-warm/50 mb-6 border-b pb-2 text-xl font-bold">
+                      <h3 className="font-display text-ink border-line-warm/50 mb-5 border-b pb-2 text-xl font-bold">
                         {column.category}
                       </h3>
-                      <div
-                        className={`grid gap-x-6 gap-y-2 ${idx === 0 ? 'grid-cols-2' : 'grid-cols-1'}`}
-                      >
+                      <div className="grid grid-cols-1 gap-y-2">
                         {column.items.map((item, idxi) => (
                           <Link
                             key={idxi}
@@ -592,7 +625,46 @@ export default function Navbar({ dictionary }: NavbarProps) {
                           className="bg-husk/20 overflow-hidden"
                         >
                           <div className="space-y-6 px-6 py-2 pb-6">
-                            {productsMenu.map((column, idx) => (
+                            <div>
+                              <h3 className="text-gp-blue mb-3 text-sm font-bold tracking-wider uppercase">
+                                {d.products}
+                              </h3>
+                              <div className="border-line-warm/40 space-y-4 border-l-2 pl-3">
+                                {lineas.map((linea) => (
+                                  <div key={linea.slug}>
+                                    <Link
+                                      href={`/${currentLang}/catalogo/${linea.slug}`}
+                                      onClick={() => setIsOpen(false)}
+                                      className="text-ink/80 block font-bold"
+                                    >
+                                      {linea.name}
+                                    </Link>
+                                    <div className="mt-2 grid grid-cols-2 gap-2">
+                                      {linea.products.map((prod) => (
+                                        <Link
+                                          key={prod.slug}
+                                          href={`/${currentLang}/catalogo/${linea.slug}/${prod.slug}`}
+                                          onClick={() => setIsOpen(false)}
+                                          className="flex items-center gap-2"
+                                        >
+                                          <ProductPhoto
+                                            id={prod.slug}
+                                            name={prod.name}
+                                            sizes="36px"
+                                            className="w-9 shrink-0"
+                                          />
+                                          <span className="text-ink/70 text-xs font-semibold">
+                                            {prod.name}
+                                          </span>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            {serviciosMenu.map((column, idx) => (
                               <div key={idx}>
                                 <h3 className="text-gp-blue mb-3 text-sm font-bold tracking-wider uppercase">
                                   {column.category}

@@ -4,8 +4,20 @@ import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
+import ProductPhoto from '@/components/shared/ProductPhoto';
 import AddToCartButton from '@/components/shared/AddToCartButton';
-import { formatearSoles, idDeProducto, precioDe } from '@/lib/tienda';
+import { formatearSoles, precioDe } from '@/lib/tienda';
+
+interface Producto {
+  slug: string;
+  name: string;
+}
+
+interface Categoria {
+  slug: string;
+  name: string;
+  products: Producto[];
+}
 
 export default async function Catalogo({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -39,7 +51,7 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
         </div>
 
         <div className="space-y-14">
-          {c.categories.map((category: { slug: string; name: string; products: string[] }) => (
+          {(c.categories as Categoria[]).map((category) => (
             <section key={category.slug}>
               <Reveal preset="growUp">
                 {/* El título lleva a la página propia de la línea. */}
@@ -60,31 +72,42 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
               <Reveal
                 group
                 gap={0.06}
-                className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5"
               >
-                {category.products.map((product) => {
-                  const id = idDeProducto(product);
-                  const precio = precioDe(id);
+                {category.products.map((prod) => {
+                  const precio = precioDe(prod.slug);
                   return (
-                    <Reveal key={product} preset="child">
-                      <div className="border-line-warm/40 flex items-center justify-between gap-3 rounded-xl border bg-white/60 px-4 py-3">
-                        <div className="min-w-0">
-                          <p className="text-ink text-base font-semibold">{product}</p>
+                    <Reveal key={prod.slug} preset="child">
+                      <div className="border-line-warm/40 hover:border-gp-green/50 flex h-full flex-col rounded-2xl border bg-white/60 p-4 transition-colors">
+                        <Link
+                          href={`/${lang}/catalogo/${category.slug}/${prod.slug}`}
+                          className="group block"
+                        >
+                          <ProductPhoto
+                            id={prod.slug}
+                            name={prod.name}
+                            sizes="(max-width: 640px) 45vw, 220px"
+                          />
+                          <p className="text-ink group-hover:text-gp-green mt-3 text-base font-bold transition-colors">
+                            {prod.name}
+                          </p>
                           <p className="text-ink/50 text-xs font-semibold">
                             {precio === null
                               ? dictionary.Checkout.pendingPrice
                               : formatearSoles(precio)}
                           </p>
+                        </Link>
+                        <div className="mt-4 flex flex-1 items-end">
+                          <AddToCartButton
+                            size="sm"
+                            id={prod.slug}
+                            name={prod.name}
+                            href={`/catalogo/${category.slug}/${prod.slug}`}
+                            addLabel={dictionary.Navbar.cart_add}
+                            addedLabel={dictionary.Navbar.cart_added}
+                            className="w-full"
+                          />
                         </div>
-                        <AddToCartButton
-                          size="sm"
-                          id={id}
-                          name={product}
-                          href={`/catalogo/${category.slug}`}
-                          addLabel={dictionary.Navbar.cart_add}
-                          addedLabel={dictionary.Navbar.cart_added}
-                          className="shrink-0"
-                        />
                       </div>
                     </Reveal>
                   );

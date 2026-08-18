@@ -30,10 +30,43 @@ export const PRECIOS: Record<string, number> = {};
 
 /**
  * El id con el que un producto del catálogo entra al carrito: su nombre en
- * minúsculas. "GP-Trich" → "gp-trich". Es también la clave de `PRECIOS`.
+ * minúsculas. "GP-Trich" → "gp-trich". Es también la clave de `PRECIOS`,
+ * de `FOTOS` y el slug de su página.
  */
 export function idDeProducto(nombre: string): string {
   return nombre.trim().toLowerCase();
+}
+
+/**
+ * Foto de cada producto, del mismo modo que los precios: mientras el archivo
+ * no exista, la ficha y el menú muestran el recuadro de "Foto próximamente".
+ * Cuando lleguen las fotos van a `public/images/productos/` y se anotan acá:
+ *
+ *     export const FOTOS: Record<string, string> = {
+ *       'gp-bauver': '/images/productos/gp-bauver.webp',
+ *     };
+ */
+export const FOTOS: Record<string, string> = {};
+
+export function fotoDe(id: string): string | null {
+  return FOTOS[id] ?? null;
+}
+
+/**
+ * Ficha técnica y hoja de seguridad de cada producto, en PDF. Misma idea:
+ * los archivos van a `public/documentos/` y se anotan acá. Mientras falten,
+ * la ficha muestra el aviso de "documento próximamente" en vez de un enlace
+ * roto.
+ */
+export interface DocumentosProducto {
+  fichaTecnica?: string;
+  hojaSeguridad?: string;
+}
+
+export const DOCUMENTOS: Record<string, DocumentosProducto> = {};
+
+export function documentosDe(id: string): DocumentosProducto {
+  return DOCUMENTOS[id] ?? {};
 }
 
 /** Precio de un producto, o `null` si todavía no tiene. */

@@ -1,22 +1,28 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
+import ProductPhoto from '@/components/shared/ProductPhoto';
 import AddToCartButton from '@/components/shared/AddToCartButton';
-import { formatearSoles, idDeProducto, precioDe } from '@/lib/tienda';
+import { formatearSoles, precioDe } from '@/lib/tienda';
+
+interface Producto {
+  slug: string;
+  name: string;
+}
 
 interface Categoria {
   slug: string;
   name: string;
-  products: string[];
+  products: Producto[];
 }
 
 /** Una página por línea de producto, con solo los productos de esa línea. */
 export function generateStaticParams() {
-  return esMessages.Catalog.categories.flatMap((cat: Categoria) =>
+  return (esMessages.Catalog.categories as Categoria[]).flatMap((cat) =>
     ['es', 'en'].map((lang) => ({ lang, categoria: cat.slug }))
   );
 }
@@ -62,29 +68,39 @@ export default async function CategoriaCatalogo({
         <Reveal
           group
           gap={0.08}
-          className="mx-auto grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2"
+          className="mx-auto grid max-w-5xl grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
         >
-          {cat.products.map((product) => {
-            const id = idDeProducto(product);
-            const precio = precioDe(id);
+          {cat.products.map((prod) => {
+            const precio = precioDe(prod.slug);
             return (
-              <Reveal key={product} preset="child">
-                <div className="border-line-warm/40 flex items-center justify-between gap-4 rounded-2xl border bg-white/60 px-5 py-4">
-                  <div className="min-w-0">
-                    <p className="text-ink text-lg font-semibold">{product}</p>
+              <Reveal key={prod.slug} preset="child">
+                <div className="border-line-warm/40 hover:border-gp-green/50 flex h-full flex-col rounded-2xl border bg-white/60 p-4 transition-colors">
+                  {/* La foto lleva a la ficha; el botón se queda en la
+                      tarjeta para poder comprar sin dar un rodeo. */}
+                  <Link href={`/${lang}/catalogo/${cat.slug}/${prod.slug}`} className="group block">
+                    <ProductPhoto
+                      id={prod.slug}
+                      name={prod.name}
+                      sizes="(max-width: 640px) 45vw, 240px"
+                    />
+                    <p className="text-ink group-hover:text-gp-green mt-3 text-base font-bold transition-colors">
+                      {prod.name}
+                    </p>
                     <p className="text-ink/50 text-xs font-semibold">
                       {precio === null ? dictionary.Checkout.pendingPrice : formatearSoles(precio)}
                     </p>
+                  </Link>
+                  <div className="mt-4 flex flex-1 items-end">
+                    <AddToCartButton
+                      size="sm"
+                      id={prod.slug}
+                      name={prod.name}
+                      href={`/catalogo/${cat.slug}/${prod.slug}`}
+                      addLabel={dictionary.Navbar.cart_add}
+                      addedLabel={dictionary.Navbar.cart_added}
+                      className="w-full"
+                    />
                   </div>
-                  <AddToCartButton
-                    size="sm"
-                    id={id}
-                    name={product}
-                    href={`/catalogo/${cat.slug}`}
-                    addLabel={dictionary.Navbar.cart_add}
-                    addedLabel={dictionary.Navbar.cart_added}
-                    className="shrink-0"
-                  />
                 </div>
               </Reveal>
             );

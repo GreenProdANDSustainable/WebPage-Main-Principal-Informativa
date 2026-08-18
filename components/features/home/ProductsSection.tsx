@@ -2,10 +2,15 @@ import Link from 'next/link';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
 
+interface Producto {
+  slug: string;
+  name: string;
+}
+
 interface Categoria {
   slug: string;
   name: string;
-  products: string[];
+  products: Producto[];
 }
 
 interface ProductsSectionProps {
@@ -54,10 +59,10 @@ export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
                 <ul className="text-ink/70 space-y-1.5">
                   {cat.products.map((producto) => (
                     <li
-                      key={producto}
+                      key={producto.slug}
                       className="group-hover:text-gp-green text-base font-semibold transition-colors duration-300"
                     >
-                      {producto}
+                      {producto.name}
                     </li>
                   ))}
                 </ul>
