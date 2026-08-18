@@ -225,6 +225,63 @@ destino), el mínimo de compra y la emisión de boleta/factura por SUNAT.
 
 ---
 
+### 4.3 Ficha de producto, cookies y suscripción
+
+**Cada producto tiene su página**: `/[lang]/catalogo/<linea>/<producto>`
+(por ejemplo `/es/catalogo/bioinsecticidas/gp-bauver`). Trae la foto, la
+información, la función, la ficha técnica y la hoja de seguridad, más el
+precio, el botón de compra y los otros productos de la misma línea. Se llega
+desde el menú, el catálogo, la página de la línea y el buscador.
+
+Para eso los productos del diccionario dejaron de ser un texto suelto y
+pasaron a ser `{ slug, name }`. El `slug` es el nombre en minúsculas
+(`gp-bauver`) y sirve de tres cosas a la vez: URL de la ficha, clave del
+carrito y clave de las tablas de `lib/tienda.ts`.
+
+**Las tres tablas de `lib/tienda.ts` funcionan igual entre sí**: vacías
+mientras la empresa no entregue el material, y con el sitio ya preparado
+para el día que llegue.
+
+| Tabla        | Qué falta                    | Dónde van los archivos     |
+| ------------ | ---------------------------- | -------------------------- |
+| `PRECIOS`    | La lista de precios          | —                          |
+| `FOTOS`      | La foto de cada producto     | `public/images/productos/` |
+| `DOCUMENTOS` | Ficha técnica y hoja de seg. | `public/documentos/`       |
+
+Mientras falten, la ficha muestra "Foto próximamente" y "Documento
+próximamente" en vez de un enlace roto, y los textos de Información y
+Función dicen que están en preparación. **Esos dos textos los tiene que
+escribir la empresa**: describir por cuenta propia lo que hace un bioinsumo
+sería inventarle la etiqueta a un producto agrícola registrado.
+
+**Aviso de cookies** (`CookieBanner` + `lib/consentimiento.ts`). Distingue
+las necesarias —carrito e idioma, no se pueden apagar— de las de medición,
+que solo se activan si la persona acepta. Las tres salidas pesan lo mismo en
+pantalla: aceptar todo no está más a mano que aceptar lo mínimo. La decisión
+se guarda en localStorage con fecha y caduca al año.
+
+**Suscripción a novedades** (`NewsletterForm`, en el pie). Va **aparte** del
+aviso de cookies, y no por capricho:
+
+> Una cookie solo guarda un dato para este sitio. **No puede leer el correo
+> de nadie ni alcanzar sus otras cuentas.** Aceptar cookies no es, ni puede
+> ser, una autorización para mandar publicidad: para eso la persona tiene
+> que dejar su correo y marcar una casilla que diga qué va a recibir, y la
+> casilla arranca desmarcada porque una premarcada no vale como
+> consentimiento (Ley 29733).
+
+Todavía no hay servicio de envío conectado. La suscripción le llega al
+asesor por WhatsApp; al contratar Mailchimp, Brevo o similar, lo único que
+cambia es el envío dentro de `NewsletterForm`.
+
+**Política de privacidad** en `/[lang]/privacidad`, enlazada desde el aviso
+y desde el pie. Describe lo que el sitio hace de verdad, pero **falta que la
+revise un abogado** y completar el RUC y el número de inscripción del banco
+de datos personales ante la Autoridad Nacional de Protección de Datos
+Personales. La propia página lo advierte arriba.
+
+---
+
 ## 5. Decisiones importantes (y por qué)
 
 ### Tipografía
@@ -391,8 +448,21 @@ siempre `true`), así que:
       "gp≈megafort · BIOFERTILIZANTE MULTIFUNCIONAL" y "gp≈bio ·
       BIOESTIMULANTE". Está puesto como lo pidió el usuario; si el envase
       manda, es intercambiar los dos productos en `Catalog.categories`.
-- [ ] **Fotos reales de cada producto** para `/catalogo` y sus páginas por
-      línea: hoy solo se listan los nombres, sin foto.
+- [ ] **Fotos reales de cada producto** — el hueco ya está hecho en el menú,
+      el catálogo y la ficha. Van a `public/images/productos/` y se anotan en
+      `FOTOS` (`lib/tienda.ts`). Ver §4.3.
+- [ ] **Ficha técnica y hoja de seguridad de cada producto** (PDF) — la ficha
+      de producto ya tiene su sitio y hoy dice "documento próximamente". Van a
+      `public/documentos/` y se anotan en `DOCUMENTOS`.
+- [ ] **Textos de Información y Función de cada producto** — los tiene que
+      escribir la empresa. No se inventan: es la etiqueta de un producto
+      agrícola registrado.
+- [ ] **Servicio de envío de correos** (Mailchimp, Brevo o similar) para que
+      la suscripción del pie mande sola las novedades. Hoy le llega al asesor
+      por WhatsApp.
+- [ ] **Revisión legal de la política de privacidad** (`/[lang]/privacidad`) y
+      completar el RUC y el número de inscripción del banco de datos
+      personales.
 - [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
       hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
       y, de ser así, el enlace de la cuenta.
@@ -405,7 +475,8 @@ siempre `true`), así que:
       `SustainabilitySection`. **Impacto necesita cifras reales** (no inventar).
 - [ ] Contenido para Aliados, Casos de Éxito y Video corporativo
       (hoy los tres dicen "Próximamente").
-- [ ] Textos legales (Política de Privacidad y Términos van a `#`).
+- [ ] **Términos y Condiciones**: siguen apuntando a `#`. La Política de
+      Privacidad ya existe en `/[lang]/privacidad` (pendiente de revisión legal).
 - [ ] **Formulario de contacto**: no envía nada. Falta decidir a dónde llegan
       los mensajes.
 - [ ] **Pago real del carrito** — el flujo de compra ya está armado

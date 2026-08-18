@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Leaf, Mail, MapPin, Phone, Facebook, Instagram } from 'lucide-react';
+import NewsletterForm from '@/components/shared/NewsletterForm';
 
 type Dictionary = {
   Footer: {
@@ -24,6 +25,11 @@ type Dictionary = {
   Navbar: {
     about: string;
     catalog: string;
+    [key: string]: any;
+  };
+  Newsletter: {
+    title: string;
+    subtitle: string;
     [key: string]: any;
   };
 };
@@ -65,7 +71,7 @@ export default function Footer({ dictionary, lang }: FooterProps) {
       <div className="bg-gp-green/10 pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-5">
           {/* Brand */}
           <div className="space-y-6">
             <Link href={`/${lang}`} className="inline-flex items-center gap-2 text-white">
@@ -115,6 +121,17 @@ export default function Footer({ dictionary, lang }: FooterProps) {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Novedades: el correo se deja acá, con su propia casilla. Es
+              el consentimiento que las cookies no dan. */}
+          <div>
+            <h3 className="font-display text-paper mb-6 flex items-center gap-2 text-sm font-semibold tracking-wider uppercase">
+              <span className="bg-gp-green h-3 w-1 rounded-full" />
+              {dictionary.Newsletter.title}
+            </h3>
+            <p className="text-paper/60 mb-4 text-sm">{dictionary.Newsletter.subtitle}</p>
+            <NewsletterForm dict={dictionary} />
           </div>
 
           {/* Categories */}
@@ -192,9 +209,12 @@ export default function Footer({ dictionary, lang }: FooterProps) {
             &copy; {new Date().getFullYear()} Green Prod & Sustainable S.A.C. {d.copyright}
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-paper/50 hover:text-gp-green transition-colors">
+            <Link
+              href={`/${lang}/privacidad`}
+              className="text-paper/50 hover:text-gp-green transition-colors"
+            >
               {d.privacy_policy}
-            </a>
+            </Link>
             <a href="#" className="text-paper/50 hover:text-gp-green transition-colors">
               {d.terms_of_service}
             </a>

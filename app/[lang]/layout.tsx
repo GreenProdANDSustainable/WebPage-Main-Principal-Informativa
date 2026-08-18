@@ -8,6 +8,7 @@ import GrowthProgress from '@/components/shared/GrowthProgress';
 import MotionProvider from '@/components/shared/MotionProvider';
 import PageTransition from '@/components/shared/PageTransition';
 import CartDrawer from '@/components/shared/CartDrawer';
+import CookieBanner from '@/components/shared/CookieBanner';
 import { CartProvider } from '@/lib/cart-context';
 import { getDictionary } from '@/get-dictionary';
 import { SITE_URL, LOCALES } from '@/lib/site';
@@ -138,6 +139,7 @@ export default async function RootLayout({
             <GrowthProgress />
             <WhatsAppButton />
             <CartDrawer dict={dictionary.Navbar} lang={lang} />
+            <CookieBanner dict={dictionary} lang={lang} />
           </CartProvider>
         </MotionProvider>
       </body>

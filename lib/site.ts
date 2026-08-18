@@ -33,4 +33,5 @@ export const ROUTES = [
   '/sostenibilidad',
   '/contacto',
   '/asistente-ia',
+  '/privacidad',
 ];
