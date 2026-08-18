@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Facebook, Instagram, Factory, FlaskConical, Microscope, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
-import { PERU_VIEWBOX, PERU_DEPT_PATHS, PERU_CITIES } from '@/lib/peru-map-data';
+import { PERU_DEPT_PATHS, PERU_CITIES } from '@/lib/peru-map-data';
 
 /** Iconos del bloque "Contamos con:", por clave del diccionario. */
 const ICONOS_CAPACIDAD: Record<string, LucideIcon> = {
@@ -23,6 +23,13 @@ interface Capacidad {
 // fuera de las líneas: son literalmente los mismos trazos.
 const PERU_FILL_PATH = PERU_DEPT_PATHS.join(' ');
 
+/**
+ * El lienzo original (0 0 1017 967) lo llenaba justo el rótulo más largo de
+ * cada lado. Con los rótulos 1.36x más grandes hace falta margen a ambos
+ * costados: sin él, el propio `svg` recorta el texto que se sale.
+ */
+const VIEWBOX_ROTULOS = '-45 0 1140 967';
+
 interface ReachMapSectionProps {
   dict: any;
 }
@@ -30,11 +37,23 @@ interface ReachMapSectionProps {
 /** Glifo de pin (mismo trazo que lucide "map-pin"), con la punta en (12, 21.8). */
 const PIN_PATH =
   'M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0';
-const PIN_SCALE = 0.85;
+const PIN_SCALE = 1.2;
 
 /** Caída de la primera línea de texto respecto de la guía (ver el script que
  *  genera peru-map-data: reserva blockH = 22 / 37 contando este valor). */
-const TEXT_DY = 18;
+const TEXT_DY = 24;
+
+/** Salto a la segunda línea del rótulo (el departamento). */
+const TEXT_DY2 = 19;
+
+/**
+ * Los rótulos se veían diminutos, así que crecen 1.36x. `blockW` de
+ * peru-map-data se calculó para el tamaño anterior, de modo que la cola de
+ * la guía se estira en la misma proporción para seguir quedando debajo del
+ * texto. El hueco vertical más justo entre dos rótulos es de 33 unidades
+ * contra un bloque de 22, así que a 1.36x todavía no se tocan.
+ */
+const LABEL_SCALE = 1.36;
 
 const socials = [
   { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/greenprodsustainable' },
@@ -56,7 +75,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
 
         {/* El mapa se lleva todo el ancho que sobra y la columna de la derecha
             queda fija y angosta: así el mapa corre hacia la izquierda. */}
-        <div className="flex flex-col items-center gap-12 xl:flex-row xl:items-center xl:gap-12">
+        <div className="flex flex-col items-center gap-12 xl:flex-row xl:items-center xl:gap-8">
           <div className="w-full xl:min-w-0 xl:flex-1">
             <Reveal preset="rootScale" soft>
               {/* Hasta lg el lienzo se agranda y se recorta el margen que
@@ -67,8 +86,8 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     sin recortarse. El 46.2% (y no 50%) centra el PAÍS, no el
                     lienzo, que es más ancho del lado del rótulo de Junín. */}
                 <svg
-                  viewBox={PERU_VIEWBOX}
-                  className="relative left-1/2 w-[145%] max-w-none -translate-x-[46.2%] lg:left-0 lg:w-full lg:translate-x-0"
+                  viewBox={VIEWBOX_ROTULOS}
+                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-[108%] lg:-translate-x-[5%]"
                   aria-hidden="true"
                 >
                   <path d={PERU_FILL_PATH} className="fill-paper/90" />
@@ -87,8 +106,8 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                   {PERU_CITIES.map((city, i) => {
                     // La guía sale del pin, llega al costado del mapa y sigue
                     // en horizontal a lo ancho del rótulo, que va justo debajo.
-                    const tailX =
-                      city.side === 'left' ? city.railX - city.blockW : city.railX + city.blockW;
+                    const ancho = city.blockW * LABEL_SCALE;
+                    const tailX = city.side === 'left' ? city.railX - ancho : city.railX + ancho;
                     const anchor = city.side === 'left' ? 'end' : 'start';
                     return (
                       <g key={i} className="group cursor-default outline-none" tabIndex={0}>
@@ -98,7 +117,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                           points={`${city.x},${city.y} ${city.railX},${city.labelY} ${tailX},${city.labelY}`}
                           fill="none"
                           className="stroke-ink/35 group-hover:stroke-gp-green hidden transition-colors duration-300 lg:block"
-                          strokeWidth={1}
+                          strokeWidth={1.4}
                           strokeLinejoin="round"
                         />
 
@@ -126,14 +145,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                           x={city.railX}
                           y={city.labelY + TEXT_DY}
                           textAnchor={anchor}
-                          className="fill-ink group-hover:fill-gp-green font-display hidden text-[14px] font-semibold transition-colors duration-300 lg:block"
+                          className="fill-ink group-hover:fill-gp-green font-display hidden text-[19px] font-semibold transition-colors duration-300 lg:block"
                         >
                           {city.label}
                           {city.detail && (
                             <tspan
                               x={city.railX}
-                              dy="14"
-                              className="fill-ink/60 font-display text-[11px] font-normal"
+                              dy={TEXT_DY2}
+                              className="fill-ink/60 font-display text-[15px] font-normal"
                             >
                               {city.detail}
                             </tspan>
@@ -172,7 +191,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
             </Reveal>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[22rem] xl:shrink-0 xl:items-start xl:text-left">
+          <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[19rem] xl:shrink-0 xl:items-start xl:text-left">
             <Reveal preset="slideInRight">
               <div className="relative h-14 w-40 md:h-16 md:w-44">
                 <Image

@@ -139,6 +139,22 @@ A pedido del usuario:
   foto. Los logos van sin realce: el halo blanco que llevaba el de SENASA
   se leía como un resto de recorte.
 
+### 4.0 Fondos de Aliados y Productos
+
+Las dos secciones llevan de fondo un **fotograma de los mismos videos** que
+corren en "¿Quiénes Somos?" (`public/images/home/fondos/`), no una foto de
+banco: así las tres se leen como el mismo campo, que es lo que pidió el
+usuario. Los archivos salieron de `agro-2-riego.mp4` y
+`agro-1-germinacion.mp4`, que son 640×360; se guardaron al doble con
+Lanczos y van bajo un velo oscuro, que es lo que disimula que el origen sea
+de baja resolución. Si algún día llegan videos en HD, basta con volver a
+sacar los fotogramas.
+
+En Aliados los sellos van sobre placas claras (`LogoMarquee variant="onDark"`):
+casi todos son de tinta oscura y sueltos sobre la foto no se leerían.
+
+---
+
 ### 4.1 El mapa de "GreenProd llegó hasta" — cómo está armado
 
 Los datos viven en `lib/peru-map-data.ts` y **no se calculan en runtime**:
@@ -270,9 +286,15 @@ aviso de cookies, y no por capricho:
 > casilla arranca desmarcada porque una premarcada no vale como
 > consentimiento (Ley 29733).
 
-Todavía no hay servicio de envío conectado. La suscripción le llega al
-asesor por WhatsApp; al contratar Mailchimp, Brevo o similar, lo único que
-cambia es el envío dentro de `NewsletterForm`.
+El alta la hace `/api/suscripcion`, que manda con **Resend** dos correos:
+la bienvenida a quien se suscribe y un aviso a `contacto@greenprod.pe`, que
+hoy hace de lista de suscriptores mientras no haya base de datos. **Falta la
+clave**: sin `RESEND_API_KEY` la ruta responde 503 y el formulario dice que
+no se pudo completar — nunca finge que el correo salió. Para encenderlo:
+crear la cuenta en resend.com, verificar el dominio greenprod.pe y guardar
+la clave como secreto del Worker (`wrangler secret put RESEND_API_KEY`).
+Variables opcionales `NEWSLETTER_FROM` y `NEWSLETTER_NOTIFY` en
+`.env.example`.
 
 **Política de privacidad** en `/[lang]/privacidad`, enlazada desde el aviso
 y desde el pie. Describe lo que el sitio hace de verdad, pero **falta que la
@@ -457,9 +479,11 @@ siempre `true`), así que:
 - [ ] **Textos de Información y Función de cada producto** — los tiene que
       escribir la empresa. No se inventan: es la etiqueta de un producto
       agrícola registrado.
-- [ ] **Servicio de envío de correos** (Mailchimp, Brevo o similar) para que
-      la suscripción del pie mande sola las novedades. Hoy le llega al asesor
-      por WhatsApp.
+- [ ] **Clave de Resend** para que la suscripción del pie mande de verdad el
+      correo de bienvenida. El código ya está: falta crear la cuenta en
+      resend.com, verificar el dominio greenprod.pe y guardar
+      `RESEND_API_KEY` como secreto del Worker. Sin ella el formulario avisa
+      que no se pudo completar.
 - [ ] **Revisión legal de la política de privacidad** (`/[lang]/privacidad`) y
       completar el RUC y el número de inscripción del banco de datos
       personales.
