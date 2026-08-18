@@ -5,10 +5,8 @@ interface TeamSectionProps {
   dict: any;
 }
 
-// Foto temporal de relleno (Unsplash) hasta que se reemplace por la foto
-// real del equipo de Green Prod.
-const TEAM_PHOTO_SRC =
-  'https://images.unsplash.com/photo-1758599543116-4fdb887911a5?w=2400&q=80&auto=format&fit=crop';
+// La foto real del equipo, sobre fondo claro de estudio.
+const TEAM_PHOTO_SRC = '/images/home/equipo-greenprod.webp';
 
 export default function TeamSection({ dict }: TeamSectionProps) {
   const d = dict.Home.team;

@@ -64,8 +64,8 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
               <Image
                 src="/images/logos/senasa.webp"
                 alt="SENASA Perú"
-                width={214}
-                height={62}
+                width={720}
+                height={211}
                 className="h-6 w-auto sm:h-9 md:h-10"
               />
             </a>
