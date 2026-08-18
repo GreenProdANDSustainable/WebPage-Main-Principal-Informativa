@@ -131,7 +131,7 @@ export default function Footer({ dictionary, lang }: FooterProps) {
               {dictionary.Newsletter.title}
             </h3>
             <p className="text-paper/60 mb-4 text-sm">{dictionary.Newsletter.subtitle}</p>
-            <NewsletterForm dict={dictionary} />
+            <NewsletterForm dict={dictionary} lang={lang} />
           </div>
 
           {/* Categories */}
