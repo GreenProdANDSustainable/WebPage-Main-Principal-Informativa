@@ -1,14 +1,19 @@
 /**
  * Dirección pública del sitio, en un solo lugar.
  *
- * Hoy apunta al dominio de Cloudflare Workers. Cuando se conecte el dominio
- * propio (greenprod.pe) basta con definir NEXT_PUBLIC_SITE_URL en las
- * variables del proyecto: el sitemap, las URLs canónicas y los datos
- * estructurados pasan a usarlo sin tocar código.
+ * Es greenprod.pe, el dominio de la empresa, que ya sirve este mismo sitio a
+ * través de Cloudflare. El subdominio pag-web.gerencia-9cb.workers.dev
+ * muestra el mismo contenido, así que las URLs canónicas, el sitemap y los
+ * datos estructurados tienen que apuntar acá: es lo que le indica a Google
+ * cuál de las dos direcciones es la oficial y evita que compitan entre sí
+ * como contenido duplicado.
+ *
+ * Se puede sobrescribir con NEXT_PUBLIC_SITE_URL sin tocar código.
  */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pag-web.gerencia-9cb.workers.dev'
-).replace(/\/$/, '');
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://greenprod.pe').replace(
+  /\/$/,
+  ''
+);
 
 export const LOCALES = ['es', 'en'] as const;
 export const DEFAULT_LOCALE = 'es';
