@@ -5,6 +5,8 @@ import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
+import AddToCartButton from '@/components/shared/AddToCartButton';
+import { formatearSoles, idDeProducto, precioDe } from '@/lib/tienda';
 
 interface Categoria {
   slug: string;
@@ -60,16 +62,33 @@ export default async function CategoriaCatalogo({
         <Reveal
           group
           gap={0.08}
-          className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-12 gap-y-4"
+          className="mx-auto grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2"
         >
-          {cat.products.map((product) => (
-            <Reveal key={product} preset="child">
-              <p className="text-ink flex items-center gap-3 text-lg font-semibold">
-                <span className="bg-gp-green h-2.5 w-2.5 shrink-0 rounded-full" />
-                {product}
-              </p>
-            </Reveal>
-          ))}
+          {cat.products.map((product) => {
+            const id = idDeProducto(product);
+            const precio = precioDe(id);
+            return (
+              <Reveal key={product} preset="child">
+                <div className="border-line-warm/40 flex items-center justify-between gap-4 rounded-2xl border bg-white/60 px-5 py-4">
+                  <div className="min-w-0">
+                    <p className="text-ink text-lg font-semibold">{product}</p>
+                    <p className="text-ink/50 text-xs font-semibold">
+                      {precio === null ? dictionary.Checkout.pendingPrice : formatearSoles(precio)}
+                    </p>
+                  </div>
+                  <AddToCartButton
+                    size="sm"
+                    id={id}
+                    name={product}
+                    href={`/catalogo/${cat.slug}`}
+                    addLabel={dictionary.Navbar.cart_add}
+                    addedLabel={dictionary.Navbar.cart_added}
+                    className="shrink-0"
+                  />
+                </div>
+              </Reveal>
+            );
+          })}
         </Reveal>
       </div>
     </div>

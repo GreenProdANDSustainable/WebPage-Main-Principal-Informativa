@@ -74,6 +74,71 @@
         "allCategories": "Ver todas las categorías",
         "productsIn": "Productos de esta línea"
     },
+    "Checkout": {
+        "title": "Finalizar compra",
+        "subtitle": "Completa tus datos y elige cómo quieres pagar.",
+        "keepShopping": "Seguir comprando",
+        "emptyTitle": "Tu carrito está vacío",
+        "emptyHint": "Agrega productos desde el catálogo para continuar.",
+        "goToCatalog": "Ir al catálogo",
+        "summaryTitle": "Tu pedido",
+        "quantity": "Cantidad",
+        "pendingPrice": "A cotizar",
+        "total": "Total",
+        "totalPending": "Por confirmar",
+        "shippingNote": "El envío se calcula según el destino y se confirma con el asesor.",
+        "buyerTitle": "Datos de quien compra",
+        "receiptTitle": "Comprobante",
+        "receiptBoleta": "Boleta",
+        "receiptBoletaHint": "A nombre de una persona, con DNI",
+        "receiptFactura": "Factura",
+        "receiptFacturaHint": "A nombre de una empresa, con RUC",
+        "name": "Nombre completo",
+        "businessName": "Razón social",
+        "documentDni": "DNI",
+        "documentRuc": "RUC",
+        "email": "Correo electrónico",
+        "phone": "Teléfono o WhatsApp",
+        "region": "Departamento",
+        "city": "Provincia y distrito",
+        "address": "Dirección de entrega",
+        "reference": "Referencia",
+        "optional": "opcional",
+        "notes": "Nota para el pedido",
+        "paymentTitle": "¿Cómo quieres pagar?",
+        "methods": {
+            "tarjeta": {
+                "name": "Tarjeta",
+                "desc": "Visa, Mastercard, American Express o Diners"
+            },
+            "yape": {
+                "name": "Yape",
+                "desc": "Desde el celular, con el número de la empresa"
+            },
+            "plin": {
+                "name": "Plin",
+                "desc": "Interbank, BBVA, Scotiabank y bancos asociados"
+            },
+            "transferencia": {
+                "name": "Transferencia bancaria",
+                "desc": "Depósito o transferencia a la cuenta de la empresa"
+            }
+        },
+        "pendingGatewayNotice": "El cobro en línea todavía no está habilitado: al enviar el pedido no se descuenta ningún dinero. Un asesor confirma el monto y te pasa los datos para pagar por el medio que elegiste.",
+        "submit": "Enviar pedido por WhatsApp",
+        "sending": "Enviando...",
+        "orderTitle": "Pedido nuevo desde la web",
+        "orderPayment": "Quiere pagar con",
+        "orderReceipt": "Comprobante",
+        "orderDelivery": "Entrega",
+        "errorRequired": "Completa este campo",
+        "errorEmail": "Escribe un correo válido",
+        "errorDni": "El DNI tiene 8 dígitos",
+        "errorRuc": "El RUC tiene 11 dígitos",
+        "errorPhone": "El teléfono tiene 9 dígitos",
+        "errorMethod": "Elige un método de pago",
+        "errorSummary": "Revisa los campos marcados."
+    },
     "Pages": {
         "contact": {
             "title": "Contáctanos",
@@ -216,7 +281,9 @@
         "catalog": "Catálogo",
         "sustainability": "Sostenibilidad",
         "proveeduria": "Proveeduría Sostenible",
-        "proveeduria_desc": "Líneas de servicio sostenibles."
+        "proveeduria_desc": "Líneas de servicio sostenibles.",
+        "cart_checkout": "Continuar la compra",
+        "cart_total": "Total"
     },
     "Footer": {
         "description": "Producción de bioinsumos, conservas y proyectos ambientales. Comprometidos con un futuro más verde y sostenible para las próximas generaciones.",

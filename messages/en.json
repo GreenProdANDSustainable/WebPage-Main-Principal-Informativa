@@ -74,6 +74,71 @@
         "allCategories": "View all categories",
         "productsIn": "Products in this line"
     },
+    "Checkout": {
+        "title": "Complete your order",
+        "subtitle": "Fill in your details and choose how you want to pay.",
+        "keepShopping": "Keep shopping",
+        "emptyTitle": "Your cart is empty",
+        "emptyHint": "Add products from the catalog to continue.",
+        "goToCatalog": "Go to the catalog",
+        "summaryTitle": "Your order",
+        "quantity": "Quantity",
+        "pendingPrice": "Quote pending",
+        "total": "Total",
+        "totalPending": "To be confirmed",
+        "shippingNote": "Shipping depends on the destination and is confirmed by an advisor.",
+        "buyerTitle": "Buyer details",
+        "receiptTitle": "Receipt",
+        "receiptBoleta": "Sales receipt",
+        "receiptBoletaHint": "For an individual, with DNI",
+        "receiptFactura": "Invoice",
+        "receiptFacturaHint": "For a company, with RUC",
+        "name": "Full name",
+        "businessName": "Company name",
+        "documentDni": "DNI",
+        "documentRuc": "RUC",
+        "email": "Email",
+        "phone": "Phone or WhatsApp",
+        "region": "Region",
+        "city": "Province and district",
+        "address": "Delivery address",
+        "reference": "Landmark",
+        "optional": "optional",
+        "notes": "Note for this order",
+        "paymentTitle": "How do you want to pay?",
+        "methods": {
+            "tarjeta": {
+                "name": "Card",
+                "desc": "Visa, Mastercard, American Express or Diners"
+            },
+            "yape": {
+                "name": "Yape",
+                "desc": "From your phone, using the company number"
+            },
+            "plin": {
+                "name": "Plin",
+                "desc": "Interbank, BBVA, Scotiabank and partner banks"
+            },
+            "transferencia": {
+                "name": "Bank transfer",
+                "desc": "Deposit or transfer to the company account"
+            }
+        },
+        "pendingGatewayNotice": "Online payment is not enabled yet: sending this order does not charge you anything. An advisor confirms the amount and sends you the details to pay with the method you chose.",
+        "submit": "Send order via WhatsApp",
+        "sending": "Sending...",
+        "orderTitle": "New order from the website",
+        "orderPayment": "Wants to pay with",
+        "orderReceipt": "Receipt",
+        "orderDelivery": "Delivery",
+        "errorRequired": "Please fill in this field",
+        "errorEmail": "Enter a valid email",
+        "errorDni": "A DNI has 8 digits",
+        "errorRuc": "A RUC has 11 digits",
+        "errorPhone": "The phone number has 9 digits",
+        "errorMethod": "Choose a payment method",
+        "errorSummary": "Please check the highlighted fields."
+    },
     "Pages": {
         "contact": {
             "title": "Contact Us",
@@ -216,7 +281,9 @@
         "catalog": "Catalog",
         "sustainability": "Sustainability",
         "proveeduria": "Sustainable Supply",
-        "proveeduria_desc": "Sustainable service lines."
+        "proveeduria_desc": "Sustainable service lines.",
+        "cart_checkout": "Continue with the order",
+        "cart_total": "Total"
     },
     "Footer": {
         "description": "Production of bio-inputs, preserves, and environmental projects. Committed to a greener and more sustainable future for generations to come.",

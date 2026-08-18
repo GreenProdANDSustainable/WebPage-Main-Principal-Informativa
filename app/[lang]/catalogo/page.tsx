@@ -4,6 +4,8 @@ import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
+import AddToCartButton from '@/components/shared/AddToCartButton';
+import { formatearSoles, idDeProducto, precioDe } from '@/lib/tienda';
 
 export default async function Catalogo({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -55,15 +57,38 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
                 </Link>
               </Reveal>
 
-              <Reveal group gap={0.06} className="flex flex-wrap gap-x-10 gap-y-3">
-                {category.products.map((product) => (
-                  <Reveal key={product} preset="child">
-                    <p className="text-ink flex items-center gap-2.5 text-base font-semibold">
-                      <span className="bg-gp-green h-2 w-2 shrink-0 rounded-full" />
-                      {product}
-                    </p>
-                  </Reveal>
-                ))}
+              <Reveal
+                group
+                gap={0.06}
+                className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {category.products.map((product) => {
+                  const id = idDeProducto(product);
+                  const precio = precioDe(id);
+                  return (
+                    <Reveal key={product} preset="child">
+                      <div className="border-line-warm/40 flex items-center justify-between gap-3 rounded-xl border bg-white/60 px-4 py-3">
+                        <div className="min-w-0">
+                          <p className="text-ink text-base font-semibold">{product}</p>
+                          <p className="text-ink/50 text-xs font-semibold">
+                            {precio === null
+                              ? dictionary.Checkout.pendingPrice
+                              : formatearSoles(precio)}
+                          </p>
+                        </div>
+                        <AddToCartButton
+                          size="sm"
+                          id={id}
+                          name={product}
+                          href={`/catalogo/${category.slug}`}
+                          addLabel={dictionary.Navbar.cart_add}
+                          addedLabel={dictionary.Navbar.cart_added}
+                          className="shrink-0"
+                        />
+                      </div>
+                    </Reveal>
+                  );
+                })}
               </Reveal>
             </section>
           ))}

@@ -2,39 +2,32 @@
 
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
-import { Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react';
+import { ArrowRight, Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
-import WhatsAppIcon from './WhatsAppIcon';
+import { formatearSoles, precioDe, totalPedido } from '@/lib/tienda';
 
 interface CartDrawerProps {
   dict: {
     cart_title: string;
     cart_empty: string;
     cart_empty_hint: string;
-    cart_request_quote: string;
+    cart_checkout: string;
     cart_remove: string;
     cart_pending_price: string;
     cart_note: string;
     cart_close: string;
     cart_quantity: string;
+    cart_total: string;
   };
   lang: string;
 }
 
-const WHATSAPP_NUMBER = '51919514085';
-
 export default function CartDrawer({ dict, lang }: CartDrawerProps) {
   const { items, isOpen, closeCart, removeItem, setQuantity } = useCart();
 
-  const quoteHref = (() => {
-    if (items.length === 0) return `https://wa.me/${WHATSAPP_NUMBER}`;
-    const lines = items.map((i) => `• ${i.name} x${i.quantity}`).join('\n');
-    const message =
-      lang === 'en'
-        ? `Hello! I'd like a quote for:\n${lines}`
-        : `¡Hola! Quisiera una cotización para:\n${lines}`;
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  })();
+  // El total solo se muestra si todas las líneas tienen precio: uno parcial
+  // engañaría sobre lo que hay que pagar.
+  const { total, completo } = totalPedido(items);
 
   return (
     <AnimatePresence>
@@ -96,7 +89,11 @@ export default function CartDrawer({ dict, lang }: CartDrawerProps) {
                         >
                           {item.name}
                         </Link>
-                        <p className="text-ink/40 mt-1 text-xs">{dict.cart_pending_price}</p>
+                        <p className="text-ink/50 mt-1 text-xs font-semibold">
+                          {precioDe(item.id) === null
+                            ? dict.cart_pending_price
+                            : formatearSoles(precioDe(item.id)! * item.quantity)}
+                        </p>
                         <div className="border-line-warm/50 mt-3 inline-flex items-center rounded-full border">
                           <button
                             onClick={() => setQuantity(item.id, item.quantity - 1)}
@@ -132,16 +129,21 @@ export default function CartDrawer({ dict, lang }: CartDrawerProps) {
 
             {items.length > 0 && (
               <div className="border-line-warm/40 bg-husk/20 border-t px-6 py-5">
+                <div className="mb-3 flex items-baseline justify-between">
+                  <span className="font-display text-ink font-bold">{dict.cart_total}</span>
+                  <span className="font-display text-ink font-bold">
+                    {completo ? formatearSoles(total) : dict.cart_pending_price}
+                  </span>
+                </div>
                 <p className="text-ink/50 mb-4 text-xs">{dict.cart_note}</p>
-                <a
-                  href={quoteHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-base font-bold text-white transition-colors hover:bg-[#1ebe5b]"
+                <Link
+                  href={`/${lang}/pago`}
+                  onClick={closeCart}
+                  className="bg-gp-green hover:bg-husk hover:text-ink flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-bold text-white transition-colors"
                 >
-                  <WhatsAppIcon className="h-5 w-5" />
-                  {dict.cart_request_quote}
-                </a>
+                  {dict.cart_checkout}
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
               </div>
             )}
           </motion.aside>

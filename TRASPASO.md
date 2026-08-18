@@ -177,6 +177,54 @@ relleno del país (`isPointInFill`) y ninguno se sale del lienzo.
 
 ---
 
+### 4.2 El flujo de compra (carrito, catálogo y `/pago`)
+
+```
+/catalogo  o  /catalogo/<linea>      cada producto con su precio y "Agregar al carrito"
+  ↓ CartDrawer                       líneas, cantidades y total; botón "Continuar la compra"
+  ↓ /[lang]/pago                     CheckoutForm: datos del comprador + método de pago
+  ↓ WhatsApp                         el pedido completo le llega al asesor
+```
+
+**Todo el lado comercial sale de `lib/tienda.ts`**: la tabla `PRECIOS`, el
+formateo en soles, el total del pedido y la lista de métodos de pago.
+
+- **`PRECIOS` está vacía a propósito.** La empresa todavía no fijó la lista.
+  Mientras esté vacía, cada producto dice "A cotizar" y el total dice "Por
+  confirmar". Al cargarla (`'gp-trich': 45`), los precios y el total aparecen
+  solos en el catálogo, el carrito y la página de pago: no hay que tocar
+  ningún componente. La clave es el nombre del producto en minúsculas, lo
+  que devuelve `idDeProducto()`.
+- **`/[lang]/pago` no se indexa** (`robots: { index: false }`): sin carrito
+  detrás siempre se vería vacía.
+- **El cobro en línea todavía no existe.** No hay pasarela contratada, así
+  que `CheckoutForm` no cobra: arma el pedido —productos, total, datos del
+  comprador, tipo de comprobante y el medio con el que quiere pagar— y lo
+  manda por WhatsApp. Encima del botón hay un aviso que lo dice con todas
+  sus letras, para que nadie crea que ya pagó.
+- **Nunca se piden datos de tarjeta en este formulario**, ni se pedirán:
+  cuando entre la pasarela, esos datos se teclean en el formulario de la
+  pasarela, no en el nuestro. Es lo que evita tener que cumplir PCI-DSS.
+
+**Para encender el cobro real** hacen falta, en este orden:
+
+1. Cuenta de comercio en una pasarela. **Culqi** (recomendada: cubre tarjeta,
+   Yape y Plin en un solo contrato, se activa en 1-3 días, sin mensualidad)
+   o **Izipay** (conviene si además quieren POS físico en planta). Ambas
+   rondan el 3.44% + IGV por transacción nacional. Requiere RUC, cuenta
+   bancaria de la empresa y firma del representante legal: **lo abre la
+   empresa, no se puede hacer desde acá**.
+2. La llave secreta **como secreto de Cloudflare**, nunca en el repositorio.
+   La llave pública puede ir como variable pública.
+3. Cargar `PRECIOS`.
+4. Reemplazar el `window.open` de WhatsApp en `CheckoutForm.enviar()` por la
+   llamada a la pasarela. Es el único punto que cambia.
+
+Falta además decidir shipping (hoy solo se avisa que se calcula según el
+destino), el mínimo de compra y la emisión de boleta/factura por SUNAT.
+
+---
+
 ## 5. Decisiones importantes (y por qué)
 
 ### Tipografía
@@ -360,9 +408,16 @@ siempre `true`), así que:
 - [ ] Textos legales (Política de Privacidad y Términos van a `#`).
 - [ ] **Formulario de contacto**: no envía nada. Falta decidir a dónde llegan
       los mensajes.
-- [ ] **Pago real del carrito**: crear cuenta en una pasarela de pago
-      (Culqi recomendado para Perú) y dar las claves; y precios reales por
-      producto. Hasta entonces el carrito cierra por WhatsApp (ver §5).
+- [ ] **Pago real del carrito** — el flujo de compra ya está armado
+      (catálogo con "Agregar al carrito" → carrito con total → `/pago` con
+      datos del comprador y elección entre tarjeta, Yape, Plin y
+      transferencia). Falta solo lo que depende de la empresa: **abrir la
+      cuenta de comercio** (Culqi o Izipay) y pasar las llaves, y **la lista
+      de precios**. Los pasos exactos están en §4.2. Hasta entonces el
+      pedido se cierra por WhatsApp y el aviso en pantalla deja claro que no
+      se está cobrando.
+- [ ] **Lista de precios por producto** para cargar en `PRECIOS`
+      (`lib/tienda.ts`). Hoy está vacía y todo dice "A cotizar".
 - [ ] **Confirmar certificaciones reales**: `Home.certifications` en los
       diccionarios ya lista ISO 9001, ISO 14001, HACCP y "Certificación
       Orgánica" — hay que confirmar que la empresa las tiene de verdad
