@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ImageOff } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
+import BoxedLabel from '@/components/shared/BoxedLabel';
 
 interface Categoria {
   slug: string;
@@ -46,9 +47,9 @@ export default async function CategoriaCatalogo({
         <div className="mb-14 text-center">
           <Reveal group gap={0.12}>
             <Reveal preset="child">
-              <h1 className="font-display text-ink mb-3 text-4xl font-semibold tracking-tight md:text-5xl">
+              <BoxedLabel as="h1" size="lg" className="mb-4">
                 {cat.name}
-              </h1>
+              </BoxedLabel>
             </Reveal>
             <Reveal preset="child">
               <p className="text-ink/60 mx-auto max-w-2xl text-base">{c.productsIn}</p>
@@ -59,20 +60,14 @@ export default async function CategoriaCatalogo({
         <Reveal
           group
           gap={0.08}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4"
+          className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-12 gap-y-4"
         >
           {cat.products.map((product) => (
             <Reveal key={product} preset="child">
-              <div className="border-line-warm/50 hover:border-gp-green/50 flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed px-6 py-10 text-center transition-colors duration-500">
-                <ImageOff className="text-ink/25 h-7 w-7" />
-                <p className="text-ink text-base font-semibold">{product}</p>
-                <p
-                  className="text-ink/35 text-xs tracking-wide uppercase"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {c.comingSoon}
-                </p>
-              </div>
+              <p className="text-ink flex items-center gap-3 text-lg font-semibold">
+                <span className="bg-gp-green h-2.5 w-2.5 shrink-0 rounded-full" />
+                {product}
+              </p>
             </Reveal>
           ))}
         </Reveal>

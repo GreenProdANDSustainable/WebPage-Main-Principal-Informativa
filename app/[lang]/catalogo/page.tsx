@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ImageOff } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
+import BoxedLabel from '@/components/shared/BoxedLabel';
 
 export default async function Catalogo({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -35,39 +36,32 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
           </Reveal>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-14">
           {c.categories.map((category: { slug: string; name: string; products: string[] }) => (
             <section key={category.slug}>
               <Reveal preset="growUp">
                 {/* El título lleva a la página propia de la línea. */}
                 <Link
                   href={`/${lang}/catalogo/${category.slug}`}
-                  className="group border-line-warm/40 mb-6 flex items-center gap-2 border-b pb-3"
+                  className="group mb-6 inline-flex items-center gap-3"
                 >
-                  <h2 className="font-display text-ink group-hover:text-gp-green text-2xl font-semibold tracking-tight transition-colors">
+                  <BoxedLabel
+                    as="h2"
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5"
+                  >
                     {category.name}
-                  </h2>
+                  </BoxedLabel>
                   <ArrowRight className="text-ink/30 group-hover:text-gp-green h-5 w-5 transition-all duration-300 group-hover:translate-x-1" />
                 </Link>
               </Reveal>
 
-              <Reveal
-                group
-                gap={0.06}
-                className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4"
-              >
+              <Reveal group gap={0.06} className="flex flex-wrap gap-x-10 gap-y-3">
                 {category.products.map((product) => (
                   <Reveal key={product} preset="child">
-                    <div className="border-line-warm/50 hover:border-gp-green/50 flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed px-6 py-10 text-center transition-colors duration-500">
-                      <ImageOff className="text-ink/25 h-7 w-7" />
-                      <p className="text-ink text-base font-semibold">{product}</p>
-                      <p
-                        className="text-ink/35 text-xs tracking-wide uppercase"
-                        style={{ fontFamily: 'var(--font-mono)' }}
-                      >
-                        {c.comingSoon}
-                      </p>
-                    </div>
+                    <p className="text-ink flex items-center gap-2.5 text-base font-semibold">
+                      <span className="bg-gp-green h-2 w-2 shrink-0 rounded-full" />
+                      {product}
+                    </p>
                   </Reveal>
                 ))}
               </Reveal>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { ImageOff } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
+import BoxedLabel from '@/components/shared/BoxedLabel';
 
 interface Categoria {
   slug: string;
@@ -14,9 +14,10 @@ interface ProductsSectionProps {
 }
 
 /**
- * Las siete líneas de producto. Cada una lleva su nombre encima del espacio
- * reservado para la foto y lleva a su propia página, donde se listan solo los
- * productos de esa línea.
+ * Las seis líneas de producto. Cada una lleva su nombre dentro del recuadro
+ * verde, debajo los productos que la componen, y lleva a su propia página.
+ * Ya no hay marcador de foto: mientras no existan las fotos reales, el
+ * recuadro vacío solo ensuciaba la sección.
  */
 export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
   const p = dict.Home.products;
@@ -36,23 +37,30 @@ export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
         <Reveal
           group
           gap={0.06}
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-12 lg:grid-cols-3"
         >
           {categorias.map((cat) => (
             <Reveal key={cat.slug} preset="child">
-              <Link href={`/${lang}/catalogo/${cat.slug}`} className="group block">
-                <h3 className="font-display text-ink group-hover:text-gp-green mb-3 text-center text-lg font-semibold transition-colors duration-300">
+              <Link
+                href={`/${lang}/catalogo/${cat.slug}`}
+                className="group flex flex-col items-center gap-4 text-center"
+              >
+                <BoxedLabel
+                  as="h3"
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5"
+                >
                   {cat.name}
-                </h3>
-                <div className="border-line-warm/50 group-hover:border-gp-green/60 flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed transition-colors duration-500">
-                  <ImageOff className="text-ink/25 group-hover:text-gp-green/60 h-8 w-8 transition-colors duration-500" />
-                  <p
-                    className="text-ink/35 text-xs tracking-wide uppercase"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {p.comingSoon}
-                  </p>
-                </div>
+                </BoxedLabel>
+                <ul className="text-ink/70 space-y-1.5">
+                  {cat.products.map((producto) => (
+                    <li
+                      key={producto}
+                      className="group-hover:text-gp-green text-base font-semibold transition-colors duration-300"
+                    >
+                      {producto}
+                    </li>
+                  ))}
+                </ul>
               </Link>
             </Reveal>
           ))}

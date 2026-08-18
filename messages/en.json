@@ -26,54 +26,48 @@
                 "slug": "biofungicidas",
                 "name": "Biofungicides",
                 "products": [
-                    "Trich",
-                    "Subtix",
-                    "Trichobac"
+                    "GP-Trich",
+                    "GP-Trichobac",
+                    "GP-Subtix"
                 ]
             },
             {
                 "slug": "bioinsecticidas",
                 "name": "Bioinsecticides",
                 "products": [
-                    "Bauver",
-                    "Meta",
-                    "Thuring",
-                    "Warduo"
+                    "GP-Bauver",
+                    "GP-Meta",
+                    "GP-Thuring",
+                    "GP-Warduo"
                 ]
             },
             {
-                "slug": "nematicida",
-                "name": "Nematicide",
+                "slug": "bionematicida",
+                "name": "Bionematicide",
                 "products": [
-                    "Lilax"
+                    "GP-Lilax"
                 ]
             },
             {
                 "slug": "biofertilizante",
                 "name": "Biofertilizer",
                 "products": [
-                    "Megafort"
+                    "GP-Bio"
                 ]
             },
             {
                 "slug": "bioestimulante",
                 "name": "Biostimulant",
                 "products": [
-                    "Bio"
+                    "GP-Megafort"
                 ]
             },
             {
-                "slug": "aceite-agricola",
-                "name": "Agricultural Oil",
+                "slug": "coadyuvantes",
+                "name": "Adjuvants",
                 "products": [
-                    "Oil"
-                ]
-            },
-            {
-                "slug": "jabon-potasico",
-                "name": "Potassium Soap",
-                "products": [
-                    "Clean"
+                    "GP-Clean",
+                    "GP-Oil"
                 ]
             }
         ],

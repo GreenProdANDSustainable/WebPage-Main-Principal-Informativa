@@ -103,8 +103,9 @@ Hero id="inicio"                     (titular cinético + video de fondo -palta/
 
 `/[lang]/catalogo/page.tsx` ya no es la página "en construcción" genérica:
 ahora es una sección por categoría con sus productos reales, desde el
-diccionario `Catalog.categories` (`{ name, products }`). Falta solo la foto
-de cada producto ("Foto próximamente").
+diccionario `Catalog.categories` (`{ slug, name, products }`). Los marcadores
+de foto se quitaron: mientras no haya fotos reales, cada línea muestra su
+nombre dentro del recuadro verde y debajo la lista de sus productos.
 
 Los `id` existen porque el menú "Inicio" del navbar salta a cada sección con
 anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
@@ -119,14 +120,13 @@ anclas (`/es#soluciones`, etc.). Hay `scroll-padding-top` global en
 
 A pedido del usuario:
 
-- **`ProductsSection`** (inicio): 5 tarjetas de adelanto (sin foto ni
-  nombre real todavía, mismo patrón punteado que `ComingSoon`) + botón
-  "Ver catálogo" que lleva a `/[lang]/catalogo`. Antes eran 13 tarjetas
-  y no había botón; el usuario pidió bajarlo a 5 y agregar el enlace al
-  catálogo completo.
-- **`/[lang]/catalogo`**: página nueva con las 7 categorías reales de
-  producto (ver dict `Catalog.categories`), cada una todavía como
-  marcador de posición a la espera de fotos y fichas técnicas reales.
+- **`ProductsSection`** (inicio): una entrada por línea de producto, con
+  el nombre de la línea en el recuadro verde y sus productos debajo; cada
+  una lleva a `/[lang]/catalogo/<slug>`. Antes eran 13 tarjetas, luego 5
+  de adelanto con marcador de foto punteado; hoy no hay marcadores de foto.
+- **`/[lang]/catalogo`**: página nueva con las categorías reales de
+  producto (ver dict `Catalog.categories`), a la espera de fotos y fichas
+  técnicas reales.
 - **`ReachMapSection`** (ver también §4.1): geografía real, con los 25
   departamentos y las 12 ciudades en sus coordenadas reales. Cada pin
   crece y se pone verde al pasar el mouse. Incluye el logo blanco, el
@@ -134,8 +134,10 @@ A pedido del usuario:
   dejó en su carpeta de Descargas) y los iconos de Facebook e Instagram
   (no se agregó TikTok: no está confirmado si la empresa tiene cuenta).
 - La placa "Certificado por: Senasa y Kiwa" de `ServicesBento` pasó a ser
-  una sola placa blanca con el texto corto "Certificado por:" + ambos
-  logos, en vez del titular grande sobre la foto.
+  un solo recuadro verde con el texto corto "Certificado por:" en letra
+  blanca + ambos logos sueltos al lado, en vez del titular grande sobre la
+  foto. Los logos van sin realce: el halo blanco que llevaba el de SENASA
+  se leía como un resto de recorte.
 
 ### 4.1 El mapa de "GreenProd llegó hasta" — cómo está armado
 
@@ -327,14 +329,22 @@ siempre `true`), así que:
 - [x] ~~El catálogo mostraba una sola tarjeta por categoría~~ — resuelto
       (`a7b4942`): cada categoría lista sus productos reales, dato de
       `Catalog.categories` en `messages/es.json` y `en.json`
-      (`{ name, products }`): Biofungicidas (Trich, Subtix, Trichobac),
-      Bioinsecticidas (Bauver, Meta, Thuring, Warduo), Nematicida (Lilax),
-      Biofertilizante (Megafort), Bioestimulante (Bio), Aceite Agrícola
-      (Oil), Jabón Potásico (Clean).
-- [ ] **Fotos reales de cada producto**, tanto los 5 de adelanto en el
-      inicio (hoy dicen "Producto 01"…"05", sin nombre real todavía) como
-      los 12 de `/catalogo` (ya tienen nombre real, falta la foto — cada
-      tarjeta dice "Foto próximamente").
+      (`{ slug, name, products }`). Lista vigente, la que dictó el usuario:
+      Biofungicidas (GP-Trich, GP-Trichobac, GP-Subtix), Bioinsecticidas
+      (GP-Bauver, GP-Meta, GP-Thuring, GP-Warduo), Bionematicida (GP-Lilax),
+      Biofertilizante (GP-Bio), Bioestimulante (GP-Megafort) y Coadyuvantes
+      (GP-Clean, GP-Oil) — seis líneas, no siete: Aceite Agrícola y Jabón
+      Potásico dejaron de ser categorías y pasaron a ser los dos productos
+      de Coadyuvantes.
+- [ ] **Confirmar Biofertilizante vs. Bioestimulante**: el usuario dictó
+      GP-Bio como biofertilizante y GP-Megafort como bioestimulante, pero
+      los envases que se ven en la foto del inicio
+      (`public/images/home/productos-campo.webp`) dicen lo contrario —
+      "gp≈megafort · BIOFERTILIZANTE MULTIFUNCIONAL" y "gp≈bio ·
+      BIOESTIMULANTE". Está puesto como lo pidió el usuario; si el envase
+      manda, es intercambiar los dos productos en `Catalog.categories`.
+- [ ] **Fotos reales de cada producto** para `/catalogo` y sus páginas por
+      línea: hoy solo se listan los nombres, sin foto.
 - [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
       hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
       y, de ser así, el enlace de la cuenta.

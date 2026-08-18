@@ -26,54 +26,48 @@
                 "slug": "biofungicidas",
                 "name": "Biofungicidas",
                 "products": [
-                    "Trich",
-                    "Subtix",
-                    "Trichobac"
+                    "GP-Trich",
+                    "GP-Trichobac",
+                    "GP-Subtix"
                 ]
             },
             {
                 "slug": "bioinsecticidas",
                 "name": "Bioinsecticidas",
                 "products": [
-                    "Bauver",
-                    "Meta",
-                    "Thuring",
-                    "Warduo"
+                    "GP-Bauver",
+                    "GP-Meta",
+                    "GP-Thuring",
+                    "GP-Warduo"
                 ]
             },
             {
-                "slug": "nematicida",
-                "name": "Nematicida",
+                "slug": "bionematicida",
+                "name": "Bionematicida",
                 "products": [
-                    "Lilax"
+                    "GP-Lilax"
                 ]
             },
             {
                 "slug": "biofertilizante",
                 "name": "Biofertilizante",
                 "products": [
-                    "Megafort"
+                    "GP-Bio"
                 ]
             },
             {
                 "slug": "bioestimulante",
                 "name": "Bioestimulante",
                 "products": [
-                    "Bio"
+                    "GP-Megafort"
                 ]
             },
             {
-                "slug": "aceite-agricola",
-                "name": "Aceite Agrícola",
+                "slug": "coadyuvantes",
+                "name": "Coadyuvantes",
                 "products": [
-                    "Oil"
-                ]
-            },
-            {
-                "slug": "jabon-potasico",
-                "name": "Jabón Potásico",
-                "products": [
-                    "Clean"
+                    "GP-Clean",
+                    "GP-Oil"
                 ]
             }
         ],
