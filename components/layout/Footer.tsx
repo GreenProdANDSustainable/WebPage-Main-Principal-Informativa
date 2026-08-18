@@ -24,7 +24,6 @@ type Dictionary = {
   };
   Navbar: {
     about: string;
-    catalog: string;
     [key: string]: any;
   };
   Newsletter: {

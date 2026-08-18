@@ -113,7 +113,6 @@
     "Product": {
         "backToLine": "Volver a la línea",
         "photoPending": "Foto próximamente",
-        "lineLabel": "Línea",
         "infoTitle": "Información",
         "infoPending": "La descripción de este producto está en preparación.",
         "useTitle": "Función",
@@ -226,10 +225,6 @@
             "title": "Asistente Virtual",
             "subtitle": "¿Tienes una consulta rápida? Pregúntale a nuestro asistente con inteligencia artificial."
         },
-        "sustainability": {
-            "title": "Sostenibilidad",
-            "description": "Página en construcción. Aquí irán los detalles sobre nuestras iniciativas y reportes de sostenibilidad."
-        },
         "about": {
             "label": "Greenprod Sustainable",
             "title": "¿Quiénes Somos?",
@@ -291,7 +286,6 @@
         "services": "Servicios",
         "products_services_title": "Productos y Servicios",
         "work_with_us": "Trabaja con Nosotros",
-        "contacts": "Contactos",
         "who_we_are": "¿Quiénes Somos?",
         "who_we_are_desc": "Nuestra misión, visión y valores fundamentales.",
         "our_history": "Nuestra Trayectoria",
@@ -313,13 +307,11 @@
         "home_commitment": "Compromiso Ambiental",
         "home_partners": "Aliados",
         "home_success_stories": "Casos de Éxito",
-        "our_capacity": "Nuestra Capacidad",
         "cart_title": "Carrito",
         "cart_empty": "Tu carrito está vacío.",
         "cart_empty_hint": "Agrega líneas de producto desde sus páginas.",
         "cart_add": "Agregar al carrito",
         "cart_added": "Agregado",
-        "cart_request_quote": "Solicitar cotización por WhatsApp",
         "cart_remove": "Quitar",
         "cart_pending_price": "A cotizar",
         "cart_note": "Los precios se confirman por cotización.",
@@ -331,10 +323,6 @@
         "search_no_results": "No encontramos resultados para",
         "search_hint": "Escribe para buscar en todo el sitio.",
         "search_close": "Cerrar búsqueda",
-        "catalog": "Catálogo",
-        "sustainability": "Sostenibilidad",
-        "proveeduria": "Proveeduría Sostenible",
-        "proveeduria_desc": "Líneas de servicio sostenibles.",
         "cart_checkout": "Continuar la compra",
         "cart_total": "Total",
         "home_products": "Productos",
@@ -466,73 +454,6 @@
                 }
             }
         },
-        "certifications": {
-            "label": "CALIDAD GARANTIZADA",
-            "title": "Certificaciones y Estándares",
-            "subtitle": "Reconocimientos que validan nuestro compromiso con la calidad y sostenibilidad",
-            "items": {
-                "iso9001": {
-                    "name": "ISO 9001:2015",
-                    "description": "Sistema de gestión de calidad certificado internacionalmente"
-                },
-                "iso14001": {
-                    "name": "ISO 14001:2015",
-                    "description": "Gestión ambiental y compromiso con la sostenibilidad"
-                },
-                "haccp": {
-                    "name": "HACCP",
-                    "description": "Análisis de peligros y puntos críticos de control en producción alimentaria"
-                },
-                "organic": {
-                    "name": "Certificación Orgánica",
-                    "description": "Productos certificados bajo estándares de agricultura orgánica"
-                }
-            }
-        },
-        "stats": {
-            "title": "Nuestro Impacto en Números",
-            "items": {
-                "clients": {
-                    "label": "Clientes B2B Activos"
-                },
-                "products": {
-                    "label": "Productos Sostenibles"
-                },
-                "co2": {
-                    "label": "Toneladas CO₂ Reducidas"
-                },
-                "experience": {
-                    "label": "Años de Experiencia"
-                }
-            }
-        },
-        "businessLines": {
-            "title": "Nuestras Líneas de Negocio",
-            "subtitle": "Soluciones integrales en productos y servicios sostenibles para empresas",
-            "viewMore": "Ver más",
-            "items": {
-                "balik": {
-                    "title": "Balik",
-                    "description": "Conservas premium y pescado fresco con trazabilidad completa para distribución B2B."
-                },
-                "Ceprobio": {
-                    "title": "Ceprobio",
-                    "description": "Bioinsumos agrícolas orgánicos que mejoran productividad y sostenibilidad."
-                },
-                "planta": {
-                    "title": "Planta de Tratamiento",
-                    "description": "Hidrolizado de pescado y aceites agrícolas mediante economía circular certificada."
-                },
-                "proveeduria": {
-                    "title": "Proveeduría Sostenible",
-                    "description": "Cadena de suministro responsable con proveedores certificados bajo criterios ESG."
-                },
-                "proyectos": {
-                    "title": "Proyectos Sostenibles",
-                    "description": "Consultoría y capacitación para transformación hacia modelos de negocio sostenibles."
-                }
-            }
-        },
         "missionVision": {
             "essence_title": "",
             "title": "¿Quiénes Somos?",
@@ -595,30 +516,6 @@
                     "description": "Programas de conservación marina y terrestre en colaboración con comunidades locales"
                 }
             }
-        },
-        "testimonials": {
-            "title": "Lo Que Dicen Nuestros Clientes",
-            "subtitle": "Testimonios de empresas que confían en nuestras soluciones sostenibles",
-            "items": {
-                "testimonial1": {
-                    "name": "Carlos Mendoza",
-                    "company": "AgroIndustrias del Pacífico",
-                    "position": "Director de Compras",
-                    "text": "Green Prod & Sustainable S.A.C ha sido un socio estratégico fundamental. Sus bioinsumos han mejorado nuestra productividad en un 30% mientras reducimos el impacto ambiental. La calidad y el servicio son excepcionales."
-                },
-                "testimonial2": {
-                    "name": "María Fernández",
-                    "company": "Distribuidora Nacional de Alimentos",
-                    "position": "Gerente de Sostenibilidad",
-                    "text": "La trazabilidad y certificaciones de sus productos nos permiten cumplir con los más altos estándares ESG. Su compromiso con la economía circular es un diferenciador clave en nuestra cadena de suministro."
-                },
-                "testimonial3": {
-                    "name": "Roberto Silva",
-                    "company": "Exportadora Mar y Tierra",
-                    "position": "CEO",
-                    "text": "Llevamos 5 años trabajando con Green Prod y la consistencia en calidad es impresionante. Sus soluciones de proveeduría sostenible nos han abierto nuevos mercados internacionales exigentes."
-                }
-            }
         }
     },
     "Cookies": {
@@ -628,7 +525,6 @@
         "essentialOnly": "Solo las necesarias",
         "settings": "Configurar",
         "save": "Guardar preferencias",
-        "close": "Cerrar",
         "essentialTitle": "Necesarias",
         "essentialDesc": "Mantienen el carrito y el idioma. No se pueden desactivar porque sin ellas el sitio no funciona.",
         "essentialAlways": "Siempre activas",
@@ -689,7 +585,6 @@
             }
         ],
         "contactTitle": "Contacto",
-        "contactBody": "Para cualquier consulta sobre esta política o sobre tus datos: contacto@greenprod.pe · +51 919 514 085",
-        "updated": "Última actualización"
+        "contactBody": "Para cualquier consulta sobre esta política o sobre tus datos: contacto@greenprod.pe · +51 919 514 085"
     }
 }

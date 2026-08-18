@@ -139,22 +139,6 @@ A pedido del usuario:
   foto. Los logos van sin realce: el halo blanco que llevaba el de SENASA
   se leía como un resto de recorte.
 
-### 4.0 Fondos de Aliados y Productos
-
-Las dos secciones llevan de fondo un **fotograma de los mismos videos** que
-corren en "¿Quiénes Somos?" (`public/images/home/fondos/`), no una foto de
-banco: así las tres se leen como el mismo campo, que es lo que pidió el
-usuario. Los archivos salieron de `agro-2-riego.mp4` y
-`agro-1-germinacion.mp4`, que son 640×360; se guardaron al doble con
-Lanczos y van bajo un velo oscuro, que es lo que disimula que el origen sea
-de baja resolución. Si algún día llegan videos en HD, basta con volver a
-sacar los fotogramas.
-
-En Aliados los sellos van sobre placas claras (`LogoMarquee variant="onDark"`):
-casi todos son de tinta oscura y sueltos sobre la foto no se leerían.
-
----
-
 ### 4.1 El mapa de "GreenProd llegó hasta" — cómo está armado
 
 Los datos viven en `lib/peru-map-data.ts` y **no se calculan en runtime**:
@@ -494,9 +478,14 @@ siempre `true`), así que:
       _Lorem ipsum_ y fotos de `picsum.photos`.
 - [ ] **Fotos y video propios** de planta, productos y equipo, para reemplazar
       el material de stock.
-- [ ] Decidir si se activan las secciones ya diseñadas pero apagadas:
-      `CertificationsSection`, `ImpactStatsSection`, `ValuesSection`,
-      `SustainabilitySection`. **Impacto necesita cifras reales** (no inventar).
+- [x] ~~Decidir si se activan las secciones ya diseñadas pero apagadas~~ —
+      resuelto: el usuario pidió borrar todo lo que no llevaba a ninguna
+      parte, así que se eliminaron `CertificationsSection`,
+      `ImpactStatsSection`, `ValuesSection`, `SustainabilitySection`,
+      `TiltCard` y `AnimatedStat`, junto con las páginas huérfanas
+      `/sostenibilidad` y `/productos-y-servicios/proveeduria` (las dos eran
+      marcadores de posición a las que no llegaba ningún enlace). Están en el
+      historial de git por si alguna vez hacen falta: `git show 2a10729`.
 - [ ] Contenido para Aliados, Casos de Éxito y Video corporativo
       (hoy los tres dicen "Próximamente").
 - [ ] **Términos y Condiciones**: siguen apuntando a `#`. La Política de
@@ -521,8 +510,18 @@ siempre `true`), así que:
 
 ### Técnico
 
-- [ ] `/images/sustainability-bg.jpg` no existe; lo referencia
-      `SustainabilitySection` (hoy sin usar).
+> **Qué pesa y qué no.** Un componente que no se importa desde ningún lado
+> no llega al navegador: el empaquetador lo descarta. Borrarlo ordena el
+> repositorio, pero no acelera el sitio. Lo que sí cuesta es lo que se
+> construye y se sirve: **páginas huérfanas** (cada una se genera y ocupa
+> espacio en el despliegue), **archivos de `public/`** (se suben tal cual) y
+> **lo que entra en el payload de cada página**, como el diccionario.
+
+- [ ] **El diccionario entero viaja al navegador.** `app/[lang]/layout.tsx`
+      le pasa `dictionary` completo a `Navbar`, que es componente de cliente,
+      así que los ~23 KB de `messages/<lang>.json` entran en el payload de
+      cada página. Pasarle solo las claves que usa es la optimización más
+      grande que queda pendiente.
 - [ ] Archivo suelto `&1` de 0 bytes en la raíz (error de consola). Se puede borrar.
 - [ ] Riesgo conocido y asumido: el contenido con `initial={{opacity:0}}` depende
       de que cargue el JS. Es el patrón que ya traía el proyecto.

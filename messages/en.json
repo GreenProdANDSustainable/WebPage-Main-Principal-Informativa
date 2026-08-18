@@ -113,7 +113,6 @@
     "Product": {
         "backToLine": "Back to the line",
         "photoPending": "Photo coming soon",
-        "lineLabel": "Line",
         "infoTitle": "Information",
         "infoPending": "The description of this product is being prepared.",
         "useTitle": "Function",
@@ -226,10 +225,6 @@
             "title": "Virtual Assistant",
             "subtitle": "Have a quick question? Ask our AI-powered assistant."
         },
-        "sustainability": {
-            "title": "Sustainability",
-            "description": "Page under construction. Here will go the details about our initiatives and sustainability reports."
-        },
         "about": {
             "label": "Greenprod Sustainable",
             "title": "Who We Are",
@@ -291,7 +286,6 @@
         "services": "Services",
         "products_services_title": "Products & Services",
         "work_with_us": "Work with Us",
-        "contacts": "Contacts",
         "who_we_are": "Who We Are",
         "who_we_are_desc": "Our mission, vision and fundamental values.",
         "our_history": "Our History",
@@ -313,13 +307,11 @@
         "home_commitment": "Environmental Commitment",
         "home_partners": "Partners",
         "home_success_stories": "Success Stories",
-        "our_capacity": "Our Capacity",
         "cart_title": "Cart",
         "cart_empty": "Your cart is empty.",
         "cart_empty_hint": "Add product lines from their pages.",
         "cart_add": "Add to cart",
         "cart_added": "Added",
-        "cart_request_quote": "Request a quote via WhatsApp",
         "cart_remove": "Remove",
         "cart_pending_price": "Quote on request",
         "cart_note": "Prices are confirmed by quote.",
@@ -331,10 +323,6 @@
         "search_no_results": "No results found for",
         "search_hint": "Start typing to search the whole site.",
         "search_close": "Close search",
-        "catalog": "Catalog",
-        "sustainability": "Sustainability",
-        "proveeduria": "Sustainable Supply",
-        "proveeduria_desc": "Sustainable service lines.",
         "cart_checkout": "Continue with the order",
         "cart_total": "Total",
         "home_products": "Products",
@@ -466,73 +454,6 @@
                 }
             }
         },
-        "certifications": {
-            "label": "QUALITY GUARANTEED",
-            "title": "Certifications and Standards",
-            "subtitle": "Recognition that validates our commitment to quality and sustainability",
-            "items": {
-                "iso9001": {
-                    "name": "ISO 9001:2015",
-                    "description": "Internationally certified quality management system"
-                },
-                "iso14001": {
-                    "name": "ISO 14001:2015",
-                    "description": "Environmental management and commitment to sustainability"
-                },
-                "haccp": {
-                    "name": "HACCP",
-                    "description": "Hazard analysis and critical control points in food production"
-                },
-                "organic": {
-                    "name": "Organic Certification",
-                    "description": "Products certified under organic agriculture standards"
-                }
-            }
-        },
-        "stats": {
-            "title": "Our Impact in Numbers",
-            "items": {
-                "clients": {
-                    "label": "Active B2B Clients"
-                },
-                "products": {
-                    "label": "Sustainable Products"
-                },
-                "co2": {
-                    "label": "Tons CO₂ Reduced"
-                },
-                "experience": {
-                    "label": "Years of Experience"
-                }
-            }
-        },
-        "businessLines": {
-            "title": "Our Business Lines",
-            "subtitle": "Comprehensive solutions in sustainable products and services for businesses",
-            "viewMore": "View more",
-            "items": {
-                "balik": {
-                    "title": "Balik",
-                    "description": "Premium canned and fresh fish with complete traceability for B2B distribution."
-                },
-                "Ceprobio": {
-                    "title": "Ceprobio",
-                    "description": "Organic agricultural bio-inputs that enhance productivity and sustainability."
-                },
-                "planta": {
-                    "title": "Treatment Plant",
-                    "description": "Fish hydrolysate and agricultural oils through certified circular economy processes."
-                },
-                "proveeduria": {
-                    "title": "Sustainable Procurement",
-                    "description": "Responsible supply chain with certified suppliers meeting ESG criteria."
-                },
-                "proyectos": {
-                    "title": "Sustainable Projects",
-                    "description": "Consulting and training for transformation towards sustainable business models."
-                }
-            }
-        },
         "missionVision": {
             "essence_title": "Our Essence",
             "title": "Who We Are",
@@ -595,30 +516,6 @@
                     "description": "Marine and terrestrial conservation programs in collaboration with local communities"
                 }
             }
-        },
-        "testimonials": {
-            "title": "What Our Clients Say",
-            "subtitle": "Testimonials from companies that trust our sustainable solutions",
-            "items": {
-                "testimonial1": {
-                    "name": "Carlos Mendoza",
-                    "company": "AgroIndustrias del Pacífico",
-                    "position": "Procurement Director",
-                    "text": "Green Prod & Sustainable S.A.C has been a fundamental strategic partner. Their bio-inputs have improved our productivity by 30% while reducing environmental impact. The quality and service are exceptional."
-                },
-                "testimonial2": {
-                    "name": "María Fernández",
-                    "company": "Distribuidora Nacional de Alimentos",
-                    "position": "Sustainability Manager",
-                    "text": "The traceability and certifications of their products allow us to meet the highest ESG standards. Their commitment to the circular economy is a key differentiator in our supply chain."
-                },
-                "testimonial3": {
-                    "name": "Roberto Silva",
-                    "company": "Exportadora Mar y Tierra",
-                    "position": "CEO",
-                    "text": "We have been working with Green Prod for 5 years and the consistency in quality is impressive. Their sustainable procurement solutions have opened new demanding international markets for us."
-                }
-            }
         }
     },
     "Cookies": {
@@ -628,7 +525,6 @@
         "essentialOnly": "Necessary only",
         "settings": "Customize",
         "save": "Save preferences",
-        "close": "Close",
         "essentialTitle": "Necessary",
         "essentialDesc": "They keep your cart and language. They cannot be turned off because the site does not work without them.",
         "essentialAlways": "Always on",
@@ -689,7 +585,6 @@
             }
         ],
         "contactTitle": "Contact",
-        "contactBody": "For any question about this policy or your data: contacto@greenprod.pe · +51 919 514 085",
-        "updated": "Last updated"
+        "contactBody": "For any question about this policy or your data: contacto@greenprod.pe · +51 919 514 085"
     }
 }

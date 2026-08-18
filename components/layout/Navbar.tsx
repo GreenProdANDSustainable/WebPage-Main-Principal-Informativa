@@ -23,15 +23,12 @@ import SiteSearch from '@/components/shared/SiteSearch';
 type Dictionary = {
   Navbar: {
     about: string;
-    catalog: string;
-    sustainability: string;
     contact: string;
     assistant: string;
     products: string;
     services: string;
     products_services_title: string;
     work_with_us: string;
-    contacts: string;
     who_we_are: string;
     who_we_are_desc: string;
     our_history: string;
@@ -53,7 +50,6 @@ type Dictionary = {
     home_commitment: string;
     home_partners: string;
     home_success_stories: string;
-    our_capacity: string;
     cart_view: string;
     search: string;
     search_placeholder: string;
