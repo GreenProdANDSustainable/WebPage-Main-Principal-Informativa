@@ -11,6 +11,10 @@ interface Resultado {
   sub?: string;
   href: string;
   group: string;
+  /** Palabras extra por las que también debe encontrarse la entrada. */
+  keywords?: string;
+  /** Desempate cuando dos resultados puntúan igual (menor = primero). */
+  priority: number;
 }
 
 interface SiteSearchProps {
@@ -28,6 +32,27 @@ function normalizar(texto: string) {
     .toLowerCase();
 }
 
+/** Además sin espacios ni signos, para que "greenprod" encuentre "Green Prod". */
+function clave(texto: string) {
+  return normalizar(texto).replace(/[^a-z0-9]/g, '');
+}
+
+/**
+ * Menor puntaje = más relevante. Se mira primero el nombre, después las
+ * palabras clave y recién al final la descripción. Así, al buscar la marca,
+ * gana la página principal y no una sección interna que solo la menciona de
+ * paso en su texto.
+ */
+function puntuar(r: Resultado, q: string) {
+  const nombre = clave(r.label);
+  if (nombre === q) return 0;
+  if (nombre.startsWith(q)) return 1;
+  if (nombre.includes(q)) return 2;
+  if (r.keywords && clave(r.keywords).includes(q)) return 3;
+  if (r.sub && clave(r.sub).includes(q)) return 4;
+  return -1;
+}
+
 /**
  * Buscador del sitio. El índice se arma con el propio diccionario, así que no
  * hay una lista aparte que se pueda desincronizar de lo que se publica.
@@ -36,6 +61,24 @@ function normalizar(texto: string) {
  * abierto: así arranca siempre vacío sin tener que reiniciar estado a mano.
  */
 export default function SiteSearch({ open, onClose, dictionary, lang }: SiteSearchProps) {
+  // El bloqueo del scroll y la tecla Escape se manejan acá y no dentro del
+  // panel: así se liberan apenas se cierra, sin esperar a que termine la
+  // animación de salida. Si esa animación no llegara a completarse, la
+  // página quedaría trabada sin poder desplazarse.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    const previo = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = previo;
+    };
+  }, [open, onClose]);
+
   return (
     <AnimatePresence>
       {open && <PanelBusqueda onClose={onClose} dictionary={dictionary} lang={lang} />}
@@ -70,6 +113,7 @@ function PanelBusqueda({
       sub: c.products.join(' · '),
       href: p(`/catalogo/${c.slug}`),
       group: d.products,
+      priority: 2,
     }));
 
     const productos: Resultado[] = categorias.flatMap((c) =>
@@ -78,6 +122,7 @@ function PanelBusqueda({
         sub: c.name,
         href: p(`/catalogo/${c.slug}`),
         group: d.products,
+        priority: 3,
       }))
     );
 
@@ -86,40 +131,69 @@ function PanelBusqueda({
       { label: d.Ceprobio, sub: d.Ceprobio_desc, href: p('/productos-y-servicios/ceprobio') },
       { label: d.planta, sub: d.planta_desc, href: p('/productos-y-servicios/planta-tratamiento') },
       { label: d.proyectos, sub: d.proyectos_desc, href: p('/productos-y-servicios/proyectos') },
-    ].map((x) => ({ ...x, group: d.services }));
+    ].map((x) => ({ ...x, group: d.services, priority: 4 }));
 
+    // La portada lleva el nombre de la empresa como palabra clave: buscar la
+    // marca tiene que llevar a la página principal, no a una sección interna
+    // que solo la nombra dentro de su descripción.
     const paginas: Resultado[] = [
-      { label: d.home, href: p('') },
-      { label: d.about, href: p('/nosotros') },
-      { label: d.who_we_are, sub: d.who_we_are_desc, href: p('/nosotros/quienes-somos') },
-      { label: d.our_history, sub: d.our_history_desc, href: p('/nosotros/nuestra-trayectoria') },
-      { label: dictionary.Catalog.title, href: p('/catalogo') },
-      { label: d.contact, href: p('/contacto') },
-      { label: d.assistant, href: p('/asistente-ia') },
+      {
+        label: d.home,
+        href: p(''),
+        keywords: 'greenprod green prod sustainable sac principal portada home',
+        priority: 0,
+      },
+      { label: d.about, href: p('/nosotros'), keywords: 'nosotros empresa', priority: 1 },
+      {
+        label: d.who_we_are,
+        sub: d.who_we_are_desc,
+        href: p('/nosotros/quienes-somos'),
+        keywords: 'quienes somos mision vision valores',
+        priority: 1,
+      },
+      {
+        label: d.our_history,
+        sub: d.our_history_desc,
+        href: p('/nosotros/nuestra-trayectoria'),
+        keywords: 'historia trayectoria',
+        priority: 1,
+      },
+      {
+        label: dictionary.Catalog.title,
+        href: p('/catalogo'),
+        keywords: 'catalogo productos lineas bioinsumos',
+        priority: 1,
+      },
+      {
+        label: d.contact,
+        href: p('/contacto'),
+        // "contacto" no es subcadena de "Contáctanos": sin esto no se encuentra.
+        keywords: 'contacto contactanos telefono correo email direccion ubicacion whatsapp',
+        priority: 1,
+      },
+      {
+        label: d.assistant,
+        href: p('/asistente-ia'),
+        keywords: 'asistente ia inteligencia artificial chat ayuda',
+        priority: 1,
+      },
     ].map((x) => ({ ...x, group: d.products_services_title }));
 
     return [...lineas, ...productos, ...servicios, ...paginas];
   }, [dictionary, lang, d]);
 
   const resultados = useMemo(() => {
-    const q = normalizar(consulta.trim());
+    const q = clave(consulta);
     if (!q) return [];
-    return indice.filter((r) => normalizar(`${r.label} ${r.sub ?? ''}`).includes(q)).slice(0, 8);
+    return indice
+      .map((r) => ({ r, s: puntuar(r, q) }))
+      .filter((x) => x.s >= 0)
+      .sort(
+        (a, b) => a.s - b.s || a.r.priority - b.r.priority || a.r.label.localeCompare(b.r.label)
+      )
+      .slice(0, 8)
+      .map((x) => x.r);
   }, [consulta, indice]);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKey);
-    // Con el buscador abierto, la página de atrás no debe desplazarse.
-    const previo = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = previo;
-    };
-  }, [onClose]);
 
   const ir = (href: string) => {
     onClose();
