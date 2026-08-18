@@ -5,7 +5,6 @@ import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
 import BoxedLabel from '@/components/shared/BoxedLabel';
 import ProductPhoto from '@/components/shared/ProductPhoto';
-import AddToCartButton from '@/components/shared/AddToCartButton';
 import { formatearSoles, precioDe } from '@/lib/tienda';
 
 interface Producto {
@@ -78,37 +77,27 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
                   const precio = precioDe(prod.slug);
                   return (
                     <Reveal key={prod.slug} preset="child">
-                      <div className="border-line-warm/40 hover:border-gp-green/50 flex h-full flex-col rounded-2xl border bg-white/60 p-4 transition-colors">
-                        <Link
-                          href={`/${lang}/catalogo/${category.slug}/${prod.slug}`}
-                          className="group block"
-                        >
-                          <ProductPhoto
-                            id={prod.slug}
-                            name={prod.name}
-                            sizes="(max-width: 640px) 45vw, 220px"
-                          />
-                          <p className="text-ink group-hover:text-gp-green mt-3 text-base font-bold transition-colors">
-                            {prod.name}
-                          </p>
-                          <p className="text-ink/50 text-xs font-semibold">
-                            {precio === null
-                              ? dictionary.Checkout.pendingPrice
-                              : formatearSoles(precio)}
-                          </p>
-                        </Link>
-                        <div className="mt-4 flex flex-1 items-end">
-                          <AddToCartButton
-                            size="sm"
-                            id={prod.slug}
-                            name={prod.name}
-                            href={`/catalogo/${category.slug}/${prod.slug}`}
-                            addLabel={dictionary.Navbar.cart_add}
-                            addedLabel={dictionary.Navbar.cart_added}
-                            className="w-full"
-                          />
-                        </div>
-                      </div>
+                      {/* Solo se mira: la tarjeta entera lleva a la ficha,
+                          que es donde se compra. */}
+                      <Link
+                        href={`/${lang}/catalogo/${category.slug}/${prod.slug}`}
+                        className="group border-line-warm/40 hover:border-gp-green/50 flex h-full flex-col rounded-2xl border bg-white/60 p-4 transition-colors"
+                      >
+                        <ProductPhoto
+                          id={prod.slug}
+                          name={prod.name}
+                          sizes="(max-width: 640px) 45vw, 220px"
+                        />
+                        <p className="text-ink group-hover:text-gp-green mt-3 flex items-center justify-between gap-1 text-base font-bold transition-colors">
+                          {prod.name}
+                          <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+                        </p>
+                        <p className="text-ink/50 text-xs font-semibold">
+                          {precio === null
+                            ? dictionary.Checkout.pendingPrice
+                            : formatearSoles(precio)}
+                        </p>
+                      </Link>
                     </Reveal>
                   );
                 })}
