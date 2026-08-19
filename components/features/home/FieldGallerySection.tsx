@@ -9,22 +9,24 @@ interface FieldGallerySectionProps {
   dict: any;
 }
 
-// Fotos temporales de relleno (Unsplash) hasta que se reemplacen por
-// material propio de Green Prod: campo, invernadero y pesca — los tres
-// frentes del negocio.
+// Fotos propias de Green Prod, en el orden en que cuentan el proceso: la
+// planta y el laboratorio primero, después la línea de producto y por
+// último el campo (arrozal y paltar). Ya recortadas a 3:4 —la proporción de
+// la tarjeta— y a 640px de ancho, que es lo que pide la tarjeta en pantalla
+// retina sin cargar de más a quien entra desde el celular.
 const PHOTOS = [
-  'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1620200423727-8127f75d7f53?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1592856908193-b9934576cf3d?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1508175688576-0c076b47b5b5?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1692369584496-3216a88f94c1?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1623136299195-570a06bdae6b?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1566218246241-934ad8b38ea6?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1780686222200-15040dade760?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1661290597395-b664e233f441?w=900&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1777197255275-0c5d564c844f?w=900&q=80&auto=format&fit=crop',
+  '/images/home/campo/laboratorio.webp',
+  '/images/home/campo/planta.webp',
+  '/images/home/campo/linea-productos.webp',
+  '/images/home/campo/equipo-campo.webp',
+  '/images/home/campo/aplicacion-arrozal.webp',
+  '/images/home/campo/arroz-producto.webp',
+  '/images/home/campo/warduo-campo.webp',
+  '/images/home/campo/cultivo-arroz.webp',
+  '/images/home/campo/paltar-bioinsumos.webp',
+  '/images/home/campo/paltar-cerca.webp',
+  '/images/home/campo/paltas-produccion.webp',
+  '/images/home/campo/huerto-palta.webp',
 ];
 
 /**
@@ -81,7 +83,13 @@ export default function FieldGallerySection({ dict }: FieldGallerySectionProps) 
             className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {PHOTOS.map((src, i) => (
-              <PhotoCard key={src} src={src} alt={d.slotAlt} delay={Math.min(i, 6) * 0.06} />
+              <PhotoCard
+                key={src}
+                src={src}
+                alt={d.photoAlts[i]}
+                delay={Math.min(i, 6) * 0.06}
+                eager={i < 3}
+              />
             ))}
           </div>
 
@@ -94,7 +102,17 @@ export default function FieldGallerySection({ dict }: FieldGallerySectionProps) 
   );
 }
 
-function PhotoCard({ src, alt, delay }: { src: string; alt: string; delay: number }) {
+function PhotoCard({
+  src,
+  alt,
+  delay,
+  eager,
+}: {
+  src: string;
+  alt: string;
+  delay: number;
+  eager: boolean;
+}) {
   const reduced = useReducedMotion();
 
   return (
@@ -109,6 +127,10 @@ function PhotoCard({ src, alt, delay }: { src: string; alt: string; delay: numbe
       <motion.img
         src={src}
         alt={alt}
+        width={640}
+        height={853}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
         whileHover={reduced ? undefined : { scale: 1.06 }}
         whileTap={reduced ? undefined : { scale: 1.06 }}

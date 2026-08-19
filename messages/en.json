@@ -472,9 +472,22 @@
         "fieldGallery": {
             "label": "Our work in the field",
             "hint": "Swipe to see more photos",
-            "slotAlt": "Photo of Green Prod & Sustainable's field work",
             "prev": "Previous photo",
-            "next": "Next photo"
+            "next": "Next photo",
+            "photoAlts": [
+                "Green Prod staff operating the sterilisation equipment at the bio-input plant",
+                "Production process control inside the Green Prod plant",
+                "The complete line of Green Prod bio-inputs and biofertilisers",
+                "A Green Prod advisor in a rice field holding two of the bio-inputs",
+                "Applying Green Prod bio-inputs to a rice crop",
+                "A bag of Green Prod bio-input among the rice stalks",
+                "GP-Warduo in a rice field at dusk",
+                "Rice crop treated with Green Prod bio-inputs",
+                "Green Prod bio-inputs in an avocado orchard",
+                "Bags of Green Prod bio-input at the foot of the avocado trees",
+                "GP-Lilax in an avocado orchard in full production",
+                "Avocado orchard treated with the Green Prod line"
+            ]
         },
         "team": {
             "title": "Greenprod Team",

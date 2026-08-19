@@ -472,9 +472,22 @@
         "fieldGallery": {
             "label": "Nuestro trabajo en campo",
             "hint": "Desliza para ver más fotos",
-            "slotAlt": "Foto del trabajo de campo de Green Prod & Sustainable",
             "prev": "Foto anterior",
-            "next": "Foto siguiente"
+            "next": "Foto siguiente",
+            "photoAlts": [
+                "Personal de Green Prod operando el equipo de esterilización en la planta de bioinsumos",
+                "Control del proceso de producción dentro de la planta de Green Prod",
+                "La línea completa de bioinsumos y biofertilizantes Green Prod",
+                "Asesor de Green Prod en un campo de arroz con dos de los bioinsumos",
+                "Aplicación de bioinsumos Green Prod en un cultivo de arroz",
+                "Bolsa de bioinsumo Green Prod entre las espigas de un arrozal",
+                "GP-Warduo en un campo de arroz al atardecer",
+                "Cultivo de arroz tratado con bioinsumos Green Prod",
+                "Bioinsumos Green Prod en un huerto de palta",
+                "Bolsas de bioinsumo Green Prod al pie de los paltos",
+                "GP-Lilax en un paltar en plena producción",
+                "Huerto de palta tratado con la línea Green Prod"
+            ]
         },
         "team": {
             "title": "Equipo Greenprod",
