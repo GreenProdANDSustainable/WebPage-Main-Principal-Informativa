@@ -20,6 +20,7 @@ const partners: MarqueeLogo[] = [
     alt: 'Kiwa BCS Öko-Garantie',
     href: 'https://www.kiwa.com/pe/es/',
   },
+  { src: '/images/logos/aliados/redesign-lab.webp', alt: 'Re.design Lab' },
 ];
 
 export default function PartnersSection({ dict }: PartnersSectionProps) {

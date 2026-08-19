@@ -362,7 +362,7 @@
     },
     "Home": {
         "hero": {
-            "subtitle": "Transformamos residuos de la pesca, la ganadería y el agro en bioinsumos, fertilizantes y alimentos trazables — con 95% de aprovechamiento y procesos certificados ISO 14001.",
+            "subtitle": "Desarrollamos soluciones sostenibles a partir de la innovación, la biotecnología y la economía circular para impulsar una agricultura más productiva, saludable y responsable con nuestro planeta.",
             "primaryCta": "Ver productos y servicios",
             "secondaryCta": "Contáctanos",
             "imageAlt": "Diagrama del proceso de valorización de Green Prod: de subproductos de pesca, ganadería y agro a bioinsumos, fertilizantes y alimentos trazables",
@@ -404,21 +404,23 @@
                 "items": [
                     {
                         "icon": "planta",
-                        "text": "Planta de producción de biofertilizante de pescado y derivados.",
-                        "figure": "10,000 L/mes"
+                        "text": "Residuos de pescado procesados.",
+                        "figure": "20,000 kg"
                     },
                     {
                         "icon": "bioinsumos",
-                        "text": "Centro de producción de bioinsumos.",
-                        "figure": "1,000 kg/mes"
+                        "text": "Hectáreas de cultivos impactadas.",
+                        "figure": "5,000 ha"
                     },
                     {
                         "icon": "laboratorio",
-                        "text": "Laboratorio de análisis fitopatológicos."
+                        "text": "Certificación orgánica.",
+                        "figure": "Kiwa"
                     },
                     {
                         "icon": "equipo",
-                        "text": "Equipo profesional especializado."
+                        "text": "Asociaciones de pescadores y agricultores.",
+                        "figure": "10"
                     }
                 ]
             }
