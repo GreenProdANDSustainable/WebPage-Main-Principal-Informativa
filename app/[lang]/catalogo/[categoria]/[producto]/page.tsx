@@ -74,12 +74,12 @@ export default async function FichaProducto({
           </Link>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[38rem_1fr] lg:gap-14">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[42rem_1fr] lg:gap-14">
           <Reveal preset="rootScale">
             <ProductPhoto
               id={item.slug}
               name={item.name}
-              sizes="(max-width: 1024px) 100vw, 608px"
+              sizes="(max-width: 1024px) 100vw, 672px"
               pendingLabel={p.photoPending}
             />
           </Reveal>

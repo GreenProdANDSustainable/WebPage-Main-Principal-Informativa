@@ -31,7 +31,7 @@ export default function ProductPhoto({
 
   return (
     <div
-      className={`relative aspect-square overflow-hidden rounded-xl ${
+      className={`relative aspect-[4/5] overflow-hidden rounded-xl ${
         foto
           ? // Las fotos vienen recortadas sobre blanco: si el hueco fuera de
             // otro color, se veria el recuadro de la foto contra el fondo.
@@ -40,7 +40,7 @@ export default function ProductPhoto({
       } ${className}`}
     >
       {foto ? (
-        <Image src={foto} alt={name} fill sizes={sizes} className="object-contain p-1" />
+        <Image src={foto} alt={name} fill sizes={sizes} className="object-contain p-0.5" />
       ) : (
         <>
           <ImageOff className="text-ink/25 h-1/4 max-h-8 min-h-4 w-auto" />
