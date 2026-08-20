@@ -31,10 +31,12 @@ export default function ProductPhoto({
 
   return (
     <div
-      className={`bg-husk/30 relative aspect-square overflow-hidden rounded-xl ${
+      className={`relative aspect-square overflow-hidden rounded-xl ${
         foto
-          ? ''
-          : 'border-line-warm/50 flex flex-col items-center justify-center gap-2 border-2 border-dashed'
+          ? // Las fotos vienen recortadas sobre blanco: si el hueco fuera de
+            // otro color, se veria el recuadro de la foto contra el fondo.
+            'bg-white'
+          : 'bg-husk/30 border-line-warm/50 flex flex-col items-center justify-center gap-2 border-2 border-dashed'
       } ${className}`}
     >
       {foto ? (

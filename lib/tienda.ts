@@ -46,7 +46,20 @@ export function idDeProducto(nombre: string): string {
  *       'gp-bauver': '/images/productos/gp-bauver.webp',
  *     };
  */
-export const FOTOS: Record<string, string> = {};
+export const FOTOS: Record<string, string> = {
+  'gp-trich': '/images/productos/gp-trich.webp',
+  'gp-trichobac': '/images/productos/gp-trichobac.webp',
+  'gp-subtix': '/images/productos/gp-subtix.webp',
+  'gp-bauver': '/images/productos/gp-bauver.webp',
+  'gp-meta': '/images/productos/gp-meta.webp',
+  'gp-thuring': '/images/productos/gp-thuring.webp',
+  'gp-warduo': '/images/productos/gp-warduo.webp',
+  'gp-lilax': '/images/productos/gp-lilax.webp',
+  'gp-megafort': '/images/productos/gp-megafort.webp',
+  // Faltan gp-bio, gp-clean y gp-oil: los tres frascos de 1 L todavia no
+  // tienen foto propia. Mientras no esten, su ficha muestra el recuadro de
+  // "Foto proximamente" y el sitio no se rompe.
+};
 
 export function fotoDe(id: string): string | null {
   return FOTOS[id] ?? null;
