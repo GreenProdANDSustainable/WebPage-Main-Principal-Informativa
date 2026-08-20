@@ -67,7 +67,7 @@ export default async function CategoriaCatalogo({
         <Reveal
           group
           gap={0.08}
-          className="mx-auto grid max-w-5xl grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+          className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3"
         >
           {cat.products.map((prod) => {
             const precio = precioDe(prod.slug);
@@ -83,7 +83,7 @@ export default async function CategoriaCatalogo({
                   <ProductPhoto
                     id={prod.slug}
                     name={prod.name}
-                    sizes="(max-width: 640px) 45vw, 240px"
+                    sizes="(max-width: 640px) 50vw, 340px"
                   />
                   <p className="text-ink group-hover:text-gp-green mt-3 flex items-center justify-between gap-1 text-base font-bold transition-colors">
                     {prod.name}

@@ -71,7 +71,7 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
               <Reveal
                 group
                 gap={0.06}
-                className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5"
+                className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
               >
                 {category.products.map((prod) => {
                   const precio = precioDe(prod.slug);
@@ -86,7 +86,7 @@ export default async function Catalogo({ params }: { params: Promise<{ lang: str
                         <ProductPhoto
                           id={prod.slug}
                           name={prod.name}
-                          sizes="(max-width: 640px) 45vw, 220px"
+                          sizes="(max-width: 640px) 50vw, 300px"
                         />
                         <p className="text-ink group-hover:text-gp-green mt-3 flex items-center justify-between gap-1 text-base font-bold transition-colors">
                           {prod.name}

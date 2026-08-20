@@ -40,7 +40,7 @@ export default function ProductPhoto({
       } ${className}`}
     >
       {foto ? (
-        <Image src={foto} alt={name} fill sizes={sizes} className="object-contain p-2" />
+        <Image src={foto} alt={name} fill sizes={sizes} className="object-contain p-1" />
       ) : (
         <>
           <ImageOff className="text-ink/25 h-1/4 max-h-8 min-h-4 w-auto" />
