@@ -16,7 +16,7 @@ interface FieldGallerySectionProps {
 // retina sin cargar de más a quien entra desde el celular.
 const PHOTOS = [
   '/images/home/campo/laboratorio.webp',
-  '/images/home/campo/planta.webp',
+  '/images/home/campo/larvas.webp',
   '/images/home/campo/linea-productos.webp',
   '/images/home/campo/equipo-campo.webp',
   '/images/home/campo/aplicacion-arrozal.webp',
@@ -118,7 +118,7 @@ function PhotoCard({
   return (
     <motion.div
       data-card
-      className="border-paper/15 relative aspect-[3/4] w-[68vw] shrink-0 snap-start overflow-hidden rounded-[28px] border shadow-2xl sm:w-[280px]"
+      className="border-paper/15 relative aspect-[3/4] w-[84vw] shrink-0 snap-start overflow-hidden rounded-[28px] border shadow-2xl sm:w-[360px] lg:w-[400px]"
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
@@ -127,8 +127,8 @@ function PhotoCard({
       <motion.img
         src={src}
         alt={alt}
-        width={640}
-        height={853}
+        width={1280}
+        height={1707}
         loading={eager ? 'eager' : 'lazy'}
         decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
