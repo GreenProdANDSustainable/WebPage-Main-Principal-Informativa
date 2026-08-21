@@ -1,4 +1,5 @@
 import type { ElementType, ReactNode } from 'react';
+import { Leaf } from 'lucide-react';
 
 type Tamano = 'sm' | 'md' | 'lg';
 
@@ -8,6 +9,8 @@ interface BoxedLabelProps {
   as?: ElementType;
   size?: Tamano;
   className?: string;
+  /** Tres hojas leves flotando dentro del recuadro. Ver ProductsSection. */
+  animated?: boolean;
 }
 
 /**
@@ -26,12 +29,20 @@ export default function BoxedLabel({
   as: Tag = 'span',
   size = 'md',
   className = '',
+  animated = false,
 }: BoxedLabelProps) {
   return (
     <Tag
-      className={`bg-gp-green font-display inline-block rounded-xl font-semibold tracking-wide text-white shadow-lg ${tamanos[size]} ${className}`}
+      className={`bg-gp-green font-display relative inline-block overflow-hidden rounded-xl font-semibold tracking-wide text-white shadow-lg ${tamanos[size]} ${className}`}
     >
-      {children}
+      {animated && (
+        <span className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <Leaf className="leaf-drift-1 absolute top-1.5 left-2.5 h-3 w-3 text-white" />
+          <Leaf className="leaf-drift-2 absolute right-3 bottom-2 h-2.5 w-2.5 text-white" />
+          <Leaf className="leaf-drift-3 absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 text-white" />
+        </span>
+      )}
+      <span className="relative">{children}</span>
     </Tag>
   );
 }

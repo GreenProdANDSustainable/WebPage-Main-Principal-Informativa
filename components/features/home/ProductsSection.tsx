@@ -51,6 +51,7 @@ export default function ProductsSection({ dict, lang }: ProductsSectionProps) {
               <Link href={`/${lang}/catalogo/${cat.slug}`} className="group block">
                 <BoxedLabel
                   as="h3"
+                  animated
                   className="w-full text-center transition-transform duration-300 group-hover:-translate-y-1"
                 >
                   {cat.name}
