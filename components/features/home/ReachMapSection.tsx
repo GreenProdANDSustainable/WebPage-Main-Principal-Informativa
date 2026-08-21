@@ -80,7 +80,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
   const r = dict.Home.reach;
 
   return (
-    <section id="cobertura" className="bg-ink-soft py-24">
+    <section id="cobertura" className="bg-gp-green py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal preset="growUp">
           <h2 className="font-display text-paper mb-10 flex flex-wrap items-center justify-center gap-3 text-center text-3xl font-semibold tracking-tight md:text-4xl">
@@ -114,14 +114,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                   className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-full lg:translate-x-0 xl:w-[104%] xl:-translate-x-[2%] 2xl:w-[114%] 2xl:-translate-x-[9%]"
                   aria-hidden="true"
                 >
-                  <path d={PERU_FILL_PATH} className="fill-gp-green" />
+                  <path d={PERU_FILL_PATH} className="fill-paper/90" />
                   {/* Límites departamentales, como en la referencia del usuario. */}
                   {PERU_DEPT_PATHS.map((d, i) => (
                     <path
                       key={i}
                       d={d}
                       fill="none"
-                      className="stroke-gp-blue/60"
+                      className="stroke-gp-blue/45"
                       strokeWidth={1.25}
                       strokeLinejoin="round"
                     />
@@ -140,7 +140,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                         <polyline
                           points={`${city.x},${city.y} ${city.railX},${city.labelY} ${tailX},${city.labelY}`}
                           fill="none"
-                          className="stroke-paper/40 group-hover:stroke-gp-blue hidden transition-colors duration-300 lg:block"
+                          className="stroke-ink/35 group-hover:stroke-gp-blue hidden transition-colors duration-300 lg:block"
                           strokeWidth={1.4}
                           strokeLinejoin="round"
                         />
@@ -154,7 +154,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                             <path
                               d={PIN_PATH}
                               transform="translate(-12,-21.8)"
-                              className="group-hover:fill-gp-blue fill-white transition-colors duration-300"
+                              className="fill-ink group-hover:fill-gp-green transition-colors duration-300"
                             />
                             <circle
                               cx={0}
@@ -196,7 +196,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                 {PERU_CITIES.map((city) => (
                   <div key={city.label} className="flex items-start gap-2">
                     <span
-                      className="bg-gp-green mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full"
+                      className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white"
                       aria-hidden="true"
                     />
                     {/* Tamaños en píxeles a propósito: en celular la raíz baja
@@ -218,7 +218,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
           <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[17rem] xl:shrink-0 xl:items-start xl:text-left">
             <Reveal preset="slideInRight">
               <div className="w-full text-left">
-                <h3 className="text-gp-green font-display mb-5 text-lg font-semibold">
+                <h3 className="text-ink font-display mb-5 text-lg font-semibold">
                   {r.capabilities.title}
                 </h3>
                 <ul className="space-y-5">
@@ -226,14 +226,11 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     const Icon = ICONOS_CAPACIDAD[item.icon] ?? Factory;
                     return (
                       <li key={item.text} className="flex items-start gap-3">
-                        <Icon
-                          className="text-gp-green mt-0.5 h-7 w-7 shrink-0"
-                          strokeWidth={1.75}
-                        />
+                        <Icon className="text-ink mt-0.5 h-7 w-7 shrink-0" strokeWidth={1.75} />
                         <div>
                           <p className="text-paper text-[13px] leading-snug">{item.text}</p>
                           {item.figure && (
-                            <p className="text-gp-green mt-1 text-xl font-bold">{item.figure}</p>
+                            <p className="text-ink mt-1 text-xl font-bold">{item.figure}</p>
                           )}
                         </div>
                       </li>
@@ -252,7 +249,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="border-paper/20 text-paper/70 hover:border-gp-green hover:bg-gp-green hover:text-ink flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5"
+                    className="border-paper/20 text-paper/70 hover:border-ink hover:bg-ink flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
                   >
                     <Icon className="h-4 w-4" />
                   </a>

@@ -80,47 +80,61 @@ html {
 }
 
 /* Algas creciendo del borde inferior de un recuadro (BoxedLabel `animated`):
-   cada lámina pivota desde su base, como una hebra de alga en la corriente,
-   con su propio vaivén para que no se vean sincronizadas. Solo transform,
-   como pide el sistema de movimiento. */
+   cada lámina pivota desde su base y además se desliza un poco, como una
+   hebra de alga empujada por la corriente, con su propio vaivén para que no
+   se vean sincronizadas. Solo transform, como pide el sistema de
+   movimiento. */
 @keyframes algae-sway-1 {
   0%,
   100% {
-    transform: rotate(-5deg);
+    transform: translateX(0) rotate(-8deg);
   }
   50% {
-    transform: rotate(6deg);
+    transform: translateX(3px) rotate(10deg);
   }
 }
 @keyframes algae-sway-2 {
   0%,
   100% {
-    transform: rotate(4deg);
+    transform: translateX(0) rotate(7deg);
   }
   50% {
-    transform: rotate(-6deg);
+    transform: translateX(-3px) rotate(-9deg);
   }
 }
 @keyframes algae-sway-3 {
   0%,
   100% {
-    transform: rotate(-3deg);
+    transform: translateX(0) rotate(-6deg);
   }
   50% {
-    transform: rotate(5deg);
+    transform: translateX(2px) rotate(8deg);
+  }
+}
+@keyframes algae-sway-4 {
+  0%,
+  100% {
+    transform: translateX(0) rotate(5deg);
+  }
+  50% {
+    transform: translateX(-2px) rotate(-7deg);
   }
 }
 
 .algae-sway-1 {
-  animation: algae-sway-1 4.8s ease-in-out infinite;
+  animation: algae-sway-1 2.8s ease-in-out infinite;
 }
 .algae-sway-2 {
-  animation: algae-sway-2 5.6s ease-in-out infinite;
-  animation-delay: -1.8s;
+  animation: algae-sway-2 3.4s ease-in-out infinite;
+  animation-delay: -1.1s;
 }
 .algae-sway-3 {
-  animation: algae-sway-3 4.2s ease-in-out infinite;
-  animation-delay: -2.6s;
+  animation: algae-sway-3 2.4s ease-in-out infinite;
+  animation-delay: -0.7s;
+}
+.algae-sway-4 {
+  animation: algae-sway-4 3s ease-in-out infinite;
+  animation-delay: -1.6s;
 }
 
 /* Red de seguridad de accesibilidad: si el sistema pide menos movimiento,
