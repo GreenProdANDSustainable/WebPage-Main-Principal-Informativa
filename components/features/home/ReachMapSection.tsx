@@ -80,8 +80,20 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
   const r = dict.Home.reach;
 
   return (
-    <section id="cobertura" className="bg-gp-green py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="cobertura" className="relative overflow-hidden py-24">
+      {/* Foto de campo como fondo del apartado (no del mapa, que sigue
+          blanco): lleva un velo oscuro encima para que el texto blanco y
+          los verdes de acento sigan leyéndose bien. */}
+      <Image
+        src="/images/home/banners/fondo-hero.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        quality={90}
+        className="object-cover"
+      />
+      <div className="bg-ink-soft/75 absolute inset-0" aria-hidden="true" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal preset="growUp">
           <h2 className="font-display text-paper mb-10 flex flex-wrap items-center justify-center gap-3 text-center text-3xl font-semibold tracking-tight md:text-4xl">
             <span className="relative h-12 w-40 shrink-0 sm:h-16 sm:w-56">
@@ -136,11 +148,21 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     return (
                       <g key={i} className="group cursor-default outline-none" tabIndex={0}>
                         {/* Guía y rótulo solo desde lg: por debajo de ese ancho el
-                            mapa es chico y el texto quedaría ilegible. */}
+                            mapa es chico y el texto quedaría ilegible. Va en dos
+                            tramos porque cruza dos fondos distintos: el primero
+                            sobre el país blanco, el segundo sobre la foto oscura
+                            del apartado. */}
                         <polyline
-                          points={`${city.x},${city.y} ${city.railX},${city.labelY} ${tailX},${city.labelY}`}
+                          points={`${city.x},${city.y} ${city.railX},${city.labelY}`}
                           fill="none"
-                          className="stroke-ink/35 group-hover:stroke-gp-blue hidden transition-colors duration-300 lg:block"
+                          className="stroke-ink/35 group-hover:stroke-gp-green hidden transition-colors duration-300 lg:block"
+                          strokeWidth={1.4}
+                          strokeLinejoin="round"
+                        />
+                        <polyline
+                          points={`${city.railX},${city.labelY} ${tailX},${city.labelY}`}
+                          fill="none"
+                          className="stroke-paper/40 group-hover:stroke-gp-green hidden transition-colors duration-300 lg:block"
                           strokeWidth={1.4}
                           strokeLinejoin="round"
                         />
@@ -169,7 +191,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                           x={city.railX}
                           y={city.labelY + TEXT_DY}
                           textAnchor={anchor}
-                          className="fill-paper group-hover:fill-gp-blue font-display hidden text-[19px] font-semibold transition-colors duration-300 lg:block"
+                          className="fill-paper group-hover:fill-gp-green font-display hidden text-[19px] font-semibold transition-colors duration-300 lg:block"
                         >
                           {city.label}
                           {city.detail && (
@@ -196,7 +218,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                 {PERU_CITIES.map((city) => (
                   <div key={city.label} className="flex items-start gap-2">
                     <span
-                      className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white"
+                      className="bg-gp-green mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full"
                       aria-hidden="true"
                     />
                     {/* Tamaños en píxeles a propósito: en celular la raíz baja
@@ -218,7 +240,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
           <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[17rem] xl:shrink-0 xl:items-start xl:text-left">
             <Reveal preset="slideInRight">
               <div className="w-full text-left">
-                <h3 className="text-ink font-display mb-5 text-lg font-semibold">
+                <h3 className="text-gp-green font-display mb-5 text-lg font-semibold">
                   {r.capabilities.title}
                 </h3>
                 <ul className="space-y-5">
@@ -226,11 +248,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     const Icon = ICONOS_CAPACIDAD[item.icon] ?? Factory;
                     return (
                       <li key={item.text} className="flex items-start gap-3">
-                        <Icon className="text-ink mt-0.5 h-7 w-7 shrink-0" strokeWidth={1.75} />
+                        <Icon
+                          className="text-gp-green mt-0.5 h-7 w-7 shrink-0"
+                          strokeWidth={1.75}
+                        />
                         <div>
                           <p className="text-paper text-[13px] leading-snug">{item.text}</p>
                           {item.figure && (
-                            <p className="text-ink mt-1 text-xl font-bold">{item.figure}</p>
+                            <p className="text-gp-green mt-1 text-xl font-bold">{item.figure}</p>
                           )}
                         </div>
                       </li>
@@ -249,7 +274,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="border-paper/20 text-paper/70 hover:border-ink hover:bg-ink flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
+                    className="border-paper/20 text-paper/70 hover:border-gp-green hover:bg-gp-green hover:text-ink flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
