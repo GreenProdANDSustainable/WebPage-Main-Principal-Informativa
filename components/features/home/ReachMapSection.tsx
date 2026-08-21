@@ -84,12 +84,12 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal preset="growUp">
           <h2 className="font-display text-paper mb-10 flex flex-wrap items-center justify-center gap-3 text-center text-3xl font-semibold tracking-tight md:text-4xl">
-            <span className="relative h-9 w-32 shrink-0 sm:h-10 sm:w-36">
+            <span className="relative h-12 w-40 shrink-0 sm:h-16 sm:w-56">
               <Image
                 src="/greenprod blanco png.png"
                 alt={`${r.titleLead} ${r.titleTail}`}
                 fill
-                sizes="144px"
+                sizes="224px"
                 className="object-contain"
               />
             </span>
@@ -114,14 +114,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                   className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-full lg:translate-x-0 xl:w-[104%] xl:-translate-x-[2%] 2xl:w-[114%] 2xl:-translate-x-[9%]"
                   aria-hidden="true"
                 >
-                  <path d={PERU_FILL_PATH} className="fill-paper/90" />
+                  <path d={PERU_FILL_PATH} className="fill-gp-green" />
                   {/* Límites departamentales, como en la referencia del usuario. */}
                   {PERU_DEPT_PATHS.map((d, i) => (
                     <path
                       key={i}
                       d={d}
                       fill="none"
-                      className="stroke-gp-blue/45"
+                      className="stroke-gp-blue/60"
                       strokeWidth={1.25}
                       strokeLinejoin="round"
                     />
@@ -140,7 +140,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                         <polyline
                           points={`${city.x},${city.y} ${city.railX},${city.labelY} ${tailX},${city.labelY}`}
                           fill="none"
-                          className="stroke-ink/35 group-hover:stroke-gp-green hidden transition-colors duration-300 lg:block"
+                          className="stroke-paper/40 group-hover:stroke-gp-blue hidden transition-colors duration-300 lg:block"
                           strokeWidth={1.4}
                           strokeLinejoin="round"
                         />
@@ -154,7 +154,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                             <path
                               d={PIN_PATH}
                               transform="translate(-12,-21.8)"
-                              className="fill-ink group-hover:fill-gp-green transition-colors duration-300"
+                              className="group-hover:fill-gp-blue fill-white transition-colors duration-300"
                             />
                             <circle
                               cx={0}
@@ -169,14 +169,14 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                           x={city.railX}
                           y={city.labelY + TEXT_DY}
                           textAnchor={anchor}
-                          className="fill-ink group-hover:fill-gp-green font-display hidden text-[19px] font-semibold transition-colors duration-300 lg:block"
+                          className="fill-paper group-hover:fill-gp-blue font-display hidden text-[19px] font-semibold transition-colors duration-300 lg:block"
                         >
                           {city.label}
                           {city.detail && (
                             <tspan
                               x={city.railX}
                               dy={TEXT_DY2}
-                              className="fill-ink/60 font-display text-[15px] font-normal"
+                              className="fill-paper/60 font-display text-[15px] font-normal"
                             >
                               {city.detail}
                             </tspan>

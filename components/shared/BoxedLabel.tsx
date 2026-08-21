@@ -1,5 +1,4 @@
 import type { ElementType, ReactNode } from 'react';
-import { Leaf } from 'lucide-react';
 
 type Tamano = 'sm' | 'md' | 'lg';
 
@@ -9,9 +8,25 @@ interface BoxedLabelProps {
   as?: ElementType;
   size?: Tamano;
   className?: string;
-  /** Tres hojas leves flotando dentro del recuadro. Ver ProductsSection. */
+  /** Algas creciendo desde el borde inferior del recuadro. Ver ProductsSection. */
   animated?: boolean;
 }
+
+/**
+ * Siete láminas de alga repartidas a lo ancho del recuadro (viewBox 0 0 200
+ * 100), cada una con su propio balanceo. `preserveAspectRatio="none"` las
+ * estira al ancho real del recuadro, así que quedan repartidas sin importar
+ * cuán largo sea el nombre del producto.
+ */
+const ALGAE_BLADES: { d: string; fill: string; sway: string }[] = [
+  { d: 'M11,100 Q3,79 20,58 Q13,79 17,100 Z', fill: 'fill-white/80', sway: 'algae-sway-1' },
+  { d: 'M39,100 Q39,84 34,68 Q49,84 45,100 Z', fill: 'fill-white/55', sway: 'algae-sway-2' },
+  { d: 'M67,100 Q61,78 78,55 Q71,78 73,100 Z', fill: 'fill-white/70', sway: 'algae-sway-3' },
+  { d: 'M95,100 Q95,85 90,70 Q105,85 101,100 Z', fill: 'fill-white/50', sway: 'algae-sway-1' },
+  { d: 'M123,100 Q117,80 134,60 Q127,80 129,100 Z', fill: 'fill-white/75', sway: 'algae-sway-2' },
+  { d: 'M151,100 Q151,84 146,68 Q161,84 157,100 Z', fill: 'fill-white/55', sway: 'algae-sway-3' },
+  { d: 'M179,100 Q173,78 190,56 Q183,78 185,100 Z', fill: 'fill-white/70', sway: 'algae-sway-1' },
+];
 
 /**
  * El recuadro verde con letra blanca que estrenó la placa "Certificado por:".
@@ -36,11 +51,22 @@ export default function BoxedLabel({
       className={`bg-gp-green font-display relative inline-block overflow-hidden rounded-xl font-semibold tracking-wide text-white shadow-lg ${tamanos[size]} ${className}`}
     >
       {animated && (
-        <span className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <Leaf className="leaf-drift-1 absolute top-1.5 left-2.5 h-3 w-3 text-white" />
-          <Leaf className="leaf-drift-2 absolute right-3 bottom-2 h-2.5 w-2.5 text-white" />
-          <Leaf className="leaf-drift-3 absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 text-white" />
-        </span>
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 200 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          {ALGAE_BLADES.map((blade, i) => (
+            <g
+              key={i}
+              className={blade.sway}
+              style={{ transformBox: 'fill-box', transformOrigin: '50% 100%' }}
+            >
+              <path d={blade.d} className={blade.fill} />
+            </g>
+          ))}
+        </svg>
       )}
       <span className="relative">{children}</span>
     </Tag>
