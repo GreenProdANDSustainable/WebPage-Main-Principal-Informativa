@@ -1,7 +1,16 @@
 import Image from 'next/image';
-import { Facebook, Instagram, Factory, FlaskConical, Microscope, Users } from 'lucide-react';
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Factory,
+  FlaskConical,
+  Microscope,
+  Users,
+} from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
+import TikTokIcon from '@/components/shared/TikTokIcon';
 import { PERU_DEPT_PATHS, PERU_CITIES } from '@/lib/peru-map-data';
 
 /** Iconos del bloque "Contamos con:", por clave del diccionario. */
@@ -58,6 +67,12 @@ const LABEL_SCALE = 1.36;
 const socials = [
   { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/greenprodsustainable' },
   { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/greenprodsustainable' },
+  { Icon: TikTokIcon, label: 'TikTok', href: 'https://www.tiktok.com/@greenprodsustainable' },
+  {
+    Icon: Linkedin,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/greenprod-sustainable-6a28663bb',
+  },
 ];
 
 /** "GreenProd llegó hasta": mapa del Perú con las ciudades cubiertas. */
@@ -65,11 +80,20 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
   const r = dict.Home.reach;
 
   return (
-    <section id="cobertura" className="bg-gp-blue py-24">
+    <section id="cobertura" className="bg-ink-soft py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal preset="growUp">
-          <h2 className="font-display text-paper mb-10 text-center text-3xl font-semibold tracking-tight md:text-4xl">
-            <span className="text-gp-green">{r.titleLead}</span> {r.titleTail}
+          <h2 className="font-display text-paper mb-10 flex flex-wrap items-center justify-center gap-3 text-center text-3xl font-semibold tracking-tight md:text-4xl">
+            <span className="relative h-9 w-32 shrink-0 sm:h-10 sm:w-36">
+              <Image
+                src="/greenprod blanco png.png"
+                alt={`${r.titleLead} ${r.titleTail}`}
+                fill
+                sizes="144px"
+                className="object-contain"
+              />
+            </span>
+            {r.titleTail}
           </h2>
         </Reveal>
 
@@ -193,18 +217,6 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
 
           <div className="flex w-full flex-col items-center gap-8 text-center xl:w-[17rem] xl:shrink-0 xl:items-start xl:text-left">
             <Reveal preset="slideInRight">
-              <div className="relative h-14 w-40 md:h-16 md:w-44">
-                <Image
-                  src="/greenprod blanco png.png"
-                  alt="Green Prod & Sustainable S.A.C"
-                  fill
-                  sizes="176px"
-                  className="object-contain"
-                />
-              </div>
-            </Reveal>
-
-            <Reveal preset="slideInRight" delay={0.1}>
               <div className="w-full text-left">
                 <h3 className="text-gp-green font-display mb-5 text-lg font-semibold">
                   {r.capabilities.title}

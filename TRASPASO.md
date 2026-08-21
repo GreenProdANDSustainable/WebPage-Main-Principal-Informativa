@@ -141,6 +141,16 @@ A pedido del usuario:
 
 ### 4.1 El mapa de "GreenProd llegó hasta" — cómo está armado
 
+**Fondo, logo y redes (commit `<pendiente>`)**: el fondo pasó de azul a
+`bg-ink-soft` (verde muy oscuro de la propia paleta) porque un `gp-green`
+liso hubiera vuelto invisibles los acentos en gp-green que ya llevaba la
+sección (cifras de "Contamos con:", pines, hover). El "GreenProd" en texto
+del título se reemplazó por el logo blanco, y por eso se quitó el logo
+suelto que iba encima de "Contamos con:": sobraba, ya está arriba. TikTok
+y LinkedIn se agregaron a `socials`; TikTok no tiene icono en lucide, así
+que sale de `components/shared/TikTokIcon.tsx`, con el mismo patrón que
+`WhatsAppIcon`.
+
 Los datos viven en `lib/peru-map-data.ts` y **no se calculan en runtime**:
 los genera un script a partir de los límites departamentales del INEI
 (github.com/juaneladio/peru-geojson, dominio público), con proyección
@@ -422,8 +432,8 @@ siempre `true`), así que:
 - [ ] **Confirmar la ubicación del mapa**: está centrado en «AA.HH. Tres
       Estrellas, Nuevo Chimbote» (deducido). Si el pin no es exacto, hace falta
       el enlace de Google Maps del local.
-- [ ] **Enlace de LinkedIn** (se quitó el icono para no dejarlo muerto; ya están
-      Facebook e Instagram).
+- [x] ~~Enlace de LinkedIn~~ — resuelto: el usuario pasó el perfil
+      (commit siguiente). Ver §4.1.
 - [x] ~~Código QR para "GreenProd llegó hasta"~~ — resuelto: el usuario dejó el
       archivo en su carpeta de Descargas, se copió a
       `public/images/home/qr-greenprod.jpg` (commit `c12983f`).
@@ -471,9 +481,8 @@ siempre `true`), así que:
 - [ ] **Revisión legal de la política de privacidad** (`/[lang]/privacidad`) y
       completar el RUC y el número de inscripción del banco de datos
       personales.
-- [ ] **Confirmar si se agrega TikTok** a los sociales de "GreenProd llegó
-      hasta" (el mockup del usuario lo mostraba junto a Facebook e Instagram)
-      y, de ser así, el enlace de la cuenta.
+- [x] ~~Confirmar si se agrega TikTok~~ — resuelto: el usuario pasó la
+      cuenta. Ver §4.1.
 - [ ] **Contenido real de las páginas de producto**: siguen con texto
       _Lorem ipsum_ y fotos de `picsum.photos`.
 - [ ] **Fotos y video propios** de planta, productos y equipo, para reemplazar
