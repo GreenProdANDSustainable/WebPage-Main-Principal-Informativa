@@ -9,15 +9,12 @@ interface FieldGallerySectionProps {
   dict: any;
 }
 
-// Fotos propias de Green Prod, en el orden en que cuentan el proceso: la
-// planta y el laboratorio primero, después la línea de producto y por
-// último el campo (arrozal y paltar). Ya recortadas a 3:4 —la proporción de
-// la tarjeta— y a 640px de ancho, que es lo que pide la tarjeta en pantalla
-// retina sin cargar de más a quien entra desde el celular.
+// Fotos propias de Green Prod: primero el campo (arrozal y paltar), que es
+// lo que más vende; la planta, el laboratorio y la línea de producto cierran
+// el carrusel. Ya recortadas a 3:4 —la proporción de la tarjeta— y a 640px
+// de ancho, que es lo que pide la tarjeta en pantalla retina sin cargar de
+// más a quien entra desde el celular.
 const PHOTOS = [
-  '/images/home/campo/laboratorio.webp',
-  '/images/home/campo/larvas.webp',
-  '/images/home/campo/linea-productos.webp',
   '/images/home/campo/equipo-campo.webp',
   '/images/home/campo/aplicacion-arrozal.webp',
   '/images/home/campo/arroz-producto.webp',
@@ -27,6 +24,9 @@ const PHOTOS = [
   '/images/home/campo/paltar-cerca.webp',
   '/images/home/campo/paltas-produccion.webp',
   '/images/home/campo/huerto-palta.webp',
+  '/images/home/campo/larvas.webp',
+  '/images/home/campo/linea-productos.webp',
+  '/images/home/campo/laboratorio.webp',
 ];
 
 /**
