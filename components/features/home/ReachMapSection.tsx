@@ -123,7 +123,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     lienzo, que es más ancho del lado del rótulo de Junín. */}
                 <svg
                   viewBox={VIEWBOX_ROTULOS}
-                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-full lg:translate-x-0 xl:w-[104%] xl:-translate-x-[2%] 2xl:w-[114%] 2xl:-translate-x-[9%]"
+                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-[108%] lg:-translate-x-[4%] xl:w-[110%] xl:-translate-x-[6%] 2xl:w-[122%] 2xl:-translate-x-[14%]"
                   aria-hidden="true"
                 >
                   <path d={PERU_FILL_PATH} className="fill-paper/90" />
@@ -253,9 +253,9 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                           strokeWidth={1.75}
                         />
                         <div>
-                          <p className="text-paper text-[13px] leading-snug">{item.text}</p>
+                          <p className="text-paper text-base leading-snug">{item.text}</p>
                           {item.figure && (
-                            <p className="text-gp-green mt-1 text-3xl font-bold sm:text-4xl">
+                            <p className="text-gp-green mt-1 text-4xl font-bold sm:text-5xl">
                               {item.figure}
                             </p>
                           )}

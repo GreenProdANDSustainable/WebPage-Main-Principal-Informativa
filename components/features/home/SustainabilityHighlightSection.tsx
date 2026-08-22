@@ -17,7 +17,7 @@ export default function SustainabilityHighlightSection({
   return (
     <section id="compromiso" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
           <Reveal preset="rootScale" className="order-last lg:order-first">
             {/* La foto es 3:2 y las tres personas ocupan todo el ancho: el
                 contenedor respeta esa proporción para no recortar a nadie. */}
