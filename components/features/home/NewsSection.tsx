@@ -37,46 +37,51 @@ export default function NewsSection({ dict }: NewsSectionProps) {
 
 /**
  * Los dos videos van en fila, pero se reproducen como una sola lista: el
- * primero arranca solo al entrar en pantalla, y al terminar sigue el
- * segundo, y así en bucle. Va con sonido activo desde el inicio; solo si el
- * navegador bloquea el autoplay con sonido (exige un toque antes) se
+ * primero arranca al entrar en pantalla, y al terminar sigue el segundo.
+ * Al terminar el segundo, ahí se queda —no vuelve a empezar solo—. Si la
+ * sección sale de vista se pausa el que esté activo, y retoma justo donde
+ * quedó al volver a entrar. Va con sonido activo desde el inicio; solo si
+ * el navegador bloquea el autoplay con sonido (exige un toque antes) se
  * silencia y queda a la espera de ese primer toque.
  */
 function NewsPlaylist() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const startedRef = useRef<boolean[]>(VIDEOS.map(() => false));
   const [active, setActive] = useState(0);
-  const [started, setStarted] = useState(false);
+  const [inView, setInView] = useState(false);
   const [needsTap, setNeedsTap] = useState(false);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      threshold: 0.4,
+    });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (!started) return;
     const el = videoRefs.current[active];
     if (!el) return;
-    el.currentTime = 0;
-    el.muted = false;
+
+    if (!inView) {
+      el.pause();
+      return;
+    }
+
+    if (!startedRef.current[active]) {
+      startedRef.current[active] = true;
+      el.currentTime = 0;
+      el.muted = false;
+    }
     void el.play().catch(() => {
       el.muted = true;
       setNeedsTap(true);
       void el.play().catch(() => {});
     });
-  }, [active, started]);
+  }, [active, inView]);
 
   return (
     <div ref={containerRef} className="mx-auto grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
@@ -90,7 +95,11 @@ function NewsPlaylist() {
             poster={v.poster}
             playsInline
             preload="none"
-            onEnded={() => setActive((a) => (a + 1) % VIDEOS.length)}
+            onEnded={() => {
+              // Solo avanza al siguiente; en el ultimo se queda ahi, sin
+              // volver a empezar la lista.
+              if (i < VIDEOS.length - 1) setActive(i + 1);
+            }}
             onClick={() => {
               const el = videoRefs.current[i];
               if (!el || i !== active) return;
