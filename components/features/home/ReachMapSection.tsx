@@ -123,7 +123,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     lienzo, que es más ancho del lado del rótulo de Junín. */}
                 <svg
                   viewBox={VIEWBOX_ROTULOS}
-                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[45.2%] lg:left-0 lg:w-[108%] lg:-translate-x-[4%] xl:w-[110%] xl:-translate-x-[6%] 2xl:w-[122%] 2xl:-translate-x-[14%]"
+                  className="relative left-1/2 w-[162%] max-w-none -translate-x-[49%] lg:left-0 lg:w-[112%] lg:-translate-x-[8%] xl:w-[114%] xl:-translate-x-[10%] 2xl:w-[128%] 2xl:-translate-x-[20%]"
                   aria-hidden="true"
                 >
                   <path d={PERU_FILL_PATH} className="fill-paper/90" />
@@ -276,9 +276,9 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="border-paper/20 text-paper/70 hover:border-gp-green hover:bg-gp-green hover:text-ink flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5"
+                    className="border-paper/20 text-paper/70 hover:border-gp-green hover:bg-gp-green hover:text-ink flex h-14 w-14 items-center justify-center rounded-full border transition-all duration-300 hover:-translate-y-0.5"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-6 w-6" />
                   </a>
                 ))}
               </div>

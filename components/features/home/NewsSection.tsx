@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
 
 interface NewsSectionProps {
@@ -28,16 +27,8 @@ export default function NewsSection({ dict }: NewsSectionProps) {
           <p className="text-ink/60 mb-12 text-lg">{dict.News.subtitle}</p>
         </Reveal>
 
-        <Reveal
-          group
-          gap={0.12}
-          className="mx-auto grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2"
-        >
-          {VIDEOS.map((v) => (
-            <Reveal key={v.src} preset="child">
-              <NewsVideo {...v} />
-            </Reveal>
-          ))}
+        <Reveal preset="growUp" delay={0.15}>
+          <NewsPlaylist />
         </Reveal>
       </div>
     </section>
@@ -45,61 +36,80 @@ export default function NewsSection({ dict }: NewsSectionProps) {
 }
 
 /**
- * Arranca solo cuando entra en pantalla (mudo, como pide el navegador para
- * autoplay) y se pausa al salir, para no seguir sonando fuera de vista. La
- * barra nativa del navegador se reemplaza por un botón propio: tocar el
- * video pausa o retoma, y el botón de volumen activa el sonido.
+ * Los dos videos van en fila, pero se reproducen como una sola lista: el
+ * primero arranca solo al entrar en pantalla, y al terminar sigue el
+ * segundo, y así en bucle. Va con sonido activo desde el inicio; solo si el
+ * navegador bloquea el autoplay con sonido (exige un toque antes) se
+ * silencia y queda a la espera de ese primer toque.
  */
-function NewsVideo({ src, poster }: { src: string; poster: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
+function NewsPlaylist() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [active, setActive] = useState(0);
+  const [started, setStarted] = useState(false);
+  const [needsTap, setNeedsTap] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = containerRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) void el.play().catch(() => {});
-        else el.pause();
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!started) return;
+    const el = videoRefs.current[active];
+    if (!el) return;
+    el.currentTime = 0;
+    el.muted = false;
+    void el.play().catch(() => {
+      el.muted = true;
+      setNeedsTap(true);
+      void el.play().catch(() => {});
+    });
+  }, [active, started]);
+
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-black shadow-xl">
-      <video
-        ref={ref}
-        src={src}
-        poster={poster}
-        muted={muted}
-        loop
-        playsInline
-        preload="none"
-        onClick={(e) => {
-          const el = e.currentTarget;
-          if (el.paused) void el.play().catch(() => {});
-          else el.pause();
-        }}
-        className="aspect-[9/16] w-full cursor-pointer object-cover"
-      />
-      <button
-        type="button"
-        onClick={() => {
-          const el = ref.current;
-          if (!el) return;
-          const next = !muted;
-          el.muted = next;
-          setMuted(next);
-          if (el.paused) void el.play().catch(() => {});
-        }}
-        aria-label={muted ? 'Activar sonido' : 'Silenciar'}
-        className="absolute right-4 bottom-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-transform duration-300 hover:scale-105"
-      >
-        {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-      </button>
+    <div ref={containerRef} className="mx-auto grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+      {VIDEOS.map((v, i) => (
+        <div key={v.src} className="relative overflow-hidden rounded-3xl bg-black shadow-xl">
+          <video
+            ref={(el) => {
+              videoRefs.current[i] = el;
+            }}
+            src={v.src}
+            poster={v.poster}
+            playsInline
+            preload="none"
+            onEnded={() => setActive((a) => (a + 1) % VIDEOS.length)}
+            onClick={() => {
+              const el = videoRefs.current[i];
+              if (!el || i !== active) return;
+              if (needsTap) {
+                el.muted = false;
+                setNeedsTap(false);
+              }
+              if (el.paused) void el.play().catch(() => {});
+              else el.pause();
+            }}
+            className="aspect-[9/16] w-full cursor-pointer object-cover"
+          />
+          {needsTap && i === active && (
+            <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-xs font-semibold text-white backdrop-blur-sm">
+              Toca para activar el sonido
+            </span>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
