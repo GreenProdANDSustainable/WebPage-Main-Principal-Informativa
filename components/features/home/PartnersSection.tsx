@@ -10,17 +10,33 @@ const partners: MarqueeLogo[] = [
   {
     src: '/images/logos/aliados/senasa.webp',
     alt: 'SENASA Perú',
-    href: 'https://www.gob.pe/senasa',
+    href: 'https://transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=91#.XwXsbZMzaqA',
   },
-  { src: '/images/logos/aliados/sanipes.webp', alt: 'SANIPES', href: 'https://www.gob.pe/sanipes' },
-  { src: '/images/logos/aliados/snp.webp', alt: 'Sociedad Nacional de Pesquería' },
-  { src: '/images/logos/aliados/anepap.webp', alt: 'ANEPAP' },
+  {
+    src: '/images/logos/aliados/sanipes.webp',
+    alt: 'SANIPES',
+    href: 'https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=14303&id_tema=1&ver=#.XyMHa-FR1PY',
+  },
+  {
+    src: '/images/logos/aliados/snp.webp',
+    alt: 'Sociedad Nacional de Pesquería',
+    href: 'https://snp.org.pe/',
+  },
+  {
+    src: '/images/logos/aliados/anepap.webp',
+    alt: 'ANEPAP',
+    href: 'https://www.facebook.com/ANEPAP/?locale=es_LA',
+  },
   {
     src: '/images/logos/aliados/kiwa-bcs.webp',
     alt: 'Kiwa BCS Öko-Garantie',
-    href: 'https://www.kiwa.com/pe/es/',
+    href: 'https://www.kiwa.com/pe/es-pe/tipo-de-servicio/certificacion/certificacion-organica-peru/',
   },
-  { src: '/images/logos/aliados/redesign-lab.webp', alt: 'Re.design Lab' },
+  {
+    src: '/images/logos/aliados/redesign-lab.webp',
+    alt: 'Re.design Lab',
+    href: 'https://redesignlab.org/',
+  },
 ];
 
 export default function PartnersSection({ dict }: PartnersSectionProps) {

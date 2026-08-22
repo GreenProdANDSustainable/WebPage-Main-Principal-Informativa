@@ -84,7 +84,7 @@ function NewsPlaylist() {
   }, [active, inView]);
 
   return (
-    <div ref={containerRef} className="mx-auto grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+    <div ref={containerRef} className="mx-auto grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2">
       {VIDEOS.map((v, i) => (
         <div key={v.src} className="relative overflow-hidden rounded-3xl bg-black shadow-xl">
           <video

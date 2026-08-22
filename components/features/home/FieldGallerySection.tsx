@@ -16,10 +16,10 @@ interface FieldGallerySectionProps {
 // tarjeta en pantalla retina sin cargar de más a quien entra desde el
 // celular.
 const PHOTOS = [
-  '/images/home/campo/campo-cosecha.webp',
   '/images/home/campo/mezcla-bioinsumo.webp',
   '/images/home/campo/aplicacion-maiz.webp',
   '/images/home/campo/dron-arrozal.webp',
+  '/images/home/campo/campo-cosecha.webp',
   '/images/home/campo/aplicacion-arrozal.webp',
   '/images/home/campo/arroz-producto.webp',
   '/images/home/campo/warduo-campo.webp',
