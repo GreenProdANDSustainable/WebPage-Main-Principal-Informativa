@@ -255,7 +255,7 @@ export default function ReachMapSection({ dict }: ReachMapSectionProps) {
                         <div>
                           <p className="text-paper text-base leading-snug">{item.text}</p>
                           {item.figure && (
-                            <p className="text-gp-green mt-1 text-4xl font-bold sm:text-5xl">
+                            <p className="text-gp-green mt-1 text-5xl font-bold sm:text-5xl">
                               {item.figure}
                             </p>
                           )}
