@@ -35,11 +35,12 @@ export default async function Nosotros({ params }: { params: Promise<{ lang: str
           <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
             <div className="relative h-[500px] overflow-hidden rounded-3xl shadow-2xl">
               <Image
-                src="/images/home/equipo-greenprod.webp"
+                src="https://picsum.photos/seed/teamwork/800/1000"
                 alt="Equipo Greenprod Sustainable"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
+                referrerPolicy="no-referrer"
               />
             </div>
             <div className="space-y-8">
