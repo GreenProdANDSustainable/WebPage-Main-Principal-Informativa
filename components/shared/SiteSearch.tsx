@@ -144,12 +144,10 @@ function PanelBusqueda({
         keywords: 'greenprod green prod sustainable sac principal portada home',
         priority: 0,
       },
-      { label: d.about, href: p('/nosotros'), keywords: 'nosotros empresa', priority: 1 },
       {
-        label: d.who_we_are,
-        sub: d.who_we_are_desc,
-        href: p('/nosotros/quienes-somos'),
-        keywords: 'quienes somos mision vision valores',
+        label: d.about,
+        href: p('/nosotros'),
+        keywords: 'nosotros empresa quienes somos mision vision valores',
         priority: 1,
       },
       {

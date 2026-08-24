@@ -286,8 +286,6 @@
         "services": "Servicios",
         "products_services_title": "Productos y Servicios",
         "work_with_us": "Trabaja con Nosotros",
-        "who_we_are": "¿Quiénes Somos?",
-        "who_we_are_desc": "Nuestra misión, visión y valores fundamentales.",
         "our_history": "Nuestra Trayectoria",
         "our_history_desc": "Historia y evolución de Green Prod & Sustainable S.A.C.",
         "industry_solutions": "Soluciones integrales para la industria.",
@@ -373,11 +371,6 @@
             "titleLead": "Aseguramos a la",
             "titleAccent": "agricultura orgánica",
             "titleTail": "y sostenible"
-        },
-        "comingSoon": {
-            "capacity": "Nuestra Capacidad — Próximamente",
-            "impact": "Indicadores de Impacto — Próximamente",
-            "certifications": "Certificaciones — Próximamente"
         },
         "solutions": {
             "productsAlt": "Línea completa de bioinsumos Green Prod sobre un campo de cultivo",

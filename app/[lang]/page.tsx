@@ -27,8 +27,6 @@ export default async function Home({ params }: HomeProps) {
   const dictionary = lang === 'es' ? esMessages : enMessages;
   const dict = dictionary;
 
-  const testimonialsEnabled = process.env.NEXT_PUBLIC_TESTIMONIALS_ENABLED === 'true';
-
   return (
     <div className="-mt-20 flex min-h-screen flex-col">
       <HeroSection dict={dict} lang={lang} />
@@ -43,15 +41,6 @@ export default async function Home({ params }: HomeProps) {
       <NewsSection dict={dict} />
       <VideoSection dict={dict} />
       <ReachMapSection dict={dict} />
-
-      {/* Testimonials Section - Conditional based on environment variable */}
-      {testimonialsEnabled && (
-        <section className="bg-white py-24">
-          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-            <p className="text-slate-600">Testimonials section coming soon...</p>
-          </div>
-        </section>
-      )}
     </div>
   );
 }

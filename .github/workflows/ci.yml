@@ -47,7 +47,6 @@ jobs:
         env:
           NEXT_PUBLIC_GEMINI_API_KEY: ${{ secrets.NEXT_PUBLIC_GEMINI_API_KEY }}
           APP_URL: ${{ secrets.APP_URL }}
-          NEXT_PUBLIC_TESTIMONIALS_ENABLED: ${{ vars.NEXT_PUBLIC_TESTIMONIALS_ENABLED }}
 
   deploy:
     name: Deploy a Cloudflare
@@ -79,4 +78,3 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           NEXT_PUBLIC_GEMINI_API_KEY: ${{ secrets.NEXT_PUBLIC_GEMINI_API_KEY }}
           APP_URL: ${{ secrets.APP_URL }}
-          NEXT_PUBLIC_TESTIMONIALS_ENABLED: ${{ vars.NEXT_PUBLIC_TESTIMONIALS_ENABLED }}

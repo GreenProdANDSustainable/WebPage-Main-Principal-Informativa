@@ -29,8 +29,6 @@ type Dictionary = {
     services: string;
     products_services_title: string;
     work_with_us: string;
-    who_we_are: string;
-    who_we_are_desc: string;
     our_history: string;
     our_history_desc: string;
     industry_solutions: string;
@@ -105,7 +103,6 @@ export default function Navbar({ dictionary }: NavbarProps) {
 
   const aboutMenu = {
     main: [
-      { name: d.who_we_are, desc: d.who_we_are_desc, href: '/nosotros/quienes-somos' },
       { name: d.our_history, desc: d.our_history_desc, href: '/nosotros/nuestra-trayectoria' },
     ],
   };
@@ -455,7 +452,7 @@ export default function Navbar({ dictionary }: NavbarProps) {
                     <h3 className="font-display text-ink border-line-warm/50 mb-6 border-b pb-2 text-xl font-bold">
                       Green Prod & Sustainable S.A.C
                     </h3>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid max-w-sm grid-cols-1 gap-4">
                       {aboutMenu.main.map((item, idx) => (
                         <Link
                           key={idx}

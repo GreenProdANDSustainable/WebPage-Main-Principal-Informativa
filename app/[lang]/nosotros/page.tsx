@@ -1,14 +1,12 @@
 import Image from 'next/image';
-import { CheckCircle2, Leaf, Fish, Briefcase, Gauge } from 'lucide-react';
+import { CheckCircle2, Leaf, Fish, Briefcase } from 'lucide-react';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
-import ComingSoon from '@/components/shared/ComingSoon';
 
 export default async function Nosotros({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dictionary = lang === 'es' ? esMessages : enMessages;
   const d = dictionary.Pages.about;
-  const comingSoon = dictionary.Home.comingSoon;
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
@@ -134,13 +132,6 @@ export default async function Nosotros({ params }: { params: Promise<{ lang: str
               </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Nuestra Capacidad */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ComingSoon id="capacidad" icon={Gauge} label={comingSoon.capacity} />
         </div>
       </section>
 

@@ -22,7 +22,6 @@ export const DEFAULT_LOCALE = 'es';
 export const ROUTES = [
   '',
   '/nosotros',
-  '/nosotros/quienes-somos',
   '/nosotros/nuestra-trayectoria',
   '/catalogo',
   '/productos-y-servicios/balik',

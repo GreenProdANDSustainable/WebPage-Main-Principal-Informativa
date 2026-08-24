@@ -286,8 +286,6 @@
         "services": "Services",
         "products_services_title": "Products & Services",
         "work_with_us": "Work with Us",
-        "who_we_are": "Who We Are",
-        "who_we_are_desc": "Our mission, vision and fundamental values.",
         "our_history": "Our History",
         "our_history_desc": "History and evolution of Green Prod & Sustainable S.A.C.",
         "industry_solutions": "Comprehensive solutions for the industry.",
@@ -373,11 +371,6 @@
             "titleLead": "We support",
             "titleAccent": "organic farming",
             "titleTail": "and sustainability"
-        },
-        "comingSoon": {
-            "capacity": "Our Capacity — Coming Soon",
-            "impact": "Impact Indicators — Coming Soon",
-            "certifications": "Certifications — Coming Soon"
         },
         "solutions": {
             "productsAlt": "Full line of Green Prod bio-inputs on a crop field",

@@ -127,7 +127,7 @@ export default async function NuestraTrayectoria({
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href={`/${lang}/nosotros/quienes-somos`}
+              href={`/${lang}/nosotros`}
               className="bg-gp-blue hover:bg-gp-green inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-white transition-all hover:scale-105"
             >
               {d.title}
