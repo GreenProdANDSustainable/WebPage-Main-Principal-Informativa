@@ -11,6 +11,7 @@ import ProductsSection from '@/components/features/home/ProductsSection';
 import FieldGallerySection from '@/components/features/home/FieldGallerySection';
 import NewsSection from '@/components/features/home/NewsSection';
 import VideoSection from '@/components/features/home/VideoSection';
+import SafetySheetSection from '@/components/features/home/SafetySheetSection';
 import ReachMapSection from '@/components/features/home/ReachMapSection';
 
 interface HomeProps {
@@ -42,6 +43,7 @@ export default async function Home({ params }: HomeProps) {
       <SustainabilityHighlightSection dict={dict} />
       <NewsSection dict={dict} />
       <VideoSection dict={dict} />
+      <SafetySheetSection dict={dict} />
       <ReachMapSection dict={dict} />
 
       {/* Testimonials Section - Conditional based on environment variable */}
