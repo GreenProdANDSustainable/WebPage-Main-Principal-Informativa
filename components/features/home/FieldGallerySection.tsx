@@ -15,20 +15,26 @@ interface FieldGallerySectionProps {
 // proporción de la tarjeta— y a 640px de ancho, que es lo que pide la
 // tarjeta en pantalla retina sin cargar de más a quien entra desde el
 // celular.
+//
+// La entrega de cosecha (posición 2) queda apaisada a propósito: recortarla
+// a 3:4 dejaba fuera a una de las dos personas de la foto, así que esa
+// tarjeta rompe el ancho fijo del resto.
 const PHOTOS = [
   '/images/home/campo/mezcla-bioinsumo.webp',
-  '/images/home/campo/aplicacion-maiz.webp',
+  '/images/home/campo/entrega-cosecha.webp',
   '/images/home/campo/dron-arrozal.webp',
   '/images/home/campo/campo-cosecha.webp',
   '/images/home/campo/aplicacion-arrozal.webp',
   '/images/home/campo/arroz-producto.webp',
   '/images/home/campo/warduo-campo.webp',
-  '/images/home/campo/paltar-bioinsumos.webp',
+  '/images/home/campo/pescador-artesanal.webp',
   '/images/home/campo/paltar-cerca.webp',
   '/images/home/campo/paltas-produccion.webp',
   '/images/home/campo/huerto-palta.webp',
   '/images/home/campo/linea-productos.webp',
 ];
+
+const LANDSCAPE_PHOTOS = new Set(['/images/home/campo/entrega-cosecha.webp']);
 
 /**
  * Galería de fotos del campo, en su propia sección (antes vivía dentro de
@@ -115,11 +121,16 @@ function PhotoCard({
   eager: boolean;
 }) {
   const reduced = useReducedMotion();
+  const landscape = LANDSCAPE_PHOTOS.has(src);
 
   return (
     <motion.div
       data-card
-      className="border-paper/15 relative aspect-[3/4] w-[84vw] shrink-0 snap-start overflow-hidden rounded-[28px] border shadow-2xl sm:w-[360px] lg:w-[400px]"
+      className={
+        landscape
+          ? 'border-paper/15 relative aspect-[3/2] w-[90vw] shrink-0 snap-start overflow-hidden rounded-[28px] border shadow-2xl sm:w-[540px] lg:w-[640px]'
+          : 'border-paper/15 relative aspect-[3/4] w-[84vw] shrink-0 snap-start overflow-hidden rounded-[28px] border shadow-2xl sm:w-[360px] lg:w-[400px]'
+      }
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}

@@ -53,20 +53,14 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
               rel="noopener noreferrer"
               className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
             >
-              {/* El archivo venía con un margen transparente enorme: el logo
-                  ocupaba solo el 21% del alto, por eso se veía diminuto al
-                  lado del sello de Kiwa. Ya recortado, se escala buscando
-                  igual peso visual: es un logotipo apaisado (3.45:1) frente a
-                  un sello cuadrado, así que se igualan por área, no por alto.
-                  Va sin realce: el PNG ya es 100% transparente alrededor del
-                  logotipo y se apoya sobre la paja clara del pie de la foto,
-                  donde el azul contrasta solo. */}
+              {/* Misma altura que el sello de Kiwa: todos los logos de
+                  certificación quedan al mismo tamaño de referencia. */}
               <Image
                 src="/images/logos/senasa.webp"
                 alt="SENASA Perú"
                 width={720}
                 height={211}
-                className="h-6 w-auto sm:h-9 md:h-10"
+                className="h-11 w-auto sm:h-16 md:h-[4.5rem]"
               />
             </a>
             <a
