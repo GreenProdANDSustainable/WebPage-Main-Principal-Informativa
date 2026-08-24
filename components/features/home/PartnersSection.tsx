@@ -11,31 +11,43 @@ const partners: MarqueeLogo[] = [
     src: '/images/logos/aliados/senasa.webp',
     alt: 'SENASA Perú',
     href: 'https://transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=91#.XwXsbZMzaqA',
+    width: 321,
+    height: 116,
   },
   {
     src: '/images/logos/aliados/sanipes.webp',
     alt: 'SANIPES',
     href: 'https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=14303&id_tema=1&ver=#.XyMHa-FR1PY',
+    width: 311,
+    height: 317,
   },
   {
     src: '/images/logos/aliados/snp.webp',
     alt: 'Sociedad Nacional de Pesquería',
     href: 'https://snp.org.pe/',
+    width: 437,
+    height: 333,
   },
   {
     src: '/images/logos/aliados/anepap.webp',
     alt: 'ANEPAP',
     href: 'https://www.facebook.com/ANEPAP/?locale=es_LA',
+    width: 380,
+    height: 380,
   },
   {
     src: '/images/logos/aliados/kiwa-bcs.webp',
     alt: 'Kiwa BCS Öko-Garantie',
     href: 'https://www.kiwa.com/pe/es-pe/tipo-de-servicio/certificacion/certificacion-organica-peru/',
+    width: 400,
+    height: 400,
   },
   {
     src: '/images/logos/aliados/redesign-lab.webp',
     alt: 'Re.design Lab',
     href: 'https://redesignlab.org/',
+    width: 432,
+    height: 181,
   },
 ];
 

@@ -7,6 +7,12 @@ export interface MarqueeLogo {
   src: string;
   alt: string;
   href?: string;
+  /** Dimensiones reales del archivo (ya recortado a su contenido, sin
+   *  márgenes transparentes). Con esto cada logo escala por su propia
+   *  proporción en vez de encajar en una caja compartida, así todos quedan
+   *  del mismo tamaño visual a la misma altura. */
+  width?: number;
+  height?: number;
 }
 
 interface LogoMarqueeProps {
@@ -69,8 +75,8 @@ function LogoItem({ logo }: { logo: MarqueeLogo }) {
     <Image
       src={logo.src}
       alt={logo.alt}
-      width={565}
-      height={400}
+      width={logo.width ?? 400}
+      height={logo.height ?? 400}
       // Los archivos ya llevan el fondo recortado (transparente), así que
       // se apoyan directo sobre el color de la sección.
       className="h-20 w-auto object-contain opacity-75 transition-opacity duration-300 hover:opacity-100 md:h-32"
