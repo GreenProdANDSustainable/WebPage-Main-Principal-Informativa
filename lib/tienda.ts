@@ -76,7 +76,20 @@ export interface DocumentosProducto {
   hojaSeguridad?: string;
 }
 
-export const DOCUMENTOS: Record<string, DocumentosProducto> = {};
+export const DOCUMENTOS: Record<string, DocumentosProducto> = {
+  'gp-bio': { hojaSeguridad: '/documentos/gp-bio-hoja-seguridad.pdf' },
+  'gp-clean': { hojaSeguridad: '/documentos/gp-clean-hoja-seguridad.pdf' },
+  'gp-oil': { hojaSeguridad: '/documentos/gp-oil-hoja-seguridad.pdf' },
+  'gp-bauver': { hojaSeguridad: '/documentos/gp-bauver-hoja-seguridad.pdf' },
+  'gp-lilax': { hojaSeguridad: '/documentos/gp-lilax-hoja-seguridad.pdf' },
+  'gp-megafort': { hojaSeguridad: '/documentos/gp-megafort-hoja-seguridad.pdf' },
+  'gp-meta': { hojaSeguridad: '/documentos/gp-meta-hoja-seguridad.pdf' },
+  'gp-subtix': { hojaSeguridad: '/documentos/gp-subtix-hoja-seguridad.pdf' },
+  'gp-thuring': { hojaSeguridad: '/documentos/gp-thuring-hoja-seguridad.pdf' },
+  'gp-trich': { hojaSeguridad: '/documentos/gp-trich-hoja-seguridad.pdf' },
+  'gp-trichobac': { hojaSeguridad: '/documentos/gp-trichobac-hoja-seguridad.pdf' },
+  'gp-warduo': { hojaSeguridad: '/documentos/gp-warduo-hoja-seguridad.pdf' },
+};
 
 export function documentosDe(id: string): DocumentosProducto {
   return DOCUMENTOS[id] ?? {};
