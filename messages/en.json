@@ -201,7 +201,7 @@
             "phone": "Phone",
             "phoneDetail": "+51 919 514 085<br />Monday to Friday, 8am - 6pm",
             "email": "Email",
-            "emailDetail": "contacto@greenprod.pe<br />ventas@greenprod.pe",
+            "emailDetail": "gerencia@greenprod.pe<br />ventas@greenprod.pe",
             "mapPlaceholder": "[Interactive Map]",
             "formTitle": "Send Us a Message",
             "name": "Full Name",
@@ -546,7 +546,7 @@
         "okTitle": "You're subscribed",
         "okBody": "We sent you a welcome email. If you do not see it, check your spam folder.",
         "errorTitle": "We could not complete the subscription",
-        "errorBody": "Try again in a moment, or write to contacto@greenprod.pe and we will add you to the list.",
+        "errorBody": "Try again in a moment, or write to gerencia@greenprod.pe and we will add you to the list.",
         "retry": "Try again"
     },
     "Privacy": {
@@ -580,10 +580,10 @@
             },
             {
                 "heading": "Your rights",
-                "body": "You can request access to your data, its correction, its deletion, or object to our use of it, by writing to contacto@greenprod.pe. We reply within the deadlines set by law. If you believe your request was not handled, you may complain to the National Authority for Personal Data Protection of the Ministry of Justice."
+                "body": "You can request access to your data, its correction, its deletion, or object to our use of it, by writing to gerencia@greenprod.pe. We reply within the deadlines set by law. If you believe your request was not handled, you may complain to the National Authority for Personal Data Protection of the Ministry of Justice."
             }
         ],
         "contactTitle": "Contact",
-        "contactBody": "For any question about this policy or your data: contacto@greenprod.pe · +51 919 514 085"
+        "contactBody": "For any question about this policy or your data: gerencia@greenprod.pe · +51 919 514 085"
     }
 }

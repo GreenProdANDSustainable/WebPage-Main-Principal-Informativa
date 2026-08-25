@@ -16,7 +16,7 @@ const RESEND_ENDPOINT = 'https://api.resend.com/emails';
 
 /** Remitente. El dominio tiene que estar verificado en Resend. */
 const REMITENTE = process.env.NEWSLETTER_FROM ?? 'Green Prod <novedades@greenprod.pe>';
-const AVISO_A = process.env.NEWSLETTER_NOTIFY ?? 'contacto@greenprod.pe';
+const AVISO_A = process.env.NEWSLETTER_NOTIFY ?? 'gerencia@greenprod.pe';
 
 const CORREO_VALIDO = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 

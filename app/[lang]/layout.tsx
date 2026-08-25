@@ -107,7 +107,7 @@ export default async function RootLayout({
     url: SITE_URL,
     logo: `${SITE_URL}/greenprod%20png.png`,
     description: dictionary.Metadata.description,
-    email: 'contacto@greenprod.pe',
+    email: 'gerencia@greenprod.pe',
     telephone: '+51 919 514 085',
     address: {
       '@type': 'PostalAddress',

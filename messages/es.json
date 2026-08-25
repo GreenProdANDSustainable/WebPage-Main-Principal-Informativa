@@ -201,7 +201,7 @@
             "phone": "Teléfono",
             "phoneDetail": "+51 919 514 085<br />Atención de Lunes a Viernes, 8am - 6pm",
             "email": "Correo Electrónico",
-            "emailDetail": "contacto@greenprod.pe<br />ventas@greenprod.pe",
+            "emailDetail": "gerencia@greenprod.pe<br />ventas@greenprod.pe",
             "mapPlaceholder": "[Mapa Interactivo]",
             "formTitle": "Envíanos un Mensaje",
             "name": "Nombre Completo",
@@ -546,7 +546,7 @@
         "okTitle": "Listo, ya estás suscrito",
         "okBody": "Te enviamos un correo de bienvenida. Si no lo ves, revisa la carpeta de spam.",
         "errorTitle": "No pudimos completar la suscripción",
-        "errorBody": "Vuelve a intentarlo en un momento o escríbenos a contacto@greenprod.pe y te sumamos a la lista.",
+        "errorBody": "Vuelve a intentarlo en un momento o escríbenos a gerencia@greenprod.pe y te sumamos a la lista.",
         "retry": "Intentar de nuevo"
     },
     "Privacy": {
@@ -580,10 +580,10 @@
             },
             {
                 "heading": "Tus derechos",
-                "body": "Puedes pedir acceso a tus datos, su corrección, su eliminación o oponerte a que los usemos, escribiendo a contacto@greenprod.pe. Respondemos en los plazos que fija la ley. Si consideras que no atendimos tu solicitud, puedes reclamar ante la Autoridad Nacional de Protección de Datos Personales del Ministerio de Justicia."
+                "body": "Puedes pedir acceso a tus datos, su corrección, su eliminación o oponerte a que los usemos, escribiendo a gerencia@greenprod.pe. Respondemos en los plazos que fija la ley. Si consideras que no atendimos tu solicitud, puedes reclamar ante la Autoridad Nacional de Protección de Datos Personales del Ministerio de Justicia."
             }
         ],
         "contactTitle": "Contacto",
-        "contactBody": "Para cualquier consulta sobre esta política o sobre tus datos: contacto@greenprod.pe · +51 919 514 085"
+        "contactBody": "Para cualquier consulta sobre esta política o sobre tus datos: gerencia@greenprod.pe · +51 919 514 085"
     }
 }

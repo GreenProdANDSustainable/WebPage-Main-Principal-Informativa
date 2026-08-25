@@ -281,7 +281,7 @@ aviso de cookies, y no por capricho:
 > consentimiento (Ley 29733).
 
 El alta la hace `/api/suscripcion`, que manda con **Resend** dos correos:
-la bienvenida a quien se suscribe y un aviso a `contacto@greenprod.pe`, que
+la bienvenida a quien se suscribe y un aviso a `gerencia@greenprod.pe`, que
 hoy hace de lista de suscriptores mientras no haya base de datos. **Falta la
 clave**: sin `RESEND_API_KEY` la ruta responde 503 y el formulario dice que
 no se pudo completar — nunca finge que el correo salió. Para encenderlo:
@@ -542,7 +542,7 @@ siempre `true`), así que:
 - **Dirección**: Av. Uno Mz. 1 Lote 1, Bloque "E", AA.HH. Tres Estrellas,
   módulos 6, 12 y 13 — Nuevo Chimbote, Áncash.
 - **Teléfono y WhatsApp**: +51 919 514 085 · **Horario**: L–V 8am–6pm
-- **Correos**: contacto@greenprod.pe · ventas@greenprod.pe
+- **Correos**: gerencia@greenprod.pe · ventas@greenprod.pe
 - **Redes**: facebook.com/greenprodsustainable · instagram.com/greenprodsustainable
 - **Paleta**: verde `#6dbe51` · azul `#2475ba` · ink `#14170f` · husk `#eae4d3` · paper `#f6f4ec`
 
