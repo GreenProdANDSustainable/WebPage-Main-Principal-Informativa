@@ -27,10 +27,8 @@ interface FooterProps {
 export default function Footer({ dictionary, lang }: FooterProps) {
   const d = dictionary.Footer;
 
-  // Misma ubicación que el mapa de la página de contacto.
   const mapsUrl =
-    'https://www.google.com/maps/search/?api=1&query=' +
-    encodeURIComponent('AA.HH. Tres Estrellas, Nuevo Chimbote, Áncash, Perú');
+    'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Chimbote, Perú');
 
   return (
     <footer className="bg-gp-blue text-paper/70 relative overflow-hidden">

@@ -6,7 +6,7 @@ interface TeamSectionProps {
 }
 
 // La foto real del equipo, sobre fondo claro de estudio.
-const TEAM_PHOTO_SRC = '/images/home/equipo-greenprod.webp';
+const TEAM_PHOTO_SRC = '/images/home/equipo-greenprod.jpg';
 
 export default function TeamSection({ dict }: TeamSectionProps) {
   const d = dict.Home.team;
