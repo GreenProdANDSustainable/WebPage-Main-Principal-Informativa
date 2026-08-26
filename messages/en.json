@@ -219,7 +219,15 @@
             ],
             "message": "Message",
             "messagePlaceholder": "How can we help you?",
-            "submitButton": "Send Message"
+            "submitButton": "Send Message",
+            "formSending": "Sending…",
+            "formOkTitle": "Message sent!",
+            "formOkBody": "Thanks for writing to us. An advisor will contact you soon.",
+            "formErrorTitle": "Could not send",
+            "formErrorBody": "Please try again or email us directly at ventas@greenprod.pe.",
+            "formRetry": "Try again",
+            "formErrorRequired": "Fill in your name and message.",
+            "formErrorEmail": "Enter a valid email."
         },
         "assistant": {
             "title": "Virtual Assistant",

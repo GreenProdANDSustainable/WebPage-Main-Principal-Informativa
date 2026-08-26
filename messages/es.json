@@ -219,7 +219,15 @@
             ],
             "message": "Mensaje",
             "messagePlaceholder": "¿En qué podemos ayudarte?",
-            "submitButton": "Enviar Mensaje"
+            "submitButton": "Enviar Mensaje",
+            "formSending": "Enviando…",
+            "formOkTitle": "¡Mensaje enviado!",
+            "formOkBody": "Gracias por escribirnos. Un asesor se pondrá en contacto contigo pronto.",
+            "formErrorTitle": "No se pudo enviar",
+            "formErrorBody": "Intenta de nuevo o escríbenos directamente a ventas@greenprod.pe.",
+            "formRetry": "Intentar de nuevo",
+            "formErrorRequired": "Completa tu nombre y tu mensaje.",
+            "formErrorEmail": "Ingresa un correo válido."
         },
         "assistant": {
             "title": "Asistente Virtual",

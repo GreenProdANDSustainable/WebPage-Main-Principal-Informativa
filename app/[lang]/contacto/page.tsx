@@ -3,6 +3,7 @@ import * as motion from 'motion/react-client';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 import Reveal from '@/components/shared/Reveal';
+import ContactForm from '@/components/features/contact/ContactForm';
 import { ease, viewport } from '@/lib/motion';
 
 export default async function Contacto({ params }: { params: Promise<{ lang: string }> }) {
@@ -82,76 +83,7 @@ export default async function Contacto({ params }: { params: Promise<{ lang: str
             className="rounded-3xl border border-slate-100 bg-white p-8 shadow-xl md:p-12"
           >
             <h2 className="mb-8 font-serif text-2xl font-bold text-slate-900">{d.formTitle}</h2>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="nombre" className="text-sm font-medium text-slate-700">
-                    {d.name}
-                  </label>
-                  <input
-                    type="text"
-                    id="nombre"
-                    className="focus:ring-gp-green focus:border-gp-green w-full rounded-xl border border-slate-300 px-4 py-3 transition-all outline-none focus:ring-2"
-                    placeholder={d.namePlaceholder}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="empresa" className="text-sm font-medium text-slate-700">
-                    {d.company}
-                  </label>
-                  <input
-                    type="text"
-                    id="empresa"
-                    className="focus:ring-gp-green focus:border-gp-green w-full rounded-xl border border-slate-300 px-4 py-3 transition-all outline-none focus:ring-2"
-                    placeholder={d.companyPlaceholder}
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-slate-700">
-                  {d.emailLabel}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="focus:ring-gp-green focus:border-gp-green w-full rounded-xl border border-slate-300 px-4 py-3 transition-all outline-none focus:ring-2"
-                  placeholder={d.emailPlaceholder}
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="asunto" className="text-sm font-medium text-slate-700">
-                  {d.subject}
-                </label>
-                <select
-                  id="asunto"
-                  className="focus:ring-gp-green focus:border-gp-green w-full rounded-xl border border-slate-300 bg-white px-4 py-3 transition-all outline-none focus:ring-2"
-                >
-                  {d.subjectOptions.map((option: string, idx: number) => (
-                    <option key={idx}>{option}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="mensaje" className="text-sm font-medium text-slate-700">
-                  {d.message}
-                </label>
-                <textarea
-                  id="mensaje"
-                  rows={5}
-                  className="focus:ring-gp-green focus:border-gp-green w-full resize-none rounded-xl border border-slate-300 px-4 py-3 transition-all outline-none focus:ring-2"
-                  placeholder={d.messagePlaceholder}
-                ></textarea>
-              </div>
-              <motion.button
-                type="button"
-                className="bg-gp-green hover:bg-gp-blue shadow-gp-green/30 w-full rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-colors duration-300"
-                whileHover={{ y: -2, scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                transition={{ duration: 0.25, ease: ease.growth }}
-              >
-                {d.submitButton}
-              </motion.button>
-            </form>
+            <ContactForm dict={dictionary} lang={lang} />
           </Reveal>
         </div>
       </div>
