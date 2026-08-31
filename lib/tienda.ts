@@ -56,9 +56,9 @@ export const FOTOS: Record<string, string> = {
   'gp-warduo': '/images/productos/gp-warduo.webp',
   'gp-lilax': '/images/productos/gp-lilax.webp',
   'gp-megafort': '/images/productos/gp-megafort.webp',
-  // Faltan gp-bio, gp-clean y gp-oil: los tres frascos de 1 L todavia no
-  // tienen foto propia. Mientras no esten, su ficha muestra el recuadro de
-  // "Foto proximamente" y el sitio no se rompe.
+  'gp-bio': '/images/productos/gp-bio.webp',
+  'gp-clean': '/images/productos/gp-clean.webp',
+  'gp-oil': '/images/productos/gp-oil.webp',
 };
 
 export function fotoDe(id: string): string | null {
