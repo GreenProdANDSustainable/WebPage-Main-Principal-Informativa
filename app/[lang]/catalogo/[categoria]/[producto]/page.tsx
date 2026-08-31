@@ -12,6 +12,8 @@ import { documentosDe, formatearSoles, precioDe } from '@/lib/tienda';
 interface Producto {
   slug: string;
   name: string;
+  informacion?: string;
+  funcion?: string;
 }
 
 interface Categoria {
@@ -123,14 +125,22 @@ export default async function FichaProducto({
             <Reveal preset="growUp" className="space-y-6">
               <section>
                 <h2 className="font-display text-ink mb-2 text-lg font-semibold">{p.infoTitle}</h2>
-                {/* El texto real lo tiene que dar la empresa: describir un
-                    bioinsumo por cuenta propia sería inventar una etiqueta. */}
-                <p className="text-ink/50 text-sm italic">{p.infoPending}</p>
+                {/* El texto lo da la empresa (Word e infografía de productos).
+                    Mientras un producto no lo tenga, se muestra el aviso. */}
+                {item.informacion ? (
+                  <p className="text-ink/70 text-sm leading-relaxed">{item.informacion}</p>
+                ) : (
+                  <p className="text-ink/50 text-sm italic">{p.infoPending}</p>
+                )}
               </section>
 
               <section>
                 <h2 className="font-display text-ink mb-2 text-lg font-semibold">{p.useTitle}</h2>
-                <p className="text-ink/50 text-sm italic">{p.usePending}</p>
+                {item.funcion ? (
+                  <p className="text-ink/70 text-sm leading-relaxed">{item.funcion}</p>
+                ) : (
+                  <p className="text-ink/50 text-sm italic">{p.usePending}</p>
+                )}
               </section>
             </Reveal>
           </div>

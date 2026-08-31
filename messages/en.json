@@ -28,15 +28,21 @@
                 "products": [
                     {
                         "slug": "gp-trich",
-                        "name": "GP-Trich"
+                        "name": "GP-Trich",
+                        "informacion": "Biological fungicide formulated with strains of Trichoderma harzianum and Trichoderma viride, at a concentration of 1×10⁹ conidia/g or mL. Its antagonistic action helps protect the crop against phytopathogenic fungi while promoting colonization of the root zone, root development and better uptake of water and nutrients.",
+                        "funcion": "Helps prevent and control diseases caused by phytopathogenic fungi, such as wilt and root rot associated with Fusarium spp., Phytophthora spp., Rhizoctonia spp. and Pythium spp., among others. It also strengthens the root system and supports the balance of the soil microbiota."
                     },
                     {
                         "slug": "gp-trichobac",
-                        "name": "GP-Trichobac"
+                        "name": "GP-Trichobac",
+                        "informacion": "Broad-spectrum biofungicide combining 50% Trichoderma harzianum (1×10⁹ conidia/g) + 50% Bacillus subtilis (1×10⁹ CFU/g). Its dual action brings together antimicrobial, mycoparasitic and defense-inducing mechanisms, providing protection on roots, stems, leaves, flowers and fruit.",
+                        "funcion": "Supports the integrated management of diseases affecting roots and foliage, such as root rot, blight, powdery mildew, moniliasis, rust and wilt. The combined action of Trichoderma + Bacillus subtilis broadens protection against phytopathogens such as Fusarium spp., Rhizoctonia spp., Pythium spp., Phytophthora spp., Botrytis spp., Moniliophthora roreri and Hemileia vastatrix."
                     },
                     {
                         "slug": "gp-subtix",
-                        "name": "GP-Subtix"
+                        "name": "GP-Subtix",
+                        "informacion": "Biofungicide formulated with Bacillus subtilis at a concentration of 1×10⁹ CFU/g. This beneficial bacterium is used in the biological control of phytopathogenic microorganisms, favors beneficial microorganisms in the rhizosphere and activates the plant's natural defense mechanisms.",
+                        "funcion": "Helps prevent and reduce diseases caused by phytopathogenic fungi on roots and foliage, especially those associated with Fusarium spp., Pythium spp., Rhizoctonia spp., Botrytis spp., Phytophthora spp. and Alternaria spp. It also favors the beneficial microbiota of the rhizosphere and activates the plant's natural defenses."
                     }
                 ]
             },
@@ -46,19 +52,27 @@
                 "products": [
                     {
                         "slug": "gp-bauver",
-                        "name": "GP-Bauver"
+                        "name": "GP-Bauver",
+                        "informacion": "Biological insecticide formulated with Beauveria bassiana, at a concentration of 1×10⁹ conidia/g or mL. This entomopathogenic fungus is specialized in pests that mainly attack leaves, shoots and fruit and is integrated into biological management programs to reduce insect pressure.",
+                        "funcion": "Biological control of thrips, whitefly, aphids, mealybug, mites, weevils, fall armyworm, leafhoppers and other susceptible insects that damage the aerial part of the crop."
                     },
                     {
                         "slug": "gp-meta",
-                        "name": "GP-Meta"
+                        "name": "GP-Meta",
+                        "informacion": "Biological insecticide formulated with Metarhizium anisopliae, at a concentration of 1×10⁹ conidia/g or mL. It is especially useful against insects that develop or remain in the soil and acts on larvae, pupae and adults present in the substrate, helping to reduce their populations.",
+                        "funcion": "Biological control of white grubs, Andean weevil, corn rootworm, fall armyworm, weevils, aphids, whitefly and other susceptible pests, with particular usefulness in managing soil-associated insects."
                     },
                     {
                         "slug": "gp-thuring",
-                        "name": "GP-Thuring"
+                        "name": "GP-Thuring",
+                        "informacion": "Biological insecticide formulated with Bacillus thuringiensis var. kurstaki at a concentration of 1×10⁹ CFU/g. It produces toxins active against insects during their larval stage and is aimed mainly at managing defoliating larvae that consume leaves and shoots.",
+                        "funcion": "Biological control of loopers, borers, bagworms, fall armyworm, cabbage moth and other susceptible larvae that cause perforations, defoliation and damage to shoots."
                     },
                     {
                         "slug": "gp-warduo",
-                        "name": "GP-Warduo"
+                        "name": "GP-Warduo",
+                        "informacion": "Broad-spectrum biological insecticide combining 50% Beauveria bassiana + 50% Metarhizium anisopliae, at a concentration of 1×10⁹ conidia/g or mL. The complementary action of both fungi makes it possible to work on pests present both in the aerial part and in the soil.",
+                        "funcion": "Biological control of thrips, aphids, whitefly, weevils, fall armyworm, mites, mealybug and other susceptible pests. It is aimed at situations that require broader management of insects in different areas of the crop."
                     }
                 ]
             },
@@ -68,7 +82,9 @@
                 "products": [
                     {
                         "slug": "gp-lilax",
-                        "name": "GP-Lilax"
+                        "name": "GP-Lilax",
+                        "informacion": "Biological nematicide formulated with Purpureocillium lilacinum, at a concentration of 1×10⁹ conidia/g or mL. It is specialized in managing plant-parasitic nematodes that affect the root system, helping to protect the roots, preserve their function and support better crop development.",
+                        "funcion": "Helps regulate populations of Meloidogyne spp., Pratylenchus spp., Rotylenchulus reniformis and Radopholus similis, among other plant-parasitic nematodes responsible for root damage and reduced growth."
                     }
                 ]
             },
@@ -78,7 +94,9 @@
                 "products": [
                     {
                         "slug": "gp-bio",
-                        "name": "GP-Bio"
+                        "name": "GP-Bio",
+                        "informacion": "Liquid agricultural biostimulant made from fish hydrolysate, with 25% free amino acids, plus nitrogen, phosphorus, potassium, micronutrients and peptides.",
+                        "funcion": "Stimulates plant growth and development, strengthens roots, improves nutrient uptake, helps reduce stress and activates natural defenses."
                     }
                 ]
             },
@@ -88,7 +106,9 @@
                 "products": [
                     {
                         "slug": "gp-megafort",
-                        "name": "GP-Megafort"
+                        "name": "GP-Megafort",
+                        "informacion": "Multifunctional biofertilizer composed of 30% Bacillus megaterium + 30% Azotobacter vinelandii + 40% Bacillus subtilis, at a concentration of 1×10⁹ CFU/g. The consortium favors phosphorus solubilization, biological nitrogen fixation, root development and better nutrient availability.",
+                        "funcion": "Strengthens fertility and the root system, improves crop vigor and contributes to protection against soil pathogens such as Fusarium, Rhizoctonia, Pythium and Phytophthora."
                     }
                 ]
             },
@@ -98,11 +118,15 @@
                 "products": [
                     {
                         "slug": "gp-clean",
-                        "name": "GP-Clean"
+                        "name": "GP-Clean",
+                        "informacion": "Agricultural potassium soap made with fatty acids from fish oil, with 35% potassium salts.",
+                        "funcion": "Physical control of soft-bodied pests such as aphids, whitefly, thrips, scale insects and mites. It also cleans sooty mold, honeydew, dust and surface fungi from leaves."
                     },
                     {
                         "slug": "gp-oil",
-                        "name": "GP-Oil"
+                        "name": "GP-Oil",
+                        "informacion": "Natural agricultural oil based on fish oil emulsified at 25%, rich in essential fatty acids.",
+                        "funcion": "Improves the adhesion, coverage and persistence of biological products and plant extracts; it also exerts a physical action on pests and helps protect the plant."
                     }
                 ]
             }

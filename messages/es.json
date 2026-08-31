@@ -28,15 +28,21 @@
                 "products": [
                     {
                         "slug": "gp-trich",
-                        "name": "GP-Trich"
+                        "name": "GP-Trich",
+                        "informacion": "Fungicida biológico formulado con cepas de Trichoderma harzianum y Trichoderma viride, con una concentración de 1×10⁹ conidios/g o mL. Su acción antagonista ayuda a proteger el cultivo frente a hongos fitopatógenos y, al mismo tiempo, favorece la colonización de la zona radicular, el desarrollo de raíces y una mejor absorción de agua y nutrientes.",
+                        "funcion": "Ayuda a prevenir y controlar enfermedades causadas por hongos fitopatógenos, como marchitamiento y pudrición radicular, asociadas a Fusarium spp., Phytophthora spp., Rhizoctonia spp. y Pythium spp., entre otros. Además, fortalece el sistema radicular y favorece el equilibrio de la microbiota del suelo."
                     },
                     {
                         "slug": "gp-trichobac",
-                        "name": "GP-Trichobac"
+                        "name": "GP-Trichobac",
+                        "informacion": "Biofungicida de amplio espectro que combina 50% Trichoderma harzianum (1×10⁹ conidios/g) + 50% Bacillus subtilis (1×10⁹ UFC/g). Su acción dual reúne mecanismos antimicrobianos, micoparasitarios y de inducción de defensas, brindando protección en raíces, tallos, hojas, flores y frutos.",
+                        "funcion": "Ayuda al manejo integral de enfermedades que afectan raíces y parte aérea, como pudrición radicular, tizón, oídio, moniliasis, roya y marchitez. Su acción combinada de Trichoderma + Bacillus subtilis amplía la protección frente a fitopatógenos como Fusarium spp., Rhizoctonia spp., Pythium spp., Phytophthora spp., Botrytis spp., Moniliophthora roreri y Hemileia vastatrix."
                     },
                     {
                         "slug": "gp-subtix",
-                        "name": "GP-Subtix"
+                        "name": "GP-Subtix",
+                        "informacion": "Biofungicida formulado con Bacillus subtilis a una concentración de 1×10⁹ UFC/g. Esta bacteria benéfica se utiliza en el control biológico de microorganismos fitopatógenos, favorece microorganismos benéficos en la rizósfera y activa mecanismos naturales de defensa de la planta.",
+                        "funcion": "Ayuda a prevenir y reducir enfermedades causadas por hongos fitopatógenos en raíces y follaje, especialmente aquellas asociadas a Fusarium spp., Pythium spp., Rhizoctonia spp., Botrytis spp., Phytophthora spp. y Alternaria spp. Además, favorece la microbiota benéfica de la rizósfera y activa las defensas naturales de la planta."
                     }
                 ]
             },
@@ -46,19 +52,27 @@
                 "products": [
                     {
                         "slug": "gp-bauver",
-                        "name": "GP-Bauver"
+                        "name": "GP-Bauver",
+                        "informacion": "Insecticida biológico formulado con Beauveria bassiana, con una concentración de 1×10⁹ conidios/g o mL. Este hongo entomopatógeno está especializado en plagas que atacan principalmente hojas, brotes y frutos y se integra a programas de manejo biológico para reducir la presión de insectos.",
+                        "funcion": "Control biológico de trips, mosca blanca, pulgones, cochinilla harinosa, ácaros, picudos, gusano cogollero, cigarritas y otros insectos susceptibles que dañan la parte aérea del cultivo."
                     },
                     {
                         "slug": "gp-meta",
-                        "name": "GP-Meta"
+                        "name": "GP-Meta",
+                        "informacion": "Insecticida biológico formulado con Metarhizium anisopliae, con una concentración de 1×10⁹ conidios/g o mL. Es especialmente útil frente a insectos que se desarrollan o permanecen en el suelo y actúa sobre larvas, pupas y adultos presentes en el sustrato, ayudando a disminuir sus poblaciones.",
+                        "funcion": "Control biológico de gallinita ciega, gorgojo de los Andes, diabrótica, gusano cogollero, picudos, pulgones, mosca blanca y otras plagas susceptibles, con especial utilidad en el manejo de insectos asociados al suelo."
                     },
                     {
                         "slug": "gp-thuring",
-                        "name": "GP-Thuring"
+                        "name": "GP-Thuring",
+                        "informacion": "Insecticida biológico formulado con Bacillus thuringiensis var. kurstaki a una concentración de 1×10⁹ UFC/g. Produce toxinas activas contra insectos durante su fase larval y está orientado principalmente al manejo de larvas defoliadoras que consumen hojas y brotes.",
+                        "funcion": "Control biológico de gusano medidor, gusano perforador, gusano del cesto, gusano cogollero, polilla del repollo y otras larvas susceptibles que ocasionan perforaciones, defoliación y daño en brotes."
                     },
                     {
                         "slug": "gp-warduo",
-                        "name": "GP-Warduo"
+                        "name": "GP-Warduo",
+                        "informacion": "Insecticida biológico de amplio espectro que combina 50% Beauveria bassiana + 50% Metarhizium anisopliae, con una concentración de 1×10⁹ conidios/g o mL. La acción complementaria de ambos hongos permite trabajar sobre plagas presentes tanto en la parte aérea como en el suelo.",
+                        "funcion": "Control biológico de trips, pulgones, mosca blanca, picudos, gusano cogollero, ácaros, cochinilla harinosa y otras plagas susceptibles. Está orientado a situaciones donde se requiere un manejo más amplio de insectos en diferentes zonas del cultivo."
                     }
                 ]
             },
@@ -68,7 +82,9 @@
                 "products": [
                     {
                         "slug": "gp-lilax",
-                        "name": "GP-Lilax"
+                        "name": "GP-Lilax",
+                        "informacion": "Nematicida biológico formulado con Purpureocillium lilacinum, con una concentración de 1×10⁹ conidios/g o mL. Está especializado en el manejo de nemátodos fitoparásitos que afectan el sistema radicular, ayudando a proteger las raíces, conservar su funcionalidad y favorecer un mejor desarrollo del cultivo.",
+                        "funcion": "Ayuda a regular poblaciones de Meloidogyne spp., Pratylenchus spp., Rotylenchulus reniformis y Radopholus similis, entre otros nemátodos fitoparásitos responsables de daño radicular y reducción del crecimiento."
                     }
                 ]
             },
@@ -78,7 +94,9 @@
                 "products": [
                     {
                         "slug": "gp-bio",
-                        "name": "GP-Bio"
+                        "name": "GP-Bio",
+                        "informacion": "Bioestimulante agrícola líquido elaborado a partir de hidrolizado de pescado, con 25 % de aminoácidos libres, además de nitrógeno, fósforo, potasio, micronutrientes y péptidos.",
+                        "funcion": "Estimula el crecimiento y desarrollo de la planta, fortalece las raíces, mejora la absorción de nutrientes, ayuda a reducir el estrés y activa las defensas naturales."
                     }
                 ]
             },
@@ -88,7 +106,9 @@
                 "products": [
                     {
                         "slug": "gp-megafort",
-                        "name": "GP-Megafort"
+                        "name": "GP-Megafort",
+                        "informacion": "Biofertilizante multifuncional compuesto por 30% Bacillus megaterium + 30% Azotobacter vinelandii + 40% Bacillus subtilis, con una concentración de 1×10⁹ UFC/g. El consorcio favorece la solubilización de fósforo, la fijación biológica de nitrógeno, el desarrollo de raíces y una mejor disponibilidad de nutrientes.",
+                        "funcion": "Fortalece la fertilidad y el sistema radicular, mejora el vigor del cultivo y contribuye a la protección frente a patógenos del suelo como Fusarium, Rhizoctonia, Pythium y Phytophthora."
                     }
                 ]
             },
@@ -98,11 +118,15 @@
                 "products": [
                     {
                         "slug": "gp-clean",
-                        "name": "GP-Clean"
+                        "name": "GP-Clean",
+                        "informacion": "Jabón potásico agrícola elaborado con ácidos grasos provenientes de aceite de pescado, con 35 % de sales potásicas.",
+                        "funcion": "Control físico de plagas de cuerpo blando como pulgones, mosca blanca, trips, cochinillas y ácaros. También limpia fumagina, melaza, polvo y hongos superficiales de las hojas."
                     },
                     {
                         "slug": "gp-oil",
-                        "name": "GP-Oil"
+                        "name": "GP-Oil",
+                        "informacion": "Aceite agrícola natural a base de aceite de pescado emulsionado al 25 %, rico en ácidos grasos esenciales.",
+                        "funcion": "Mejora la adherencia, cobertura y permanencia de productos biológicos y extractos vegetales; además, ejerce una acción física sobre plagas y ayuda a proteger la planta."
                     }
                 ]
             }

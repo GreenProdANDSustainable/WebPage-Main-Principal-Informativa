@@ -62,10 +62,10 @@ export default function ServicesBento({ dict }: ServicesBentoProps) {
                   logotipo y se apoya sobre la paja clara del pie de la foto,
                   donde el azul contrasta solo. */}
               <Image
-                src="/images/logos/senasa.webp"
+                src="/images/logos/senasa.png"
                 alt="SENASA Perú"
-                width={720}
-                height={211}
+                width={1809}
+                height={543}
                 className="h-6 w-auto sm:h-9 md:h-10"
               />
             </a>
