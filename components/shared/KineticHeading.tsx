@@ -65,9 +65,12 @@ export default function KineticHeading({
       >
         {all.map(({ word, accent }, i) => (
           // El contenedor recorta la palabra mientras sube: parece brotar.
+          // El relleno vertical deja aire para tildes y para signos como "¿"
+          // y "?", que se salen de la caja del texto; el margen negativo
+          // arriba lo compensa para no mover la línea base.
           <span
             key={`${word}-${i}`}
-            className="inline-block overflow-hidden pb-[0.08em] align-bottom"
+            className="-mt-[0.18em] inline-block overflow-hidden pt-[0.18em] pb-[0.18em] align-bottom"
           >
             <motion.span
               className={`inline-block ${accent ? highlightClassName : ''}`}
