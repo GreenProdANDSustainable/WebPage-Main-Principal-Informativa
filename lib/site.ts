@@ -24,6 +24,7 @@ export const ROUTES = [
   '/nosotros',
   '/nosotros/nuestra-trayectoria',
   '/catalogo',
+  '/cotiza',
   '/productos-y-servicios/balik',
   '/productos-y-servicios/ceprobio',
   '/productos-y-servicios/planta-tratamiento',

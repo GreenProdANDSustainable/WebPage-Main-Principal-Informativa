@@ -300,6 +300,92 @@
                 "Elaboración de planes de negocio",
                 "Postulación a fondos concursables"
             ]
+        },
+        "cotiza": {
+            "meta": {
+                "title": "Cotiza tus bioinsumos | Green Prod & Sustainable",
+                "description": "Bioinsumos orgánicos certificados SENASA y Kiwa para el control de hongos de suelo, nematodos y plagas. Pide tu cotización y recibe asesoría de un ingeniero agrónomo, sin costo. Envíos a todo el Perú."
+            },
+            "hero": {
+                "label": "Cotización de bioinsumos",
+                "title": "¿Un problema en tu cultivo? Te decimos con qué tratarlo y cuánto cuesta.",
+                "subtitle": "Producimos bioinsumos orgánicos en Chimbote. Cuéntanos qué cultivo manejas y qué está pasando en campo: un ingeniero agrónomo te responde con la solución y la cotización.",
+                "trust": "Envíos a todo el Perú",
+                "cta": "Pedir mi cotización"
+            },
+            "problemas": {
+                "title": "¿Con qué estás lidiando?",
+                "subtitle": "Cada línea está formulada para un tipo de problema. Toca la tuya para ver los productos.",
+                "items": [
+                    {
+                        "dolor": "Hongos de suelo y raíz",
+                        "texto": "Fusarium, Phytophthora, Rhizoctonia, pudriciones. Control biológico a base de Trichoderma y Bacillus.",
+                        "linea": "Ver biofungicidas",
+                        "slug": "biofungicidas"
+                    },
+                    {
+                        "dolor": "Nematodos",
+                        "texto": "Agallas en la raíz, plantas que no levantan, rendimiento que cae campaña tras campaña.",
+                        "linea": "Ver bionematicida",
+                        "slug": "bionematicida"
+                    },
+                    {
+                        "dolor": "Plagas de insectos",
+                        "texto": "Mosca blanca, trips, gusanos, picudo. Hongos entomopatógenos y Bacillus thuringiensis.",
+                        "linea": "Ver bioinsecticidas",
+                        "slug": "bioinsecticidas"
+                    },
+                    {
+                        "dolor": "Cultivo débil o estresado",
+                        "texto": "Estrés por frío o calor, poco vigor, raíces pobres. Biofertilizante de hidrolizado de pescado y bioestimulante.",
+                        "linea": "Ver biofertilizante",
+                        "slug": "biofertilizante"
+                    }
+                ]
+            },
+            "form": {
+                "title": "Pide tu cotización",
+                "subtitle": "Toma un minuto. Te responde un ingeniero agrónomo por WhatsApp, sin costo.",
+                "nombre": "Nombre",
+                "telefono": "Teléfono / WhatsApp",
+                "cultivo": "Cultivo",
+                "cultivoPlaceholder": "Palto, arándano, maracuyá, maíz…",
+                "hectareas": "Hectáreas",
+                "opcional": "opcional",
+                "zona": "Distrito o valle",
+                "zonaPlaceholder": "Ej.: Nuevo Chimbote, valle del Santa, Casma…",
+                "problema": "¿Qué está pasando en tu campo?",
+                "problemaPlaceholder": "Elige una opción",
+                "problemaOpciones": [
+                    "Hongos de suelo o raíz",
+                    "Nematodos",
+                    "Plagas de insectos",
+                    "Cultivo débil o estresado",
+                    "Nutrición del suelo",
+                    "No estoy seguro / necesito diagnóstico"
+                ],
+                "mensaje": "Cuéntanos más",
+                "enviar": "Enviar por WhatsApp",
+                "aviso": "Al enviar se abre WhatsApp con tu consulta lista para un asesor. No se cobra nada en este paso.",
+                "errorRequired": "Completa este dato",
+                "errorPhone": "Escribe un número de 9 dígitos",
+                "errorResumen": "Revisa los datos marcados",
+                "mensajeTitulo": "Nueva solicitud de cotización",
+                "origen": "Origen",
+                "origenDirecto": "Directo (greenprod.pe/cotiza)"
+            }
+        },
+        "enlaces": {
+            "tagline": "Bioinsumos orgánicos desde Chimbote. Elige por dónde seguir 👇",
+            "footer": "greenprod.pe · Chimbote – Perú",
+            "links": {
+                "whatsapp": "Escríbenos por WhatsApp",
+                "cotiza": "Cotiza tu campaña",
+                "catalogo": "Catálogo de bioinsumos",
+                "nosotros": "Quiénes somos",
+                "novedades": "Nuestra trayectoria",
+                "ubicacion": "Cómo llegar / ubicación"
+            }
         }
     },
     "Navbar": {

@@ -300,6 +300,92 @@
                 "Business plan development",
                 "Application to competitive funds"
             ]
+        },
+        "cotiza": {
+            "meta": {
+                "title": "Get a quote for your bio-inputs | Green Prod & Sustainable",
+                "description": "Organic bio-inputs certified by SENASA and Kiwa for soil fungi, nematodes and pests. Request a quote and get free advice from an agronomist. Shipping across Peru."
+            },
+            "hero": {
+                "label": "Bio-input quote",
+                "title": "A problem in your crop? We'll tell you what treats it and what it costs.",
+                "subtitle": "We produce organic bio-inputs in Chimbote. Tell us your crop and what's happening in the field: an agronomist replies with the solution and the quote.",
+                "trust": "Shipping across Peru",
+                "cta": "Request my quote"
+            },
+            "problemas": {
+                "title": "What are you dealing with?",
+                "subtitle": "Each line is formulated for a type of problem. Tap yours to see the products.",
+                "items": [
+                    {
+                        "dolor": "Soil and root fungi",
+                        "texto": "Fusarium, Phytophthora, Rhizoctonia, rots. Biological control based on Trichoderma and Bacillus.",
+                        "linea": "See biofungicides",
+                        "slug": "biofungicidas"
+                    },
+                    {
+                        "dolor": "Nematodes",
+                        "texto": "Root galls, plants that won't grow, yield dropping season after season.",
+                        "linea": "See bionematicide",
+                        "slug": "bionematicida"
+                    },
+                    {
+                        "dolor": "Insect pests",
+                        "texto": "Whitefly, thrips, worms, weevil. Entomopathogenic fungi and Bacillus thuringiensis.",
+                        "linea": "See bioinsecticides",
+                        "slug": "bioinsecticidas"
+                    },
+                    {
+                        "dolor": "Weak or stressed crop",
+                        "texto": "Cold or heat stress, low vigor, poor roots. Fish-hydrolysate biofertilizer and biostimulant.",
+                        "linea": "See biofertilizer",
+                        "slug": "biofertilizante"
+                    }
+                ]
+            },
+            "form": {
+                "title": "Request your quote",
+                "subtitle": "Takes a minute. An agronomist replies on WhatsApp, free of charge.",
+                "nombre": "Name",
+                "telefono": "Phone / WhatsApp",
+                "cultivo": "Crop",
+                "cultivoPlaceholder": "Avocado, blueberry, passion fruit, maize…",
+                "hectareas": "Hectares",
+                "opcional": "optional",
+                "zona": "District or valley",
+                "zonaPlaceholder": "e.g. Nuevo Chimbote, Santa valley, Casma…",
+                "problema": "What's happening in your field?",
+                "problemaPlaceholder": "Choose an option",
+                "problemaOpciones": [
+                    "Soil or root fungi",
+                    "Nematodes",
+                    "Insect pests",
+                    "Weak or stressed crop",
+                    "Soil nutrition",
+                    "Not sure / need a diagnosis"
+                ],
+                "mensaje": "Tell us more",
+                "enviar": "Send via WhatsApp",
+                "aviso": "Sending opens WhatsApp with your question ready for an advisor. Nothing is charged at this step.",
+                "errorRequired": "Please fill this in",
+                "errorPhone": "Enter a 9-digit number",
+                "errorResumen": "Check the highlighted fields",
+                "mensajeTitulo": "New quote request",
+                "origen": "Source",
+                "origenDirecto": "Direct (greenprod.pe/cotiza)"
+            }
+        },
+        "enlaces": {
+            "tagline": "Organic bio-inputs from Chimbote. Choose where to go next 👇",
+            "footer": "greenprod.pe · Chimbote – Peru",
+            "links": {
+                "whatsapp": "Message us on WhatsApp",
+                "cotiza": "Get a quote",
+                "catalogo": "Bio-input catalog",
+                "nosotros": "About us",
+                "novedades": "Our track record",
+                "ubicacion": "How to get here / location"
+            }
         }
     },
     "Navbar": {
